@@ -1,0 +1,20 @@
+name: MASK GROUP - Auditar 25 skills externas (MANUAL)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stage-skills:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Staging sin ejecutar terceras partes
+        run: bash cloud/scripts/stage_third_party_skills.sh
+      - name: Artifact de revision
+        uses: actions/upload-artifact@v4
+        with:
+          name: mask-group-skills-review
+          path: ${{ runner.temp }}/mask-skills-third-party/out/
+          retention-days: 7
