@@ -18,8 +18,8 @@ large=ImageFont.truetype(font,65)
 files=[]
 for i,e in enumerate(es):
  if not isinstance(e,dict):raise ValueError("ESCENA_INVALIDA")
- txt=str(e.get("texto") or e.get("puzle") or e.get("narracion") or "").strip()
- voice=str(e.get("narracion") or txt).strip()
+ txt=str(e.get("pantalla") or e.get("texto") or e.get("enunciado") or e.get("puzle") or e.get("narracion") or "").strip()
+ voice=str(e.get("narracion") or e.get("enunciado") or e.get("texto") or txt).strip()
  if not txt or len(txt)>1000 or not voice or len(voice)>1400:raise ValueError("ESCENA_SIN_CONTENIDO_"+str(i))
  name=f"scene_{i:03}"
  img=Image.new("RGB",(w,h),(12,24,42))
