@@ -120,7 +120,11 @@ def main():
  job=json.loads(base64.b64decode(os.environ["ENCARGO_B64"],validate=True))
  eid=os.environ["ENCARGO_ID"]
  if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{2,80}",eid) or job.get("id")!=eid:raise ValueError("ID_INVALIDO")
- if job.get("aprobado") is not True:raise ValueError("GUION_NO_APROBADO")
+ # El render para revision NO equivale a autorizar el guion para publicacion.
+ if job.get("aprobado") is not True:
+  if job.get("modo_entrega")!="BORRADOR_REVISION_TELEGRAM" or job.get("autorizado_publicar") is not False or job.get("marca")!="ENIGMA_60":
+   raise ValueError("SOLO_BORRADOR_INTERNO_AUTORIZADO_PARA_RENDER")
+
  if os.getenv("ALLOW_PAID_APIS","0")!="0":raise ValueError("NO_PERMITIDO_USAR_API_PAGADA")
  channel=ALIASES.get(norm(job.get("marca") or job.get("canal","")),norm(job.get("marca") or job.get("canal","")))
  if channel not in THEMES:raise ValueError("CANAL_NO_SOPORTADO")
@@ -168,7 +172,7 @@ def main():
  sha=hashlib.sha256(movie.read_bytes()).hexdigest()
  qa={"veredicto":"PASS","tipo_control":"SOLO_TECNICO","sha256":sha,"duracion_s":round(real,2),"resolucion":f"{w}x{h}","escenas":len(scenes),"puzles":puzzles,"canal":channel,"idioma":lang,
      "titulo":job.get("titulo") or eid,"descripcion":job.get("descripcion") or "Pendiente revisión editorial","hashtags":job.get("hashtags") or [],
-     "fuentes_licencias":"Assets locales/procedurales; revisar derechos","riesgos":"Revisión editorial y de soluciones pendiente","aprobacion_publicacion":False,
+     "fuentes_licencias":"Assets locales/procedurales; revisar derechos","riesgos":"Revisión editorial y de soluciones pendiente","aprobacion_publicacion":False,"revision_humana_pendiente":True,
      "motor":"MASK_ENGINE_V2_PIL_FFMPEG","fallos":[]}
  (OUT/(eid+".qa.json")).write_text(json.dumps(qa,ensure_ascii=False,indent=2))
  print(json.dumps({"video":str(movie),"sha256":sha,"duracion_s":real}))
