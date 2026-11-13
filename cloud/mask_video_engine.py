@@ -81,6 +81,10 @@ def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None,frame=None):
  x=int(w*.07);top=int(h*(.26 if h>w else .23));bot=int(h*(.77 if h>w else .83))
  if scene.get("visual"):
   top=int(h*(.64 if h>w else .58));bot=int(h*(.90 if h>w else .92))
+ if scene.get("tarjeta_compacta") and phase=="puzzle":
+  top=int(h*(.70 if h>w else .59));bot=int(h*(.93 if h>w else .91))
+ if scene.get("tarjeta_compacta") and phase=="countdown":
+  top=int(h*(.56 if h>w else .57));bot=int(h*(.82 if h>w else .81))
  d.rounded_rectangle((x-15,top,w-x+15,bot),radius=25,fill=(8,14,27,228),outline=gold,width=3)
  d.text((x,int(h*.10)),brand,font=font(28,True),fill=gold)
  title=str(job.get("titulo") or brand)[:46]
@@ -194,6 +198,23 @@ def main():
    img=render_screen(job,s,i,"scene",shown,w,h,THEMES[channel])
    parts.append(clip(img,audio,sec,OUT/f"{i:03}_scene.mp4",w,h));estimated+=sec
   if estimated>int(os.getenv("MAX_RENDER_SECONDS","1800")):raise ValueError("VIDEO_SUPERA_LIMITE_DURACION")
+ requisitos=job.get("correcciones_requeridas") or []
+ if not isinstance(requisitos,list):raise ValueError("REQUISITOS_INVALIDOS")
+ investigacion=job.get("investigacion") or {}
+ if investigacion.get("solicitada") and not (investigacion.get("verificada") is True and len(investigacion.get("fuentes") or [])>=2):
+  raise ValueError("INVESTIGACION_NO_VERIFICADA_NO_RENDERIZAR")
+ controles={}
+ for requisito in requisitos:
+  if requisito=="musica_y_efectos":
+   controles[requisito]=bool(job.get("audio_ambiente_original"))
+  elif requisito=="animacion_original":
+   controles[requisito]=all(bool(s.get("visual")) for s in scenes)
+  elif requisito=="texto_compacto":
+   controles[requisito]=any(bool(s.get("tarjeta_compacta")) for s in scenes) and all(bool(s.get("tarjeta_compacta")) for s in scenes if norm(s.get("tipo","")) in ("PUZLE","PUZZLE","ACERTIJO","RETO"))
+  elif requisito=="subtitulos_discretos":
+   controles[requisito]=all(bool(s.get("subtitulo_discreto")) for s in scenes if norm(s.get("tipo","")) not in ("PUZLE","PUZZLE","ACERTIJO","RETO"))
+  else:raise ValueError("REQUISITO_NO_SOPORTADO:"+str(requisito))
+ if not all(controles.values()):raise ValueError("CORRECCION_TECNICA_NO_APLICADA:"+",".join(k for k,v in controles.items() if not v))
  manifest=OUT/"concat.txt"
  manifest.write_text("".join("file '"+p.name+"'\n" for p in parts))
  movie=OUT/(eid+".mp4")
@@ -215,6 +236,7 @@ def main():
      "titulo":job.get("titulo") or eid,"descripcion":job.get("descripcion") or "Pendiente revisión editorial","hashtags":job.get("hashtags") or [],
      "fuentes_licencias":"Assets locales/procedurales; revisar derechos","riesgos":"Revisión editorial y de soluciones pendiente","aprobacion_publicacion":False,"revision_humana_pendiente":True,
      "motor":"MASK_ENGINE_V3_ILLUSTRATIONS_ORIGINAL_AUDIO","audio_original":bool(job.get("audio_ambiente_original")),"fallos":[]}
+ qa["control_correcciones"]={"requisitos":controles,"tecnicamente_aplicados":all(controles.values()),"solicitud":(job.get("correccion") or {}).get("solicitud"),"solo_tecnico":True}
  (OUT/(eid+".qa.json")).write_text(json.dumps(qa,ensure_ascii=False,indent=2))
  print(json.dumps({"video":str(movie),"sha256":sha,"duracion_s":real}))
 if __name__=="__main__":
