@@ -97,7 +97,8 @@ def voice(text,scene,n,kind,language):
  out=OUT/f"voz_{n:03}_{kind}.wav"
  model=BASE/"models"/"es_ES-davefx-medium.onnx"
  if language=="es" and model.is_file():
-  run([sys.executable,"-m","piper","-m",str(model),"-f",str(out),"--",str(text)])
+  proc=subprocess.run([sys.executable,"-m","piper","--model",str(model),"--output_file",str(out)],input=str(text).encode("utf-8"),stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+  if proc.returncode!=0:raise RuntimeError("PIPER_FALLO: "+proc.stderr.decode("utf-8","replace")[:300])
  else:
   run(["espeak-ng","-v","es" if language=="es" else "en","-s","145","-w",str(out),str(text)])
  return out
