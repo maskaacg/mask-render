@@ -1,0 +1,36 @@
+{
+  "version": "2026-11-13",
+  "language": "es",
+  "sources": [
+    "videos 1000309190.mp4",
+    "1000309191.mp4",
+    "1000309192.mp4",
+    "1000309193.mp4"
+  ],
+  "channels": [
+    "dramia",
+    "entre-nos",
+    "insolito",
+    "enigma-60",
+    "elige",
+    "archivos-13",
+    "mini-mundo",
+    "pixel-life"
+  ],
+  "crossChannel": [
+    "mask-pipeline-production",
+    "mask-youtube-strategy",
+    "mask-claude-agent-assembly"
+  ],
+  "external": "FreeLLMAPI candidate only",
+  "status": "GitHub instructions committed; external runtime not automatically installed",
+  "policy": {
+    "pc": false,
+    "driveAfterApproval": true,
+    "publishAutomatically": false,
+    "paused": [
+      "dramia",
+      "mini-mundo"
+    ]
+  }
+}
