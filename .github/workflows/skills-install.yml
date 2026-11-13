@@ -17,38 +17,32 @@ jobs:
           persist-credentials: true
       - name: Obtener instrucciones de commits fijados
         run: bash cloud/scripts/stage_third_party_skills.sh
-      - name: Verificar y copiar SOLO SKILL.md
+      - name: Validar y guardar 25 SKILL.md, sin duplicados
         shell: bash
         run: |
           set -Eeuo pipefail
           src="$RUNNER_TEMP/mask-skills-third-party/out"
-          test -d "$src/.claude/skills"
-          test -d "$src/.agents/skills"
-          test "$(find "$src/.claude/skills" -name SKILL.md -type f | wc -l)" = 25
-          test "$(find "$src/.agents/skills" -name SKILL.md -type f | wc -l)" = 25
+          test "$(find "$src/.claude/skills" -type f -name SKILL.md | wc -l)" = 25
+          test "$(find "$src/.agents/skills" -type f -name SKILL.md | wc -l)" = 25
           for d in "$src"/.claude/skills/* "$src"/.agents/skills/*; do
-            test -d "$d" || exit 34
-            test ! -L "$d" || exit 35
+            test -d "$d" && test ! -L "$d" || exit 34
             name="$(basename "$d")"
-            case "$name" in
-              yt-*|remotion-*|find-skills) ;;
-              *) echo 'Nombre no autorizado'; exit 36 ;;
-            esac
+            case "$name" in yt-*|remotion-*|find-skills) ;; *) exit 36 ;; esac
             test -f "$d/SKILL.md" || exit 37
             target="${d#"$src/"}"
-            mkdir -p "$(dirname "$target")"
-            cp -R "$d" "$target"
+            mkdir -p "$target"
+            cp "$d/SKILL.md" "$target/SKILL.md"
           done
           mkdir -p cloud
           cp "$src/SKILL_HASHES.txt" cloud/THIRD_PARTY_SKILLS_SHA256.txt
-          echo '25 skills markdown instaladas; sin ejecutables de terceros, remotion/licencias por verificar.' > cloud/THIRD_PARTY_INSTALL_RESULT.txt
+          echo '25 skills markdown verificadas; no se ejecutaron scripts externos.' > cloud/THIRD_PARTY_INSTALL_RESULT.txt
           git config user.name 'MASK GROUP Skills Bot'
           git config user.email 'actions@users.noreply.github.com'
           git add .claude/skills .agents/skills cloud/THIRD_PARTY_SKILLS_SHA256.txt cloud/THIRD_PARTY_INSTALL_RESULT.txt
-          git diff --cached --quiet && { echo 'Sin cambios en las skills'; exit 0; }
-          git commit -m 'chore(skills): integrar 25 skills markdown externas con SHA fijados'
+          git diff --cached --quiet && { echo 'Sin cambios'; exit 0; }
+          git commit -m 'chore(skills): sincronizar 25 skills externas sin duplicarlas'
           git push origin HEAD:main
-      - name: Evidencia privada de auditoria
+      - name: Evidencia de auditoría
         if: always()
         uses: actions/upload-artifact@v4
         with:
