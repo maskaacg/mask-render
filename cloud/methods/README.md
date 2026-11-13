@@ -1,0 +1,2 @@
+# MASK GROUP — métodos añadidos de vídeos 9190–9193
+Métodos de producción, estrategia YouTube, diseño por canal y evaluación optativa de FreeLLMAPI. 9184–9185 ya analizados anteriormente; no reinstalar duplicados. Todas las instrucciones se copian para Claude Code y Codex. El proyecto se ejecuta en la nube: GitHub desde n8n, cero PC, QA y aprobación antes de MP4 en Drive. Nunca autoriza publicación ni costes.

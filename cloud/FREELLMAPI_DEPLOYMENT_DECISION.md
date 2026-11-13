@@ -1,0 +1,2 @@
+# FreeLLMAPI — no desplegar en producción sin auditoría
+Estado: INTEGRADO COMO SKILL Y CANDIDATO, NO SERVICIO INSTALADO. No existe infraestructura autónoma que garantice disponibilidad continua gratuita. No se conectan claves de clientes ni se sirve proxy público. Pendiente: auditoría de código y licencia, compatibilidad con n8n, términos de proveedores, presupuesto por token, seguridad/secretos y prueba manual aislada. Retener Claude oficial como ruta de producción, sin supuestos de ahorro no demostrados.
