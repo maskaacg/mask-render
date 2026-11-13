@@ -170,7 +170,7 @@ def main():
  real=seconds(movie);size=movie.stat().st_size
  if real<2 or size<6000 or size>350000000:raise ValueError("VIDEO_FALLA_QA_TECNICA")
  sha=hashlib.sha256(movie.read_bytes()).hexdigest()
- qa={"veredicto":"PASS","tipo_control":"SOLO_TECNICO","sha256":sha,"duracion_s":round(real,2),"resolucion":f"{w}x{h}","escenas":len(scenes),"puzles":puzzles,"canal":channel,"idioma":lang,
+ qa={"veredicto":"PASS","tipo_control":"SOLO_TECNICO","sha256":sha,"duracion_s":round(real,2),"resolucion":f"{w}x{h}","tamano_bytes":size,"escenas":len(scenes),"puzles":puzzles,"canal":channel,"idioma":lang,
      "titulo":job.get("titulo") or eid,"descripcion":job.get("descripcion") or "Pendiente revisión editorial","hashtags":job.get("hashtags") or [],
      "fuentes_licencias":"Assets locales/procedurales; revisar derechos","riesgos":"Revisión editorial y de soluciones pendiente","aprobacion_publicacion":False,"revision_humana_pendiente":True,
      "motor":"MASK_ENGINE_V2_PIL_FFMPEG","fallos":[]}
