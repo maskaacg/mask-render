@@ -3,6 +3,7 @@
 import base64,hashlib,json,math,os,pathlib,random,re,subprocess,sys,textwrap,unicodedata
 from PIL import Image,ImageDraw,ImageFont
 from visuals import paint
+from soundscape import create as create_soundscape
 
 BASE=pathlib.Path(__file__).resolve().parents[1]
 OUT=BASE/"out";OUT.mkdir(exist_ok=True)
@@ -61,6 +62,22 @@ def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None,frame=None):
  if scene.get("visual"):
   bg=paint(bg,str(scene.get("visual")),frame or 0,10,phase)
  d=ImageDraw.Draw(bg,"RGBA")
+ if scene.get("color_extra"):
+  colors=["#e87bb0","#7cddf1","#8bdf91","#ffc769"]
+  for k in range(12):
+   angle=2*math.pi*k/12+0.22*(frame or 0)
+   px=w*.5+w*.34*math.cos(angle)
+   py=h*.38+h*.16*math.sin(angle)
+   d.ellipse((int(px-6),int(py-6),int(px+6),int(py+6)),fill=colors[k%4])
+ if scene.get("subtitulo_discreto") and phase=="scene":
+  left=int(w*.07);y=int(h*.86)
+  short=str(shown).replace("\n"," ")[:90]
+  lines=textwrap.wrap(short,width=42 if w>h else 28)[:2]
+  d.rounded_rectangle((left-10,y-14,w-left+10,min(h-12,y+78)),radius=15,fill=(5,11,21,175))
+  for k,ln in enumerate(lines):
+   d.text((left,y+k*32),ln,font=font(23,True),fill="#f7f8fb")
+  bg.save(out)
+  return out
  x=int(w*.07);top=int(h*(.26 if h>w else .23));bot=int(h*(.77 if h>w else .83))
  if scene.get("visual"):
   top=int(h*(.64 if h>w else .58));bot=int(h*(.90 if h>w else .92))
@@ -181,13 +198,23 @@ def main():
  manifest.write_text("".join("file '"+p.name+"'\n" for p in parts))
  movie=OUT/(eid+".mp4")
  run(["ffmpeg","-hide_banner","-loglevel","error","-y","-f","concat","-safe","0","-i",str(manifest),"-c","copy","-movflags","+faststart",str(movie)])
+ if job.get("audio_ambiente_original"):
+  soundtrack=OUT/(eid+"_original.wav")
+  create_soundscape(soundtrack)
+  tmp=OUT/(eid+"_audio_mix.mp4")
+  dur=seconds(movie)
+  fc="[0:a]volume=1.32,acompressor=threshold=0.09:ratio=2:attack=12:release=120[voz];[1:a]volume=0.27[mus];[voz][mus]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]"
+  run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(movie),"-stream_loop","-1","-i",str(soundtrack),
+       "-filter_complex",fc,"-map","0:v:0","-map","[a]","-c:v","copy","-c:a","aac","-b:a","160k",
+       "-movflags","+faststart","-t",str(dur),str(tmp)])
+  os.replace(tmp,movie)
  real=seconds(movie);size=movie.stat().st_size
  if real<2 or size<6000 or size>350000000:raise ValueError("VIDEO_FALLA_QA_TECNICA")
  sha=hashlib.sha256(movie.read_bytes()).hexdigest()
  qa={"veredicto":"PASS","tipo_control":"SOLO_TECNICO","sha256":sha,"duracion_s":round(real,2),"resolucion":f"{w}x{h}","tamano_bytes":size,"escenas":len(scenes),"puzles":puzzles,"canal":channel,"idioma":lang,
      "titulo":job.get("titulo") or eid,"descripcion":job.get("descripcion") or "Pendiente revisión editorial","hashtags":job.get("hashtags") or [],
      "fuentes_licencias":"Assets locales/procedurales; revisar derechos","riesgos":"Revisión editorial y de soluciones pendiente","aprobacion_publicacion":False,"revision_humana_pendiente":True,
-     "motor":"MASK_ENGINE_V2_PIL_FFMPEG","fallos":[]}
+     "motor":"MASK_ENGINE_V3_ILLUSTRATIONS_ORIGINAL_AUDIO","audio_original":bool(job.get("audio_ambiente_original")),"fallos":[]}
  (OUT/(eid+".qa.json")).write_text(json.dumps(qa,ensure_ascii=False,indent=2))
  print(json.dumps({"video":str(movie),"sha256":sha,"duracion_s":real}))
 if __name__=="__main__":
