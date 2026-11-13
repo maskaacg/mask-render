@@ -1,4 +1,4 @@
-name: MASK GROUP - Render cloud real
+name: MASK GROUP - Motor de vídeo compartido
 run-name: render ${{ inputs.encargo_id }}
 on:
   workflow_dispatch:
@@ -12,30 +12,43 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: mask-render-${{ inputs.encargo_id }}
+  group: mask-video-${{ inputs.encargo_id }}
   cancel-in-progress: false
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
-      - name: Preparar herramientas de vídeo
+      - name: Dependencias locales
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg espeak-ng fonts-dejavu-core
-          python -m pip install --quiet Pillow==11.3.0
-      - name: Renderizar MP4 y generar QA
+          python -m pip install --quiet Pillow==11.3.0 piper-tts==1.8.0
+      - name: Cache de voz Piper gratuita
+        uses: actions/cache@v4
+        with:
+          path: models/
+          key: piper-es-davefx-medium-v1
+      - name: Voz española sin API externa de pago
+        run: |
+          mkdir -p models
+          if [ ! -s models/es_ES-davefx-medium.onnx ] || [ ! -s models/es_ES-davefx-medium.onnx.json ]; then
+            python -m piper.download_voices --data-dir models es_ES-davefx-medium
+          fi
+      - name: Render y QA técnica
         env:
           ENCARGO_ID: ${{ inputs.encargo_id }}
           ENCARGO_B64: ${{ inputs.encargo_b64 }}
+          ALLOW_PAID_APIS: "0"
+          MAX_RENDER_SECONDS: "1800"
         run: python cloud/render_video.py
-      - name: Guardar artefactos en GitHub, sin subir a Drive
+      - name: Retener MP4 en GitHub hasta aprobación humana
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.encargo_id }}
           path: |
             out/*.mp4
             out/*.qa.json
-          retention-days: 7
           if-no-files-found: error
+          retention-days: 7
