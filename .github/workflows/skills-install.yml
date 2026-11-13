@@ -1,0 +1,19 @@
+name: MASK GROUP - Instalar 25 skills externas (manual controlado)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mask-skills-install
+  cancel-in-progress: false
+jobs:
+  instalar-instrucciones:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout del repositorio privado
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Instalar archivos estáticos de skills fijadas por SHA
+        run: bash cloud/scripts/install_third_party_skills.sh
