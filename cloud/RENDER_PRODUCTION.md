@@ -1,0 +1,2 @@
+# MASK GROUP — Motor cloud de vídeo
+Workflow real de ensamblado, produce MP4 y JSON de QA técnica. Usa imágenes y audios locales bajo assets/; si no se facilitan, genera tarjetas de texto y voz sintética básica. Requiere revisión editorial del propietario antes de guardar el MP4 en Drive o publicarlo. El render en GitHub Actions puede consumir minutos de pago; no lanzarlo sin autorización de coste.

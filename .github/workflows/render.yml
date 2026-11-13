@@ -1,0 +1,41 @@
+name: MASK GROUP - Render cloud real
+run-name: render ${{ inputs.encargo_id }}
+on:
+  workflow_dispatch:
+    inputs:
+      encargo_id:
+        required: true
+        type: string
+      encargo_b64:
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: mask-render-${{ inputs.encargo_id }}
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar herramientas de vídeo
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg espeak-ng fonts-dejavu-core
+          python -m pip install --quiet Pillow==11.3.0
+      - name: Renderizar MP4 y generar QA
+        env:
+          ENCARGO_ID: ${{ inputs.encargo_id }}
+          ENCARGO_B64: ${{ inputs.encargo_b64 }}
+        run: python cloud/render_video.py
+      - name: Guardar artefactos en GitHub, sin subir a Drive
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.encargo_id }}
+          path: |
+            out/*.mp4
+            out/*.qa.json
+          retention-days: 7
+          if-no-files-found: error
