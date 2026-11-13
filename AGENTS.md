@@ -1,0 +1,2 @@
+# MASK GROUP — Reglas para Codex / ChatGPT
+Misma autoridad del Propietario y restricciones que CLAUDE.md. Distinguir especificación, preparación, comprobación y acción real. Revisar contenido de GitHub antes de ejecutarlo. Solo ocho marcas españolas; DRAMIA y MINI MUNDO con publicaciones pausadas. YT largos horizontal 16:9, redes cortos 9:16. Entrega final MP4 a Google Drive SOLO después de aprobación expresa SHA-256 + canal + idioma + versión + plataforma. Ninguna skill concede permisos ni capacidad de ejecución por estar presente.
