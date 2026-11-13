@@ -2,6 +2,7 @@
 """MASK GROUP: motor de vídeo económico. Solo assets locales, Piper, Pillow y FFmpeg."""
 import base64,hashlib,json,math,os,pathlib,random,re,subprocess,sys,textwrap,unicodedata
 from PIL import Image,ImageDraw,ImageFont
+from visuals import paint
 
 BASE=pathlib.Path(__file__).resolve().parents[1]
 OUT=BASE/"out";OUT.mkdir(exist_ok=True)
@@ -35,9 +36,9 @@ def asset(s):
 def norm(s):
  s=unicodedata.normalize("NFKD",str(s).upper())
  return "".join(c for c in s if not unicodedata.combining(c)).replace("-","_").replace(" ","_")
-def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None):
+def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None,frame=None):
  dark,gold,accent,brand=theme
- out=OUT/f"img_{n:03}_{phase}{'_'+str(timer) if timer is not None else ''}.png"
+ out=OUT/f"img_{n:03}_{phase}{'_'+str(timer) if timer is not None else ''}{'_f'+str(frame).zfill(2) if frame is not None else ''}.png"
  local=scene.get("imagen_path") or scene.get("imagen_local")
  if local:
   with Image.open(asset(local)) as raw:
@@ -57,8 +58,12 @@ def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None):
    for _ in range(90):
     x=rng.randrange(w//25)*25;y=rng.randrange(h//25)*25
     d.rectangle((x,y,x+10,y+10),fill=accent)
+ if scene.get("visual"):
+  bg=paint(bg,str(scene.get("visual")),frame or 0,10,phase)
  d=ImageDraw.Draw(bg,"RGBA")
  x=int(w*.07);top=int(h*(.26 if h>w else .23));bot=int(h*(.77 if h>w else .83))
+ if scene.get("visual"):
+  top=int(h*(.64 if h>w else .58));bot=int(h*(.90 if h>w else .92))
  d.rounded_rectangle((x-15,top,w-x+15,bot),radius=25,fill=(8,14,27,228),outline=gold,width=3)
  d.text((x,int(h*.10)),brand,font=font(28,True),fill=gold)
  title=str(job.get("titulo") or brand)[:46]
@@ -91,6 +96,12 @@ def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None):
  d.text((x,int(h*.95)),f"MASK GROUP • {n+1}/{len(job['escenas'])}",font=font(17),fill="#b1bfd0")
  bg.save(out)
  return out
+def render_screen(job,scene,n,phase,shown,w,h,theme):
+ if scene.get("visual"):
+  for k in range(10): draw_screen(job,scene,n,phase,shown,w,h,theme,frame=k)
+  return OUT/f"img_{n:03}_{phase}_f%02d.png"
+ return draw_screen(job,scene,n,phase,shown,w,h,theme)
+
 def voice(text,scene,n,kind,language):
  path=scene.get("audio_respuesta_path") if kind=="answer" else scene.get("audio_path")
  if path:return asset(path)
@@ -103,9 +114,12 @@ def voice(text,scene,n,kind,language):
   run(["espeak-ng","-v","es" if language=="es" else "en","-s","145","-w",str(out),str(text)])
  return out
 def clip(img,audio,duration,out,w,h):
- sources=["ffmpeg","-hide_banner","-loglevel","error","-y","-loop","1","-framerate","24","-i",str(img)]
+ sources=["ffmpeg","-hide_banner","-loglevel","error","-y"]
+ if "%02d" in str(img):sources+=["-stream_loop","-1","-framerate","5","-i",str(img)]
+ else:sources+=["-loop","1","-framerate","24","-i",str(img)]
  sources+=["-i",str(audio)] if audio else ["-f","lavfi","-i","anullsrc=channel_layout=mono:sample_rate=48000"]
  visual=f"zoompan=z='min(zoom+0.000035,1.04)':d=1:s={w}x{h}:fps=24,fade=t=in:st=0:d=0.2,fade=t=out:st={max(0.1,duration-0.3):.3f}:d=0.25,format=yuv420p"
+ if "%02d" in str(img):visual=f"fps=24,fade=t=in:st=0:d=0.2,fade=t=out:st={max(0.1,duration-0.3):.3f}:d=0.25,format=yuv420p"
  run(sources+["-t",str(duration),"-vf",visual,"-r","24","-c:v","libx264","-preset","veryfast","-crf","23","-pix_fmt","yuv420p","-c:a","aac","-ar","48000","-ac","2","-af","apad","-shortest",str(out)])
  return out
 def countdown(images,out,w,h,length):
@@ -146,21 +160,21 @@ def main():
    answer=str(s.get("respuesta") or "").strip();why=str(s.get("explicacion") or "").strip()
    if not question or not answer or not why:raise ValueError("PUZLE_INCOMPLETO")
    audio=voice(spoken,s,i,"question",lang);sec=max(3.5,seconds(audio)+.7)
-   img=draw_screen(job,s,i,"puzzle",question,w,h,THEMES[channel])
+   img=render_screen(job,s,i,"puzzle",question,w,h,THEMES[channel])
    parts.append(clip(img,audio,sec,OUT/f"{i:03}_question.mp4",w,h));estimated+=sec
    delay=int(s.get("pensar",12))
    if not 3<=delay<=30:raise ValueError("CUENTA_ATRAS_INVALIDA")
    images=[draw_screen(job,s,i,"countdown",question,w,h,THEMES[channel],j) for j in range(delay,0,-1)]
    parts.append(countdown(images,OUT/f"{i:03}_countdown.mp4",w,h,delay));estimated+=delay
    audio=voice(answer+". "+why,s,i,"answer",lang);sec=max(3.5,seconds(audio)+.7)
-   img=draw_screen(job,s,i,"answer",answer+"\n\n"+why,w,h,THEMES[channel])
+   img=render_screen(job,s,i,"answer",answer+"\n\n"+why,w,h,THEMES[channel])
    parts.append(clip(img,audio,sec,OUT/f"{i:03}_answer.mp4",w,h));estimated+=sec
   else:
    shown=str(s.get("pantalla") or s.get("texto") or s.get("narracion") or "").strip()
    narration=str(s.get("texto") or s.get("narracion") or shown).strip()
    if not shown or not narration:raise ValueError("ESCENA_INCOMPLETA")
    audio=voice(narration,s,i,"scene",lang);sec=max(3.5,seconds(audio)+.7)
-   img=draw_screen(job,s,i,"scene",shown,w,h,THEMES[channel])
+   img=render_screen(job,s,i,"scene",shown,w,h,THEMES[channel])
    parts.append(clip(img,audio,sec,OUT/f"{i:03}_scene.mp4",w,h));estimated+=sec
   if estimated>int(os.getenv("MAX_RENDER_SECONDS","1800")):raise ValueError("VIDEO_SUPERA_LIMITE_DURACION")
  manifest=OUT/"concat.txt"
