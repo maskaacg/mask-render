@@ -1,0 +1,9 @@
+{
+ "encargo_id": "E60ES-ER-001-20261114-211453",
+ "composicion": "E60EscapeRoom",
+ "ficha": "fichas/E60-ER-001.json",
+ "tramos": 8,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "solicitado_por": "n8n WF-TEST-REMOTION-05",
+ "fecha": "2026-11-14T21:14:53.912+01:00"
+}
