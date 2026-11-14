@@ -1,0 +1,42 @@
+{
+ "id": "E60-PROTO-historia-01",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto_historia",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "sala": 1,
+ "titulo": "El reloj de la torre",
+ "estilo": "isla 3D low-poly",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "puzle": {
+  "tipo": "engranajes",
+  "dientes": [10, 20, 40],
+  "vueltas": 12,
+  "respuesta": 3
+ },
+ "lineas": [
+  {"fase": "gancho", "id": "g01", "texto": "Quedan noventa segundos para medianoche. Si el reloj de la torre no arranca, Leo se quedará encerrado aquí para siempre."},
+  {"fase": "escena", "id": "e01", "texto": "La puerta del campanario tiene un candado de un solo número. Y sobre la mesa, tres engranajes unidos."},
+  {"fase": "pista", "id": "p01", "texto": "Primera pista: el engranaje pequeño tiene diez dientes."},
+  {"fase": "pista", "id": "p02", "texto": "Segunda: el mediano tiene veinte."},
+  {"fase": "pista", "id": "p03", "texto": "Tercera: el grande tiene cuarenta."},
+  {"fase": "pista", "id": "p04", "texto": "Y la última: para arrancar el reloj, el pequeño debe dar doce vueltas."},
+  {"fase": "pregunta", "id": "q01", "texto": "¿Cuántas vueltas dará el grande? Ese número abre el candado. Tienes quince segundos."},
+  {"fase": "solucion", "id": "s01", "texto": "¡Tres vueltas!"},
+  {"fase": "solucion", "id": "s02", "texto": "Cada vuelta del pequeño mueve diez dientes. Doce vueltas son ciento veinte dientes. Y el grande necesita cuarenta para dar una vuelta: ciento veinte entre cuarenta, tres."},
+  {"fase": "giro", "id": "t01", "texto": "El candado se abre… pero detrás de la puerta hay otra sala. Y otro candado."},
+  {"fase": "cta", "id": "c01", "texto": "¿Lo habías resuelto? Escríbelo en los comentarios. Mañana, la sala dos."}
+ ],
+ "pistas": [
+  {"id": "p01", "texto": "El pequeño tiene 10 dientes", "color": "#f2c84b"},
+  {"id": "p02", "texto": "El mediano tiene 20 dientes", "color": "#f08c3a"},
+  {"id": "p03", "texto": "El grande tiene 40 dientes", "color": "#4fa3e0"},
+  {"id": "p04", "texto": "El pequeño da 12 vueltas", "color": "#ffffff"}
+ ],
+ "estado": "PROTOTIPO_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 14/11/2026: 12 × 10 = 120 dientes; 120 ÷ 40 = 3. Solución única."
+}

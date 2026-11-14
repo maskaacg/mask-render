@@ -41,7 +41,7 @@ jobs:
             COMP=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('composicion','E60CincoSellosProto'))" "${F#remotion/}")
             FICHA=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('ficha',''))" "${F#remotion/}")
           fi
-          case "$COMP" in E60CincoSellosProto|E60Corto|E60CortoPlano) ;; *) echo "Composición no permitida: $COMP"; exit 1;; esac
+          case "$COMP" in E60CincoSellosProto|E60Corto|E60CortoPlano|E60Historia) ;; *) echo "Composición no permitida: $COMP"; exit 1;; esac
           if [ -n "$FICHA" ]; then echo "$FICHA" | grep -Eq '^fichas/[A-Za-z0-9._-]+\.json$' && [ -f "$FICHA" ] || { echo "Ficha no válida: $FICHA"; exit 1; }; fi
           echo "COMPOSICION=$COMP" >> "$GITHUB_ENV"
           echo "FICHA=$FICHA" >> "$GITHUB_ENV"
@@ -83,7 +83,7 @@ jobs:
           if [ -n "$FICHA" ]; then PROPS="--props=out/props_$(basename "$FICHA" .json).json"; fi
           npx remotion render src/index.ts "$COMPOSICION" out/raw.mp4 $PROPS \
             --browser-executable="$(which google-chrome)" --chrome-mode=chrome-for-testing \
-            --codec=h264 --crf=18
+            --codec=h264 --crf=18 --gl=swangle
       - name: Masterizado y QA técnica
         run: python tools/finalize_qa.py --entrada out/raw.mp4 --id "$ENCARGO_ID" --salida final
       - name: Retener MP4 en GitHub hasta aprobación humana
