@@ -4,6 +4,7 @@ import base64,hashlib,json,math,os,pathlib,random,re,subprocess,sys,textwrap,uni
 from PIL import Image,ImageDraw,ImageFont
 from visuals import paint
 from soundscape import create as create_soundscape
+from cinematic_v4 import paint_cinematic,paint_overlay,create_audio
 
 BASE=pathlib.Path(__file__).resolve().parents[1]
 OUT=BASE/"out";OUT.mkdir(exist_ok=True)
@@ -59,6 +60,11 @@ def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None,frame=None):
    for _ in range(90):
     x=rng.randrange(w//25)*25;y=rng.randrange(h//25)*25
     d.rectangle((x,y,x+10,y+10),fill=accent)
+ if scene.get("cinematico_v4"):
+  bg=paint_cinematic(bg,str(scene.get("etapa") or "setup"),frame or 0,16,phase)
+  paint_overlay(bg,job,scene,shown,phase,timer)
+  bg.save(out)
+  return out
  if scene.get("visual"):
   bg=paint(bg,str(scene.get("visual")),frame or 0,10,phase)
  d=ImageDraw.Draw(bg,"RGBA")
@@ -119,7 +125,7 @@ def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None,frame=None):
  return out
 def render_screen(job,scene,n,phase,shown,w,h,theme):
  if scene.get("visual"):
-  for k in range(10): draw_screen(job,scene,n,phase,shown,w,h,theme,frame=k)
+  for k in range(16 if scene.get("cinematico_v4") else 10): draw_screen(job,scene,n,phase,shown,w,h,theme,frame=k)
   return OUT/f"img_{n:03}_{phase}_f%02d.png"
  return draw_screen(job,scene,n,phase,shown,w,h,theme)
 
@@ -136,7 +142,7 @@ def voice(text,scene,n,kind,language):
  return out
 def clip(img,audio,duration,out,w,h):
  sources=["ffmpeg","-hide_banner","-loglevel","error","-y"]
- if "%02d" in str(img):sources+=["-stream_loop","-1","-framerate","5","-i",str(img)]
+ if "%02d" in str(img):sources+=["-stream_loop","-1","-framerate","8","-i",str(img)]
  else:sources+=["-loop","1","-framerate","24","-i",str(img)]
  sources+=["-i",str(audio)] if audio else ["-f","lavfi","-i","anullsrc=channel_layout=mono:sample_rate=48000"]
  visual=f"zoompan=z='min(zoom+0.000035,1.04)':d=1:s={w}x{h}:fps=24,fade=t=in:st=0:d=0.2,fade=t=out:st={max(0.1,duration-0.3):.3f}:d=0.25,format=yuv420p"
@@ -170,9 +176,13 @@ def main():
  fmt=str(job.get("orientacion") or job.get("formato") or "").lower()
  wide=fmt in ("horizontal","16:9","largo","landscape")
  w,h=(1280,720) if wide else (720,1280)
- parts=[];estimated=0;puzzles=0
+ parts=[];estimated=0;puzzles=0;cine_cues=[]
+ if job.get("cine_v4"):
+  if not all(z.get("cinematico_v4") for z in scenes) or sum(norm(z.get("tipo","")) in ("PUZLE","PUZZLE","ACERTIJO","RETO") for z in scenes)!=1:
+   raise ValueError("CINE_V4_SECUENCIA_INVALIDA")
  for i,s in enumerate(scenes):
   if not isinstance(s,dict):raise ValueError("ESCENA_NO_OBJETO")
+  if job.get("cine_v4") and s.get("etapa")=="storm":cine_cues.append({"name":"thunder","at":estimated+.8})
   typ=norm(s.get("tipo","narracion"))
   if typ in ("PUZLE","PUZZLE","ACERTIJO","RETO"):
    puzzles+=1
@@ -185,8 +195,10 @@ def main():
    parts.append(clip(img,audio,sec,OUT/f"{i:03}_question.mp4",w,h));estimated+=sec
    delay=int(s.get("pensar",12))
    if not 3<=delay<=30:raise ValueError("CUENTA_ATRAS_INVALIDA")
-   images=[draw_screen(job,s,i,"countdown",question,w,h,THEMES[channel],j) for j in range(delay,0,-1)]
+   if job.get("cine_v4"):cine_cues.append({"name":"countdown","at":estimated,"length":delay})
+   images=[draw_screen(job,s,i,"countdown",question,w,h,THEMES[channel],j,frame=(delay-j)*2 if s.get("cinematico_v4") else None) for j in range(delay,0,-1)]
    parts.append(countdown(images,OUT/f"{i:03}_countdown.mp4",w,h,delay));estimated+=delay
+   if job.get("cine_v4"):cine_cues.append({"name":"reveal","at":estimated})
    audio=voice(answer+". "+why,s,i,"answer",lang);sec=max(3.5,seconds(audio)+.7)
    img=render_screen(job,s,i,"answer",answer+"\n\n"+why,w,h,THEMES[channel])
    parts.append(clip(img,audio,sec,OUT/f"{i:03}_answer.mp4",w,h));estimated+=sec
@@ -221,7 +233,8 @@ def main():
  run(["ffmpeg","-hide_banner","-loglevel","error","-y","-f","concat","-safe","0","-i",str(manifest),"-c","copy","-movflags","+faststart",str(movie)])
  if job.get("audio_ambiente_original"):
   soundtrack=OUT/(eid+"_original.wav")
-  create_soundscape(soundtrack)
+  if job.get("cine_v4"):create_audio(soundtrack,seconds(movie),cine_cues)
+  else:create_soundscape(soundtrack)
   tmp=OUT/(eid+"_audio_mix.mp4")
   dur=seconds(movie)
   fc="[0:a]volume=1.32,acompressor=threshold=0.09:ratio=2:attack=12:release=120[voz];[1:a]volume=0.27[mus];[voz][mus]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]"
@@ -237,6 +250,9 @@ def main():
      "fuentes_licencias":"Assets locales/procedurales; revisar derechos","riesgos":"Revisión editorial y de soluciones pendiente","aprobacion_publicacion":False,"revision_humana_pendiente":True,
      "motor":"MASK_ENGINE_V3_ILLUSTRATIONS_ORIGINAL_AUDIO","audio_original":bool(job.get("audio_ambiente_original")),"fallos":[]}
  qa["control_correcciones"]={"requisitos":controles,"tecnicamente_aplicados":all(controles.values()),"solicitud":(job.get("correccion") or {}).get("solicitud"),"solo_tecnico":True}
+ if job.get("cine_v4"):
+  qa["motor"]="MASK_ENGINE_V4_CINEMATIC_SHEEP"
+  qa["control_cinematografico"]={"escenas_cine":sum(bool(sc.get("cinematico_v4")) for sc in scenes),"reutiliza_escenario":True,"music_original":bool(job.get("audio_ambiente_original")),"sfx_programados":[{"tipo":c["name"],"segundo":round(c["at"],1)} for c in cine_cues],"cuenta_atras_ambientada":any(c["name"]=="countdown" for c in cine_cues),"solo_tecnico":True}
  (OUT/(eid+".qa.json")).write_text(json.dumps(qa,ensure_ascii=False,indent=2))
  print(json.dumps({"video":str(movie),"sha256":sha,"duracion_s":real}))
 if __name__=="__main__":
