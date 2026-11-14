@@ -17,6 +17,10 @@ import fichaDiorama from '../fichas/E60-PROTO-diorama-01.json';
 import {Capitulo, CapituloAudio} from './capitulo/Capitulo';
 import {PropsC, planificarC} from './capitulo/plan';
 import fichaC01 from '../fichas/E60-S01-C01.json';
+import {EscapeRoom, EscapeRoomAudio} from './escape/EscapeRoom';
+import fichaER01 from '../fichas/E60-ER-001.json';
+import {AvanceTorre, AvanceTorreAudio, PropsT, planificarT} from './escape/AvanceTorre';
+import fichaER01T from '../fichas/E60-ER-001-T.json';
 
 // Props de ejemplo para el Studio; en producción llegan con --props=out/props_<id>.json
 const ejemplo: Props = {
@@ -119,6 +123,66 @@ export const RemotionRoot: React.FC = () => (
 			durationInFrames={24 * 600}
 			calculateMetadata={({props}) => ({
 				durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60EscapeRoom"
+			component={EscapeRoom}
+			defaultProps={{ficha: fichaER01 as unknown as PropsC['ficha'], duraciones: {}} as PropsC}
+			fps={24}
+			width={1920}
+			height={1080}
+			durationInFrames={24 * 600}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60EscapeRoomAudio"
+			component={EscapeRoomAudio}
+			defaultProps={{ficha: fichaER01 as unknown as PropsC['ficha'], duraciones: {}} as PropsC}
+			fps={24}
+			width={1920}
+			height={1080}
+			durationInFrames={24 * 600}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60AvanceTorre"
+			component={AvanceTorre}
+			defaultProps={{ficha: fichaER01T as unknown as PropsT['ficha'], duraciones: {}} as PropsT}
+			fps={24}
+			width={1080}
+			height={1920}
+			durationInFrames={24 * 90}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarT(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60AvanceTorreAudio"
+			component={AvanceTorreAudio}
+			defaultProps={{ficha: fichaER01T as unknown as PropsT['ficha'], duraciones: {}} as PropsT}
+			fps={24}
+			width={1080}
+			height={1920}
+			durationInFrames={24 * 90}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarT(props).total * props.ficha.fps),
 				fps: props.ficha.fps,
 				width: props.ficha.ancho,
 				height: props.ficha.alto,

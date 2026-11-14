@@ -15,13 +15,13 @@ export const BordeMaqueta16: React.FC = () => (
 	</>
 );
 
-export const Cabecera16: React.FC<{t: number; temporada: string; capitulo: number; titulo: string; desde: number}> = ({t, temporada, capitulo, titulo, desde}) => (
+export const Cabecera16: React.FC<{t: number; temporada: string; capitulo: number; titulo: string; desde: number; unidad?: string}> = ({t, temporada, capitulo, titulo, desde, unidad = 'CAP.'}) => (
 	<div style={{position: 'absolute', top: 44, left: 64, opacity: interpolate(t, [desde, desde + 1], [0, 1], clamp), fontFamily: MONO, fontWeight: 600, fontSize: 22, letterSpacing: 4, color: E60.plata}}>
-		<span style={{color: E60.cian}}>E60</span> · {temporada.toUpperCase()} · CAP. {String(capitulo).padStart(2, '0')} · {titulo.toUpperCase()}
+		<span style={{color: E60.cian}}>E60</span> · {temporada.toUpperCase()} · {unidad} {String(capitulo).padStart(2, '0')} · {titulo.toUpperCase()}
 	</div>
 );
 
-export const TituloCapitulo: React.FC<{t: number; inicio: number; fin: number; temporada: string; capitulo: number; titulo: string}> = ({t, inicio, fin, temporada, capitulo, titulo}) => {
+export const TituloCapitulo: React.FC<{t: number; inicio: number; fin: number; temporada: string; capitulo: number; titulo: string; unidad?: string}> = ({t, inicio, fin, temporada, capitulo, titulo, unidad = 'CAPÍTULO'}) => {
 	const o = ventana(t, inicio, fin, 0.8);
 	if (o <= 0) return null;
 	const sub = interpolate(t, [inicio + 0.4, inicio + 1.4], [0, 1], clamp);
@@ -30,7 +30,7 @@ export const TituloCapitulo: React.FC<{t: number; inicio: number; fin: number; t
 			<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, letterSpacing: 12, color: E60.cian}}>ENIGMA 60</div>
 			<div style={{fontFamily: SERIF, fontWeight: 800, fontSize: 150, color: E60.blanco, lineHeight: 1.05, marginTop: 18}}>{temporada}</div>
 			<div style={{width: 520 * sub, height: 3, background: E60.plata, margin: '28px 0'}} />
-			<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, letterSpacing: 8, color: E60.plata, opacity: sub}}>CAPÍTULO {capitulo}</div>
+			<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, letterSpacing: 8, color: E60.plata, opacity: sub}}>{unidad} {capitulo}</div>
 			<div style={{fontFamily: SERIF, fontWeight: 600, fontStyle: 'normal', fontSize: 64, color: E60.blanco, opacity: sub, marginTop: 10}}>{titulo}</div>
 		</AbsoluteFill>
 	);
@@ -90,7 +90,7 @@ export const Anillo16: React.FC<{t: number; inicio: number; fin: number}> = ({t,
 	</div>
 );
 
-export const Subtitulo16: React.FC<{texto: string; inicio: number; fin: number; t: number; custodio?: boolean}> = ({texto, inicio, fin, t, custodio}) => {
+export const Subtitulo16: React.FC<{texto: string; inicio: number; fin: number; t: number; custodio?: boolean; quien?: string; color?: string}> = ({texto, inicio, fin, t, custodio, quien = 'EL CUSTODIO', color = E60.cian}) => {
 	const palabras = texto.split(/\s+/);
 	const bloques: string[][] = [];
 	let cur: string[] = [];
@@ -119,19 +119,19 @@ export const Subtitulo16: React.FC<{texto: string; inicio: number; fin: number; 
 			<div
 				style={{
 					background: 'rgba(20,21,26,0.74)',
-					border: custodio ? `2px solid ${E60.cian}` : 'none',
+					border: custodio ? `2px solid ${color}` : 'none',
 					borderRadius: 12,
 					padding: '12px 28px',
 					fontFamily: OSWALD,
 					fontWeight: 500,
 					fontSize: 46,
 					lineHeight: 1.2,
-					color: custodio ? E60.cian : E60.blanco,
+					color: custodio ? color : E60.blanco,
 					textAlign: 'center',
 					maxWidth: 1500,
 				}}
 			>
-				{custodio && <span style={{fontFamily: MONO, fontSize: 22, letterSpacing: 4, display: 'block', color: E60.plata}}>EL CUSTODIO</span>}
+				{custodio && <span style={{fontFamily: MONO, fontSize: 22, letterSpacing: 4, display: 'block', color: E60.plata}}>{quien}</span>}
 				{bloques[k].join(' ')}
 			</div>
 		</div>
@@ -330,13 +330,13 @@ export const ExpIndicador: React.FC<{t: number; a: number; b: number}> = ({t, a,
 };
 
 /** Recuento final de soluciones. */
-export const Recuento: React.FC<{t: number; a: number; b: number; puzles: {titulo: string; respuesta: string}[]}> = ({t, a, b, puzles}) => {
+export const Recuento: React.FC<{t: number; a: number; b: number; puzles: {titulo: string; respuesta: string}[]; rotulo?: string}> = ({t, a, b, puzles, rotulo = 'SOLUCIONES DEL CAPÍTULO'}) => {
 	const o = ventana(t, a, b, 0.5);
 	if (o <= 0) return null;
 	const d = b - a;
 	return (
 		<Panel o={o} ancho={900}>
-			{titulo('SOLUCIONES DEL CAPÍTULO')}
+			{titulo(rotulo)}
 			{puzles.map((p, i) => (
 				<div key={i} style={{display: 'flex', gap: 20, alignItems: 'baseline', height: 54, opacity: entra(t, a + 0.08 * d + i * 0.1 * d)}}>
 					<span style={{fontFamily: MONO, fontWeight: 600, fontSize: 24, color: E60.cian, width: 40}}>{i + 1}</span>
@@ -348,12 +348,12 @@ export const Recuento: React.FC<{t: number; a: number; b: number; puzles: {titul
 	);
 };
 
-export const Proximo: React.FC<{t: number; desde: number; siguiente: string; aviso: string}> = ({t, desde, siguiente, aviso}) => {
+export const Proximo: React.FC<{t: number; desde: number; siguiente: string; aviso: string; rotulo?: string}> = ({t, desde, siguiente, aviso, rotulo = 'PRÓXIMO CAPÍTULO'}) => {
 	const o = interpolate(t, [desde, desde + 0.8], [0, 1], clamp);
 	if (o <= 0) return null;
 	return (
 		<div style={{position: 'absolute', right: 80, top: 330, width: 620, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, opacity: o}}>
-			<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 24, letterSpacing: 8, color: E60.cian}}>PRÓXIMO CAPÍTULO</div>
+			<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 24, letterSpacing: 8, color: E60.cian}}>{rotulo}</div>
 			<div style={{fontFamily: SERIF, fontWeight: 800, fontSize: 76, color: E60.blanco}}>{siguiente}</div>
 			<div style={{width: 120, height: 120, borderRadius: 60, border: `5px solid ${E60.plata}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: MONO, fontWeight: 600, fontSize: 40, color: E60.blanco, boxShadow: '0 0 24px rgba(63,224,230,0.4)', marginTop: 20}}>
 				E<span style={{color: E60.cian}}>60</span>

@@ -36,6 +36,9 @@ jobs:
           print(f"origen={e['origen_id']}")
           print(f"fid={e['ficha_id']}")
           print(f"run={e['origen_run_id']}")
+          c = e.get('composicion', 'E60Capitulo')
+          assert c in ('E60Capitulo', 'E60EscapeRoom', 'E60AvanceTorre'), 'Composición no permitida'
+          print(f"audio={c}Audio")
           EOF2
       - uses: actions/setup-node@v4
         with:
@@ -70,7 +73,7 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=6144
         run: |
-          npx remotion render src/index.ts E60CapituloAudio out/audio.wav --props=out/props_$FID.json --codec=wav \
+          npx remotion render src/index.ts ${{ steps.enc.outputs.audio }} out/audio.wav --props=out/props_$FID.json --codec=wav \
             --browser-executable="$(which google-chrome)" --chrome-mode=chrome-for-testing
       - name: Unir tramos y mezclar audio
         run: |
@@ -84,7 +87,7 @@ jobs:
         run: |
           DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 final/$ID.mp4)
           VB=$(python3 -c "d=float('$DUR'); print(max(200, int(40*8*1024/d - 96)))")
-          ffmpeg -hide_banner -loglevel error -y -i final/$ID.mp4 -vf scale=854:480 -c:v libx264 -preset veryfast -b:v ${VB}k -maxrate $((VB*12/10))k -bufsize $((VB*2))k -c:a aac -b:a 96k -movflags +faststart final/$ID-revision.mp4
+          ffmpeg -hide_banner -loglevel error -y -i final/$ID.mp4 -vf "scale='if(gt(iw,ih),854,480)':-2" -c:v libx264 -preset veryfast -b:v ${VB}k -maxrate $((VB*12/10))k -bufsize $((VB*2))k -c:a aac -b:a 96k -movflags +faststart final/$ID-revision.mp4
           ls -la final
       - name: Retener máster hasta aprobación humana
         uses: actions/upload-artifact@v4

@@ -114,6 +114,77 @@ def metal(s, sr):
     return (y / (np.max(np.abs(y)) or 1) * 0.9).astype(np.float32)
 
 
+
+# ---- kit castillo (escape room «La torre del archivero»)
+def trueno():
+    tt = A.t(5.0)
+    n = A.rng.standard_normal(len(tt))
+    x = A.lowpass(n, 0.012) * 6 * np.exp(-tt * 0.7)
+    x += A.lowpass(n, 0.08) * np.exp(-tt * 7) * 0.8  # restallido inicial
+    x *= np.minimum(1, tt / 0.03)
+    return A.norm(x, 0.8)
+
+
+def lluvia():
+    tt = A.t(60.0)
+    x = A.lowpass(A.rng.standard_normal(len(tt)), 0.35) * 0.25
+    x += A.lowpass(A.rng.standard_normal(len(tt)), 0.02) * (1 + 0.4 * np.sin(2 * np.pi * tt / 13))
+    gotas = np.zeros(len(tt))
+    idx = A.rng.integers(0, len(tt) - 400, 1800)
+    gotas[idx] = A.rng.random(1800) * 0.6
+    x += np.convolve(gotas, np.exp(-np.arange(300) / 40), mode="same")
+    fade = int(0.5 * SR)
+    x[:fade] *= np.linspace(0, 1, fade)
+    x[-fade:] *= np.linspace(1, 0, fade)
+    return A.norm(x, 0.5)
+
+
+def fuego():
+    tt = A.t(20.0)
+    x = A.lowpass(A.rng.standard_normal(len(tt)), 0.05) * 0.4
+    for _ in range(140):
+        n0 = int(A.rng.random() * (len(tt) - 2000))
+        x[n0:n0 + 2000] += A.rng.standard_normal(2000) * np.exp(-np.arange(2000) / (60 + 200 * A.rng.random())) * A.rng.random()
+    fade = int(0.3 * SR)
+    x[:fade] *= np.linspace(0, 1, fade)
+    x[-fade:] *= np.linspace(1, 0, fade)
+    return A.norm(x, 0.4)
+
+
+def piedra():
+    tt = A.t(2.2)
+    x = A.lowpass(A.rng.standard_normal(len(tt)), 0.03) * 3 + A.lowpass(A.rng.standard_normal(len(tt)), 0.25) * 0.3
+    x *= np.sin(np.pi * tt / 2.2) ** 0.7
+    x[-int(0.25 * SR):] += A.thud()[: int(0.25 * SR)] if len(A.thud()) >= int(0.25 * SR) else 0
+    return A.norm(x, 0.7)
+
+
+def gramofono():
+    tt = A.t(12.0)
+    x = A.lowpass(A.rng.standard_normal(len(tt)), 0.5) * 0.05
+    pops = np.zeros(len(tt))
+    idx = A.rng.integers(0, len(tt), 260)
+    pops[idx] = A.rng.random(260)
+    x += pops
+    # vals lejano de dos notas, filtrado como bocina antigua
+    mel = [392.0, 329.63, 349.23, 293.66]
+    for k in range(24):
+        f = mel[k % 4]
+        n0 = int(k * 0.5 * SR)
+        tk = A.t(0.48)
+        if n0 + len(tk) > len(tt):
+            break
+        x[n0:n0 + len(tk)] += np.sin(2 * np.pi * f * tk) * A.env(len(tk), 0.01, 0.3) * 0.25
+    x = x - A.lowpass(x, 0.02)
+    return A.norm(x, 0.35)
+
+
+def apagar():
+    tt = A.t(0.9)
+    x = A.lowpass(A.rng.standard_normal(len(tt)), 0.2) * np.exp(-tt * 6)
+    return A.norm(x, 0.4)
+
+
 SFX = {
     "sonar": sonar,
     "gota": gota,
@@ -129,6 +200,12 @@ SFX = {
     "aire": A.whoosh,
     "golpe": A.thud,
     "bisagra": A.creak,
+    "trueno": trueno,
+    "lluvia": lluvia,
+    "fuego": fuego,
+    "piedra": piedra,
+    "gramofono": gramofono,
+    "apagar": apagar,
 }
 
 

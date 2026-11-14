@@ -1,5 +1,5 @@
 // Línea de tiempo de un capítulo de serie ENIGMA 60 a partir de la duración real de cada voz.
-export type FaseC = 'narra' | 'pista' | 'repaso' | 'pregunta' | 'solucion' | 'comprobacion' | 'accion' | 'custodio';
+export type FaseC = 'narra' | 'pista' | 'repaso' | 'pregunta' | 'solucion' | 'comprobacion' | 'accion' | 'custodio' | 'archivera';
 export type LineaC = {id: string; bloque: string; fase: FaseC; texto: string; voz?: string};
 export type FichaC = {
 	id: string;
@@ -58,8 +58,8 @@ export const planificarC = ({ficha, duraciones}: PropsC): PlanC => {
 			} else if (prev.fase === 'accion') t += 3.5;
 			else if (prev.fase === 'comprobacion') t += 1.5;
 			else if (l.fase === 'repaso') t += 0.9;
-			else if (l.fase === 'custodio' && prev.fase !== 'custodio') t += 2.2;
-			else if (l.fase === 'custodio') t += 0.8;
+			else if ((l.fase === 'custodio' || l.fase === 'archivera') && prev.fase !== l.fase) t += 2.2;
+			else if (l.fase === 'custodio' || l.fase === 'archivera') t += 0.8;
 			else t += 0.5;
 		}
 		if (!bloques[l.bloque]) bloques[l.bloque] = {inicio: t, fin: t};
