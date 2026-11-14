@@ -1,0 +1,18 @@
+[
+  {
+    "file": "ENIGMA60_PILOTO_V2_15S_REVISION.mp4",
+    "duration": 15.0,
+    "fps": 24.0,
+    "avg_frame_change": 6.457,
+    "max_frame_change": 20.656,
+    "nearly_static_fraction": 0.014
+  },
+  {
+    "file": "ENIGMA60_PILOTO_V3_15S_REVISION.mp4",
+    "duration": 15.0,
+    "fps": 24.0,
+    "avg_frame_change": 6.251,
+    "max_frame_change": 20.413,
+    "nearly_static_fraction": 0.033
+  }
+]
