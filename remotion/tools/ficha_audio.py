@@ -98,12 +98,29 @@ def burbujas():
     return A.norm(x * (1 - tt / 2.6 * 0.6), 0.4)
 
 
+def metal(s, sr):
+    """Voz de El Custodio: resonancia metálica (filtro peine) + eco de sala de acero."""
+    x = np.asarray(s, dtype=np.float64)
+    pad = np.zeros(int(0.9 * sr))
+    x = np.concatenate([x, pad])
+    d = int(0.011 * sr)
+    y = x.copy()
+    for i in range(d, len(y)):
+        y[i] += 0.55 * y[i - d]
+    for dly, g in [(0.083, 0.32), (0.157, 0.22), (0.271, 0.14), (0.433, 0.08)]:
+        n = int(dly * sr)
+        y[n:] += g * x[:-n]
+    y = y - A.lowpass(y, 0.04) * 0.7  # recorta graves: suena a altavoz
+    return (y / (np.max(np.abs(y)) or 1) * 0.9).astype(np.float32)
+
+
 SFX = {
     "sonar": sonar,
     "gota": gota,
     "casco": casco,
     "logo": logo,
     "burbujas": burbujas,
+    "alarma": lambda: A.norm(np.sin(2 * np.pi * (520 + 140 * np.sign(np.sin(2 * np.pi * 1.5 * A.t(2.0)))) * A.t(2.0)) * A.env(len(A.t(2.0)), 0.02, 1.4), 0.35),
     "ambiente": lambda: A.ambience(120),
     "tic": tick,
     "campana": chime,
@@ -139,12 +156,16 @@ def main():
     from kokoro_onnx import Kokoro
 
     k = Kokoro(a.kokoro_model, a.kokoro_voices)
+    voces = ficha.get("voces", {})
     dur = {}
     for ln in ficha["lineas"]:
-        s, sr = k.create(ln["texto"], voice=a.voice, speed=a.speed, lang="es")
+        cfg = voces.get(ln.get("voz", "narrador"), {})
+        s, sr = k.create(ln["texto"], voice=cfg.get("voz", a.voice), speed=cfg.get("velocidad", a.speed), lang="es")
         s = np.asarray(s, dtype=np.float32)
         idx = np.where(np.abs(s) > 0.01)[0]
         s = s[max(0, idx[0] - int(0.03 * sr)): idx[-1] + int(0.12 * sr)]
+        if cfg.get("efecto") == "metal":
+            s = metal(s, sr)
         sf.write(os.path.join(vdir, ln["id"] + ".wav"), s, sr)
         dur[ln["id"]] = round(len(s) / sr, 3)
 

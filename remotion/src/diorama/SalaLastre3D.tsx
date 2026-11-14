@@ -24,21 +24,21 @@ export type EstadoSala = {
 // el 3D se dibuja a 720x1280 y se amplía: interfaz y subtítulos siguen a 1080x1920 (render ~2,2 veces más rápido)
 const W3D = 720;
 const H3D = 1280;
-const HULL_R = 3;
-const FLOOR_Y = -1.7;
-const TANK_X = -1.55;
-const TANK_Z = [-1.0, -2.6, -4.2];
-const GAUGE_X = TANK_X + 0.56;
-const GAUGE_Y = 0.35;
-const ARC0 = Math.asin(FLOOR_Y / HULL_R); // arco de cuadernas desde el suelo derecho, por arriba, al izquierdo
-const ARC = Math.PI - 2 * ARC0;
+export const HULL_R = 3;
+export const FLOOR_Y = -1.7;
+export const TANK_X = -1.55;
+export const TANK_Z = [-1.0, -2.6, -4.2];
+export const GAUGE_X = TANK_X + 0.56;
+export const GAUGE_Y = 0.35;
+export const ARC0 = Math.asin(FLOOR_Y / HULL_R); // arco de cuadernas desde el suelo derecho, por arriba, al izquierdo
+export const ARC = Math.PI - 2 * ARC0;
 
-const hash = (n: number) => {
+export const hash = (n: number) => {
 	const s = Math.sin(n * 127.1 + 311.7) * 43758.5453;
 	return s - Math.floor(s);
 };
 
-const tex = (w: number, h: number, draw: (c: CanvasRenderingContext2D) => void, repeat?: [number, number]) => {
+export const tex = (w: number, h: number, draw: (c: CanvasRenderingContext2D) => void, repeat?: [number, number]) => {
 	const cv = document.createElement('canvas');
 	cv.width = w;
 	cv.height = h;
@@ -54,7 +54,7 @@ const tex = (w: number, h: number, draw: (c: CanvasRenderingContext2D) => void, 
 };
 
 // placas de acero envejecido con manchas y vetas de óxido
-const useTexturas = () =>
+export const useTexturas = () =>
 	useMemo(() => {
 		const acero = tex(
 			512,
@@ -243,7 +243,7 @@ const useTexturas = () =>
 		return {acero, rejilla, pintura, esfera, A: letra('A'), B: letra('B'), C: letra('C'), placa, taquilla};
 	}, []);
 
-const Camara: React.FC<{c: EstadoSala['cam']}> = ({c}) => {
+export const Camara: React.FC<{c: EstadoSala['cam']}> = ({c}) => {
 	const {camera} = useThree();
 	const cam = camera as THREE.PerspectiveCamera;
 	cam.fov = c.fov;
@@ -255,7 +255,7 @@ const Camara: React.FC<{c: EstadoSala['cam']}> = ({c}) => {
 	return null;
 };
 
-const Remaches: React.FC<{z: number}> = ({z}) => {
+export const Remaches: React.FC<{z: number}> = ({z}) => {
 	const ref = React.useRef<THREE.InstancedMesh>(null);
 	const n = 26;
 	React.useLayoutEffect(() => {
@@ -275,7 +275,7 @@ const Remaches: React.FC<{z: number}> = ({z}) => {
 	);
 };
 
-const Volante: React.FC<{rot: number; pos: [number, number, number]; brillo: number}> = ({rot, pos, brillo}) => (
+export const Volante: React.FC<{rot: number; pos: [number, number, number]; brillo: number}> = ({rot, pos, brillo}) => (
 	<group position={pos} rotation={[0, Math.PI / 2, 0]}>
 		<group rotation={[0, 0, rot]}>
 			<mesh>
@@ -300,7 +300,7 @@ const Volante: React.FC<{rot: number; pos: [number, number, number]; brillo: num
 	</group>
 );
 
-const Manometro: React.FC<{valor: number; luz: number; esfera: THREE.Texture; z: number}> = ({valor, luz, esfera, z}) => {
+export const Manometro: React.FC<{valor: number; luz: number; esfera: THREE.Texture; z: number}> = ({valor, luz, esfera, z}) => {
 	const ang = ((-135 + valor * 27) * Math.PI) / 180;
 	return (
 		<group position={[GAUGE_X, GAUGE_Y, z]} rotation={[0, Math.PI / 2, 0]}>
@@ -331,7 +331,7 @@ const Manometro: React.FC<{valor: number; luz: number; esfera: THREE.Texture; z:
 	);
 };
 
-const Tanque: React.FC<{z: number; letra: THREE.Texture; pintura: THREE.Texture}> = ({z, letra, pintura}) => (
+export const Tanque: React.FC<{z: number; letra: THREE.Texture; pintura: THREE.Texture}> = ({z, letra, pintura}) => (
 	<group position={[TANK_X, 0, z]}>
 		<mesh position={[0, -0.35, 0]}>
 			<cylinderGeometry args={[0.55, 0.55, 2.4, 40]} />
@@ -359,7 +359,7 @@ const Tanque: React.FC<{z: number; letra: THREE.Texture; pintura: THREE.Texture}
 	</group>
 );
 
-const Cable: React.FC<{pts: [number, number, number][]; r?: number}> = ({pts, r = 0.035}) => {
+export const Cable: React.FC<{pts: [number, number, number][]; r?: number}> = ({pts, r = 0.035}) => {
 	const geo = useMemo(() => new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map((p) => new THREE.Vector3(...p))), 48, r, 8, false), [pts, r]);
 	return (
 		<mesh geometry={geo}>
@@ -368,13 +368,13 @@ const Cable: React.FC<{pts: [number, number, number][]; r?: number}> = ({pts, r 
 	);
 };
 
-const CABLES: [number, number, number][][] = [
+export const CABLES: [number, number, number][][] = [
 	[[-1.2, 2.55, 4], [-0.8, 2.2, 1], [-1.0, 2.45, -2], [-0.7, 2.25, -5.8]],
 	[[1.0, 2.6, 4], [0.7, 2.25, 0.5], [0.95, 2.5, -2.5], [0.6, 2.3, -5.8]],
 	[[-0.2, 2.85, 4], [0.1, 2.55, 1.5], [-0.1, 2.75, -1.5], [0.2, 2.6, -5.8]],
 ];
 
-const Burbujas: React.FC<{t: number; agua: number; soplado: number}> = ({t, agua, soplado}) => {
+export const Burbujas: React.FC<{t: number; agua: number; soplado: number}> = ({t, agua, soplado}) => {
 	const ref = React.useRef<THREE.InstancedMesh>(null);
 	const n = 140;
 	const m = useMemo(() => new THREE.Matrix4(), []);
@@ -401,7 +401,7 @@ const Burbujas: React.FC<{t: number; agua: number; soplado: number}> = ({t, agua
 	);
 };
 
-const Polvo: React.FC<{t: number}> = ({t}) => {
+export const Polvo: React.FC<{t: number}> = ({t}) => {
 	const ref = React.useRef<THREE.InstancedMesh>(null);
 	const n = 220;
 	const m = useMemo(() => new THREE.Matrix4(), []);
@@ -425,7 +425,7 @@ const Polvo: React.FC<{t: number}> = ({t}) => {
 	);
 };
 
-const Agua: React.FC<{t: number; y: number}> = ({t, y}) => {
+export const Agua: React.FC<{t: number; y: number}> = ({t, y}) => {
 	const geo = useMemo(() => new THREE.PlaneGeometry(5.2, 12.5, 48, 120), []);
 	React.useLayoutEffect(() => {
 		const p = geo.attributes.position as THREE.BufferAttribute;
@@ -443,7 +443,7 @@ const Agua: React.FC<{t: number; y: number}> = ({t, y}) => {
 	);
 };
 
-const Guante: React.FC<{g: EstadoSala['guante']}> = ({g}) => {
+export const Guante: React.FC<{g: EstadoSala['guante']}> = ({g}) => {
 	if (g.visible <= 0.01) return null;
 	const mat = <meshStandardMaterial color="#aab1b9" roughness={0.7} metalness={0.15} />;
 	return (

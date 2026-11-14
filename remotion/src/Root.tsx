@@ -14,6 +14,9 @@ import fichaEjemplo from '../fichas/E60-2026-11-16-corto.json';
 import {Diorama} from './diorama/Diorama';
 import {PropsD, planificarD} from './diorama/plan';
 import fichaDiorama from '../fichas/E60-PROTO-diorama-01.json';
+import {Capitulo, CapituloAudio} from './capitulo/Capitulo';
+import {PropsC, planificarC} from './capitulo/plan';
+import fichaC01 from '../fichas/E60-S01-C01.json';
 
 // Props de ejemplo para el Studio; en producción llegan con --props=out/props_<id>.json
 const ejemplo: Props = {
@@ -86,6 +89,36 @@ export const RemotionRoot: React.FC = () => (
 			durationInFrames={30 * 90}
 			calculateMetadata={({props}) => ({
 				durationInFrames: Math.ceil(planificarD(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60Capitulo"
+			component={Capitulo}
+			defaultProps={{ficha: fichaC01 as unknown as PropsC['ficha'], duraciones: {}} as PropsC}
+			fps={24}
+			width={1920}
+			height={1080}
+			durationInFrames={24 * 600}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60CapituloAudio"
+			component={CapituloAudio}
+			defaultProps={{ficha: fichaC01 as unknown as PropsC['ficha'], duraciones: {}} as PropsC}
+			fps={24}
+			width={1920}
+			height={1080}
+			durationInFrames={24 * 600}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
 				fps: props.ficha.fps,
 				width: props.ficha.ancho,
 				height: props.ficha.alto,

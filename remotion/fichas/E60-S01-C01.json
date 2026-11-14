@@ -1,0 +1,543 @@
+{
+ "id": "E60-S01-C01",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "capitulo_serie",
+ "ancho": 1920,
+ "alto": 1080,
+ "fps": 24,
+ "temporada": "Profundidad 600",
+ "capitulo": 1,
+ "titulo": "La sala de lastre",
+ "siguiente": "El mamparo",
+ "pensar_s": 20,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "voces": {
+  "narrador": {
+   "voz": "em_alex",
+   "velocidad": 0.95
+  },
+  "custodio": {
+   "voz": "em_santa",
+   "velocidad": 0.85,
+   "efecto": "metal"
+  }
+ },
+ "megapuzle": {
+  "capitulo": 1,
+  "digito": 0,
+  "donde": "centro de la esfera del reloj parado, durante la explicación del puzle 4"
+ },
+ "puzles": [
+  {
+   "id": "P1",
+   "titulo": "El registro de inmersión",
+   "respuesta": "42",
+   "verificacion": "bajadas 4,6,8,10 → 12; 30+12=42"
+  },
+  {
+   "id": "P2",
+   "titulo": "Los cajones mal etiquetados",
+   "respuesta": "LLAVE Y FUSIBLE",
+   "verificacion": "2 asignaciones con todas las etiquetas falsas; abrir LLAVE Y FUSIBLE las distingue"
+  },
+  {
+   "id": "P3",
+   "titulo": "Los manómetros",
+   "respuesta": "8-4-7",
+   "verificacion": "A=2B, C=B+3, A+B+C=19 → B=4"
+  },
+  {
+   "id": "P4",
+   "titulo": "La báscula de trimado",
+   "respuesta": "3 con el lingote; 9 y 1 al otro lado",
+   "verificacion": "7+3 = 9+1; única entre las 27 colocaciones posibles"
+  },
+  {
+   "id": "P5",
+   "titulo": "El reloj parado",
+   "respuesta": "2:45",
+   "verificacion": "3:10 − 45 min + 20 min = 2:45"
+  },
+  {
+   "id": "P6",
+   "titulo": "El volante de la escotilla",
+   "respuesta": "4 derecha, 1 izquierda",
+   "verificacion": "3a − 2b = 10 con a+b ≤ 5 → (4,1) única"
+  }
+ ],
+ "lineas": [
+  {
+   "id": "n01",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Frío. Eso es lo primero que notas. Agua helada, por los tobillos."
+  },
+  {
+   "id": "n02",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Luego, el ruido: el casco de acero crujiendo, como si algo enorme lo apretara desde fuera."
+  },
+  {
+   "id": "x01",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Hay una luz roja que gira en el techo. Cada vez que pasa, ilumina remaches, tuberías y un letrero medio borrado: sala de lastre."
+  },
+  {
+   "id": "n03",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Estás en un submarino. A seiscientos metros de profundidad. Y no hay nadie más."
+  },
+  {
+   "id": "n04",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Al fondo, una escotilla sellada. Delante, una sala llena de tanques, válvulas y relojes. Y el agua sigue subiendo."
+  },
+  {
+   "id": "n05",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Si quieres salir de aquí, vas a tener que pensar rápido."
+  },
+  {
+   "id": "n06",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "Está demasiado oscuro para ver nada. Pero junto a tus pies flota una caja de herramientas."
+  },
+  {
+   "id": "n07",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "Tiene un candado de dos dígitos. Y atado a la caja, un cuaderno empapado: el registro de inmersión."
+  },
+  {
+   "id": "n08",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "Alguien anotó la profundidad cada minuto mientras el submarino bajaba."
+  },
+  {
+   "id": "n09",
+   "bloque": "p1",
+   "fase": "pista",
+   "texto": "Minuto uno: dos metros. Minuto dos: seis. Minuto tres: doce. Minuto cuatro: veinte. Minuto cinco: treinta."
+  },
+  {
+   "id": "n10",
+   "bloque": "p1",
+   "fase": "pista",
+   "texto": "La página del minuto seis está arrancada. Pero en el margen hay una nota: cada minuto bajábamos dos metros más que el anterior."
+  },
+  {
+   "id": "r01",
+   "bloque": "p1",
+   "fase": "repaso",
+   "texto": "Repasemos. Dos, seis, doce, veinte, treinta. Y cada minuto, dos metros más que el anterior."
+  },
+  {
+   "id": "n11",
+   "bloque": "p1",
+   "fase": "pregunta",
+   "texto": "El candado pide la profundidad del minuto seis. ¿Cuál es? Pausa el vídeo si lo necesitas. Tienes veinte segundos."
+  },
+  {
+   "id": "n12",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "Cuarenta y dos."
+  },
+  {
+   "id": "n13",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "Mira lo que baja cada minuto: cuatro metros, luego seis, luego ocho, luego diez. Cada vez dos más. El sexto minuto baja doce. Treinta más doce: cuarenta y dos."
+  },
+  {
+   "id": "k01",
+   "bloque": "p1",
+   "fase": "comprobacion",
+   "texto": "Compruébalo: doce es dos más que diez. La regla se cumple."
+  },
+  {
+   "id": "n14",
+   "bloque": "p1",
+   "fase": "accion",
+   "texto": "El candado cede. Dentro hay una linterna. Por fin puedes ver dónde estás."
+  },
+  {
+   "id": "x02",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "El haz de la linterna corta la oscuridad. Ahora la sala tiene forma: un pasillo de acero, tres tanques verdes a la izquierda y tuberías de latón a la derecha."
+  },
+  {
+   "id": "n15",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "La luz recorre la sala. Los manómetros de los tanques están apagados: no hay corriente."
+  },
+  {
+   "id": "n16",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "En la pared, un cuadro eléctrico con un hueco vacío. Falta un fusible."
+  },
+  {
+   "id": "n17",
+   "bloque": "p2",
+   "fase": "pista",
+   "texto": "Debajo, un mueble con tres cajones. Las etiquetas dicen: llave, fusible, y llave y fusible."
+  },
+  {
+   "id": "n18",
+   "bloque": "p2",
+   "fase": "pista",
+   "texto": "Pegada al mueble, una nota escrita a toda prisa: todas las etiquetas están mal."
+  },
+  {
+   "id": "n19",
+   "bloque": "p2",
+   "fase": "pista",
+   "texto": "Intentas abrir el primero, pero el óxido lo ha soldado. Solo podrás forzar un cajón, y sacar una sola cosa, antes de que el mueble se bloquee."
+  },
+  {
+   "id": "r02",
+   "bloque": "p2",
+   "fase": "repaso",
+   "texto": "Repasemos. Tres cajones. Tres etiquetas. Todas mienten. Y solo puedes mirar una cosa."
+  },
+  {
+   "id": "n20",
+   "bloque": "p2",
+   "fase": "pregunta",
+   "texto": "¿Qué cajón abres para saber qué hay en los tres? Veinte segundos."
+  },
+  {
+   "id": "n21",
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "El que dice llave y fusible."
+  },
+  {
+   "id": "n22",
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "Como todas las etiquetas mienten, ese cajón no puede tener las dos cosas: tiene solo una. Lo abres, y sale… el fusible."
+  },
+  {
+   "id": "n23",
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "Ahora el de la etiqueta llave no puede tener la llave, así que tiene las dos cosas. Y el de fusible guarda la llave."
+  },
+  {
+   "id": "k02",
+   "bloque": "p2",
+   "fase": "comprobacion",
+   "texto": "Ninguna etiqueta queda en su sitio. Todas mentían, tal y como decía la nota."
+  },
+  {
+   "id": "n24",
+   "bloque": "p2",
+   "fase": "accion",
+   "texto": "Colocas el fusible. Los manómetros se iluminan… y sus agujas empiezan a bailar."
+  },
+  {
+   "id": "x03",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "El zumbido de la corriente recorre las paredes. En algún lugar del barco, algo acaba de despertar contigo."
+  },
+  {
+   "id": "n25",
+   "bloque": "p3",
+   "fase": "narra",
+   "texto": "Tres tanques de lastre: A, B y C. Si vacías el lastre, el submarino deja de hundirse."
+  },
+  {
+   "id": "n26",
+   "bloque": "p3",
+   "fase": "narra",
+   "texto": "Las válvulas solo se abren con el código de los tres manómetros. Pero están rotos: sus agujas no paran de moverse."
+  },
+  {
+   "id": "n27",
+   "bloque": "p3",
+   "fase": "pista",
+   "texto": "Primera pista: el manómetro A marca el doble que el B."
+  },
+  {
+   "id": "n28",
+   "bloque": "p3",
+   "fase": "pista",
+   "texto": "Segunda: el C marca tres más que el B."
+  },
+  {
+   "id": "n29",
+   "bloque": "p3",
+   "fase": "pista",
+   "texto": "Tercera: la placa de la tubería común dice que, entre los tres, suman diecinueve."
+  },
+  {
+   "id": "r03",
+   "bloque": "p3",
+   "fase": "repaso",
+   "texto": "Repasemos. A es el doble de B. C es B más tres. Y los tres juntos suman diecinueve."
+  },
+  {
+   "id": "n30",
+   "bloque": "p3",
+   "fase": "pregunta",
+   "texto": "¿Qué marca cada manómetro? Veinte segundos."
+  },
+  {
+   "id": "n31",
+   "bloque": "p3",
+   "fase": "solucion",
+   "texto": "Ocho, cuatro, siete."
+  },
+  {
+   "id": "n32",
+   "bloque": "p3",
+   "fase": "solucion",
+   "texto": "Si B es una caja, A son dos cajas, y C es una caja más tres. Cuatro cajas y tres hacen diecinueve: cada caja vale cuatro."
+  },
+  {
+   "id": "k03",
+   "bloque": "p3",
+   "fase": "comprobacion",
+   "texto": "Compruébalo: ocho es el doble de cuatro, siete es cuatro más tres, y ocho más cuatro más siete son diecinueve."
+  },
+  {
+   "id": "n33",
+   "bloque": "p3",
+   "fase": "accion",
+   "texto": "El lastre sale disparado. El suelo se inclina… y el agua, por fin, deja de subir."
+  },
+  {
+   "id": "t01",
+   "bloque": "p4",
+   "fase": "narra",
+   "texto": "Pero el submarino no se endereza. La proa apunta hacia arriba y todo lo que no está atornillado resbala hacia atrás."
+  },
+  {
+   "id": "t02",
+   "bloque": "p4",
+   "fase": "narra",
+   "texto": "Junto a los tanques hay una báscula de trimado: dos platillos que mueven los contrapesos del barco. Si se equilibra, el submarino se nivela."
+  },
+  {
+   "id": "t03",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "En el platillo izquierdo hay un lingote de plomo de siete kilos. Soldado. No se puede mover."
+  },
+  {
+   "id": "t04",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "En una caja tienes tres pesas: una de un kilo, una de tres y una de nueve. Puedes ponerlas en cualquiera de los dos platillos, o dejarlas fuera."
+  },
+  {
+   "id": "t05",
+   "bloque": "p4",
+   "fase": "repaso",
+   "texto": "Siete kilos a un lado. Pesas de uno, tres y nueve. Hay que dejar los dos platillos iguales."
+  },
+  {
+   "id": "t06",
+   "bloque": "p4",
+   "fase": "pregunta",
+   "texto": "¿Dónde pones cada pesa? Veinte segundos."
+  },
+  {
+   "id": "t07",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "La de tres, junto al lingote. La de nueve y la de uno, en el otro platillo."
+  },
+  {
+   "id": "t08",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "A la izquierda: siete más tres, diez. A la derecha: nueve más uno, diez. Y no hay otra forma de conseguirlo con esas tres pesas."
+  },
+  {
+   "id": "t09",
+   "bloque": "p4",
+   "fase": "accion",
+   "texto": "La báscula se queda quieta. Con un gemido largo, el submarino se nivela."
+  },
+  {
+   "id": "n34",
+   "bloque": "p5",
+   "fase": "narra",
+   "texto": "Junto a la escotilla hay un armario de emergencia. Su cerradura pide una hora."
+  },
+  {
+   "id": "n35",
+   "bloque": "p5",
+   "fase": "narra",
+   "texto": "En la puerta, grabado: la hora en que sonó la alarma."
+  },
+  {
+   "id": "n36",
+   "bloque": "p5",
+   "fase": "pista",
+   "texto": "El reloj de la sala está parado. Marca las tres y diez: el agua llegó a su mecanismo y lo detuvo."
+  },
+  {
+   "id": "n37",
+   "bloque": "p5",
+   "fase": "pista",
+   "texto": "En el cuaderno de guardia, la última anotación: la inundación empezó cuarenta y cinco minutos antes de que se parara el reloj. La alarma sonó veinte minutos después de empezar la inundación."
+  },
+  {
+   "id": "r04",
+   "bloque": "p5",
+   "fase": "repaso",
+   "texto": "Repasemos. El reloj se paró a las tres y diez. La inundación empezó cuarenta y cinco minutos antes. Y la alarma, veinte minutos después de la inundación."
+  },
+  {
+   "id": "n38",
+   "bloque": "p5",
+   "fase": "pregunta",
+   "texto": "¿A qué hora sonó la alarma? Veinte segundos."
+  },
+  {
+   "id": "n39",
+   "bloque": "p5",
+   "fase": "solucion",
+   "texto": "A las dos y cuarenta y cinco."
+  },
+  {
+   "id": "n40",
+   "bloque": "p5",
+   "fase": "solucion",
+   "texto": "Desde las tres y diez, retrocede cuarenta y cinco minutos: las dos y veinticinco. Ahí empezó a entrar el agua. Avanza veinte: las dos y cuarenta y cinco."
+  },
+  {
+   "id": "k04",
+   "bloque": "p5",
+   "fase": "comprobacion",
+   "texto": "La alarma sonó tarde. Para entonces, el agua ya llevaba veinte minutos entrando."
+  },
+  {
+   "id": "n41",
+   "bloque": "p5",
+   "fase": "accion",
+   "texto": "El armario se abre. Dentro, una placa con las instrucciones de la escotilla."
+  },
+  {
+   "id": "n42",
+   "bloque": "p6",
+   "fase": "narra",
+   "texto": "La escotilla tiene un volante y, encima, un indicador de cero a doce."
+  },
+  {
+   "id": "n43",
+   "bloque": "p6",
+   "fase": "pista",
+   "texto": "La placa explica el mecanismo: cada vuelta a la derecha sube el indicador tres marcas. Cada vuelta a la izquierda lo baja dos."
+  },
+  {
+   "id": "n44",
+   "bloque": "p6",
+   "fase": "pista",
+   "texto": "Empieza en cero. La escotilla se abre en diez. Y el indicador nunca puede bajar de cero."
+  },
+  {
+   "id": "n45",
+   "bloque": "p6",
+   "fase": "pista",
+   "texto": "Pero el eje está oxidado: aguantará cinco vueltas como mucho. Ni una más."
+  },
+  {
+   "id": "r05",
+   "bloque": "p6",
+   "fase": "repaso",
+   "texto": "Repasemos. Derecha, más tres. Izquierda, menos dos. De cero a diez. Nunca por debajo de cero. Cinco vueltas como mucho."
+  },
+  {
+   "id": "n46",
+   "bloque": "p6",
+   "fase": "pregunta",
+   "texto": "¿Cuántas vueltas das a cada lado? Veinte segundos."
+  },
+  {
+   "id": "n47",
+   "bloque": "p6",
+   "fase": "solucion",
+   "texto": "Cuatro a la derecha y una a la izquierda."
+  },
+  {
+   "id": "n48",
+   "bloque": "p6",
+   "fase": "solucion",
+   "texto": "Cuatro vueltas a la derecha suben el indicador a doce. Una a la izquierda lo baja a diez. Cinco vueltas justas."
+  },
+  {
+   "id": "k05",
+   "bloque": "p6",
+   "fase": "comprobacion",
+   "texto": "Con menos vueltas no se llega a diez, y con cinco solo hay una combinación posible."
+  },
+  {
+   "id": "n49",
+   "bloque": "p6",
+   "fase": "accion",
+   "texto": "La escotilla cede."
+  },
+  {
+   "id": "n50",
+   "bloque": "giro",
+   "fase": "narra",
+   "texto": "Detrás hay un pasillo inundado. Y al fondo, otra compuerta: el mamparo del siguiente compartimento."
+  },
+  {
+   "id": "n51",
+   "bloque": "giro",
+   "fase": "narra",
+   "texto": "Está cerrado. Y no desde este lado. Alguien lo ha bloqueado desde dentro."
+  },
+  {
+   "id": "n52",
+   "bloque": "giro",
+   "fase": "custodio",
+   "voz": "custodio",
+   "texto": "Bienvenido a bordo del Abisal. Has resuelto la primera sala en menos tiempo del previsto."
+  },
+  {
+   "id": "n53",
+   "bloque": "giro",
+   "fase": "custodio",
+   "voz": "custodio",
+   "texto": "Quedan nueve. Y yo tengo todo el tiempo del mundo."
+  },
+  {
+   "id": "n54",
+   "bloque": "cierre",
+   "fase": "narra",
+   "texto": "Cuarenta y dos. El cajón de llave y fusible. Ocho, cuatro, siete. Tres con el lingote, nueve y uno al otro lado. Las dos y cuarenta y cinco. Cuatro y una. ¿Cuántos has resuelto tú? Déjalo en los comentarios."
+  },
+  {
+   "id": "n55",
+   "bloque": "cierre",
+   "fase": "narra",
+   "texto": "Y si has visto algo violeta en esta sala… apúntalo. Lo vas a necesitar."
+  },
+  {
+   "id": "n56",
+   "bloque": "cierre",
+   "fase": "narra",
+   "texto": "Próximo capítulo: El mamparo."
+  }
+ ],
+ "auditoria": "Claude 14/11/2026: soluciones comprobadas por código (P1 42; P2 cajón LLAVE Y FUSIBLE; P3 8-4-7; P4 3 con el lingote, 9 y 1 al otro lado; P5 2:45; P6 4D+1I; megapuzle INTI)."
+}
