@@ -42,8 +42,8 @@ const PLANOS: Record<string, {pos: V3; mira: V3; fov: number}> = {
 	torre: {pos: [0.3, 1.6, 2.9], mira: [0, 2.2, -3], fov: 78},
 	vela: {pos: [-1.2, 1.3, 1.75], mira: [-1.95, 1.0, 2.45], fov: 60},
 	mesa: {pos: [-0.75, 1.6, 1.1], mira: [-2.05, 1.0, 2.55], fov: 68},
-	suelo: {pos: [-0.8, 1.7, 0.5], mira: [-2.8, 0.3, 0.15], fov: 74},
-	escudos: {pos: [-0.55, 1.5, 0.2], mira: [-4.1, 1.35, 0.0], fov: 74},
+	suelo: {pos: [-1.1, 2.0, 0.95], mira: [-2.75, 0.0, 0.15], fov: 70},
+	escudos: {pos: [-0.2, 1.75, 0.3], mira: [-4.1, 0.85, 0.05], fov: 80},
 	ganchos: {pos: [-1.6, 1.6, 0.1], mira: [-4.1, 1.85, 0.0], fov: 66},
 	puerta: {pos: [0, 1.6, 0.4], mira: [0, 1.9, -4.1], fov: 76},
 };
@@ -78,7 +78,7 @@ export const AvanceTorre: React.FC<PropsT> = (props) => {
 	}
 	const e: EstadoTorre = {
 		t, cam: {pos, mira, fov: a.fov + (b.fov - a.fov) * f},
-		pista: {escudos: escudosLuz, ventana: ventana(L.t01) * 0.0, mesa: ventana(L.t02) * 0.4, puerta: interpolate(t, [L.t08.inicio, L.t08.inicio + 1], [0, 0.5], clamp)},
+		pista: {escudos: escudosLuz * 0.3, ventana: ventana(L.t01) * 0.0, mesa: ventana(L.t02) * 0.4, puerta: interpolate(t, [L.t08.inicio, L.t08.inicio + 1], [0, 0.5], clamp)},
 		escudos: [0, 0, 0], losa: 0, criptex: 0, anillos: 0, tapa: 0, descifrado: 0, p13: 0, nicho: 0, llave: 0, giroLlave: 0, verdad: 0,
 		vela: 1, llama: interpolate(t, [L.t01.fin - 2.0, L.t01.fin - 1.2], [0, 1], clamp), puerta: 0, sombra: 0, libro: 0,
 		relampago: rel, gramofono: 1, antorchas: interpolate(t, [0, 1.2], [0.6, 1], clamp),
@@ -88,7 +88,7 @@ export const AvanceTorre: React.FC<PropsT> = (props) => {
 		{id: 't04', texto: 'Rojo: no en el 1'},
 		{id: 't05', texto: 'Azul: a la derecha del rojo'},
 		{id: 't06', texto: 'Verde: no en el 3'},
-	].map((p) => ({texto: p.texto, desde: L[p.id].inicio + 0.2, activa: ventana(L[p.id], 0, 0.3)}));
+	].map((p) => ({texto: p.texto, desde: L[p.id].inicio + 0.2, activa: ventana(L[p.id], 0.05, 0.3)}));
 	const linea = ficha.lineas.find((l) => t >= L[l.id].inicio - 0.1 && t < L[l.id].fin + 0.35);
 	const cta = interpolate(t, [L.t08.inicio + 0.4, L.t08.inicio + 1.2], [0, 1], clamp);
 	const fundido = Math.max(interpolate(t, [0, 0.8], [1, 0], clamp), interpolate(t, [total - 0.8, total], [0, 1], clamp));
