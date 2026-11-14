@@ -12,6 +12,7 @@ Uso:
   python tools/voz_chatterbox.py --ficha fichas/E60-S01-C01.json [--solo n01,n02]
 """
 import argparse
+import gc
 import json
 import os
 import re
@@ -54,6 +55,23 @@ def wer(ref, hyp):
             cur = min(d[j] + 1, d[j - 1] + 1, prev + (r[i - 1] != h[j - 1]))
             prev, d[j] = d[j], cur
     return d[len(h)] / max(1, len(r))
+
+
+def parte(txt, maximo=140):
+    """Divide líneas largas por frases: Chatterbox en CPU dispara la memoria con textos largos."""
+    if len(txt) <= maximo:
+        return [txt]
+    frases = re.findall(r"[^.?!:]+[.?!:]+|[^.?!:]+$", txt)
+    out, cur = [], ""
+    for f in (x.strip() for x in frases):
+        if cur and len(cur) + 1 + len(f) > maximo:
+            out.append(cur)
+            cur = f
+        else:
+            cur = (cur + " " + f).strip()
+    if cur:
+        out.append(cur)
+    return out
 
 
 def recorta(x, sr):
@@ -113,20 +131,34 @@ def main():
             dur[lid] = round(sf.info(ruta).duration, 3)
             continue
         papel = PAPELES[ln.get("voz", "narrador")]
-        mejor = None
-        for k in range(a.intentos):
-            torch.manual_seed(60 + k * 101 + sum(map(ord, lid)))
-            w = tts.generate(ln["texto"], language_id="es", audio_prompt_path=papel["ref"],
-                             exaggeration=papel["exaggeration"], cfg_weight=papel["cfg_weight"])
-            x = recorta(w.squeeze(0).numpy().astype(np.float32), tts.sr)
-            seg, _ = asr.transcribe(resample_poly(x, 16000, tts.sr).astype(np.float32), language="es", beam_size=1)
-            hyp = " ".join(s.text for s in seg)
-            e = wer(ln["texto"], hyp)
-            if mejor is None or e < mejor[0]:
-                mejor = (e, x, hyp, k + 1)
-            if e <= a.umbral:
-                break
-        e, x, hyp, n = mejor
+        trozos = parte(ln["texto"])
+        piezas, errores, hyps, ns = [], [], [], []
+        for j, trozo in enumerate(trozos):
+            mejor = None
+            # líneas deletreadas: Whisper transcribe letras sueltas, el WER no sirve → una sola toma
+            for k in range(1 if ln.get("deletreo") else a.intentos):
+                torch.manual_seed(60 + k * 101 + sum(map(ord, lid)) + j * 7)
+                with torch.inference_mode():
+                    w = tts.generate(trozo, language_id="es", audio_prompt_path=papel["ref"],
+                                     exaggeration=papel["exaggeration"], cfg_weight=papel["cfg_weight"])
+                x = recorta(w.squeeze(0).numpy().astype(np.float32), tts.sr)
+                del w
+                gc.collect()
+                seg, _ = asr.transcribe(resample_poly(x, 16000, tts.sr).astype(np.float32), language="es", beam_size=1)
+                hyp = " ".join(s_.text for s_ in seg)
+                e = wer(trozo, hyp)
+                if mejor is None or e < mejor[0]:
+                    mejor = (e, x, hyp, k + 1)
+                if e <= a.umbral:
+                    break
+            piezas.append(mejor[1])
+            errores.append(mejor[0] * max(1, len(trozo.split())))
+            hyps.append(mejor[2])
+            ns.append(mejor[3])
+        pausa = np.zeros(int(0.22 * tts.sr), dtype=np.float32)
+        x = np.concatenate([q for p_ in piezas for q in (p_, pausa)][:-1])
+        e = sum(errores) / max(1, len(ln["texto"].split()))
+        hyp, n = " | ".join(hyps), max(ns)
         if papel.get("efecto") == "metal":
             x = FA.metal(x, tts.sr)
         elif papel.get("efecto") == "sala":

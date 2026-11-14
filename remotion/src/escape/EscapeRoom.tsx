@@ -29,7 +29,7 @@ const PLANOS: Record<string, {pos: V3; mira: V3; fov?: number}> = {
 	dintel: {pos: [0, 1.75, -0.4], mira: [0, 3.0, -4.1], fov: 50},
 	regla: {pos: [0, 1.75, -1.3], mira: [0, 3.6, -4.1], fov: 44},
 	escalera: {pos: [0.0, 1.75, 1.9], mira: [COLUMNA[0], 1.5, COLUMNA[2]], fov: 58},
-	p13: {pos: [1.75, 3.35, 2.45], mira: p13, fov: 46},
+	p13: {pos: [1.35, 2.3, 2.25], mira: p13, fov: 38},
 	nicho: {pos: [1.5, 1.45, 1.35], mira: NICHO, fov: 46},
 	guardias: {pos: [0, 1.65, 0.7], mira: [0, 1.45, -4], fov: 62},
 	g1: {pos: [-1.25, 1.5, -1.2], mira: P(-44, 3.65, 1.15), fov: 46},

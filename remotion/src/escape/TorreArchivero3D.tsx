@@ -573,12 +573,12 @@ const Escalera: React.FC<{e: EstadoTorre; T: TT}> = ({e, T}) => {
 				return (
 					<group key={k} position={[pos[0], pos[1] - hund, pos[2]]} rotation={[0, mira(ang) + Math.PI / 2, 0]}>
 						<mesh>
-							<boxGeometry args={[1.12, 0.09, 0.42]} />
+							<boxGeometry args={[1.12, 0.16, 0.42]} />
 							<meshStandardMaterial map={T.piedra} roughness={0.9} emissive="#3fe0e6" emissiveIntensity={brillo * 0.08} />
 						</mesh>
-						<mesh position={[0.2, 0.047, 0]} rotation={[-Math.PI / 2, 0, -Math.PI / 2]}>
-							<planeGeometry args={[0.36, 0.36]} />
-							<meshStandardMaterial map={T.numeroPeldano[i]} roughness={0.9} emissive="#3fe0e6" emissiveIntensity={brillo * 0.35} />
+						<mesh position={[0.25, 0, 0.212]}>
+							<planeGeometry args={[0.15, 0.15]} />
+							<meshStandardMaterial map={T.numeroPeldano[i]} roughness={0.9} emissive="#3fe0e6" emissiveIntensity={brillo * 0.45} />
 						</mesh>
 					</group>
 				);

@@ -41,15 +41,15 @@
 
   {"id": "b01", "bloque": "p2", "fase": "narra", "texto": "Debajo de la losa hay un cilindro de latón con seis anillos de letras. Un criptex. Hay que formar una palabra."},
   {"id": "b02", "bloque": "p2", "fase": "narra", "texto": "Sobre la puerta, tallado en la piedra, hay un lema. Pero no se puede leer."},
-  {"id": "b03", "bloque": "p2", "fase": "pista", "texto": "Dice: hache, o. Uve doble, ele, hache, pe, ese, erre. Cu, erre. Ese, hache, u, ge, erre, cu, de."},
+  {"id": "b03", "deletreo": true, "bloque": "p2", "fase": "pista", "texto": "Dice: hache, o. Uve doble, ele, hache, pe, ese, erre. Cu, erre. Ese, hache, u, ge, erre, cu, de."},
   {"id": "b04", "bloque": "p2", "fase": "pista", "texto": "En el criptex hay una inscripción diminuta: retrocede tres letras. Alfabeto de veintiséis, sin eñe."},
   {"id": "b05", "bloque": "p2", "fase": "pista", "texto": "Y debajo: la segunda palabra del lema abre el cilindro."},
   {"id": "b06", "bloque": "p2", "fase": "repaso", "texto": "Repasemos. Cada letra del lema está tres posiciones por delante de la verdadera. Hay que retroceder tres para leerlo."},
   {"id": "b07", "bloque": "p2", "fase": "pregunta", "texto": "¿Qué dice el lema? ¿Y qué palabra abre el criptex? Veinte segundos."},
   {"id": "b08", "bloque": "p2", "fase": "solucion", "texto": "El tiempo no perdona. Y la palabra es: tiempo."},
-  {"id": "b09", "bloque": "p2", "fase": "solucion", "texto": "Hache, retrocede tres: ge, efe, e. O, retrocede tres: ele. Primera palabra, el. Uve doble se convierte en te, ele en i, hache en e, pe en eme, ese en pe, erre en o. Tiempo."},
+  {"id": "b09", "deletreo": true, "bloque": "p2", "fase": "solucion", "texto": "Hache, retrocede tres: ge, efe, e. O, retrocede tres: ele. Primera palabra, el. Uve doble se convierte en te, ele en i, hache en e, pe en eme, ese en pe, erre en o. Tiempo."},
   {"id": "b10", "bloque": "p2", "fase": "comprobacion", "texto": "Haz lo mismo con el resto y aparece el lema completo: el tiempo no perdona."},
-  {"id": "b11", "bloque": "p2", "fase": "accion", "texto": "Los seis anillos giran. Te, i, e, eme, o, pe. El criptex se abre y deja caer un medallón con un número grabado en el reverso: uno, uno, dos, tres, cinco, ocho."},
+  {"id": "b11", "deletreo": true, "bloque": "p2", "fase": "accion", "texto": "Los seis anillos giran. Te, i, e, eme, o, pe. El criptex se abre y deja caer un medallón con un número grabado en el reverso: uno, uno, dos, tres, cinco, ocho."},
 
   {"id": "c01", "bloque": "p3", "fase": "narra", "texto": "La escalera de caracol sube hacia la oscuridad. Cada peldaño tiene un número tallado, del uno al veinte."},
   {"id": "c02", "bloque": "p3", "fase": "narra", "texto": "La vela ya ha perdido la mitad de su altura."},

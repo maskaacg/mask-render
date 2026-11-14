@@ -1,0 +1,326 @@
+{
+ "g01": {
+  "wer": 0.071,
+  "intentos": 4,
+  "ok": true,
+  "transcripcion": " Melianoche, la tormenta golpea las ventanas de un castillo que lleva 100 años vacío."
+ },
+ "g02": {
+  "wer": 0.111,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " ha subido a la torre del archivo buscando el refugio y la puerta acaba de cerrarse detrás  de ti."
+ },
+ "g03": {
+  "wer": 0.038,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " estanterías hasta el techo. Una escalera de calacol, antorchas que no debería haber encendido  nadie. Y sobre la mesa, un gramófono que empieza a girar solo."
+ },
+ "g04": {
+  "wer": 0.08,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Bienvenido a mi archivo visitante.  Nadie sale de esta torre sin demostrar que Isabel Lair.  Cuatro cerraduras, una vela.  Cuando se apague, se apagará todo."
+ },
+ "g05": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " La vela de la mesa acaba de encenderse y empieza a derretirse."
+ },
+ "a01": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " En la pared hay tres ganchos numerados, uno, dos y tres, y en el suelo tres escudos caídos,  uno rojo, uno azul y uno verde."
+ },
+ "a02": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Bajo los ganchos, una placa de bronce devuelve cada escudo a su sitio."
+ },
+ "a03": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Primera pista, el escudo rojo no cuelga en el gancho 1."
+ },
+ "a04": {
+  "wer": 0.091,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Segunda, el azul cuega más a la derecha que el rojo."
+ },
+ "a05": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Tercera, el verde no está en el gancho 3."
+ },
+ "a06": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " repasemos. El rojo nunca en el uno, el azul a la derecha del rojo y el verde nunca en el tres."
+ },
+ "a07": {
+  "wer": 0.077,
+  "intentos": 3,
+  "ok": true,
+  "transcripcion": " en qué orden cuelga los tres escudos. Pausa si lo necesitas.  ¡20 segundos!"
+ },
+ "a08": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " verde, rojo y azul."
+ },
+ "a09": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Si el rojo no está en el 1 y el azul tiene que quedar a su derecha, el rojo solo puede  ir en el 2 y el azul en el 3, para el verde solo queda el gancho 1."
+ },
+ "a10": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Compruebalo, el rojo no está en el uno, el azul está a su derecha y el verde no está en el tres.  No hay otra forma."
+ },
+ "a11": {
+  "wer": 0.053,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Los escudos encajan.  Se oye un mecanismo dentro del muro y una loza del suelo se hunde un palmo."
+ },
+ "b01": {
+  "wer": 0.095,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " debajo de la loza hay un cilindro de latón con seis anillos de letras. Un cryptex, hay  que formar una palabra."
+ },
+ "b02": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Sobre la puerta tallado en la piedra hay un lema, pero no se puede leer."
+ },
+ "b03": {
+  "wer": 0.842,
+  "intentos": 3,
+  "ok": false,
+  "transcripcion": " Dice H o W L H P S R Q R S H U C R Q D"
+ },
+ "b04": {
+  "wer": 0.067,
+  "intentos": 2,
+  "ok": true,
+  "transcripcion": " En el Criptex hay una inscripción diminuta.  Retrocede 3 letras.  Alfabeto de 26, sin enier."
+ },
+ "b05": {
+  "wer": 0.1,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " y debajo de la segunda palabra del lema, abre el cilindro."
+ },
+ "b06": {
+  "wer": 0.105,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " repasemos. Cada litra de lema está tres posiciones por delante de la verdadera. Hay  que retroceder tres para leerlo."
+ },
+ "b07": {
+  "wer": 0.083,
+  "intentos": 2,
+  "ok": true,
+  "transcripcion": " ¿Qué dice el Lema? ¿Y qué palabra abre el Critex? ¡20 segundos!"
+ },
+ "b08": {
+  "wer": 0.111,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " es tiempo no perdona. Y la palabra es tiempo."
+ },
+ "b09": {
+  "wer": 0.714,
+  "intentos": 1,
+  "ok": false,
+  "transcripcion": " H-Retro-C-D3-G-F-E  o retro-C-D3-L primera palabra, el... |  V doble se convierte en T, L, N, H, N, P, M, S, P, R en o tiempo."
+ },
+ "b10": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Haz lo mismo con el resto y aparece el lema completo.  El tiempo no perdona."
+ },
+ "b11": {
+  "wer": 0.188,
+  "intentos": 1,
+  "ok": false,
+  "transcripcion": " Los seis anillos giran.  T, E, M, O, P.  El crític se abre y deja caer un medallón con un número grabado en reverso. |  1-1-2-3-5-8"
+ },
+ "c01": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " La escalera de Caracol sube hacia la oscuridad. Cada peldaño tiene un número tallado, del  uno al veinte."
+ },
+ "c02": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " La vela ya ha perdido la mitad de su altura."
+ },
+ "c03": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " En la barandilla hay una advertencia. Pisa el peldaño equivocado y la escalera se cerrará  para siempre."
+ },
+ "c04": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " El medallón da la serie 1 1 2 3 5 8 y en su borde cada número es la suma de los dos  anteriores."
+ },
+ "c05": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Repasemos 1, 1, 2, 3, 5, 8, cada número la suma de los dos de antes."
+ },
+ "c06": {
+  "wer": 0.0,
+  "intentos": 2,
+  "ok": true,
+  "transcripcion": " ¿Qué peldaño tienes que pisar ahora?  ¡20 segundos!"
+ },
+ "c07": {
+  "wer": 0.0,
+  "intentos": 3,
+  "ok": true,
+  "transcripcion": " el 13."
+ },
+ "c08": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " 1 más 1, 2, 1 más 2, 3, 2 más 3, 5, 3 más 5, 8 y 5 más 8, 13."
+ },
+ "c09": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " es la serie que usaban los antiguos arquitectos para medir sus escaleras.  Cada paso, la suma de los dos anteriores."
+ },
+ "c10": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " El peldaño 13 se hunde con un chasquido.  En la pared se abre un nicho con tres llaves, una de oro, una de plata y una de hierro."
+ },
+ "d01": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " solo una abre la puerta.  Si usas la equivocada, la cerradura se bloqueará."
+ },
+ "d02": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " A los lados de la puerta montan Guardia tres armaduras.  Cada una tiene una frase grabada en el escudo."
+ },
+ "d03": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " La primera armadura dice, la llave de oro abre la puerta."
+ },
+ "d04": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " La segunda, la llave de plata no la abre."
+ },
+ "d05": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " La tercera, la llave de oro no la abre."
+ },
+ "d06": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " y en el Dintel, la regla del archivo de las tres armaduras, solo una dice la verdad."
+ },
+ "d07": {
+  "wer": 0.077,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " te repasemos tres frases, solo una es cierta, con que llave se cumple eso."
+ },
+ "d08": {
+  "wer": 0.0,
+  "intentos": 2,
+  "ok": true,
+  "transcripcion": " que llave abre la puerta.  ¡20 segundos!"
+ },
+ "d09": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " la de plata."
+ },
+ "d10": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Prueba con oro, la primera y la segunda dirían la verdad. Son dos, así que no.  Prueba con hierro, la segunda y la tercera dirían la verdad. |  tampoco, con plata, solo la tercera dice la verdad."
+ },
+ "d11": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " una sola armadura sincera, como exige la regla, la llave de plata."
+ },
+ "d12": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " La llave gira, la vela se apaga en ese mismo instante y la puerta se abre."
+ },
+ "e01": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Al otro lado, no hay una escalera hacia la salida.  Hay otra sala del archivo y en la pared la sombra de alguien que te estaba esperando."
+ },
+ "e02": {
+  "wer": 0.0,
+  "intentos": 2,
+  "ok": true,
+  "transcripcion": " has leído bien, visitante. Por eso te dejaré marchar. Pero llévate esto. En mi archivo  hay un libro con tu nombre. |  y todavía no has leído el final."
+ },
+ "e03": {
+  "wer": 0.118,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " La sombra desaparece. Sobre la tri queda un libro cerrado.  En la portada, una sola palabra, museo."
+ },
+ "f01": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Verde rojo y azul. Tiempo. Trece. La llave de plata.  ¿Cuántas cerraduras has abierto tú antes de que se apagara la vela? |  Cuéntalo en los comentarios."
+ },
+ "f02": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " El miércoles, una nueva sala, el museo que miente."
+ }
+}
