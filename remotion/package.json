@@ -1,0 +1,19 @@
+{
+  "name": "mask-remotion",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Motor de escenas MASK GROUP (Remotion). Prototipo ENIGMA 60.",
+  "scripts": {
+    "render:e60-proto": "remotion render src/index.ts E60CincoSellosProto out/e60_cinco_sellos_proto.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.543",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.543"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.31",
+    "typescript": "7.0.2"
+  }
+}

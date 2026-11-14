@@ -1,0 +1,57 @@
+{
+ "voz": {
+  "modelo": "Kokoro-82M (Apache 2.0)",
+  "voz": "em_alex",
+  "velocidad": 0.95
+ },
+ "pistas": {
+  "v01_llegas_tarde": {
+   "texto": "Llegas tarde.",
+   "segundos": 0.999
+  },
+  "v02_archivo_cerrado": {
+   "texto": "El archivo acaba de cerrarse contigo dentro.",
+   "segundos": 2.787
+  },
+  "v03_ranuras_sellos": {
+   "texto": "Tres ranuras. Cinco sellos.",
+   "segundos": 1.825
+  },
+  "v04_una_combinacion": {
+   "texto": "Solo una combinación abre.",
+   "segundos": 1.767
+  },
+  "sfx_bisagra": {
+   "segundos": 1.1,
+   "origen": "sintetizado (numpy)"
+  },
+  "sfx_golpe": {
+   "segundos": 1.6,
+   "origen": "sintetizado (numpy)"
+  },
+  "sfx_click_a": {
+   "segundos": 0.35,
+   "origen": "sintetizado (numpy)"
+  },
+  "sfx_click_b": {
+   "segundos": 0.35,
+   "origen": "sintetizado (numpy)"
+  },
+  "sfx_click_c": {
+   "segundos": 0.35,
+   "origen": "sintetizado (numpy)"
+  },
+  "sfx_polvo": {
+   "segundos": 2.4,
+   "origen": "sintetizado (numpy)"
+  },
+  "sfx_ambiente": {
+   "segundos": 14.0,
+   "origen": "sintetizado (numpy)"
+  },
+  "sfx_aire": {
+   "segundos": 1.4,
+   "origen": "sintetizado (numpy)"
+  }
+ }
+}
