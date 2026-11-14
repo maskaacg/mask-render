@@ -1,7 +1,11 @@
 name: MASK GROUP - Render Remotion (prototipo)
-run-name: render-remotion ${{ inputs.encargo_id }}
-# Solo se lanza a mano o desde n8n (workflow_dispatch). No publica ni sube a Drive.
+run-name: ${{ inputs.encargo_id && format('render-remotion {0}', inputs.encargo_id) || github.event.head_commit.message }}
+# Se lanza cuando n8n deja un encargo en remotion/encargos/ de esta rama (o a mano).
+# No publica ni sube a Drive.
 on:
+  push:
+    branches: [feat/remotion-motor-20261114]
+    paths: ['remotion/encargos/*.json']
   workflow_dispatch:
     inputs:
       encargo_id:
@@ -10,7 +14,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: mask-remotion-${{ inputs.encargo_id }}
+  group: mask-remotion-${{ github.sha }}
   cancel-in-progress: false
 jobs:
   render:
@@ -21,6 +25,17 @@ jobs:
         working-directory: remotion
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Identificar el encargo
+        run: |
+          ID="${{ inputs.encargo_id }}"
+          if [ -z "$ID" ]; then
+            F=$(git diff --name-only HEAD~1 HEAD -- encargos | head -1)
+            ID=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['encargo_id'])" "${F#remotion/}")
+          fi
+          echo "$ID" | grep -Eq '^[A-Za-z0-9._-]{4,80}$' || { echo "ID no válido"; exit 1; }
+          echo "ENCARGO_ID=$ID" >> "$GITHUB_ENV"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -55,11 +70,11 @@ jobs:
             --browser-executable="$(which google-chrome)" --chrome-mode=chrome-for-testing \
             --codec=h264 --crf=18
       - name: Masterizado y QA técnica
-        run: python tools/finalize_qa.py --entrada out/raw.mp4 --id "${{ inputs.encargo_id }}" --salida final
+        run: python tools/finalize_qa.py --entrada out/raw.mp4 --id "$ENCARGO_ID" --salida final
       - name: Retener MP4 en GitHub hasta aprobación humana
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.encargo_id }}
+          name: ${{ env.ENCARGO_ID }}
           path: |
             remotion/final/*.mp4
             remotion/final/*.qa.json
