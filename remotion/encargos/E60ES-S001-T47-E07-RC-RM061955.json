@@ -1,0 +1,10 @@
+{
+ "encargo_id": "E60ES-S001-T47-E07-RC-RM061955",
+ "composicion": "E60Corto",
+ "ficha": "fichas/E60-2026-11-22-corto.json",
+ "fecha": "2026-11-22",
+ "titulo": "Los símbolos del espejo",
+ "modo": "puzle",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "solicitado_por": "n8n WF-RENDER-REMOTION-CORTOS"
+}
