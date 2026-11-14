@@ -5,6 +5,7 @@ import {CincoSellosProto} from './episodes/CincoSellosProto';
 import {ShortEpisode} from './shorts/ShortEpisode';
 import {Props, planificar} from './shorts/timeline';
 import {CortoPlano} from './plano/CortoPlano';
+import {E60Estilo10} from './style/Estilos10';
 import {E60Estilo} from './style/Estilos';
 import fichaEjemplo from '../fichas/E60-2026-11-16-corto.json';
 
@@ -54,6 +55,7 @@ export const RemotionRoot: React.FC = () => (
 				height: props.ficha.alto,
 			})}
 		/>
+		<Composition id="E60Estilo10" component={E60Estilo10} defaultProps={{estilo: 'isla3d' as const}} fps={30} width={1080} height={1920} durationInFrames={30} />
 		<Composition id="E60Estilo" component={E60Estilo} defaultProps={{estilo: 'plano' as const}} fps={30} width={1080} height={1920} durationInFrames={30} />
 	</>
 );

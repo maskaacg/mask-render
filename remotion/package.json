@@ -7,11 +7,15 @@
     "render:e60-proto": "remotion render src/index.ts E60CincoSellosProto out/e60_cinco_sellos_proto.mp4"
   },
   "dependencies": {
+    "@react-three/fiber": "8.17.10",
     "@remotion/cli": "4.0.543",
     "@remotion/fonts": "4.0.543",
+    "@remotion/three": "4.0.543",
+    "@types/three": "0.171.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "remotion": "4.0.543"
+    "remotion": "4.0.543",
+    "three": "0.171.0"
   },
   "devDependencies": {
     "@types/react": "18.3.31",
