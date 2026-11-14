@@ -220,8 +220,8 @@ jobs:
           ls -la final
       - name: Hoja de contactos para la QA visual (un fotograma cada 4 s)
         run: |
-          W=$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=p=0 final/$ID.mp4)
-          H=$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=p=0 final/$ID.mp4)
+          W=$(ffprobe -v error -select_streams v:0 -show_entries stream=width -of default=nw=1:nk=1 final/$ID.mp4 | head -1 | tr -dc 0-9)
+          H=$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of default=nw=1:nk=1 final/$ID.mp4 | head -1 | tr -dc 0-9)
           if [ "$W" -gt "$H" ]; then T="scale=480:270,tile=6x8"; else T="scale=180:320,tile=12x3"; fi
           ffmpeg -hide_banner -loglevel error -y -i final/$ID.mp4 -vf "fps=1/4,$T" -q:v 4 final/$ID-hoja-%02d.jpg
           ls final/*hoja*
