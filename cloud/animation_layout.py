@@ -71,9 +71,9 @@ class CaptionLayout:
 
 
 def caption_layout(text:str,bounds:tuple[int,int,int,int], min_font:int=22,
-                   max_font:int=40, padding:int=18)->CaptionLayout:
+                   max_font:int=40, padding:int=18, canvas:tuple[int,int]=CANVAS)->CaptionLayout:
     x0,y0,x1,y1=map(int,bounds)
-    W,H=CANVAS
+    W,H=canvas
     if not (0<=x0<x1<=W and 0<=y0<y1<=H):raise ValueError('recuadro fuera del vídeo')
     usable_w=x1-x0-2*padding
     usable_h=y1-y0-2*padding
@@ -90,7 +90,7 @@ def caption_layout(text:str,bounds:tuple[int,int,int,int], min_font:int=22,
 
 def draw_caption(frame:Image.Image, text:str, bounds:tuple[int,int,int,int]=(48,1050,672,1190),
                  min_font:int=22,max_font:int=38)->CaptionLayout:
-    lay=caption_layout(text,bounds,min_font,max_font)
+    lay=caption_layout(text,bounds,min_font,max_font,canvas=frame.size)
     d=ImageDraw.Draw(frame,'RGBA')
     d.rounded_rectangle(bounds,radius=20,fill=(4,17,24,236),outline=(220,181,112,225),width=3)
     x0,y0,x1,y1=bounds
@@ -147,7 +147,7 @@ def validate_animation_spec(spec:dict[str,Any])->list[str]:
         if typ not in ACTION_TYPES:raise ValueError(f'ACCION_NO_PERMITIDA:{typ}')
         obj=str(m.get('objeto','')).strip()
         if not obj:raise ValueError('OBJETO_SIN_NOMBRE')
-        ids.add(obj)
+        if typ != "caption": ids.add(obj)
         st=float(m.get('inicio',-1)); en=float(m.get('fin',-1))
         if not(0<=st<en<=600):raise ValueError('DURACION_ANIMACION_INVALIDA')
         if m.get('codigo') or m.get('script') or m.get('eval'):
@@ -156,5 +156,64 @@ def validate_animation_spec(spec:dict[str,Any])->list[str]:
     caption=spec.get('subtitulo',{})
     if caption:
         if not isinstance(caption,dict):raise ValueError('subtitulo inválido')
-        caption_layout(str(caption.get('texto','')),tuple(caption.get('recuadro',(48,1050,672,1190))))
+        caption_layout(str(caption.get('texto','')),tuple(caption.get('recuadro',(48,1050,672,1190))), canvas=tuple(spec.get('canvas', CANVAS)))
     return sorted(ids)
+
+
+def animate_scene(frame:Image.Image,spec:dict[str,Any],t:float)->Image.Image:
+    """Renderiza acciones controladas sobre un fondo original. No mueve la cámara.
+
+    Acciones permitidas: puerta que cierra, engranaje, fichas insertadas/rechazadas,
+    luces, tarjeta, contador. Cada una cambia de estado durante su intervalo.
+    La narración y los subtítulos son una capa independiente del encuadre.
+    """
+    local={**spec, 'canvas':list(frame.size)}
+    validate_animation_spec(local)
+    frame=frame.convert('RGBA')
+    w,h=frame.size
+    for idx,m in enumerate(spec['movimientos']):
+        typ=m['tipo'];start=float(m['inicio']);end=float(m['fin'])
+        if t<start and typ not in ('door_close','door_open'):
+            continue
+        u=progress(t,start,end)
+        anchor_x=int(w*(.24 + .18*(idx%3)))
+        anchor_y=int(h*(.40 + .11*(idx%2)))
+        if typ in ('door_close','door_open'):
+            # Puerta ligada al lateral, sin desplazar el escenario ni reiniciar.
+            door_panel(frame,t,hinge=(int(w*.13),int(h*.26)),
+                       height=int(h*.48),width=int(w*.54),direction=('close' if typ=='door_close' else 'open'),start=start,end=end)
+            continue
+        d=ImageDraw.Draw(frame,'RGBA')
+        if typ=='gear_spin':
+            cx,cy=int(w*.5),int(h*.43);ang=u*2*pi
+            d.ellipse((cx-58,cy-58,cx+58,cy+58),fill=(11,30,36,240),outline=(219,181,111,250),width=7)
+            for k in range(12):
+                a=ang+2*pi*k/12
+                d.line((cx+38*cos(a),cy+38*sin(a),cx+67*cos(a),cy+67*sin(a)),fill=(216,175,102,255),width=12)
+            d.ellipse((cx-17,cy-17,cx+17,cy+17),fill=(239,212,147,255))
+        elif typ in ('symbol_insert','symbol_reject'):
+            d_x=int((1-u)*w*.22)*(1 if typ=='symbol_insert' else -1)
+            xx=anchor_x-d_x;yy=anchor_y+int((1-u)*26)
+            color=(221,185,112,255) if typ=='symbol_insert' else (198,90,74,255)
+            d.rounded_rectangle((xx-46,yy-48,xx+46,yy+48),radius=15,fill=(13,43,49,248),outline=color,width=4)
+            mark='✦' if typ=='symbol_insert' else '×'
+            d.text((xx-16,yy-25),mark,font=_font(39),fill=color)
+        elif typ=='light_pulse':
+            alpha=int(65*(sin(u*pi)**2))
+            d.ellipse((anchor_x-95,anchor_y-95,anchor_x+95,anchor_y+95),fill=(231,188,99,alpha))
+        elif typ=='card_reveal':
+            xx,yy=int(w*.17),int(h*.38)+int((1-u)*90)
+            d.rounded_rectangle((xx,yy,xx+int(w*.66),yy+int(h*.22)),radius=18,
+                                fill=(211,191,153,int(245*u)),outline=(242,217,166,int(250*u)),width=3)
+        elif typ=='counter_tick':
+            count=int(round(60+(2-60)*u));txt=str(count)
+            d.rounded_rectangle((anchor_x-56,anchor_y-61,anchor_x+76,anchor_y+82),radius=15,fill=(9,39,44,235),outline=(213,180,113,245),width=3)
+            d.text((anchor_x-40,anchor_y-35),txt,font=_font(56),fill=(240,225,170,255))
+        elif typ=='caption':
+            # Es una acción de texto, no cuenta como objeto móvil independiente.
+            pass
+    subtitle=spec.get('subtitulo') or {}
+    if subtitle and str(subtitle.get('texto','')).strip():
+        bounds=tuple(subtitle.get('recuadro',([48,1050,672,1190] if h>w else [85,580,w-85,h-45])))
+        draw_caption(frame,str(subtitle['texto']),bounds)
+    return frame
