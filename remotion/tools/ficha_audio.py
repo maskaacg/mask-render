@@ -47,7 +47,63 @@ def latch():
     return A.norm(A.click(900) * 0.6 + A.click(1400) * 0.4, 0.7)
 
 
+def sonar():
+    # ping lejano con eco (kit submarino)
+    tt = A.t(3.2)
+    x = np.zeros(len(tt))
+    for k, (dly, g) in enumerate([(0, 1), (0.9, 0.35), (1.8, 0.12)]):
+        n0 = int(dly * SR)
+        tk = tt[: len(tt) - n0]
+        x[n0:] += np.sin(2 * np.pi * 1180 * tk) * A.env(len(tk), 0.004, 0.55) * g
+    return A.norm(x, 0.35)
+
+
+def gota():
+    tt = A.t(0.35)
+    f = 900 + 1400 * np.exp(-tt * 40)
+    x = np.sin(2 * np.pi * np.cumsum(f) / SR) * A.env(len(tt), 0.001, 0.06)
+    return A.norm(x, 0.4)
+
+
+def casco():
+    # gemido grave del casco bajo presión
+    tt = A.t(3.0)
+    f = 62 + 14 * np.sin(2 * np.pi * 0.7 * tt)
+    x = np.sin(2 * np.pi * np.cumsum(f) / SR) + 0.4 * np.sin(2 * np.pi * np.cumsum(f * 2.01) / SR)
+    x += A.lowpass(A.rng.standard_normal(len(tt)), 0.01) * 3
+    x *= np.sin(np.pi * tt / 3.0) ** 2
+    return A.norm(x, 0.55)
+
+
+def logo():
+    # logo sonoro E60: tres notas plateadas (mi, si, mi agudo)
+    tt = A.t(2.4)
+    x = np.zeros(len(tt))
+    for k, f in enumerate([329.63, 493.88, 659.25]):
+        n0 = int(k * 0.22 * SR)
+        tk = tt[: len(tt) - n0]
+        x[n0:] += (np.sin(2 * np.pi * f * tk) + 0.3 * np.sin(2 * np.pi * 2 * f * tk)) * A.env(len(tk), 0.004, 0.9)
+    return A.norm(x, 0.5)
+
+
+def burbujas():
+    tt = A.t(2.6)
+    x = np.zeros(len(tt))
+    for k in range(26):
+        n0 = int(A.rng.random() * (len(tt) - 6000))
+        d = 0.04 + 0.05 * A.rng.random()
+        tk = A.t(d)
+        f = (500 + 900 * A.rng.random()) * (1 + 2.5 * tk / d)
+        x[n0:n0 + len(tk)] += np.sin(2 * np.pi * np.cumsum(f) / SR) * A.env(len(tk), 0.002, d / 2)
+    return A.norm(x * (1 - tt / 2.6 * 0.6), 0.4)
+
+
 SFX = {
+    "sonar": sonar,
+    "gota": gota,
+    "casco": casco,
+    "logo": logo,
+    "burbujas": burbujas,
     "ambiente": lambda: A.ambience(120),
     "tic": tick,
     "campana": chime,

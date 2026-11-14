@@ -1,0 +1,41 @@
+{
+ "id": "E60-PROTO-diorama-01",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto_historia",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "sala": 1,
+ "titulo": "La sala de lastre",
+ "aventura": "Profundidad 600",
+ "estilo": "Diorama E60 (propuesta 14/11/2026, pendiente de aprobación)",
+ "kit": "submarino",
+ "pensar_s": 15,
+ "puzle": {
+  "tipo": "manometros",
+  "enunciado": "A = 2·B; C = B + 3; A + B + C = 19",
+  "respuesta": [8, 4, 7]
+ },
+ "lineas": [
+  {"fase": "gancho", "id": "g01", "texto": "Seiscientos metros bajo el mar. Y el agua ya te llega a los tobillos."},
+  {"fase": "escena", "id": "e01", "texto": "La escotilla solo se abre con el código de los tres tanques de lastre. Pero los manómetros están rotos: sus agujas no paran de bailar."},
+  {"fase": "pista", "id": "p01", "texto": "Primera pista: el manómetro A marca el doble que el B."},
+  {"fase": "pista", "id": "p02", "texto": "Segunda: el C marca tres más que el B."},
+  {"fase": "pista", "id": "p03", "texto": "Tercera: entre los tres suman diecinueve."},
+  {"fase": "pregunta", "id": "q01", "texto": "¿Qué marca cada manómetro? Ese es el código. Tienes quince segundos."},
+  {"fase": "solucion", "id": "s01", "texto": "Ocho, cuatro, siete."},
+  {"fase": "solucion", "id": "s02", "texto": "Si B es una caja, A son dos cajas, y C es una caja más tres. Cuatro cajas y tres hacen diecinueve: cada caja vale cuatro."},
+  {"fase": "giro", "id": "t01", "texto": "La escotilla se abre… pero el submarino no sube. Alguien ha cerrado el siguiente mamparo desde dentro."},
+  {"fase": "cta", "id": "c01", "texto": "¿Tenías el código? Escríbelo en los comentarios. Mañana, el mamparo."}
+ ],
+ "pistas": [
+  {"id": "p01", "texto": "A = el doble de B", "objetivo": "A"},
+  {"id": "p02", "texto": "C = B + 3", "objetivo": "C"},
+  {"id": "p03", "texto": "A + B + C = 19", "objetivo": "placa"}
+ ],
+ "megapuzle": {"pista": "M1", "forma": "número rayado en una taquilla, destello violeta", "valor": "6"},
+ "estado": "PROTOTIPO_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 14/11/2026: B=x; 2x + x + (x+3) = 19 → x = 4; A=8, B=4, C=7. Comprobado: 8=2·4, 7=4+3, 8+4+7=19. Sistema lineal, solución única."
+}

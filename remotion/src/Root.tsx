@@ -11,6 +11,9 @@ import fichaProto from '../fichas/E60-PROTO-historia-01.json';
 import {E60Estilo10} from './style/Estilos10';
 import {E60Estilo} from './style/Estilos';
 import fichaEjemplo from '../fichas/E60-2026-11-16-corto.json';
+import {Diorama} from './diorama/Diorama';
+import {PropsD, planificarD} from './diorama/plan';
+import fichaDiorama from '../fichas/E60-PROTO-diorama-01.json';
 
 // Props de ejemplo para el Studio; en producción llegan con --props=out/props_<id>.json
 const ejemplo: Props = {
@@ -68,6 +71,21 @@ export const RemotionRoot: React.FC = () => (
 			durationInFrames={30 * 90}
 			calculateMetadata={({props}) => ({
 				durationInFrames: Math.ceil(planificarH(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60Diorama"
+			component={Diorama}
+			defaultProps={{ficha: fichaDiorama as unknown as PropsD['ficha'], duraciones: {}} as PropsD}
+			fps={30}
+			width={1080}
+			height={1920}
+			durationInFrames={30 * 90}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarD(props).total * props.ficha.fps),
 				fps: props.ficha.fps,
 				width: props.ficha.ancho,
 				height: props.ficha.alto,
