@@ -1,0 +1,11 @@
+{
+ "encargo_id": "E60ES-PROTO-HISTORIA-01-RM074509",
+ "video_id": "E60ES-PROTO-HISTORIA-01",
+ "version": "v1",
+ "composicion": "E60Historia",
+ "ficha": "fichas/E60-PROTO-historia-01.json",
+ "titulo": "El reloj de la torre",
+ "modo": "prototipo",
+ "estado": "PROTOTIPO_PENDIENTE_APROBACION",
+ "solicitado_por": "n8n WF-RENDER-REMOTION-CORTOS"
+}
