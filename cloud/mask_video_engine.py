@@ -6,6 +6,7 @@ from visuals import paint
 from soundscape import create as create_soundscape
 from cinematic_v4 import paint_cinematic,paint_overlay,create_audio
 from media_quality import audit as audit_media
+from animation_layout import animate_scene,validate_animation_spec
 
 BASE=pathlib.Path(__file__).resolve().parents[1]
 OUT=BASE/"out";OUT.mkdir(exist_ok=True)
@@ -68,6 +69,12 @@ def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None,frame=None):
   return out
  if scene.get("visual"):
   bg=paint(bg,str(scene.get("visual")),frame or 0,10,phase)
+ if (job.get("editorial") or {}).get("animacion_guia")=="MG-ANIM-2.2" and scene.get("animacion"):
+  m={**scene["animacion"],"subtitulo":scene.get("subtitulo") or {},"canvas":[w,h]}
+  validate_animation_spec(m)
+  bg=animate_scene(bg,m,(frame or 0)/8.0)
+  bg.convert("RGB").save(out)
+  return out
  d=ImageDraw.Draw(bg,"RGBA")
  if scene.get("color_extra"):
   colors=["#e87bb0","#7cddf1","#8bdf91","#ffc769"]
@@ -124,7 +131,13 @@ def draw_screen(job,scene,n,phase,shown,w,h,theme,timer=None,frame=None):
  d.text((x,int(h*.95)),f"MASK GROUP • {n+1}/{len(job['escenas'])}",font=font(17),fill="#b1bfd0")
  bg.save(out)
  return out
-def render_screen(job,scene,n,phase,shown,w,h,theme):
+def render_screen(job,scene,n,phase,shown,w,h,theme,duration=None):
+ if (job.get("editorial") or {}).get("animacion_guia")=="MG-ANIM-2.2" and scene.get("animacion"):
+  if duration is None or not 1<=duration<=300:raise ValueError("DURACION_ANIMACION_NO_VALIDADA")
+  if any(float(m.get("fin",0))>duration+.5 for m in scene["animacion"].get("movimientos",[])):raise ValueError("ACCION_FUERA_DURACION_ESCENA")
+  count=max(16,min(1200,math.ceil(duration*8)))
+  for k in range(count):draw_screen(job,scene,n,phase,shown,w,h,theme,frame=k)
+  return OUT/f"img_{n:03}_{phase}_f%02d.png"
  if scene.get("visual"):
   for k in range(16 if scene.get("cinematico_v4") else 10): draw_screen(job,scene,n,phase,shown,w,h,theme,frame=k)
   return OUT/f"img_{n:03}_{phase}_f%02d.png"
@@ -178,6 +191,14 @@ def main():
  wide=fmt in ("horizontal","16:9","largo","landscape")
  w,h=(1280,720) if wide else (720,1280)
  parts=[];estimated=0;puzzles=0;cine_cues=[]
+ if (job.get("editorial") or {}).get("animacion_guia")=="MG-ANIM-2.2":
+  mdl=BASE/"models"/"es_ES-davefx-medium.onnx"
+  if lang=="es" and not mdl.is_file() and not all(
+       (sc.get("audio_path") and sc.get("audio_respuesta_path")) if norm(sc.get("tipo","")) in ("PUZLE","PUZZLE","ACERTIJO","RETO")
+       else sc.get("audio_path") for sc in scenes):
+   raise ValueError("VOZ_NATURAL_NO_DISPONIBLE: NO espeak EN EL NUEVO MOTOR")
+  if not all(isinstance(sc.get("animacion"),dict) for sc in scenes):raise ValueError("ESCENA_SIN_ACCIONES_FISICAS")
+  if not all(sc.get("subtitulo") for sc in scenes):raise ValueError("ESCENA_SIN_SUBTITULO_SEGURO")
  if job.get("cine_v4"):
   if not all(z.get("cinematico_v4") for z in scenes) or sum(norm(z.get("tipo","")) in ("PUZLE","PUZZLE","ACERTIJO","RETO") for z in scenes)!=1:
    raise ValueError("CINE_V4_SECUENCIA_INVALIDA")
@@ -188,11 +209,11 @@ def main():
   if typ in ("PUZLE","PUZZLE","ACERTIJO","RETO"):
    puzzles+=1
    question=str(s.get("pantalla") or s.get("enunciado") or "").strip()
-   spoken=str(s.get("enunciado") or question)
+   spoken=str((s.get("voz_off") if (job.get("editorial") or {}).get("animacion_guia")=="MG-ANIM-2.2" else None) or s.get("enunciado") or question)
    answer=str(s.get("respuesta") or "").strip();why=str(s.get("explicacion") or "").strip()
    if not question or not answer or not why:raise ValueError("PUZLE_INCOMPLETO")
    audio=voice(spoken,s,i,"question",lang);sec=max(3.5,seconds(audio)+.7)
-   img=render_screen(job,s,i,"puzzle",question,w,h,THEMES[channel])
+   img=render_screen(job,s,i,"puzzle",question,w,h,THEMES[channel],duration=sec)
    parts.append(clip(img,audio,sec,OUT/f"{i:03}_question.mp4",w,h));estimated+=sec
    delay=int(s.get("pensar",12))
    if not 3<=delay<=30:raise ValueError("CUENTA_ATRAS_INVALIDA")
@@ -201,14 +222,14 @@ def main():
    parts.append(countdown(images,OUT/f"{i:03}_countdown.mp4",w,h,delay));estimated+=delay
    if job.get("cine_v4"):cine_cues.append({"name":"reveal","at":estimated})
    audio=voice(answer+". "+why,s,i,"answer",lang);sec=max(3.5,seconds(audio)+.7)
-   img=render_screen(job,s,i,"answer",answer+"\n\n"+why,w,h,THEMES[channel])
+   img=render_screen(job,s,i,"answer",answer+"\n\n"+why,w,h,THEMES[channel],duration=sec)
    parts.append(clip(img,audio,sec,OUT/f"{i:03}_answer.mp4",w,h));estimated+=sec
   else:
    shown=str(s.get("pantalla") or s.get("texto") or s.get("narracion") or "").strip()
-   narration=str(s.get("texto") or s.get("narracion") or shown).strip()
+   narration=str((s.get("voz_off") if (job.get("editorial") or {}).get("animacion_guia")=="MG-ANIM-2.2" else None) or s.get("texto") or s.get("narracion") or shown).strip()
    if not shown or not narration:raise ValueError("ESCENA_INCOMPLETA")
    audio=voice(narration,s,i,"scene",lang);sec=max(3.5,seconds(audio)+.7)
-   img=render_screen(job,s,i,"scene",shown,w,h,THEMES[channel])
+   img=render_screen(job,s,i,"scene",shown,w,h,THEMES[channel],duration=sec)
    parts.append(clip(img,audio,sec,OUT/f"{i:03}_scene.mp4",w,h));estimated+=sec
   if estimated>int(os.getenv("MAX_RENDER_SECONDS","1800")):raise ValueError("VIDEO_SUPERA_LIMITE_DURACION")
  requisitos=job.get("correcciones_requeridas") or []
@@ -221,7 +242,7 @@ def main():
   if requisito=="musica_y_efectos":
    controles[requisito]=bool(job.get("audio_ambiente_original"))
   elif requisito=="animacion_original":
-   controles[requisito]=all(bool(s.get("visual")) for s in scenes)
+   controles[requisito]=all(bool(s.get("visual") or s.get("animacion")) for s in scenes)
   elif requisito=="texto_compacto":
    controles[requisito]=any(bool(s.get("tarjeta_compacta")) for s in scenes) and all(bool(s.get("tarjeta_compacta")) for s in scenes if norm(s.get("tipo","")) in ("PUZLE","PUZZLE","ACERTIJO","RETO"))
   elif requisito=="subtitulos_discretos":
@@ -254,6 +275,9 @@ def main():
      "titulo":job.get("titulo") or eid,"descripcion":job.get("descripcion") or "Pendiente revisión editorial","hashtags":job.get("hashtags") or [],
      "fuentes_licencias":"Assets locales/procedurales; revisar derechos","riesgos":"Revisión editorial y de soluciones pendiente","aprobacion_publicacion":False,"revision_humana_pendiente":True,
      "motor":"MASK_ENGINE_V3_ILLUSTRATIONS_ORIGINAL_AUDIO","audio_original":bool(job.get("audio_ambiente_original")),"fallos":[]}
+ if (job.get("editorial") or {}).get("animacion_guia")=="MG-ANIM-2.2":
+  qa["control_animacion_fisica"]={"validacion_declarativa":True,"tipos":sorted(set(m.get("tipo") for s in scenes for m in s.get("animacion",{}).get("movimientos",[]))),"subtitulos_con_geometria":True,"voz_natural_requerida":True,"revisar_mp4_real":True}
+  qa["riesgos"]="Pendiente escucha humana y QA por fotograma antes de publicar"
  qa["control_correcciones"]={"requisitos":controles,"tecnicamente_aplicados":all(controles.values()),"solicitud":(job.get("correccion") or {}).get("solicitud"),"solo_tecnico":True}
  if job.get("cine_v4"):
   qa["motor"]="MASK_ENGINE_V4_CINEMATIC_SHEEP"
