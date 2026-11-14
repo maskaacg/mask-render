@@ -7,6 +7,8 @@
  "alto": 1920,
  "fps": 30,
  "titulo": "Los símbolos del espejo",
+ "numero": 7,
+ "escena": "espejos",
  "modo": "puzle",
  "pensar_s": 15,
  "tinte": "#7a9a7a",

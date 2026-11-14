@@ -7,6 +7,8 @@
  "alto": 1920,
  "fps": 30,
  "titulo": "El Archivo de las Sombras: las tres gemas",
+ "numero": 6,
+ "escena": "archivo",
  "modo": "avance",
  "pensar_s": 6,
  "tinte": "#a04a5a",

@@ -7,6 +7,8 @@
  "alto": 1920,
  "fps": 30,
  "titulo": "Las tres cajas fuertes",
+ "numero": 2,
+ "escena": "camara",
  "modo": "puzle",
  "pensar_s": 15,
  "tinte": "#5a8fb8",

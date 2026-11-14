@@ -7,6 +7,8 @@
  "alto": 1920,
  "fps": 30,
  "titulo": "El taller de los engranajes",
+ "numero": 1,
+ "escena": "taller",
  "modo": "puzle",
  "pensar_s": 15,
  "tinte": "#c98a3a",

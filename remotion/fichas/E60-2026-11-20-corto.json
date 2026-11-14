@@ -7,6 +7,8 @@
  "alto": 1920,
  "fps": 30,
  "titulo": "Las cuatro velas",
+ "numero": 5,
+ "escena": "capilla",
  "modo": "puzle",
  "pensar_s": 15,
  "tinte": "#d9a441",

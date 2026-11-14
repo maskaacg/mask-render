@@ -7,6 +7,8 @@
  "alto": 1920,
  "fps": 30,
  "titulo": "La balanza del sótano",
+ "numero": 4,
+ "escena": "sotano",
  "modo": "puzle",
  "pensar_s": 15,
  "tinte": "#b8963a",

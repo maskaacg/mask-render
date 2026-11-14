@@ -4,6 +4,8 @@ import spec from './episodes/e60_cinco_sellos_proto.json';
 import {CincoSellosProto} from './episodes/CincoSellosProto';
 import {ShortEpisode} from './shorts/ShortEpisode';
 import {Props, planificar} from './shorts/timeline';
+import {CortoPlano} from './plano/CortoPlano';
+import {E60Estilo} from './style/Estilos';
 import fichaEjemplo from '../fichas/E60-2026-11-16-corto.json';
 
 // Props de ejemplo para el Studio; en producción llegan con --props=out/props_<id>.json
@@ -37,5 +39,21 @@ export const RemotionRoot: React.FC = () => (
 				height: props.ficha.alto,
 			})}
 		/>
+		<Composition
+			id="E60CortoPlano"
+			component={CortoPlano}
+			defaultProps={ejemplo}
+			fps={30}
+			width={1080}
+			height={1920}
+			durationInFrames={30 * 60}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificar(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition id="E60Estilo" component={E60Estilo} defaultProps={{estilo: 'plano' as const}} fps={30} width={1080} height={1920} durationInFrames={30} />
 	</>
 );
