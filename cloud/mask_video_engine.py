@@ -5,6 +5,7 @@ from PIL import Image,ImageDraw,ImageFont
 from visuals import paint
 from soundscape import create as create_soundscape
 from cinematic_v4 import paint_cinematic,paint_overlay,create_audio
+from media_quality import audit as audit_media
 
 BASE=pathlib.Path(__file__).resolve().parents[1]
 OUT=BASE/"out";OUT.mkdir(exist_ok=True)
@@ -237,7 +238,11 @@ def main():
   else:create_soundscape(soundtrack)
   tmp=OUT/(eid+"_audio_mix.mp4")
   dur=seconds(movie)
-  fc="[0:a]volume=1.32,acompressor=threshold=0.09:ratio=2:attack=12:release=120[voz];[1:a]volume=0.27[mus];[voz][mus]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]"
+  if job.get("cine_v4") or (job.get("editorial") or {}).get("version_guia")=="E60-MISTERIO-2.1":
+   # Mezcla audible en pausas, ducking musical automatico al hablar
+   fc="[0:a]volume=1.20,acompressor=threshold=0.09:ratio=2:attack=12:release=120[voz];[1:a]volume=3.1[mus0];[mus0][voz]sidechaincompress=threshold=0.016:ratio=12:attack=20:release=280[mus];[voz][mus]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]"
+  else:
+   fc="[0:a]volume=1.32,acompressor=threshold=0.09:ratio=2:attack=12:release=120[voz];[1:a]volume=0.27[mus];[voz][mus]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]"
   run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(movie),"-stream_loop","-1","-i",str(soundtrack),
        "-filter_complex",fc,"-map","0:v:0","-map","[a]","-c:v","copy","-c:a","aac","-b:a","160k",
        "-movflags","+faststart","-t",str(dur),str(tmp)])
@@ -253,6 +258,17 @@ def main():
  if job.get("cine_v4"):
   qa["motor"]="MASK_ENGINE_V4_CINEMATIC_SHEEP"
   qa["control_cinematografico"]={"escenas_cine":sum(bool(sc.get("cinematico_v4")) for sc in scenes),"reutiliza_escenario":True,"music_original":bool(job.get("audio_ambiente_original")),"sfx_programados":[{"tipo":c["name"],"segundo":round(c["at"],1)} for c in cine_cues],"cuenta_atras_ambientada":any(c["name"]=="countdown" for c in cine_cues),"solo_tecnico":True}
+ # Medir MP4 real: no basta con banderas en JSON. Solo requiere esta auditoria en v2.1/V4.
+ if job.get("cine_v4") or (job.get("editorial") or {}).get("version_guia")=="E60-MISTERIO-2.1":
+  try:
+   med=audit_media(movie,cine_cues if job.get("cine_v4") else [])
+   qa["media_audit"]=med
+   if not med.get("apto_tecnicamente"):
+    qa["veredicto"]="QA_FAIL"
+    qa["fallos"].extend(["MEDIA_"+k.upper() for k,v in med.get("comprobaciones",{}).items() if not v])
+  except Exception as exc:
+   qa["veredicto"]="QA_FAIL";qa["fallos"].append("MEDIA_AUDIT_ERROR")
+   qa["media_audit"]={"error":str(exc)[:300],"apto_tecnicamente":False}
  (OUT/(eid+".qa.json")).write_text(json.dumps(qa,ensure_ascii=False,indent=2))
  print(json.dumps({"video":str(movie),"sha256":sha,"duracion_s":real}))
 if __name__=="__main__":
