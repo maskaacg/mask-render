@@ -1,0 +1,9 @@
+{
+ "encargo_id": "E60ES-PROTO-DIORAMA-01-20261114-133223",
+ "composicion": "E60Diorama",
+ "ficha": "fichas/E60-PROTO-diorama-01.json",
+ "estado": "PROTOTIPO_PENDIENTE_APROBACION",
+ "estilo": "Diorama E60 (propuesta)",
+ "solicitado_por": "n8n WF-TEST-REMOTION-02",
+ "fecha": "2026-11-14T13:32:23.904+01:00"
+}
