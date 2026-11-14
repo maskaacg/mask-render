@@ -45,7 +45,7 @@ const PLANOS: Record<string, {pos: V3; mira: V3; fov: number}> = {
 	suelo: {pos: [-1.1, 2.0, 0.95], mira: [-2.75, 0.0, 0.15], fov: 70},
 	escudos: {pos: [-0.3, 1.85, 0.5], mira: [-3.4, 0.7, 0.05], fov: 84},
 	ganchos: {pos: [-1.6, 1.6, 0.1], mira: [-4.1, 1.85, 0.0], fov: 66},
-	puerta: {pos: [0, 1.6, 0.4], mira: [0, 1.9, -4.1], fov: 76},
+	puerta: {pos: [0, 1.45, -0.9], mira: [0, 1.25, -4.1], fov: 62},
 };
 
 export const AvanceTorre: React.FC<PropsT> = (props) => {
@@ -104,7 +104,7 @@ export const AvanceTorre: React.FC<PropsT> = (props) => {
 			{linea && linea.fase !== 'archivera' && <Subtitulo texto={linea.texto} inicio={L[linea.id].inicio} fin={L[linea.id].fin} t={t} />}
 			{linea && linea.fase === 'archivera' && (
 				<div style={{position: 'absolute', top: 1160, left: 80, right: 80, display: 'flex', justifyContent: 'center', opacity: ventana(L[linea.id], 0.1, 0.2)}}>
-					<div style={{background: 'rgba(20,21,26,0.78)', border: `2px solid ${E60.violeta}`, borderRadius: 14, padding: '14px 30px', fontFamily: OSWALD, fontWeight: 500, fontSize: 58, color: E60.violeta, textAlign: 'center'}}>
+					<div style={{background: 'rgba(16,17,21,0.92)', border: `2px solid ${E60.violeta}`, borderRadius: 14, padding: '14px 30px', fontFamily: OSWALD, fontWeight: 500, fontSize: 58, color: E60.violeta, textAlign: 'center'}}>
 						<span style={{display: 'block', fontFamily: MONO, fontSize: 24, letterSpacing: 4, color: E60.plata}}>LA ARCHIVERA</span>
 						{linea.texto}
 					</div>
@@ -112,13 +112,13 @@ export const AvanceTorre: React.FC<PropsT> = (props) => {
 			)}
 			{cta > 0 && (
 				<div style={{position: 'absolute', top: 470, left: 70, right: 70, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, opacity: cta, transform: `translateY(${(1 - cta) * 30}px)`}}>
-					<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, letterSpacing: 8, color: E60.cian}}>SOLUCIÓN Y 3 CERRADURAS MÁS</div>
-					<div style={{background: 'rgba(20,21,26,0.85)', border: `3px solid ${E60.cian}`, borderRadius: 22, padding: '26px 40px', textAlign: 'center', boxShadow: '0 0 30px rgba(63,224,230,0.35)'}}>
+					<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, letterSpacing: 8, color: E60.cian, background: 'rgba(16,17,21,0.96)', padding: '8px 18px', borderRadius: 10}}>SOLUCIÓN Y 3 CERRADURAS MÁS</div>
+					<div style={{background: 'rgba(16,17,21,0.96)', border: `3px solid ${E60.cian}`, borderRadius: 22, padding: '26px 40px', textAlign: 'center', boxShadow: '0 0 30px rgba(63,224,230,0.35)'}}>
 						<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, color: E60.plata, letterSpacing: 4}}>VÍDEO COMPLETO EN YOUTUBE</div>
 						<div style={{fontFamily: SERIF, fontWeight: 800, fontSize: 78, color: E60.blanco, lineHeight: 1.05, marginTop: 10}}>{ficha.titulo}</div>
 						<div style={{fontFamily: MONO, fontSize: 28, color: E60.plata, marginTop: 14}}>ENIGMA 60 · escape room 1</div>
 					</div>
-					<div style={{fontFamily: MONO, fontSize: 20, color: 'rgba(184,190,200,0.75)', letterSpacing: 2, marginTop: 6}}>{ficha.aviso_ia}</div>
+					<div style={{fontFamily: MONO, fontSize: 22, color: E60.plata, letterSpacing: 2, marginTop: 6, background: 'rgba(16,17,21,0.92)', padding: '6px 14px', borderRadius: 8}}>{ficha.aviso_ia}</div>
 				</div>
 			)}
 			<AbsoluteFill style={{background: '#0a0807', opacity: fundido}} />
