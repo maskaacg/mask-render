@@ -43,7 +43,7 @@ const PLANOS: Record<string, {pos: V3; mira: V3; fov: number}> = {
 	vela: {pos: [-1.2, 1.3, 1.75], mira: [-1.95, 1.0, 2.45], fov: 60},
 	mesa: {pos: [-0.75, 1.6, 1.1], mira: [-2.05, 1.0, 2.55], fov: 68},
 	suelo: {pos: [-1.1, 2.0, 0.95], mira: [-2.75, 0.0, 0.15], fov: 70},
-	escudos: {pos: [-0.2, 1.75, 0.3], mira: [-4.1, 0.85, 0.05], fov: 80},
+	escudos: {pos: [-0.3, 1.85, 0.5], mira: [-3.4, 0.7, 0.05], fov: 84},
 	ganchos: {pos: [-1.6, 1.6, 0.1], mira: [-4.1, 1.85, 0.0], fov: 66},
 	puerta: {pos: [0, 1.6, 0.4], mira: [0, 1.9, -4.1], fov: 76},
 };
@@ -78,7 +78,7 @@ export const AvanceTorre: React.FC<PropsT> = (props) => {
 	}
 	const e: EstadoTorre = {
 		t, cam: {pos, mira, fov: a.fov + (b.fov - a.fov) * f},
-		pista: {escudos: escudosLuz * 0.3, ventana: ventana(L.t01) * 0.0, mesa: ventana(L.t02) * 0.4, puerta: interpolate(t, [L.t08.inicio, L.t08.inicio + 1], [0, 0.5], clamp)},
+		pista: {escudos: escudosLuz * 0.6, ventana: ventana(L.t01) * 0.0, mesa: ventana(L.t02) * 0.4, puerta: interpolate(t, [L.t08.inicio, L.t08.inicio + 1], [0, 0.5], clamp)},
 		escudos: [0, 0, 0], losa: 0, criptex: 0, anillos: 0, tapa: 0, descifrado: 0, p13: 0, nicho: 0, llave: 0, giroLlave: 0, verdad: 0,
 		vela: 1, llama: interpolate(t, [L.t01.fin - 2.0, L.t01.fin - 1.2], [0, 1], clamp), puerta: 0, sombra: 0, libro: 0,
 		relampago: rel, gramofono: 1, antorchas: interpolate(t, [0, 1.2], [0.6, 1], clamp),

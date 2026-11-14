@@ -26,6 +26,7 @@ La ficha (`remotion/fichas/*.json`) tiene guion, puzles y voces; las escenas est
   `python3 tools/voz_chatterbox.py --ficha <ficha> --reanudar --hilos 2` (antes: `python3 tools/voz_lista.py restaurar --ficha <ficha>`),
   después `python3 tools/voz_lista.py guardar --ficha <ficha>`. Si el proceso muere por memoria, relanzar con --reanudar.
 - Puzles: cualquier puzle nuevo o cambiado se verifica por código (solución única) antes de seguir; anotar la verificación en `auditoria` de la ficha.
+- Antes de entregar: QA visual completa según `remotion/PRODUCCION.md` (colores coherentes, sin textos superpuestos, hoja de contactos revisada).
 - Escenas: editar los componentes 3D/UI. Renderizar fotogramas de prueba en local
   (`npx remotion bundle src/index.ts --out-dir /tmp/b && npx remotion still /tmp/b <composición> x.jpg --frame=N --props=out/props_<ficha>.json --gl=swangle`) y mirarlos.
 - Si la petición es ambigua o imposible, no inventar: marcar ERROR en mg.correcciones_v2 con el motivo y avisar por Telegram con `SELECT ops.dejar_mensaje('CLAUDE','AVISO','Corrección ENIGMA 60', '<qué falta>')`.

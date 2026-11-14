@@ -424,7 +424,7 @@ const Escudo: React.FC<{color: string; brillo: number; texto?: THREE.Texture; es
 	return (
 		<group scale={escala}>
 			<mesh geometry={geo} position={[0, 0, -0.02]}>
-				<meshStandardMaterial color={color} roughness={0.55} metalness={0.25} emissive="#3fe0e6" emissiveIntensity={brillo * (texto ? 0.05 : 0.12)} />
+				<meshStandardMaterial color={color} roughness={0.55} metalness={0.2} emissive={color} emissiveIntensity={0.08 + brillo * (texto ? 0.05 : 0.18)} />
 			</mesh>
 			{texto ? (
 				<mesh position={[0, 0.02, 0.045]}>
@@ -666,7 +666,7 @@ const Nicho: React.FC<{e: EstadoTorre; T: TT}> = ({e, T}) => {
 
 const Armadura: React.FC<{deg: number; i: number; e: EstadoTorre; T: TT}> = ({deg, i, e, T}) => {
 	const luz = e.pista[`g${i + 1}`] ?? 0;
-	const acero = <meshStandardMaterial color="#8c9198" metalness={0.55} roughness={0.38} emissive="#3fe0e6" emissiveIntensity={luz * 0.05} />;
+	const acero = <meshStandardMaterial color="#8c9198" metalness={0.55} roughness={0.38} emissive="#fff0d8" emissiveIntensity={luz * 0.06} />;
 	const ojos = i === 2 ? e.verdad : 0;
 	return (
 		<group position={P(deg, R - 0.55, 0)} rotation={[0, mira(deg), 0]}>
@@ -949,7 +949,7 @@ export const TorreArchivero3D: React.FC<{e: EstadoTorre; ancho?: number; alto?: 
 				<spotLight position={P(VENTANA_DEG, R + 0.5, 3.4)} target={rayo} color="#c9d8ff" intensity={60 * e.relampago} angle={0.75} penumbra={0.6} distance={12} decay={1.2} />
 			)}
 			{luzPista > 0.01 && (
-				<spotLight position={[objetivo[0] * 0.35, 4.2, objetivo[2] * 0.35]} target={pistaTarget} color="#3fe0e6" intensity={16 * luzPista} angle={0.22} penumbra={0.5} distance={9} decay={1.3} />
+				<spotLight position={[objetivo[0] * 0.35, 4.2, objetivo[2] * 0.35]} target={pistaTarget} color="#fff0d8" intensity={9 * luzPista} angle={0.22} penumbra={0.5} distance={9} decay={1.3} />
 			)}
 			<Muro T={T} />
 			<Puerta e={e} T={T} />

@@ -41,7 +41,7 @@ export const RotuloPuzle: React.FC<{t: number; inicio: number; n: number; total:
 	if (o <= 0) return null;
 	return (
 		<div style={{position: 'absolute', top: 110, left: 0, right: 0, display: 'flex', justifyContent: 'center', opacity: o}}>
-			<div style={{background: 'rgba(20,21,26,0.8)', border: `2px solid ${E60.cian}`, borderRadius: 12, padding: '14px 34px', display: 'flex', gap: 22, alignItems: 'baseline', transform: `translateY(${(1 - o) * -16}px)`}}>
+			<div style={{background: 'rgba(16,17,21,0.94)', border: `2px solid ${E60.cian}`, borderRadius: 12, padding: '14px 34px', display: 'flex', gap: 22, alignItems: 'baseline', transform: `translateY(${(1 - o) * -16}px)`}}>
 				<span style={{fontFamily: MONO, fontWeight: 600, fontSize: 26, letterSpacing: 6, color: E60.cian}}>
 					PUZLE {n}/{total}
 				</span>
@@ -66,7 +66,7 @@ export const Fichas16: React.FC<{t: number; pistas: {texto: string; desde: numbe
 							alignItems: 'center',
 							gap: 16,
 							maxWidth: 640,
-							background: 'rgba(20,21,26,0.8)',
+							background: 'rgba(16,17,21,0.94)',
 							border: `2px solid ${p.activa > 0.5 ? E60.cian : 'rgba(184,190,200,0.45)'}`,
 							boxShadow: p.activa > 0.5 ? `0 0 ${18 * p.activa}px rgba(63,224,230,0.5)` : 'none',
 							borderRadius: 10,
@@ -118,7 +118,7 @@ export const Subtitulo16: React.FC<{texto: string; inicio: number; fin: number; 
 		<div style={{position: 'absolute', top: 902, left: 160, right: 160, display: 'flex', justifyContent: 'center', opacity: o}}>
 			<div
 				style={{
-					background: 'rgba(20,21,26,0.74)',
+					background: 'rgba(16,17,21,0.88)',
 					border: custodio ? `2px solid ${color}` : 'none',
 					borderRadius: 12,
 					padding: '12px 28px',
@@ -139,7 +139,7 @@ export const Subtitulo16: React.FC<{texto: string; inicio: number; fin: number; 
 };
 
 const Panel: React.FC<{o: number; children: React.ReactNode; ancho?: number}> = ({o, children, ancho = 980}) => (
-	<div style={{position: 'absolute', top: 170, left: 64, width: ancho, background: 'rgba(20,21,26,0.84)', border: '2px solid rgba(184,190,200,0.35)', borderRadius: 18, padding: '28px 36px', opacity: o}}>
+	<div style={{position: 'absolute', top: 170, left: 64, width: ancho, background: 'rgba(16,17,21,0.96)', border: '2px solid rgba(184,190,200,0.35)', borderRadius: 18, padding: '28px 36px', opacity: o}}>
 		{children}
 	</div>
 );

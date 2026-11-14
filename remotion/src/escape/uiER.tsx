@@ -2,18 +2,20 @@ import React from 'react';
 import {Easing, interpolate} from 'remotion';
 import {MONO, SERIF} from '../style/fonts';
 import {E60} from '../e60/nucleo';
+import {ESCUDO_COLOR} from './TorreArchivero3D';
 
 // Paneles de explicación del escape room «La torre del archivero» (16:9).
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const entra = (t: number, a: number, d = 0.4) => interpolate(t, [a, a + d], [0, 1], {...clamp, easing: Easing.out(Easing.back(1.5))});
 const ventana = (t: number, a: number, b: number, s = 0.4) => interpolate(t, [a - s, a, b, b + s], [0, 1, 1, 0], clamp);
 const Panel: React.FC<{o: number; children: React.ReactNode; ancho?: number}> = ({o, children, ancho = 980}) => (
-	<div style={{position: 'absolute', top: 170, left: 64, width: ancho, background: 'rgba(20,21,26,0.86)', border: '2px solid rgba(184,190,200,0.35)', borderRadius: 18, padding: '28px 36px', opacity: o}}>
+	<div style={{position: 'absolute', top: 170, left: 64, width: ancho, background: 'rgba(16,17,21,0.96)', border: '2px solid rgba(184,190,200,0.35)', borderRadius: 18, padding: '28px 36px', opacity: o}}>
 		{children}
 	</div>
 );
 const titulo = (txt: string) => <div style={{fontFamily: MONO, fontWeight: 600, fontSize: 22, letterSpacing: 6, color: E60.cian, marginBottom: 18}}>{txt}</div>;
-const COLOR: Record<string, string> = {rojo: '#d8473e', azul: '#4f7fe0', verde: '#4fb062'};
+// Mismos colores que los escudos 3D (una sola fuente de verdad).
+const COLOR: Record<string, string> = ESCUDO_COLOR;
 
 /** P1 · tres escudos: el rojo no va en el 1 y el azul va a su derecha → rojo 2, azul 3, verde 1. */
 export const ExpEscudos: React.FC<{t: number; a: number; b: number}> = ({t, a, b}) => {
@@ -21,12 +23,12 @@ export const ExpEscudos: React.FC<{t: number; a: number; b: number}> = ({t, a, b
 	if (o <= 0) return null;
 	const d = b - a;
 	const pasos = [
-		{gancho: 2, c: 'rojo', f: 0.22, nota: 'no en el 1, y con hueco a su derecha'},
+		{gancho: 2, c: 'rojo', f: 0.22, nota: 'no va en el 1 y necesita sitio a su derecha'},
 		{gancho: 3, c: 'azul', f: 0.4, nota: 'a la derecha del rojo'},
-		{gancho: 1, c: 'verde', f: 0.58, nota: 'el único sitio libre'},
+		{gancho: 1, c: 'verde', f: 0.58, nota: 'el único gancho libre'},
 	];
 	return (
-		<Panel o={o} ancho={900}>
+		<Panel o={o} ancho={1000}>
 			{titulo('GANCHOS 1 · 2 · 3')}
 			<div style={{display: 'flex', gap: 30, justifyContent: 'center', marginBottom: 18}}>
 				{[1, 2, 3].map((g) => {
@@ -35,7 +37,7 @@ export const ExpEscudos: React.FC<{t: number; a: number; b: number}> = ({t, a, b
 					return (
 						<div key={g} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10}}>
 							<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, color: E60.plata}}>{g}</div>
-							<div style={{width: 150, height: 170, borderRadius: '14px 14px 75px 75px', border: `4px solid ${e > 0.5 ? COLOR[p.c] : 'rgba(184,190,200,0.4)'}`, background: e > 0.5 ? `${COLOR[p.c]}55` : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${0.85 + 0.15 * e})`}}>
+							<div style={{width: 150, height: 170, borderRadius: '14px 14px 75px 75px', border: `4px solid ${e > 0.5 ? COLOR[p.c] : 'rgba(184,190,200,0.4)'}`, background: e > 0.5 ? COLOR[p.c] : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${0.85 + 0.15 * e})`}}>
 								<span style={{fontFamily: SERIF, fontWeight: 800, fontSize: 38, color: E60.blanco, opacity: e}}>{p.c.toUpperCase()}</span>
 							</div>
 						</div>
@@ -43,9 +45,9 @@ export const ExpEscudos: React.FC<{t: number; a: number; b: number}> = ({t, a, b
 				})}
 			</div>
 			{pasos.map((p, i) => (
-				<div key={i} style={{display: 'flex', gap: 18, alignItems: 'baseline', height: 44, opacity: entra(t, a + p.f * d)}}>
-					<span style={{fontFamily: MONO, fontWeight: 600, fontSize: 28, color: COLOR[p.c], width: 110}}>{p.c}</span>
-					<span style={{fontFamily: MONO, fontSize: 26, color: E60.plata}}>→ gancho {p.gancho}: {p.nota}</span>
+				<div key={i} style={{display: 'flex', gap: 18, alignItems: 'baseline', minHeight: 44, lineHeight: 1.3, marginBottom: 6, opacity: entra(t, a + p.f * d)}}>
+					<span style={{fontFamily: MONO, fontWeight: 700, fontSize: 28, color: E60.blanco, background: COLOR[p.c], borderRadius: 6, padding: '2px 10px', minWidth: 96, textAlign: 'center', flexShrink: 0}}>{p.c}</span>
+					<span style={{fontFamily: MONO, fontSize: 25, color: E60.plata}}>→ gancho {p.gancho}: {p.nota}</span>
 				</div>
 			))}
 		</Panel>
@@ -106,7 +108,7 @@ export const ExpFibonacci: React.FC<{t: number; a: number; b: number}> = ({t, a,
 					return (
 						<div key={i} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, opacity: e}}>
 							{i > 1 && <div style={{fontFamily: MONO, fontSize: 22, color: ult ? E60.cian : E60.plata}}>{v[i - 2]}+{v[i - 1]}</div>}
-							<div style={{width: 110, height: 40 + i * 30, background: ult ? 'rgba(63,224,230,0.32)' : 'rgba(184,190,200,0.2)', border: `3px solid ${ult ? E60.cian : E60.plata}`, borderRadius: 6, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 6}}>
+							<div style={{width: 110, height: 72 + i * 26, background: ult ? 'rgba(63,224,230,0.32)' : 'rgba(184,190,200,0.2)', border: `3px solid ${ult ? E60.cian : E60.plata}`, borderRadius: 6, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 6}}>
 								<span style={{fontFamily: SERIF, fontWeight: 800, fontSize: 44, color: ult ? E60.cian : E60.blanco}}>{x}</span>
 							</div>
 						</div>
