@@ -83,7 +83,7 @@ jobs:
           if [ -n "$FICHA" ]; then PROPS="--props=out/props_$(basename "$FICHA" .json).json"; fi
           npx remotion render src/index.ts "$COMPOSICION" out/raw.mp4 $PROPS \
             --browser-executable="$(which google-chrome)" --chrome-mode=chrome-for-testing \
-            --codec=h264 --crf=18 --gl=swangle
+            --codec=h264 --crf=20 --gl=swangle
       - name: Masterizado y QA técnica
         run: python tools/finalize_qa.py --entrada out/raw.mp4 --id "$ENCARGO_ID" --salida final
       - name: Retener MP4 en GitHub hasta aprobación humana
