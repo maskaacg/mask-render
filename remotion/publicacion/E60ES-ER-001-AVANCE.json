@@ -1,0 +1,23 @@
+{
+ "video_id": "E60ES-ER-001-AVANCE",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-ER-001-T-20261114-212331",
+ "run_id": 43637249198,
+ "plataformas": ["tiktok", "youtube", "facebook"],
+ "pendiente_conectar": ["instagram"],
+ "programado": "2026-11-16T18:00:00",
+ "zona": "Europe/Madrid",
+ "requiere_publicado_antes": "E60ES-ER-001-TORRE",
+ "portada": "remotion/publicacion/E60ES-ER-001-AVANCE_portada.jpg",
+ "titulo": "¿En qué orden cuelgan los escudos? 🛡️",
+ "tiktok_title": "Tres escudos, tres ganchos y tres pistas. ¿En qué orden cuelgan? 🛡️ Escríbelo en comentarios. La solución y 3 cerraduras más, en el vídeo completo de YouTube (ENIGMA 60). #acertijos #escaperoom #logica #enigma #retomental",
+ "youtube_title": "¿En qué orden cuelgan los escudos? 🛡️ #shorts #acertijos",
+ "youtube_description": "Tres escudos, tres ganchos y tres pistas. ¿Lo resuelves en 10 segundos? Solución y 3 cerraduras más en el escape room completo «La torre del archivero» del canal. Contenido creado con ayuda de IA. #shorts #acertijos #escaperoom",
+ "facebook_title": "¿En qué orden cuelgan los escudos?",
+ "facebook_description": "Tres escudos, tres ganchos y tres pistas. ¿En qué orden cuelgan? Respuesta en comentarios; la solución, en el vídeo completo en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #escaperoom",
+ "tags": ["acertijos", "escape room", "shorts", "lógica", "enigma 60"],
+ "youtube": {"categoryId": "24", "privacyStatus": "public", "selfDeclaredMadeForKids": false, "containsSyntheticMedia": true, "defaultLanguage": "es"},
+ "tiktok": {"privacy_level": "PUBLIC_TO_EVERYONE", "is_aigc": true},
+ "facebook": {"facebook_media_type": "REELS", "facebook_is_ai_generated": true}
+}

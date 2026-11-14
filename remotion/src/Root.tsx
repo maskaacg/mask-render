@@ -21,6 +21,7 @@ import {EscapeRoom, EscapeRoomAudio} from './escape/EscapeRoom';
 import fichaER01 from '../fichas/E60-ER-001.json';
 import {AvanceTorre, AvanceTorreAudio, PropsT, planificarT} from './escape/AvanceTorre';
 import fichaER01T from '../fichas/E60-ER-001-T.json';
+import {MiniaturaTorre} from './escape/MiniaturaTorre';
 
 // Props de ejemplo para el Studio; en producción llegan con --props=out/props_<id>.json
 const ejemplo: Props = {
@@ -190,5 +191,7 @@ export const RemotionRoot: React.FC = () => (
 		/>
 		<Composition id="E60Estilo10" component={E60Estilo10} defaultProps={{estilo: 'isla3d' as const}} fps={30} width={1080} height={1920} durationInFrames={30} />
 		<Composition id="E60Estilo" component={E60Estilo} defaultProps={{estilo: 'plano' as const}} fps={30} width={1080} height={1920} durationInFrames={30} />
+			<Composition id="E60MiniaturaTorre" component={MiniaturaTorre} fps={24} width={1280} height={720} durationInFrames={1} defaultProps={{vertical: false}} />
+		<Composition id="E60PortadaTorre" component={MiniaturaTorre} fps={24} width={1080} height={1920} durationInFrames={1} defaultProps={{vertical: true}} />
 	</>
 );

@@ -1,0 +1,19 @@
+{
+ "video_id": "E60ES-ER-001-TORRE",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-ER-001-20261114-211453",
+ "run_id": 43636472375,
+ "plataformas": ["youtube", "facebook"],
+ "programado": "2026-11-16T17:00:00",
+ "zona": "Europe/Madrid",
+ "miniatura": "remotion/publicacion/E60ES-ER-001-TORRE_miniatura.jpg",
+ "titulo": "¿Saldrías de esta torre antes de que se apague la vela? | Escape Room 1 · ENIGMA 60",
+ "youtube_title": "¿Saldrías de esta torre antes de que se apague la vela? | Escape Room 1",
+ "youtube_description": "Te despiertas encerrado en la torre del archivero. Cuatro cerraduras, una vela que se consume… y una archivera que solo deja salir a quien sabe leer.\n\nPausa en cada puzle: tienes 20 segundos para pensar antes de la solución. ¿Cuántas cerraduras abres tú? Cuéntalo en los comentarios.\n\n0:00 La torre\n0:57 Puzle 1 · Los tres escudos\n2:42 Puzle 2 · El lema cifrado\n4:33 Puzle 3 · La escalera\n6:11 Puzle 4 · Las tres llaves\n7:52 La archivera\n8:31 Soluciones\n\nEl miércoles, nueva sala: «El museo que miente».\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #enigma60",
+ "facebook_title": "¿Saldrías de esta torre antes de que se apague la vela?",
+ "facebook_description": "Escape room 1 de ENIGMA 60: cuatro cerraduras, una vela y 20 segundos para pensar cada puzle. ¿Cuántas abres tú? Contenido creado con ayuda de IA. #escaperoom #acertijos #enigma60",
+ "tags": ["escape room", "acertijos", "acertijos de lógica", "enigmas", "puzles", "juegos mentales", "escape room virtual", "acertijos con respuesta", "enigma 60", "retos de lógica"],
+ "youtube": {"categoryId": "24", "privacyStatus": "public", "selfDeclaredMadeForKids": false, "containsSyntheticMedia": true, "defaultLanguage": "es", "defaultAudioLanguage": "es"},
+ "facebook": {"facebook_media_type": "VIDEO", "facebook_is_ai_generated": true}
+}
