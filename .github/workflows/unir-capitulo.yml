@@ -1,0 +1,106 @@
+name: MASK GROUP - Unir capítulo (ENIGMA 60)
+run-name: ${{ github.event.head_commit.message }}
+# Se lanza cuando n8n deja un encargo en remotion/encargos/uniones/ de esta rama.
+# Reutiliza los insumos y tramos de una ejecución previa de render-capitulo (sin volver a renderizar),
+# une, mezcla el audio, pasa el QA y crea la versión de revisión 480p. No publica ni sube a Drive.
+on:
+  push:
+    branches: [feat/e60-diorama-20261114]
+    paths: ['remotion/encargos/uniones/*.json']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  unir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: remotion
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Identificar el encargo de unión
+        id: enc
+        run: |
+          F=$(git diff --name-only HEAD~1 HEAD -- encargos/uniones | head -1); F="${F#remotion/}"
+          [ -f "$F" ] || { echo "Encargo no encontrado"; exit 1; }
+          python3 - "$F" >> "$GITHUB_OUTPUT" <<'EOF2'
+          import json, re, sys
+          e = json.load(open(sys.argv[1]))
+          for k in ('encargo_id', 'origen_id', 'ficha_id'):
+              assert re.fullmatch(r'[A-Za-z0-9._-]{4,80}', e[k]), k
+          assert re.fullmatch(r'[0-9]{6,20}', str(e['origen_run_id'])), 'run id'
+          print(f"id={e['encargo_id']}")
+          print(f"origen={e['origen_id']}")
+          print(f"fid={e['ficha_id']}")
+          print(f"run={e['origen_run_id']}")
+          EOF2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: remotion/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependencias
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          npm ci --no-audit --no-fund
+      - uses: actions/download-artifact@v4
+        with:
+          name: insumos-${{ steps.enc.outputs.origen }}
+          path: remotion
+          run-id: ${{ steps.enc.outputs.run }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: tramo-${{ steps.enc.outputs.origen }}-*
+          path: remotion/out/tramos
+          merge-multiple: true
+          run-id: ${{ steps.enc.outputs.run }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Variables
+        run: |
+          echo "ID=${{ steps.enc.outputs.id }}" >> "$GITHUB_ENV"
+          echo "FID=${{ steps.enc.outputs.fid }}" >> "$GITHUB_ENV"
+      - name: Audio completo
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+        run: |
+          npx remotion render src/index.ts E60CapituloAudio out/audio.wav --props=out/props_$FID.json --codec=wav \
+            --browser-executable="$(which google-chrome)" --chrome-mode=chrome-for-testing
+      - name: Unir tramos y mezclar audio
+        run: |
+          ls out/tramos/tramo_*.mp4 | sort | sed "s|^out/tramos/|file '|; s|$|'|" > out/tramos/lista.txt
+          cat out/tramos/lista.txt
+          ffmpeg -hide_banner -loglevel error -y -f concat -safe 0 -i out/tramos/lista.txt -c copy out/video.mp4
+          ffmpeg -hide_banner -loglevel error -y -i out/video.mp4 -i out/audio.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest out/raw.mp4
+      - name: Masterizado y QA técnica
+        run: python tools/finalize_qa.py --entrada out/raw.mp4 --id "$ID" --salida final --fps 24
+      - name: Versión de revisión 480p (< 50 MB para Telegram)
+        run: |
+          DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 final/$ID.mp4)
+          VB=$(python3 -c "d=float('$DUR'); print(max(200, int(40*8*1024/d - 96)))")
+          ffmpeg -hide_banner -loglevel error -y -i final/$ID.mp4 -vf scale=854:480 -c:v libx264 -preset veryfast -b:v ${VB}k -maxrate $((VB*12/10))k -bufsize $((VB*2))k -c:a aac -b:a 96k -movflags +faststart final/$ID-revision.mp4
+          ls -la final
+      - name: Retener máster hasta aprobación humana
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.enc.outputs.id }}
+          path: |
+            remotion/final/${{ steps.enc.outputs.id }}.mp4
+            remotion/final/${{ steps.enc.outputs.id }}.qa.json
+          if-no-files-found: error
+          retention-days: 3
+      - name: Versión de revisión
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.enc.outputs.id }}-revision
+          path: |
+            remotion/final/${{ steps.enc.outputs.id }}-revision.mp4
+            remotion/final/${{ steps.enc.outputs.id }}.qa.json
+          if-no-files-found: error
+          retention-days: 3

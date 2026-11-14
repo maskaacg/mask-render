@@ -178,6 +178,8 @@ jobs:
           path: remotion/out/tramos
           merge-multiple: true
       - name: Audio completo
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
         run: |
           npx remotion render src/index.ts E60CapituloAudio out/audio.wav --props=out/props_$FID.json --codec=wav \
             --browser-executable="$(which google-chrome)" --chrome-mode=chrome-for-testing
