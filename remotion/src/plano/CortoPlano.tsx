@@ -52,6 +52,9 @@ export const CortoPlano: React.FC<Props> = (props) => {
 	// ---- escena que se traza sola durante la introducción
 	const pEsc = interpolate(t, [0, Math.min(2.6, Math.max(1.6, enun - 0.3))], [0.35, 1], clamp);
 	const cam = 1 + 0.02 * Math.sin(t * 0.35);
+	// deriva suave de cámara (evita segundos congelados con las luces encendidas)
+	const dx = 7 * Math.sin(t * 0.9) * (0.3 + 0.7 * luces);
+	const dy = 5 * Math.sin(t * 0.7 + 1) * (0.3 + 0.7 * luces);
 
 	// ---- temporizador (compás) y pregunta fija mientras se piensa
 	const pz = interpolate(t, [F.pensar.inicio, F.pensar.fin], [0, 1], clamp);
@@ -109,7 +112,7 @@ export const CortoPlano: React.FC<Props> = (props) => {
 				</defs>
 
 				{/* plano completo, visible solo donde llega la luz */}
-				<g mask="url(#luz)">
+				<g mask="url(#luz)" transform={`translate(${dx} ${dy})`}>
 					<rect width={1080} height={1920} fill="url(#papel)" />
 					<rect width={1080} height={1920} fill="url(#r1)" />
 					<rect width={1080} height={1920} fill="url(#r5)" />
@@ -130,6 +133,11 @@ export const CortoPlano: React.FC<Props> = (props) => {
 						const y = by + (m.v - 0.5) * br * 1.4 + Math.sin(t / 1.5 + i) * 8;
 						return <circle key={i} cx={x} cy={y} r={m.s} fill="#fff1d6" opacity={m.o * 0.45} />;
 					})}
+				</g>
+				<g opacity={luces * 0.8}>
+					{motas.map((m, i) => (
+						<circle key={i} cx={(m.u * 1080 + t * 9 * (0.5 + m.v)) % 1080} cy={(m.v * 1920 - t * 14 * (0.4 + m.u) + 1920 * 4) % 1920} r={m.s} fill="#dfeaff" opacity={m.o * 0.5} />
+					))}
 				</g>
 				<rect width={1080} height={1920} fill="url(#vig)" />
 
