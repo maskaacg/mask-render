@@ -36,6 +36,15 @@ jobs:
           fi
           echo "$ID" | grep -Eq '^[A-Za-z0-9._-]{4,80}$' || { echo "ID no válido"; exit 1; }
           echo "ENCARGO_ID=$ID" >> "$GITHUB_ENV"
+          COMP=E60CincoSellosProto; FICHA=""
+          if [ -n "${F:-}" ]; then
+            COMP=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('composicion','E60CincoSellosProto'))" "${F#remotion/}")
+            FICHA=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('ficha',''))" "${F#remotion/}")
+          fi
+          case "$COMP" in E60CincoSellosProto|E60Corto) ;; *) echo "Composición no permitida: $COMP"; exit 1;; esac
+          if [ -n "$FICHA" ]; then echo "$FICHA" | grep -Eq '^fichas/[A-Za-z0-9._-]+\.json$' && [ -f "$FICHA" ] || { echo "Ficha no válida: $FICHA"; exit 1; }; fi
+          echo "COMPOSICION=$COMP" >> "$GITHUB_ENV"
+          echo "FICHA=$FICHA" >> "$GITHUB_ENV"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -61,12 +70,18 @@ jobs:
             [ -s models/$f ] || curl -sSL -o models/$f https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/$f
           done
       - name: Voz em_alex y efectos
-        run: python tools/audio_assets.py --kokoro-model models/kokoro-v1.0.onnx --kokoro-voices models/voices-v1.0.bin --out public/audio
+        run: |
+          python tools/audio_assets.py --kokoro-model models/kokoro-v1.0.onnx --kokoro-voices models/voices-v1.0.bin --out public/audio
+          if [ -n "$FICHA" ]; then
+            python tools/ficha_audio.py --ficha "$FICHA" --kokoro-model models/kokoro-v1.0.onnx --kokoro-voices models/voices-v1.0.bin
+          fi
       - name: Instalar Remotion
         run: npm ci --no-audit --no-fund
       - name: Render
         run: |
-          npx remotion render src/index.ts E60CincoSellosProto out/raw.mp4 \
+          PROPS=""
+          if [ -n "$FICHA" ]; then PROPS="--props=out/props_$(basename "$FICHA" .json).json"; fi
+          npx remotion render src/index.ts "$COMPOSICION" out/raw.mp4 $PROPS \
             --browser-executable="$(which google-chrome)" --chrome-mode=chrome-for-testing \
             --codec=h264 --crf=18
       - name: Masterizado y QA técnica

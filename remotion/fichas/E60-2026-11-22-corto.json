@@ -1,0 +1,58 @@
+{
+ "id": "E60-2026-11-22-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "Los símbolos del espejo",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#7a9a7a",
+ "puzle": {
+  "tipo": "espejos",
+  "digitos": [
+   1,
+   2,
+   3
+  ],
+  "respuesta": 4
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "fase": "intro",
+   "texto": "En la pared del archivo, tres símbolos grabados en piedra.",
+   "id": "l01"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Parecen dibujos, pero siguen una regla.",
+   "id": "l02"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "¿Cómo es el cuarto símbolo?",
+   "id": "l03"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Son números pegados a su reflejo. Uno, dos, tres…",
+   "id": "l04"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Así que el cuarto es un cuatro junto a su imagen en el espejo.",
+   "id": "l05"
+  },
+  {
+   "fase": "cta",
+   "texto": "¿Lo has resuelto? Escríbelo en los comentarios. Mañana, otro enigma.",
+   "id": "l06"
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+}

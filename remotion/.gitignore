@@ -2,3 +2,5 @@ node_modules/
 out/
 models/
 final/
+public/audio/E60-*/
+public/audio/sfx/

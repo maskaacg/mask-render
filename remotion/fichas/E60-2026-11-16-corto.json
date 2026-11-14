@@ -1,0 +1,59 @@
+{
+ "id": "E60-2026-11-16-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "El taller de los engranajes",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#c98a3a",
+ "puzle": {
+  "tipo": "engranajes",
+  "dientes": [
+   10,
+   20,
+   40
+  ],
+  "vueltas": 12,
+  "respuesta": 3
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "fase": "intro",
+   "texto": "Un taller lleno de relojes parados. Sobre la mesa, tres engranajes unidos.",
+   "id": "l01"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "El pequeño tiene diez dientes. El mediano, veinte. El grande, cuarenta.",
+   "id": "l02"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Si el pequeño da doce vueltas… ¿cuántas da el grande?",
+   "id": "l03"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Tres.",
+   "id": "l04"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Doce vueltas por diez dientes son ciento veinte dientes. Y ciento veinte entre cuarenta… tres vueltas.",
+   "id": "l05"
+  },
+  {
+   "fase": "cta",
+   "texto": "¿Lo has resuelto? Escríbelo en los comentarios. Mañana, otro enigma.",
+   "id": "l06"
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+}

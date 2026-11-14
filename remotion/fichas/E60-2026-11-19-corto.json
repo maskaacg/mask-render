@@ -1,0 +1,62 @@
+{
+ "id": "E60-2026-11-19-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "La balanza del sótano",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#b8963a",
+ "puzle": {
+  "tipo": "balanza",
+  "izquierda": {
+   "objeto": "llave",
+   "n": 2,
+   "peso": 30
+  },
+  "derecha": {
+   "objeto": "moneda",
+   "n": 3
+  },
+  "respuesta": 20
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "fase": "intro",
+   "texto": "En el sótano del archivo, una balanza de latón.",
+   "id": "l01"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Dos llaves pesan lo mismo que tres monedas. Cada llave pesa treinta gramos.",
+   "id": "l02"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "¿Cuánto pesa una moneda?",
+   "id": "l03"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Veinte gramos.",
+   "id": "l04"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Dos llaves son sesenta gramos. Repartidos entre tres monedas, veinte cada una.",
+   "id": "l05"
+  },
+  {
+   "fase": "cta",
+   "texto": "¿Lo has resuelto? Escríbelo en los comentarios. Mañana, otro enigma.",
+   "id": "l06"
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+}

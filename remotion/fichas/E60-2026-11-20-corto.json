@@ -1,0 +1,64 @@
+{
+ "id": "E60-2026-11-20-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "Las cuatro velas",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#d9a441",
+ "puzle": {
+  "tipo": "velas",
+  "horas": [
+   6,
+   4,
+   3,
+   2
+  ],
+  "apagadas": [
+   0,
+   2
+  ],
+  "noche": 8,
+  "respuesta": 2
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "fase": "intro",
+   "texto": "Cuatro velas encendidas a la vez, en una noche de ocho horas.",
+   "id": "l01"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Una dura seis horas, otra cuatro, otra tres y la última dos. A la primera hora, el viento apaga dos, y nadie las vuelve a encender.",
+   "id": "l02"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Al amanecer, ¿cuántas velas quedan?",
+   "id": "l03"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Dos.",
+   "id": "l04"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Las que siguieron encendidas se consumieron antes del amanecer. Solo quedan las dos que apagó el viento.",
+   "id": "l05"
+  },
+  {
+   "fase": "cta",
+   "texto": "¿Lo has resuelto? Escríbelo en los comentarios. Mañana, otro enigma.",
+   "id": "l06"
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+}

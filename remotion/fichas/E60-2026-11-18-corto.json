@@ -1,0 +1,51 @@
+{
+ "id": "E60-2026-11-18-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "El observatorio: las tres lentes",
+ "modo": "avance",
+ "pensar_s": 6,
+ "tinte": "#6f7fc9",
+ "puzle": {
+  "tipo": "lentes",
+  "relaciones": [
+   "A = 2 × B",
+   "B = 3 × C",
+   "C = 1"
+  ],
+  "respuesta": 10
+ },
+ "solucion_reserva": [
+  "Diez.",
+  "La C aumenta uno. La B, tres. La A, seis. Uno, más tres, más seis: diez."
+ ],
+ "lineas": [
+  {
+   "fase": "intro",
+   "texto": "Un observatorio abandonado en lo alto de la montaña. La puerta pide un número.",
+   "id": "l01"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Tres lentes. La A aumenta el doble que la B. La B, el triple que la C.",
+   "id": "l02"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Y la C aumenta una vez. ¿Cuánto suman las tres?",
+   "id": "l03"
+  },
+  {
+   "fase": "cta",
+   "texto": "La solución y el resto del caso, hoy en el vídeo completo de YouTube. Enlace en el perfil.",
+   "id": "l04"
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+}

@@ -1,0 +1,63 @@
+{
+ "id": "E60-2026-11-17-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "Las tres cajas fuertes",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#5a8fb8",
+ "puzle": {
+  "tipo": "cajas",
+  "etiquetas": [
+   "El chip está aquí",
+   "Aquí no está",
+   "No está en la roja"
+  ],
+  "colores": [
+   "roja",
+   "azul",
+   "verde"
+  ],
+  "respuesta": 1
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "fase": "intro",
+   "texto": "Tres cajas fuertes. Solo una guarda el chip.",
+   "id": "l01"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "La roja dice: el chip está aquí. La azul: aquí no está. La verde: no está en la roja.",
+   "id": "l02"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Solo una dice la verdad. ¿Dónde está el chip?",
+   "id": "l03"
+  },
+  {
+   "fase": "solucion",
+   "texto": "En la azul.",
+   "id": "l04"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Con el chip en la roja, dos frases serían ciertas. Con el chip en la verde, también. Solo en la azul hay una única verdad: la de la caja verde.",
+   "id": "l05"
+  },
+  {
+   "fase": "cta",
+   "texto": "¿Lo has resuelto? Escríbelo en los comentarios. Mañana, otro enigma.",
+   "id": "l06"
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+}
