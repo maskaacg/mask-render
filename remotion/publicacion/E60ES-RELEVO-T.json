@@ -1,14 +1,14 @@
 {
  "video_id": "E60ES-RELEVO-T",
- "version": "v1",
+ "version": "v2",
  "ficha": "fichas/E60-RELEVO-T.json",
  "composicion": "E60AvanceTorre",
  "tramos": 2,
  "formato": "TikTok / Reels / Shorts 9:16",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": null,
- "run_id": null,
+ "encargo_master": "E60ES-RELEVO-T-v2-20261115-073827",
+ "run_id": 43686363199,
  "plataformas": [],
  "pendiente_conectar": [],
  "programado": null,
@@ -43,7 +43,13 @@
   "facebook_media_type": "REELS",
   "facebook_is_ai_generated": true
  },
- "historial": [],
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "PRUEBA COMPLETA DEL RELEVO (no publicable). En remotion/fichas/E60-RELEVO-T.json cambia SOLO el campo \"titulo\" a \"Prueba del relevo\" y añade al final de \"historial\" una entrada {\"version\":\"v2\",\"fecha\":\"2026-11-15\",\"cambios\":\"Título cambiado por Codex en la prueba del relevo\"}. Sube \"version\" a \"v2\".",
+   "corrector": "Codex"
+  }
+ ],
  "estado_aprobacion": "v2 revocada; v3 pendiente de aprobación",
  "prueba": true
 }
