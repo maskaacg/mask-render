@@ -82,7 +82,7 @@
    "id": "g02",
    "bloque": "gancho",
    "fase": "narra",
-   "texto": "El reloj marca las doce en punto. Y bajo la esfera, una placa: a las doce y media se activará la alarma. Las puertas quedarán selladas hasta el amanecer."
+   "texto": "El reloj marca la medianoche. Y bajo la esfera, una placa: a las doce y media se activará la alarma. Las puertas quedarán selladas hasta el amanecer."
   },
   {
    "id": "g03",
@@ -179,7 +179,8 @@
    "id": "b04",
    "bloque": "p2",
    "fase": "pista",
-   "texto": "Dice: eme, de, ce, ce, ce, ele, equis, equis, equis, i, equis."
+   "texto": "Dice: eme. De. Tres ces. Ele. Tres equis. Y al final: i, equis.",
+   "deletreo": true
   },
   {
    "id": "b05",
@@ -395,6 +396,12 @@
  "apertura_s": 1.0,
  "pantalla_final_s": 20,
  "version": "v1",
- "historial": [],
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-15",
+   "cambios": "QA de voz (Claude): g02 se oía «las dos en punto» → «la medianoche»; b04 deletreo agrupado (tres ces, tres equis) para que se entienda sin ambigüedad."
+  }
+ ],
  "siguiente": "La primera serie de ENIGMA 60"
 }
