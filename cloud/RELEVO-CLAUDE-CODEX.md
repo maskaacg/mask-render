@@ -36,6 +36,22 @@ El proveedor no expone el límite semanal a n8n. Se usa una señal verificable: 
 - El productor de Claude revisa primero lo que hizo Codex (`mg.correcciones_v2` con estado
   CODEX/ENTREGADA desde `mg.relevo.desde`) y no repite trabajo.
 
+## 3 bis. Prueba completa del 15/11 (con render real)
+- Copia aislada y no publicable del avance: `E60ES-RELEVO-T` (ficha `fichas/E60-RELEVO-T.json`).
+  `mg.solicitud_para_publicar` devuelve `PRUEBA_NO_PUBLICABLE` para cualquier vídeo con PRUEBA o
+  RELEVO en el id, así que WF-PUB-02 nunca lo programa aunque se pulse APROBAR.
+- Intento 1 (ejecución 855): Codex entregó bien, pero el merge falló («Pull Request is not
+  mergeable»: GitHub aún no había calculado la mergeabilidad). **Corregido**: el merge reintenta
+  5 veces cada 5 s y, si aun así falla, la corrección pasa a ERROR y avisa por Telegram.
+- En medio de la prueba, el vigilante tomó una corrección real del Propietario (acertijo del
+  martes, «estética del submarino o de la torre»). Codex no cambió nada y pidió aclaración: es el
+  comportamiento correcto ante una petición ambigua. La corrección quedó para Claude.
+- Intento 2 (ejecución 859): Codex → archivos subidos por n8n → PR #13 incorporado
+  automáticamente → render lanzado solo (`render-capitulo E60ES-RELEVO-T-v2-…`). El resultado
+  final y la entrega con botones se anotan abajo.
+- **Corregido también**: las correcciones de cortos (`E60CortoPlano`, `E60CortoTorre`) se
+  renderizan con `render-remotion`; antes el vigilante solo sabía lanzar `render-capitulo`.
+
 ## 4. Límites y pendientes (no implementado todavía)
 - **Producción nueva por Codex** (fichas y vídeos del calendario mientras Claude no está):
   PENDIENTE. Hoy Codex cubre correcciones; la producción espera a Claude.
