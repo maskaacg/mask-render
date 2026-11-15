@@ -1,0 +1,72 @@
+{
+ "id": "E60-RELEVO-T",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "avance_vertical_escape_room",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 24,
+ "sala": 1,
+ "titulo": "La torre del archivero",
+ "pensar_s": 10,
+ "motor_voz": "chatterbox",
+ "estado": "PRUEBA_NO_PUBLICABLE",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "nota": "PRUEBA del relevo Claude⇄Codex (15/11). Copia del avance de la Torre. NO PUBLICAR.",
+ "lineas": [
+  {
+   "id": "t01",
+   "fase": "narra",
+   "texto": "Tienes lo que dura esta vela para salir de la torre. Cien años vacía… y alguien acaba de encenderla."
+  },
+  {
+   "id": "t02",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Nadie sale de esta torre sin demostrar que sabe leer."
+  },
+  {
+   "id": "t03",
+   "fase": "narra",
+   "texto": "Primera cerradura. Tres escudos: rojo, azul y verde. Tres ganchos: uno, dos y tres."
+  },
+  {
+   "id": "t04",
+   "fase": "pista",
+   "texto": "El rojo no cuelga en el gancho uno."
+  },
+  {
+   "id": "t05",
+   "fase": "pista",
+   "texto": "El azul cuelga más a la derecha que el rojo."
+  },
+  {
+   "id": "t06",
+   "fase": "pista",
+   "texto": "Y el verde no está en el gancho tres."
+  },
+  {
+   "id": "t07",
+   "fase": "pregunta",
+   "texto": "¿En qué orden cuelgan los escudos? Tienes diez segundos."
+  },
+  {
+   "id": "t08",
+   "fase": "cierre",
+   "texto": "Déjalo en los comentarios. La solución, y tres cerraduras más, en el vídeo completo de YouTube: La torre del archivero."
+  }
+ ],
+ "version": "v1",
+ "historial": [
+  {
+   "version": "v3",
+   "fecha": "2026-11-15",
+   "cambios": "Gancho desde el primer segundo con la vela encendida (t01), música original de fondo. Puzle sin cambios."
+  },
+  {
+   "version": "v1",
+   "fecha": "2026-11-15",
+   "cambios": "Copia para prueba del relevo; no publicable"
+  }
+ ]
+}

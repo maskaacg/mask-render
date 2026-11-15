@@ -1,0 +1,50 @@
+{
+ "t01": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Medianoche. Estás encerrado en la torre de un castillo que lleva 100 años vacío y la  vela de la mesa acaba de encenderse sola."
+ },
+ "t02": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Nadie sale de esta torre sin demostrar que sabe leer."
+ },
+ "t03": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " primera cerradura, tres escudos, rojo, azul y verde, tres ganchos, uno, dos y tres."
+ },
+ "t04": {
+  "wer": 0.0,
+  "intentos": 2,
+  "ok": true,
+  "transcripcion": " El rojo no cuelga en el gancho uno."
+ },
+ "t05": {
+  "wer": 0.1,
+  "intentos": 2,
+  "ok": true,
+  "transcripcion": " El azul cuerga más a la derecha que el rojo."
+ },
+ "t06": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " y el verde no está en el gancho 3."
+ },
+ "t07": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " ¿En qué orden cuelgan los escudos?  Tienes 10 segundos."
+ },
+ "t08": {
+  "wer": 0.0,
+  "intentos": 1,
+  "ok": true,
+  "transcripcion": " Déjalo en los comentarios.  La solución y tres cerraduras más en el vídeo completo de YouTube,  la torre del archivero."
+ }
+}

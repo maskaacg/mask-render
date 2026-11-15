@@ -1,0 +1,49 @@
+{
+ "video_id": "E60ES-RELEVO-T",
+ "version": "v1",
+ "ficha": "fichas/E60-RELEVO-T.json",
+ "composicion": "E60AvanceTorre",
+ "tramos": 2,
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": null,
+ "run_id": null,
+ "plataformas": [],
+ "pendiente_conectar": [],
+ "programado": null,
+ "zona": "Europe/Madrid",
+ "requiere_publicado_antes": "E60ES-ER-001-TORRE",
+ "portada": "remotion/publicacion/E60ES-ER-001-AVANCE_portada.jpg",
+ "titulo": "PRUEBA RELEVO · NO PUBLICAR",
+ "tiktok_title": "PRUEBA RELEVO · NO PUBLICAR",
+ "youtube_title": "PRUEBA RELEVO · NO PUBLICAR",
+ "youtube_description": "Tres escudos, tres ganchos y tres pistas. ¿Lo resuelves en 10 segundos? Solución y 3 cerraduras más en el escape room completo «La torre del archivero» del canal. Contenido creado con ayuda de IA. #shorts #acertijos #escaperoom",
+ "facebook_title": "PRUEBA RELEVO",
+ "facebook_description": "Tres escudos, tres ganchos y tres pistas. ¿En qué orden cuelgan? Respuesta en comentarios; la solución, en el vídeo completo en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #escaperoom",
+ "tags": [
+  "acertijos",
+  "escape room",
+  "shorts",
+  "lógica",
+  "enigma 60"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "historial": [],
+ "estado_aprobacion": "v2 revocada; v3 pendiente de aprobación",
+ "prueba": true
+}
