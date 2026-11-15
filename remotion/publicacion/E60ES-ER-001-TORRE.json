@@ -10,8 +10,7 @@
  "encargo_master": "E60ES-ER-001-TORRE-v2-20261114-235838",
  "run_id": 43650903534,
  "plataformas": [
-  "youtube",
-  "facebook"
+  "youtube"
  ],
  "programado": "2026-11-16T17:00:00",
  "zona": "Europe/Madrid",
@@ -50,5 +49,6 @@
    "version": "v1",
    "motivo_cambio": "Colores de escudos incoherentes y textos superpuestos (Propietario, 14/11)"
   }
- ]
+ ],
+ "estado_aprobacion": "APROBACION_REVOCADA (v2, 15/11/2026): publicación cancelada; rehacer v3"
 }
