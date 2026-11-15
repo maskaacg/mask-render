@@ -9,12 +9,14 @@ SELECT s.approval_id, s.video_id, s.version, s.motivo, s.decidido_en
 FROM mg.solicitudes s
 LEFT JOIN mg.correcciones_v2 c ON c.approval_id = s.approval_id
 WHERE s.estado = 'CAMBIOS_SOLICITADOS' AND s.canal = 'ENIGMA_60'
-  AND s.origen ~ '(WF-TEST-REMOTION|WF-ENTREGA-REVISION)' AND c.approval_id IS NULL
+  AND s.origen ~ '(WF-TEST-REMOTION|WF-ENTREGA-REVISION)' AND s.video_id NOT LIKE '%PRUEBA%'
+  AND (c.approval_id IS NULL OR (c.estado = 'ERROR' AND c.detalle LIKE 'Codex:%'))
 ORDER BY s.decidido_en;
 ```
+(Las filas `ERROR` con detalle «Codex:…» son correcciones que el corrector de reserva no pudo terminar: le tocan a Claude.)
 Si no hay filas: terminar sin hacer nada (no escribir en Telegram).
 Para cada fila, reservarla antes de trabajar:
-`INSERT INTO mg.correcciones_v2 (approval_id, video_id, version_origen, estado) VALUES (...,'EN_CURSO')`.
+`INSERT INTO mg.correcciones_v2 (approval_id, video_id, version_origen, estado) VALUES (...,'EN_CURSO') ON CONFLICT (approval_id) DO UPDATE SET estado='EN_CURSO', detalle='Retomada por Claude', actualizado_en=now()`.
 
 ## 2. Localizar el vídeo
 `remotion/publicacion/<video_id>.json` da la ficha, la composición, los tramos y el formato.
