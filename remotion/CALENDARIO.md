@@ -17,6 +17,9 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 | Sáb 21 | Serie, capítulo 1 (16:9, voz «Chatterbox expresiva») + avance 9:16 | E60ES-S001-E01 / -AVANCE | Pendiente (re-voz) |
 | Dom 22 | Acertijo independiente 9:16 | E60ES-AC-20261122 | Pendiente |
 
+Cada vídeo del calendario debe estar también en Neon (`mg.calendario`: video_id, publica_en, tipo,
+notas): el bucle autónomo lo usa para detectar retrasos. Al añadir una semana, insertar sus filas.
+
 Al entregar un vídeo, cambia su estado aquí a «Entregado vN» (y a «APROBADO y programado» cuando
 llegue la confirmación de Telegram). Cuando termine la semana, añade la siguiente siguiendo el mismo
 patrón y avisa al Propietario del plan.

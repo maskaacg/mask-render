@@ -3,13 +3,24 @@
 Procedimiento que sigue la tarea programada «Corrector ENIGMA 60». Nunca publica: solo prepara la versión
 corregida y la manda a Telegram con los botones; publicar sigue exigiendo que el Propietario pulse APROBAR.
 
+## 0. Tareas del bucle autónomo (desde 15/11)
+Antes de nada, mirar las tareas que el bucle autónomo (`SYS-BUCLE`, cada hora) ha asignado a Claude:
+```sql
+SELECT id, tipo, payload, creado_en FROM ops.tareas
+WHERE asignado = 'SYS-ARQUITECTO' AND estado = 'PENDIENTE' ORDER BY prioridad, creado_en;
+```
+Tipos: `PRODUCIR_VIDEO` (vídeo del calendario a menos de 48 h sin entregar → producirlo según
+`PRODUCCION.md`), `CORREGIR_VIDEO`, `REVISAR_PUBLICACION`, `PROGRAMAR_APROBADO`, `LEER_COMENTARIOS`.
+No hace falta cerrarlas: el bucle las marca como HECHA en cuanto la causa desaparece (hay entrega,
+la corrección deja de estar en ERROR, etc.).
+
 ## 1. Buscar correcciones pendientes (Neon, proyecto wild-meadow-19641563)
 ```sql
 SELECT s.approval_id, s.video_id, s.version, s.motivo, s.decidido_en
 FROM mg.solicitudes s
 LEFT JOIN mg.correcciones_v2 c ON c.approval_id = s.approval_id
 WHERE s.estado = 'CAMBIOS_SOLICITADOS' AND s.canal = 'ENIGMA_60'
-  AND s.origen ~ '(WF-TEST-REMOTION|WF-ENTREGA-REVISION)' AND s.video_id NOT LIKE '%PRUEBA%'
+  AND s.origen ~ '(WF-TEST-REMOTION|WF-ENTREGA-REVISION)' AND s.video_id !~* '(PRUEBA|RELEVO)'
   AND (c.approval_id IS NULL OR (c.estado = 'ERROR' AND c.detalle LIKE 'Codex:%'))
 ORDER BY s.decidido_en;
 ```
