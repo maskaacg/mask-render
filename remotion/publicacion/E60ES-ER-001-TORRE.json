@@ -1,6 +1,6 @@
 {
  "video_id": "E60ES-ER-001-TORRE",
- "version": "v5",
+ "version": "v6",
  "ficha": "fichas/E60-ER-001.json",
  "composicion": "E60EscapeRoom",
  "tramos": 8,
@@ -62,7 +62,12 @@
    "version": "v4",
    "motivo_cambio": "Propietario (15/11): «Le falta algo de música ambiental» → v5: música original de misterio durante todo el vídeo (antes solo desde el título y a −40 dB), con ducking bajo la voz y lluvia algo más baja",
    "corrector": "Claude"
+  },
+  {
+   "version": "v5",
+   "motivo_cambio": "Propietario (15/11): «Se escucha interferencia en el sonido, no como lluvia» → v6: lluvia rehecha (siseo 0,3-4,5 kHz y gotas suaves en lugar de zumbido grave e impulsos secos; bucle sin fundidos a cero), chimenea y gramófono sin chasquidos secos, limitador suave sin recortes",
+   "corrector": "Claude"
   }
  ],
- "estado_aprobacion": "v4 con cambios pedidos (música ambiental); v5 pendiente de aprobación"
+ "estado_aprobacion": "v5 con cambios pedidos (interferencia en la lluvia); v6 pendiente de aprobación"
 }

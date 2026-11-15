@@ -125,30 +125,75 @@ def trueno():
     return A.norm(x, 0.8)
 
 
+def _periodico(n, ganancia, rng):
+    """Ruido coloreado en el dominio de la frecuencia: periódico (bucle sin costura ni fundidos)."""
+    f = np.fft.rfftfreq(n, 1 / SR)
+    X = (rng.standard_normal(len(f)) + 1j * rng.standard_normal(len(f))) * ganancia(f)
+    X[0] = 0
+    x = np.fft.irfft(X, n)
+    return x / (np.sqrt(np.mean(x ** 2)) or 1)
+
+
+def _banda(f, lo, hi, orden=2):
+    """Respuesta de un pasa-banda suave (Butterworth aproximado) con cortes lo-hi Hz."""
+    fs = np.maximum(f, 1e-3)
+    return 1 / np.sqrt(1 + (lo / fs) ** (2 * orden)) / np.sqrt(1 + (fs / hi) ** (2 * orden))
+
+
+def _filtra(x, ganancia):
+    X = np.fft.rfft(x)
+    return np.fft.irfft(X * ganancia(np.fft.rfftfreq(len(x), 1 / SR)), len(x))
+
+
+def _granos(n, por_seg, dur_ms, rng, ganancia):
+    """Gotas/chasquidos suaves: ráfagas cortas de ruido con envolvente de coseno (sin clics),
+    colocadas de forma circular para que el bucle no tenga costura."""
+    x = np.zeros(n)
+    for _ in range(int(por_seg * n / SR)):
+        m = int(SR * dur_ms * (0.6 + 0.8 * rng.random()) / 1000)
+        e = np.sin(np.pi * np.arange(m) / m) ** 2 * np.exp(-np.arange(m) / (m / 3))
+        g = rng.random() ** 2.2
+        i0 = int(rng.random() * n)
+        idx = (i0 + np.arange(m)) % n
+        x[idx] += rng.standard_normal(m) * e * g
+    return _filtra(x, ganancia)
+
+
 def lluvia():
-    tt = A.t(60.0)
-    x = A.lowpass(A.rng.standard_normal(len(tt)), 0.35) * 0.25
-    x += A.lowpass(A.rng.standard_normal(len(tt)), 0.02) * (1 + 0.4 * np.sin(2 * np.pi * tt / 13))
-    gotas = np.zeros(len(tt))
-    idx = A.rng.integers(0, len(tt) - 400, 1800)
-    gotas[idx] = A.rng.random(1800) * 0.6
-    x += np.convolve(gotas, np.exp(-np.arange(300) / 40), mode="same")
-    fade = int(0.5 * SR)
-    x[:fade] *= np.linspace(0, 1, fade)
-    x[-fade:] *= np.linspace(1, 0, fade)
-    return A.norm(x, 0.5)
+    """Lluvia tras la ventana de la torre (corrección del Propietario 15/11: «se escucha interferencia,
+    no como lluvia»). Antes: zumbido grave modulado + impulsos secos que sonaban a estática, y un
+    fundido a cero en cada vuelta del bucle. Ahora: siseo 0,3-5 kHz (como agua cayendo),
+    muchas gotas suaves con ataque redondeado y bucle periódico de 60 s sin costura."""
+    rng = np.random.default_rng(1160)
+    n = int(60.0 * SR)
+    tt = np.arange(n) / SR
+    # siseo: pasa-banda 300 Hz-5 kHz, apagado por el cristal (sin el brillo plano de la estática)
+    sise = _periodico(n, lambda f: _banda(f, 300, 4500) * (1 + 0.7 * np.exp(-((f - 1500) / 1200) ** 2)), rng)
+    # cuerpo del aguacero (tejado y piedra), discreto y sin modular
+    cuerpo = _periodico(n, lambda f: _banda(f, 120, 600), rng)
+    # gotas finas y densas + algunas gotas cercanas en el alféizar
+    finas = _granos(n, 320, 6, rng, lambda f: _banda(f, 1000, 4500))
+    cerca = _granos(n, 4, 14, rng, lambda f: _banda(f, 700, 3500))
+    finas /= np.sqrt(np.mean(finas ** 2)) or 1
+    cerca /= np.sqrt(np.mean(cerca ** 2)) or 1
+    # la intensidad sube y baja despacio (periodos que dividen 60 s: sin salto al repetir)
+    mod = 1 + 0.12 * np.sin(2 * np.pi * tt / 20) + 0.06 * np.sin(2 * np.pi * tt / 12 + 1.3)
+    x = (sise * 0.8 + cuerpo * 0.35 + finas * 0.8) * mod + cerca * 0.25
+    x = x / np.sqrt(np.mean(x ** 2)) * 0.067  # mismo nivel medio que antes: no altera la mezcla
+    return 0.5 * np.tanh(x / 0.5)  # limitador suave: sin recortes (que también sonarían a chasquido)
 
 
 def fuego():
-    tt = A.t(20.0)
-    x = A.lowpass(A.rng.standard_normal(len(tt)), 0.05) * 0.4
-    for _ in range(140):
-        n0 = int(A.rng.random() * (len(tt) - 2000))
-        x[n0:n0 + 2000] += A.rng.standard_normal(2000) * np.exp(-np.arange(2000) / (60 + 200 * A.rng.random())) * A.rng.random()
-    fade = int(0.3 * SR)
-    x[:fade] *= np.linspace(0, 1, fade)
-    x[-fade:] *= np.linspace(1, 0, fade)
-    return A.norm(x, 0.4)
+    """Chimenea: rumor cálido y chasquidos suaves y espaciados (antes: miles de chasquidos secos
+    agudos que se oían como interferencia). Bucle periódico de 20 s sin costura."""
+    rng = np.random.default_rng(1161)
+    n = int(20.0 * SR)
+    rumor = _periodico(n, lambda f: _banda(f, 60, 700, 1), rng)
+    chas = _granos(n, 3, 9, rng, lambda f: _banda(f, 500, 3500))
+    chas /= np.sqrt(np.mean(chas ** 2)) or 1
+    x = rumor + chas * 0.22
+    x = x / np.sqrt(np.mean(x ** 2)) * 0.02
+    return 0.3 * np.tanh(x / 0.3)
 
 
 def piedra():
@@ -162,10 +207,10 @@ def piedra():
 def gramofono():
     tt = A.t(12.0)
     x = A.lowpass(A.rng.standard_normal(len(tt)), 0.5) * 0.05
-    pops = np.zeros(len(tt))
-    idx = A.rng.integers(0, len(tt), 260)
-    pops[idx] = A.rng.random(260)
-    x += pops
+    # crepitar del disco: chasquidos suaves y escasos (antes 260 impulsos secos que sonaban a interferencia)
+    rp = np.random.default_rng(1162)
+    pops = _granos(len(tt), 6, 3, rp, lambda f: _banda(f, 800, 4000))
+    x += pops / (np.sqrt(np.mean(pops ** 2)) or 1) * 0.02
     # vals lejano de dos notas, filtrado como bocina antigua
     mel = [392.0, 329.63, 349.23, 293.66]
     for k in range(24):
