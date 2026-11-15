@@ -1,0 +1,49 @@
+{
+ "video_id": "E60ES-ER-002-MUSEO",
+ "version": "v1",
+ "ficha": "fichas/E60-ER-002.json",
+ "composicion": "E60EscapeMuseo",
+ "tramos": 8,
+ "formato": "YouTube 16:9",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": null,
+ "run_id": null,
+ "plataformas": [
+  "youtube"
+ ],
+ "programado": "2026-11-18T17:00:00",
+ "zona": "Europe/Madrid",
+ "miniatura": "remotion/publicacion/E60ES-ER-002-MUSEO_miniatura.jpg",
+ "titulo": "¿Saldrías de un museo donde todo te miente? | Escape Room 2 · ENIGMA 60",
+ "youtube_title": "¿Saldrías de un museo donde todo te miente? | Escape Room 2",
+ "youtube_description": "Medianoche. Estás encerrado en un museo donde cada placa, cada cartel y cada vigilante te miente. Cuatro salas y una alarma que salta a las doce y media.\n\nPausa en cada puzle: tienes 20 segundos para pensar antes de la solución. ¿Cuántas salas superas tú? Cuéntalo en los comentarios.\n\nSi te gustan los retos, suscríbete y activa la campanita: cada semana se abre una sala nueva.\n\nCAPITULOS_PENDIENTES\n\nEste sábado empieza la primera serie de ENIGMA 60.\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #enigma60",
+ "facebook_title": "¿Saldrías de un museo donde todo te miente?",
+ "facebook_description": "Escape room 2 de ENIGMA 60: cuatro salas, una alarma a las 00:30 y 20 segundos para pensar cada puzle. ¿Cuántas superas tú? Contenido creado con ayuda de IA. #escaperoom #acertijos #enigma60",
+ "tags": [
+  "escape room",
+  "acertijos",
+  "acertijos de lógica",
+  "enigmas",
+  "puzles",
+  "juegos mentales",
+  "escape room virtual",
+  "acertijos con respuesta",
+  "enigma 60",
+  "retos de lógica"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es",
+  "defaultAudioLanguage": "es"
+ },
+ "facebook": {
+  "facebook_media_type": "VIDEO",
+  "facebook_is_ai_generated": true
+ },
+ "historial": [],
+ "estado_aprobacion": "v1 pendiente de render y aprobación"
+}

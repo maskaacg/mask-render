@@ -198,7 +198,7 @@ export const estadoTorre = (t: number, P0: PlanC): EstadoTorre => {
 };
 
 /** Recordatorio de suscripción integrado en la historia (sin logotipos de terceros). */
-const ChipNarrativo: React.FC<{t: number; a: number; b: number; icono: 'sus' | 'campana'; texto: string}> = ({t, a, b, icono, texto}) => {
+export const ChipNarrativo: React.FC<{t: number; a: number; b: number; icono: 'sus' | 'campana'; texto: string}> = ({t, a, b, icono, texto}) => {
 	const o = interpolate(t, [a, a + 0.6, b, b + 0.6], [0, 1, 1, 0], clamp);
 	if (o <= 0) return null;
 	const pulso = 1 + 0.04 * Math.sin((t - a) * 5);
@@ -223,7 +223,7 @@ const ChipNarrativo: React.FC<{t: number; a: number; b: number; icono: 'sus' | '
 };
 
 /** Últimos segundos: zonas libres para la pantalla final de YouTube (vídeo + suscripción), sin texto encima. */
-const PantallaFinal: React.FC<{t: number; desde: number; total: number}> = ({t, desde, total}) => {
+export const PantallaFinal: React.FC<{t: number; desde: number; total: number}> = ({t, desde, total}) => {
 	const o = interpolate(t, [desde, desde + 1.2], [0, 1], clamp);
 	if (o <= 0) return null;
 	const marco = interpolate(t, [desde + 0.8, desde + 2.2], [0, 1], clamp);

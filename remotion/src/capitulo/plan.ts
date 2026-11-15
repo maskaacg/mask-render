@@ -1,5 +1,5 @@
 // Línea de tiempo de un capítulo de serie ENIGMA 60 a partir de la duración real de cada voz.
-export type FaseC = 'narra' | 'pista' | 'repaso' | 'pregunta' | 'solucion' | 'comprobacion' | 'accion' | 'custodio' | 'archivera';
+export type FaseC = 'narra' | 'pista' | 'repaso' | 'pregunta' | 'solucion' | 'comprobacion' | 'accion' | 'custodio' | 'archivera' | 'conservador';
 export type LineaC = {id: string; bloque: string; fase: FaseC; texto: string; voz?: string};
 export type FichaC = {
 	id: string;
@@ -32,6 +32,9 @@ export type PlanC = {
 	total: number;
 };
 
+/** Fases que dice un personaje (no el narrador): pausa antes de su intervención. */
+const PERSONAJE = new Set<string>(['custodio', 'archivera', 'conservador']);
+
 export const planificarC = ({ficha, duraciones}: PropsC): PlanC => {
 	let t = ficha.apertura_s ?? 8.0; // apertura en frío (por defecto: oscuridad, goteo y golpe metálico)
 	const lineas: PlanC['lineas'] = [];
@@ -62,8 +65,8 @@ export const planificarC = ({ficha, duraciones}: PropsC): PlanC => {
 			} else if (prev.fase === 'accion') t += 3.5;
 			else if (prev.fase === 'comprobacion') t += 1.5;
 			else if (l.fase === 'repaso') t += 0.9;
-			else if ((l.fase === 'custodio' || l.fase === 'archivera') && prev.fase !== l.fase) t += 2.2;
-			else if (l.fase === 'custodio' || l.fase === 'archivera') t += 0.8;
+			else if (PERSONAJE.has(l.fase) && prev.fase !== l.fase) t += 2.2;
+			else if (PERSONAJE.has(l.fase)) t += 0.8;
 			else t += 0.5;
 		}
 		if (!bloques[l.bloque]) bloques[l.bloque] = {inicio: t, fin: t};

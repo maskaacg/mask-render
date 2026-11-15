@@ -26,7 +26,7 @@ export const planificarT = ({ficha, duraciones}: PropsT) => {
 			if (prev.fase === 'pregunta') {
 				pensar = {inicio: t + 0.3, fin: t + 0.3 + ficha.pensar_s};
 				t += ficha.pensar_s + 0.8;
-			} else if (l.fase === 'archivera' || prev.fase === 'archivera') t += 0.7;
+			} else if (['archivera', 'conservador'].includes(l.fase) || ['archivera', 'conservador'].includes(prev.fase)) t += 0.7;
 			else t += 0.35;
 		}
 		const d = duraciones[l.id] ?? 3;

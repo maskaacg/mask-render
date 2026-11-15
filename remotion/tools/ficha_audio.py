@@ -262,6 +262,37 @@ def musica_misterio():
     return A.norm(x, 0.5)
 
 
+# ---- kit museo (escape room «El museo que miente»)
+def tictac():
+    """Péndulo del reloj de pie: bucle de 2 s (tic agudo en 0 s, tac grave en 1 s), madera, sin costura."""
+    n = int(2.0 * SR)
+    x = np.zeros(n)
+    for t0, f, g in [(0.0, 2100, 1.0), (1.0, 1500, 0.8)]:
+        tk = A.t(0.12)
+        golpe = (np.sin(2 * np.pi * f * tk) + 0.5 * np.sin(2 * np.pi * f * 1.51 * tk)) * A.env(len(tk), 0.0004, 0.018)
+        golpe += A.lowpass(A.rng.standard_normal(len(tk)), 0.3) * A.env(len(tk), 0.0003, 0.006) * 0.6
+        i0 = int(t0 * SR)
+        x[i0:i0 + len(tk)] += golpe * g
+    x = x - A.lowpass(x, 0.01)
+    return A.norm(x, 0.35)
+
+
+def cristal():
+    """Vitrina: tintineo de cristal (parciales inarmónicos con caída rápida)."""
+    tt = A.t(1.6)
+    x = sum(np.sin(2 * np.pi * f * tt) * A.env(len(tt), 0.001, d) * g
+            for f, d, g in [(2637, 0.6, 1), (3953, 0.4, 0.6), (5274, 0.25, 0.4), (6900, 0.15, 0.25)])
+    return A.norm(x, 0.3)
+
+
+def campanadas():
+    """Reloj de pie dando la hora: campanada grave con armónicos y cola larga."""
+    tt = A.t(4.0)
+    x = sum(np.sin(2 * np.pi * f * tt) * np.exp(-tt * k) * g for f, k, g in [(196.0, 0.9, 1), (392.6, 1.4, 0.5), (523.0, 2.2, 0.35), (787.0, 3.0, 0.2)])
+    x *= np.minimum(1, tt / 0.004)
+    return A.norm(x, 0.55)
+
+
 SFX = {
     "sonar": sonar,
     "gota": gota,
@@ -284,6 +315,9 @@ SFX = {
     "gramofono": gramofono,
     "apagar": apagar,
     "musica": musica_misterio,
+    "tictac": tictac,
+    "cristal": cristal,
+    "campanadas": campanadas,
 }
 
 

@@ -33,6 +33,8 @@ PAPELES = {
     "custodio": {"ref": "voces/ref_custodio.wav", "exaggeration": 0.45, "cfg_weight": 0.5, "efecto": "metal"},
     # Escape rooms independientes: la archivera de «La torre del archivero» (ref. Kokoro ef_dora)
     "archivera": {"ref": "voces/ref_archivera.wav", "exaggeration": 0.6, "cfg_weight": 0.4, "efecto": "sala"},
+    # Escape room 2 «El museo que miente»: el conservador (ref. Kokoro em_santa, sin efecto metálico)
+    "conservador": {"ref": "voces/ref_conservador.wav", "exaggeration": 0.55, "cfg_weight": 0.45, "efecto": "sala"},
 }
 
 

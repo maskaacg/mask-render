@@ -23,6 +23,11 @@ import fichaER01 from '../fichas/E60-ER-001.json';
 import {AvanceTorre, AvanceTorreAudio, PropsT, planificarT} from './escape/AvanceTorre';
 import fichaER01T from '../fichas/E60-ER-001-T.json';
 import {MiniaturaTorre} from './escape/MiniaturaTorre';
+import {MuseoEscape, MuseoEscapeAudio} from './escape/MuseoEscape';
+import fichaER02 from '../fichas/E60-ER-002.json';
+import {AvanceMuseo, AvanceMuseoAudio} from './escape/AvanceMuseo';
+import fichaER02T from '../fichas/E60-ER-002-T.json';
+import {MiniaturaMuseo} from './escape/MiniaturaMuseo';
 
 // Props de ejemplo para el Studio; en producción llegan con --props=out/props_<id>.json
 const ejemplo: Props = {
@@ -205,6 +210,68 @@ export const RemotionRoot: React.FC = () => (
 				height: props.ficha.alto,
 			})}
 		/>
+		<Composition
+			id="E60EscapeMuseo"
+			component={MuseoEscape}
+			defaultProps={{ficha: fichaER02 as unknown as PropsC['ficha'], duraciones: {}} as PropsC}
+			fps={24}
+			width={1920}
+			height={1080}
+			durationInFrames={24 * 600}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60EscapeMuseoAudio"
+			component={MuseoEscapeAudio}
+			defaultProps={{ficha: fichaER02 as unknown as PropsC['ficha'], duraciones: {}} as PropsC}
+			fps={24}
+			width={1920}
+			height={1080}
+			durationInFrames={24 * 600}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60AvanceMuseo"
+			component={AvanceMuseo}
+			defaultProps={{ficha: fichaER02T as unknown as PropsT['ficha'], duraciones: {}} as PropsT}
+			fps={24}
+			width={1080}
+			height={1920}
+			durationInFrames={24 * 90}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarT(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60AvanceMuseoAudio"
+			component={AvanceMuseoAudio}
+			defaultProps={{ficha: fichaER02T as unknown as PropsT['ficha'], duraciones: {}} as PropsT}
+			fps={24}
+			width={1080}
+			height={1920}
+			durationInFrames={24 * 90}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarT(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition id="E60MiniaturaMuseo" component={MiniaturaMuseo} fps={24} width={1280} height={720} durationInFrames={1} defaultProps={{vertical: false}} />
+		<Composition id="E60PortadaMuseo" component={MiniaturaMuseo} fps={24} width={1080} height={1920} durationInFrames={1} defaultProps={{vertical: true}} />
 		<Composition id="E60Estilo10" component={E60Estilo10} defaultProps={{estilo: 'isla3d' as const}} fps={30} width={1080} height={1920} durationInFrames={30} />
 		<Composition id="E60Estilo" component={E60Estilo} defaultProps={{estilo: 'plano' as const}} fps={30} width={1080} height={1920} durationInFrames={30} />
 			<Composition id="E60MiniaturaTorre" component={MiniaturaTorre} fps={24} width={1280} height={720} durationInFrames={1} defaultProps={{vertical: false}} />
