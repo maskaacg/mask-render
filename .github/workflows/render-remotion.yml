@@ -41,7 +41,7 @@ jobs:
             COMP=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('composicion','E60CincoSellosProto'))" "${F#remotion/}")
             FICHA=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('ficha',''))" "${F#remotion/}")
           fi
-          case "$COMP" in E60CincoSellosProto|E60Corto|E60CortoPlano|E60Historia|E60Diorama) ;; *) echo "Composición no permitida: $COMP"; exit 1;; esac
+          case "$COMP" in E60CincoSellosProto|E60Corto|E60CortoPlano|E60CortoTorre|E60Historia|E60Diorama) ;; *) echo "Composición no permitida: $COMP"; exit 1;; esac
           if [ -n "$FICHA" ]; then echo "$FICHA" | grep -Eq '^fichas/[A-Za-z0-9._-]+\.json$' && [ -f "$FICHA" ] || { echo "Ficha no válida: $FICHA"; exit 1; }; fi
           echo "COMPOSICION=$COMP" >> "$GITHUB_ENV"
           echo "FICHA=$FICHA" >> "$GITHUB_ENV"
