@@ -1,14 +1,14 @@
 {
  "video_id": "E60ES-ER-001-TORRE",
- "version": "v3",
+ "version": "v4",
  "ficha": "fichas/E60-ER-001.json",
  "composicion": "E60EscapeRoom",
  "tramos": 8,
  "formato": "YouTube 16:9",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": "E60ES-ER-001-TORRE-v3-20261115-035204",
- "run_id": 43671708194,
+ "encargo_master": "E60ES-ER-001-TORRE-v4-20261115-071731",
+ "run_id": 43684765521,
  "plataformas": [
   "youtube"
  ],
@@ -17,7 +17,7 @@
  "miniatura": "remotion/publicacion/E60ES-ER-001-TORRE_miniatura.jpg",
  "titulo": "¿Saldrías de esta torre antes de que se apague la vela? | Escape Room 1 · ENIGMA 60",
  "youtube_title": "¿Saldrías de esta torre antes de que se apague la vela? | Escape Room 1",
- "youtube_description": "Te despiertas encerrado en la torre del archivero. Cuatro cerraduras, una vela que se consume… y una archivera que solo deja salir a quien sabe leer.\n\nPausa en cada puzle: tienes 20 segundos para pensar antes de la solución. ¿Cuántas cerraduras abres tú? Cuéntalo en los comentarios.\n\nSi te gustan los retos, suscríbete y activa la campanita: cada semana se abre una sala nueva.\n\n0:00 La torre\n1:00 Puzle 1 · Los tres escudos\n2:46 Puzle 2 · El lema cifrado\n4:49 Puzle 3 · La escalera\n6:28 Puzle 4 · Las tres llaves\n8:08 La archivera\n8:47 Soluciones\n\nEl miércoles, nueva sala: «El museo que miente».\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #enigma60",
+ "youtube_description": "Te despiertas encerrado en la torre del archivero. Cuatro cerraduras, una vela que se consume… y una archivera que solo deja salir a quien sabe leer.\n\nPausa en cada puzle: tienes 20 segundos para pensar antes de la solución. ¿Cuántas cerraduras abres tú? Cuéntalo en los comentarios.\n\nSi te gustan los retos, suscríbete y activa la campanita: cada semana se abre una sala nueva.\n\n0:00 La torre\n1:00 Puzle 1 · Los tres escudos\n2:44 Puzle 2 · El lema cifrado\n4:46 Puzle 3 · La escalera\n6:24 Puzle 4 · Las tres llaves\n8:05 La archivera\n8:44 Soluciones\n\nEl miércoles, nueva sala: «El museo que miente».\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #enigma60",
  "facebook_title": "¿Saldrías de esta torre antes de que se apague la vela?",
  "facebook_description": "Escape room 1 de ENIGMA 60: cuatro cerraduras, una vela y 20 segundos para pensar cada puzle. ¿Cuántas abres tú? Contenido creado con ayuda de IA. #escaperoom #acertijos #enigma60",
  "tags": [
@@ -52,6 +52,11 @@
   {
    "version": "v2",
    "motivo_cambio": "Aprobación revocada por el Propietario (15/11): rehacer con estrategia de crecimiento"
+  },
+  {
+   "version": "v3",
+   "motivo_cambio": "Propietario: falta «suscríbete y activa la campanita para ser el primero»; prefiere el gancho de refugiarse de la lluvia",
+   "corrector": "Claude"
   }
  ],
  "estado_aprobacion": "v2 revocada; v3 pendiente de aprobación"
