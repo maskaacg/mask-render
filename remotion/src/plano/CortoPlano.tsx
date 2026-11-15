@@ -172,7 +172,7 @@ export const CortoPlano: React.FC<Props> = (props) => {
 			{/* subtítulos */}
 			{!enPensar && (
 				<div style={{position: 'absolute', left: 56, top: 214, width: 968, height: 250, display: 'flex', alignItems: 'flex-start', opacity: subO}}>
-					<div style={{borderLeft: `8px solid ${A}`, background: 'rgba(4,7,13,0.72)', padding: '18px 26px', fontFamily: OSWALD, fontWeight: 500, fontSize: 52, lineHeight: 1.18, color: linea?.fase === 'solucion' ? '#ffd9cf' : '#f2f4f8', transform: `translateY(${(1 - subO) * 10}px)`}}>
+					<div style={{borderLeft: `8px solid ${A}`, background: 'rgba(4,7,13,0.62)', padding: '12px 20px', borderRadius: 6, fontFamily: OSWALD, fontWeight: 500, fontSize: 40, lineHeight: 1.16, color: linea?.fase === 'solucion' ? '#ffd9cf' : '#f2f4f8', transform: `translateY(${(1 - subO) * 10}px)`}}>
 						{linea?.texto ?? ''}
 					</div>
 				</div>
