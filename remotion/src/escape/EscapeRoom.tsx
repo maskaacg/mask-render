@@ -320,13 +320,23 @@ export const SonidoEscape: React.FC<{ficha: PropsC['ficha']; P0: PlanC; fps: num
 	const gIni = T.g03.inicio + 3.0;
 	return (
 		<>
-			<Audio src={staticFile('audio/sfx/lluvia.wav')} volume={0.32} loop />
-			<Audio src={staticFile('audio/sfx/fuego.wav')} volume={0.14} loop />
-			{(ficha.pantalla_final_s ?? 0) > 0 && (
-				<Sequence from={fr(P0.titulo.inicio)}>
-					<Audio src={staticFile('audio/sfx/musica.wav')} volume={0.09} loop />
-				</Sequence>
-			)}
+			<Audio src={staticFile('audio/sfx/lluvia.wav')} volume={0.26} loop />
+			<Audio src={staticFile('audio/sfx/fuego.wav')} volume={0.12} loop />
+			{/* Música ambiental (original, sintetizada) durante todo el vídeo: entra con fundido,
+			    baja bajo la voz (ducking) y se apaga al final. Corrección del Propietario 15/11 (v5). */}
+			<Audio
+				src={staticFile('audio/sfx/musica.wav')}
+				loop
+				volume={(f) => {
+					const s = f / fps;
+					const entrada = Math.min(1, s / 4);
+					const salida = Math.max(0, Math.min(1, (P0.total - s) / 3));
+					// distancia (s) a la línea de voz más cercana; 0 si está sonando
+					const d = P0.lineas.reduce((m, l) => Math.min(m, s < l.inicio ? l.inicio - s : s > l.fin ? s - l.fin : 0), 99);
+					const libre = Math.min(1, Math.max(0, (d - 0.15) / 0.6));
+					return (0.13 + 0.11 * libre) * entrada * salida;
+				}}
+			/>
 			<Sequence from={fr(gIni)} durationInFrames={fr(apaga + 1.5 - gIni)}>
 				<Audio src={staticFile('audio/sfx/gramofono.wav')} volume={0.12} loop />
 			</Sequence>

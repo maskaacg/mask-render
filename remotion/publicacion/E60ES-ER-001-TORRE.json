@@ -1,6 +1,6 @@
 {
  "video_id": "E60ES-ER-001-TORRE",
- "version": "v4",
+ "version": "v5",
  "ficha": "fichas/E60-ER-001.json",
  "composicion": "E60EscapeRoom",
  "tramos": 8,
@@ -57,7 +57,12 @@
    "version": "v3",
    "motivo_cambio": "Propietario: falta «suscríbete y activa la campanita para ser el primero»; prefiere el gancho de refugiarse de la lluvia",
    "corrector": "Claude"
+  },
+  {
+   "version": "v4",
+   "motivo_cambio": "Propietario (15/11): «Le falta algo de música ambiental» → v5: música original de misterio durante todo el vídeo (antes solo desde el título y a −40 dB), con ducking bajo la voz y lluvia algo más baja",
+   "corrector": "Claude"
   }
  ],
- "estado_aprobacion": "v2 revocada; v3 con cambios pedidos; v4 pendiente de aprobación"
+ "estado_aprobacion": "v4 con cambios pedidos (música ambiental); v5 pendiente de aprobación"
 }
