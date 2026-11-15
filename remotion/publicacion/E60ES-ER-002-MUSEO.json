@@ -7,8 +7,8 @@
  "formato": "YouTube 16:9",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": null,
- "run_id": null,
+ "encargo_master": "E60ES-ER-002-MUSEO-v1-20261115-220533",
+ "run_id": 43761724018,
  "plataformas": [
   "youtube"
  ],
@@ -17,7 +17,7 @@
  "miniatura": "remotion/publicacion/E60ES-ER-002-MUSEO_miniatura.jpg",
  "titulo": "¿Saldrías de un museo donde todo te miente? | Escape Room 2 · ENIGMA 60",
  "youtube_title": "¿Saldrías de un museo donde todo te miente? | Escape Room 2",
- "youtube_description": "Medianoche. Estás encerrado en un museo donde cada placa, cada cartel y cada vigilante te miente. Cuatro salas y una alarma que salta a las doce y media.\n\nPausa en cada puzle: tienes 20 segundos para pensar antes de la solución. ¿Cuántas salas superas tú? Cuéntalo en los comentarios.\n\nSi te gustan los retos, suscríbete y activa la campanita: cada semana se abre una sala nueva.\n\nCAPITULOS_PENDIENTES\n\nEste sábado empieza la primera serie de ENIGMA 60.\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #enigma60",
+ "youtube_description": "Medianoche. Estás encerrado en un museo donde cada placa, cada cartel y cada vigilante te miente. Cuatro salas y una alarma que salta a las doce y media.\n\nPausa en cada puzle: tienes 20 segundos para pensar antes de la solución. ¿Cuántas salas superas tú? Cuéntalo en los comentarios.\n\nSi te gustan los retos, suscríbete y activa la campanita: cada semana se abre una sala nueva.\n\n0:00 El museo\n1:07 Puzle 1 · Las tres vitrinas\n3:08 Puzle 2 · El año del retrato\n5:28 Puzle 3 · El gato falso\n7:33 Puzle 4 · Los dos vigilantes\n9:34 La calle\n10:08 Soluciones\n\nEste sábado empieza la primera serie de ENIGMA 60.\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #enigma60",
  "facebook_title": "¿Saldrías de un museo donde todo te miente?",
  "facebook_description": "Escape room 2 de ENIGMA 60: cuatro salas, una alarma a las 00:30 y 20 segundos para pensar cada puzle. ¿Cuántas superas tú? Contenido creado con ayuda de IA. #escaperoom #acertijos #enigma60",
  "tags": [
@@ -45,5 +45,5 @@
   "facebook_is_ai_generated": true
  },
  "historial": [],
- "estado_aprobacion": "v1 pendiente de render y aprobación"
+ "estado_aprobacion": "v1 pendiente de aprobación"
 }

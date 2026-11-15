@@ -7,8 +7,8 @@
  "formato": "TikTok / Reels / Shorts 9:16",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": null,
- "run_id": null,
+ "encargo_master": "E60ES-ER-002-AVANCE-v1-20261115-183845",
+ "run_id": 43742335087,
  "plataformas": [
   "tiktok",
   "youtube",
@@ -50,5 +50,5 @@
   "facebook_is_ai_generated": true
  },
  "historial": [],
- "estado_aprobacion": "v1 pendiente de render y aprobación"
+ "estado_aprobacion": "v1 pendiente de aprobación"
 }
