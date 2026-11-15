@@ -10,7 +10,7 @@ cargarFuentes();
 // Avance vertical 9:16 del escape room 1: contexto + primer puzle SIN solución → vídeo completo en YouTube.
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const io = Easing.inOut(Easing.cubic);
-type V3 = [number, number, number];
+export type V3 = [number, number, number];
 export type LineaT = {id: string; fase: string; texto: string; voz?: string};
 export type FichaT = {id: string; titulo: string; sala: number; pensar_s: number; fps: number; ancho: number; alto: number; aviso_ia: string; lineas: LineaT[]};
 export type PropsT = {ficha: FichaT; duraciones: Record<string, number>};
@@ -37,7 +37,7 @@ export const planificarT = ({ficha, duraciones}: PropsT) => {
 	return {L, pensar, total: t + 4.5};
 };
 
-const PLANOS: Record<string, {pos: V3; mira: V3; fov: number}> = {
+export const PLANOS: Record<string, {pos: V3; mira: V3; fov: number}> = {
 	ventana: {pos: [0.4, 1.6, 1.4], mira: P(VENTANA_DEG, 4.2, 2.9), fov: 70},
 	torre: {pos: [0.3, 1.6, 2.9], mira: [0, 2.2, -3], fov: 78},
 	vela: {pos: [-1.2, 1.3, 1.75], mira: [-1.95, 1.0, 2.45], fov: 60},

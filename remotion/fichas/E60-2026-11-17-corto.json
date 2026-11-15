@@ -64,5 +64,12 @@
  "aviso_ia": "Contenido creado con ayuda de IA",
  "auditoria": "Claude 15/11/2026: comprobado por código (3 casos): solo con el chip en la AZUL hay exactamente una frase cierta, la de la caja VERDE. Corregida la animación, que marcaba la etiqueta azul como cierta.",
  "motor_voz": "chatterbox",
- "version": "v1"
+ "version": "v2",
+ "historial": [
+  {
+   "version": "v2",
+   "fecha": "2026-11-15",
+   "cambios": "Corrección del Propietario: estética de «La torre del archivero» (sala 3D, vela, pergamino iluminado) en lugar del plano 2D. Mismo acertijo, misma solución verificada."
+  }
+ ]
 }
