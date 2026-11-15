@@ -184,6 +184,7 @@ export const CortoPlano: React.FC<Props> = (props) => {
 
 			{/* audio */}
 			<Audio src={staticFile('audio/sfx/ambiente.wav')} volume={0.4} />
+			<Audio src={staticFile('audio/sfx/musica.wav')} volume={0.08} loop />
 			<Sequence from={Math.round(0.1 * fps)}>
 				<Audio src={staticFile('audio/sfx/aire.wav')} volume={0.45} />
 			</Sequence>

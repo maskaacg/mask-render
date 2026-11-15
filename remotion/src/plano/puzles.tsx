@@ -107,6 +107,8 @@ export const Cajas: React.FC<PuzleProps> = ({datos, t, enunciado, solucion, acen
 	const cols = datos.colores as string[];
 	const labels = datos.etiquetas as string[];
 	const win = datos.respuesta as number;
+	// etiqueta que dice la verdad (no tiene por qué ser la de la caja ganadora)
+	const verdad = (datos.verdadera ?? win) as number;
 	const open = interpolate(t, [solucion + 0.4, solucion + 1.6], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
 	return (
 		<g>
@@ -140,7 +142,7 @@ export const Cajas: React.FC<PuzleProps> = ({datos, t, enunciado, solucion, acen
 							</div>
 						</foreignObject>
 						{!isWin && <Tachar x={cx} y={340} s={70} t={t} at={solucion + 1.2 + i * 0.3} />}
-						{isWin && t > solucion && <Rodeo cx={cx} cy={605} rx={175} ry={90} t={t} at={solucion + 2.4} />}
+						{i === verdad && t > solucion && <Rodeo cx={cx} cy={605} rx={175} ry={90} t={t} at={solucion + 2.4} />}
 					</g>
 				);
 			})}

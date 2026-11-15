@@ -19,7 +19,7 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     defaults:
       run:
         working-directory: remotion
@@ -75,6 +75,21 @@ jobs:
           if [ -n "$FICHA" ]; then
             python tools/ficha_audio.py --ficha "$FICHA" --kokoro-model models/kokoro-v1.0.onnx --kokoro-voices models/voices-v1.0.bin
           fi
+      - name: Cache de modelos Chatterbox y Whisper
+        if: env.FICHA != ''
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-chatterbox-mtl-whisper-small
+      - name: Voz expresiva Chatterbox (MIT) si la ficha la pide
+        if: env.FICHA != ''
+        run: |
+          MOTOR=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('motor_voz','kokoro'))" "$FICHA")
+          if [ "$MOTOR" = "chatterbox" ]; then
+            rm -rf "public/audio/$(basename "$FICHA" .json)"
+            python -m pip install --quiet --extra-index-url https://download.pytorch.org/whl/cpu chatterbox-tts faster-whisper num2words scipy
+            python tools/voz_chatterbox.py --ficha "$FICHA" --hilos 4
+          fi
       - name: Instalar Remotion
         run: npm ci --no-audit --no-fund
       - name: Render
@@ -86,6 +101,37 @@ jobs:
             --codec=h264 --crf=20 --gl=swangle
       - name: Masterizado y QA técnica
         run: python tools/finalize_qa.py --entrada out/raw.mp4 --id "$ENCARGO_ID" --salida final
+      - name: Copia de revisión para Telegram y hoja de fotogramas
+        run: |
+          ID="$ENCARGO_ID"
+          DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 final/$ID.mp4)
+          VB=$(python3 -c "print(max(300, min(2500, int(40*8*1000/float('$DUR')) - 128)))")
+          ffmpeg -hide_banner -loglevel error -y -i final/$ID.mp4 -vf "scale='if(gt(iw,ih),854,480)':-2" -c:v libx264 -preset veryfast -b:v ${VB}k -maxrate $((VB*12/10))k -bufsize $((VB*2))k -c:a aac -b:a 96k -movflags +faststart final/$ID-revision.mp4
+          ffmpeg -hide_banner -loglevel error -y -i final/$ID.mp4 -vf "fps=1/4,scale=270:-2,tile=6x3" -frames:v 1 -q:v 4 final/$ID-hoja-01.jpg || true
+      - name: Versión de revisión
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ENCARGO_ID }}-revision
+          path: |
+            remotion/final/${{ env.ENCARGO_ID }}-revision.mp4
+            remotion/final/${{ env.ENCARGO_ID }}.qa.json
+            remotion/final/${{ env.ENCARGO_ID }}-hoja-*.jpg
+          if-no-files-found: error
+          retention-days: 3
+      - name: Máster directo (sin zip)
+        uses: actions/upload-artifact@v7
+        with:
+          path: remotion/final/${{ env.ENCARGO_ID }}.mp4
+          archive: false
+          if-no-files-found: error
+          retention-days: 7
+      - name: QA directo (sin zip)
+        uses: actions/upload-artifact@v7
+        with:
+          path: remotion/final/${{ env.ENCARGO_ID }}.qa.json
+          archive: false
+          if-no-files-found: error
+          retention-days: 7
       - name: Retener MP4 en GitHub hasta aprobación humana
         uses: actions/upload-artifact@v4
         with:

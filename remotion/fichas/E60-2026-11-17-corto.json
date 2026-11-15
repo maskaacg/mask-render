@@ -24,7 +24,8 @@
    "azul",
    "verde"
   ],
-  "respuesta": 1
+  "respuesta": 1,
+  "verdadera": 2
  },
  "solucion_reserva": null,
  "lineas": [
@@ -61,5 +62,7 @@
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+ "auditoria": "Claude 15/11/2026: comprobado por código (3 casos): solo con el chip en la AZUL hay exactamente una frase cierta, la de la caja VERDE. Corregida la animación, que marcaba la etiqueta azul como cierta.",
+ "motor_voz": "chatterbox",
+ "version": "v1"
 }
