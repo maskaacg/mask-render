@@ -1,6 +1,6 @@
 {
  "video_id": "E60ES-ER-001-AVANCE",
- "version": "v2",
+ "version": "v3",
  "ficha": "fichas/E60-ER-001-T.json",
  "composicion": "E60AvanceTorre",
  "tramos": 2,
@@ -53,7 +53,11 @@
   {
    "version": "v1",
    "motivo_cambio": "Colores de escudos incoherentes y textos superpuestos (Propietario, 14/11)"
+  },
+  {
+   "version": "v2",
+   "motivo_cambio": "Aprobación revocada por el Propietario (15/11): rehacer con estrategia de crecimiento"
   }
  ],
- "estado_aprobacion": "APROBACION_REVOCADA (v2, 15/11/2026): publicación cancelada; rehacer v3"
+ "estado_aprobacion": "v2 revocada; v3 pendiente de aprobación"
 }
