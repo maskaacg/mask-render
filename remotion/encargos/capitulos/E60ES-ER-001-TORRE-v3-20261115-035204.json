@@ -1,0 +1,8 @@
+{
+ "encargo_id": "E60ES-ER-001-TORRE-v3-20261115-035204",
+ "composicion": "E60EscapeRoom",
+ "ficha": "fichas/E60-ER-001.json",
+ "tramos": 8,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "v3: gancho, suscripción integrada, campanita, pantalla final 20 s, música (orden del Propietario 15/11)"
+}
