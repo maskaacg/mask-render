@@ -9,8 +9,8 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 
 | Publicación | Tipo | video_id | Estado |
 |---|---|---|---|
-| Lun 16 | **Escape room 1 «La torre del archivero» v3** (16:9, solo YouTube 17:00) + **avance v3** 9:16 (TikTok, Shorts, Facebook Reels 18:00) | E60ES-ER-001-TORRE / -AVANCE | v2 revocada. v3 en producción el dom 15 (excepción única a las 48 h, orden del Propietario) |
-| Mar 17 | Acertijo independiente 9:16 «Las tres cajas fuertes» | E60ES-AC-20261117 | En producción el dom 15 (excepción única a las 48 h) |
+| Lun 16 | **Escape room 1 «La torre del archivero» v3** (16:9, solo YouTube 17:00) + **avance v3** 9:16 (TikTok, Shorts, Facebook Reels 18:00) | E60ES-ER-001-TORRE / -AVANCE | Entregado v3 el dom 15 (Telegram, pendiente de APROBAR). Excepción única a las 48 h |
+| Mar 17 | Acertijo independiente 9:16 «Las tres cajas fuertes» | E60ES-AC-20261117 | Entregado v1 el dom 15 (Telegram, pendiente de APROBAR). Excepción única a las 48 h |
 | Mié 18 | Escape room 2 «El museo que miente» (16:9) + avance 9:16 | E60ES-ER-002-MUSEO / -AVANCE | Pendiente |
 | Jue 19 | Acertijo independiente 9:16 | E60ES-AC-20261119 | Pendiente |
 | Vie 20 | Acertijo independiente 9:16 | E60ES-AC-20261120 | Pendiente |
