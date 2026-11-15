@@ -44,6 +44,7 @@ export const PLANOS_MUSEO: Record<string, {pos: V3; mira: V3; fov?: number}> = {
 	vg1: {pos: [-1.5, 1.55, -25.3], mira: [-2.55, 1.45, -26.9], fov: 48},
 	vg2: {pos: [1.5, 1.55, -25.3], mira: [2.55, 1.45, -26.9], fov: 48},
 	puertas: {pos: [0, 1.6, -25.0], mira: [0, 1.3, -28], fov: 58},
+	vigilantes: {pos: [0.5, 1.7, -24.4], mira: [0, 1.35, -27.4], fov: 64},
 	puertaDer: {pos: [0.95, 1.6, -26.2], mira: [1.4, 1.3, -28.6], fov: 54},
 	calle: {pos: [1.1, 1.6, -33.4], mira: [1.4, 1.8, -28.2], fov: 62},
 	escaparate: {pos: [3.0, 1.7, -30.6], mira: ESCAPARATE, fov: 46},
@@ -55,7 +56,7 @@ const PLANO_DE: Record<string, string> = {
 	a01: 'vitrinas', a02: 'placas', a04: 'v2', a06: 'vitrinas', a07: 'placas', a10: 'vitrinas',
 	b01: 'retrato', b02: 'caja', b03: 'placaRetrato', b07: 'retrato', b08: 'caja', b11: 'caja', b12: 'pintura',
 	c01: 'egipcia', c02: 'gatos', c04: 'balanza', c07: 'gatos', c09: 'balanza', c11: 'gatoFalso',
-	d01: 'puertas', d02: 'salida', d04: 'vg1', d05: 'vg2', d06: 'puertas', d07: 'salida', d09: 'vg1', d11: 'puertaDer',
+	d01: 'puertas', d02: 'salida', d04: 'vg1', d05: 'vg2', d06: 'puertas', d07: 'salida', d09: 'vigilantes', d11: 'puertaDer',
 	e01: 'calle', e02: 'escaparate', f01: 'final',
 };
 const EXTRA: [string, number, string][] = [
@@ -114,11 +115,13 @@ const camara = (t: number, P0: PlanC): EstadoMuseo['cam'] => {
 	const mira = mix(prev.mira, cur.mira);
 	const sig = ev[k + 1]?.t ?? P0.total;
 	const a0 = ev[k].t + ev[k].dur;
-	const push = sig > a0 + 0.01 ? interpolate(t, [a0, sig], [0, 0.05], clamp) : 0;
+	// empuje lento y deriva de cámara en mano: ningún plano queda congelado (QA de movimiento)
+	const push = sig > a0 + 0.01 ? interpolate(t, [a0, sig], [0, Math.min(0.16, 0.012 * (sig - a0))], clamp) : 0;
 	for (let i = 0; i < 3; i++) pos[i] += (mira[i] - pos[i]) * push;
-	pos[0] += Math.sin(t * 0.6) * 0.018;
-	pos[1] += Math.sin(t * 0.47 + 1) * 0.014;
-	mira[0] += Math.sin(t * 0.37 + 2) * 0.022;
+	pos[0] += Math.sin(t * 0.6) * 0.03 + Math.sin(t * 0.23 + 0.7) * 0.05;
+	pos[1] += Math.sin(t * 0.47 + 1) * 0.022;
+	mira[0] += Math.sin(t * 0.37 + 2) * 0.04;
+	mira[1] += Math.sin(t * 0.29 + 0.4) * 0.025;
 	const fov = (prev.fov ?? 52) + ((cur.fov ?? 52) - (prev.fov ?? 52)) * f;
 	return {pos, mira, fov};
 };

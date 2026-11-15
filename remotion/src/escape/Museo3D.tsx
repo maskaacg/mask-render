@@ -1000,7 +1000,7 @@ const Salida: React.FC<{e: EstadoMuseo; T: TM}> = ({e, T}) => {
 				<Vigilante key={x} x={x} i={i} e={e} T={T} />
 			))}
 			{VIGILANTES_X.map((x) => (
-				<pointLight key={`l${x}`} position={[x * 0.7, 2.6, -25.6]} color="#ffe2b8" intensity={2.2 * e.luces[4]} distance={3.5} decay={1.6} />
+				<pointLight key={`l${x}`} position={[x * 0.8, 2.4, -25.9]} color="#ffe2b8" intensity={4.5 * e.luces[4]} distance={3.8} decay={1.5} />
 			))}
 			{/* luz de la calle que entra por la puerta derecha */}
 			{e.puerta > 0.02 && <pointLight position={[PUERTAS_X[1], 1.8, -29.2]} color="#9fb4ff" intensity={6 * e.puerta} distance={7} decay={1.5} />}
