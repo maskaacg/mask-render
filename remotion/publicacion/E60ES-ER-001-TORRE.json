@@ -1,14 +1,14 @@
 {
  "video_id": "E60ES-ER-001-TORRE",
- "version": "v5",
+ "version": "v6",
  "ficha": "fichas/E60-ER-001.json",
  "composicion": "E60EscapeRoom",
  "tramos": 8,
  "formato": "YouTube 16:9",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": "E60ES-ER-001-TORRE-v5-20261115-084719",
- "run_id": 43691506367,
+ "encargo_master": "E60ES-ER-001-TORRE-v6-U-20261115-152620",
+ "run_id": 43724360336,
  "plataformas": [
   "youtube"
  ],
@@ -67,7 +67,12 @@
    "version": "v5",
    "motivo_cambio": "Propietario (15/11): «Se escucha interferencia en el sonido, no como lluvia» → v6: lluvia rehecha (siseo 0,3-4,5 kHz y gotas suaves en lugar de zumbido grave e impulsos secos; bucle sin fundidos a cero), chimenea y gramófono sin chasquidos secos, limitador suave sin recortes",
    "corrector": "Claude"
+  },
+  {
+   "version": "v5",
+   "motivo_cambio": "Propietario: «Se escucha interferencia en el sonido, no como lluvia»",
+   "corrector": "Claude"
   }
  ],
- "estado_aprobacion": "v5 con cambios pedidos (interferencia en la lluvia); v6 preparada en código (commit ficha_audio.py) pero SIN render: el job de unión de GitHub Actions no arranca (run 43720656114 y 43724360336). encargo_master/run_id siguen apuntando a v5."
+ "estado_aprobacion": "v5 con cambios pedidos; v6 pendiente de aprobación"
 }
