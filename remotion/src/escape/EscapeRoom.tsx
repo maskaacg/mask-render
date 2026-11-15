@@ -1,5 +1,12 @@
 import React from 'react';
-import {AbsoluteFill, Audio, Easing, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Audio, Easing, Sequence, interpolate as interpolateRaw, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+
+/** interpolate tolerante: si dos puntos del rango coinciden o se cruzan (voces más cortas o largas de lo previsto), los separa 1 ms en vez de romper el render. */
+const interpolate = (input: number, inputRange: readonly number[], outputRange: readonly number[], options?: Parameters<typeof interpolateRaw>[3]): number => {
+	const r = [...inputRange];
+	for (let i = 1; i < r.length; i++) if (!(r[i] > r[i - 1])) r[i] = r[i - 1] + 0.001;
+	return interpolateRaw(input, r, outputRange as number[], options) as number;
+};
 import {MONO, SERIF, cargarFuentes} from '../style/fonts';
 import {CortinaEngranajes, E60} from '../e60/nucleo';
 import {PlanC, PropsC, planificarC} from '../capitulo/plan';
@@ -130,7 +137,8 @@ const camara = (t: number, P0: PlanC): EstadoTorre['cam'] => {
 	const pos = mix(prev.pos, cur.pos);
 	const mira = mix(prev.mira, cur.mira);
 	const sig = ev[k + 1]?.t ?? P0.total;
-	const push = interpolate(t, [ev[k].t + ev[k].dur, sig], [0, 0.05], clamp);
+	const a0 = ev[k].t + ev[k].dur;
+	const push = sig > a0 + 0.01 ? interpolate(t, [a0, sig], [0, 0.05], clamp) : 0;
 	for (let i = 0; i < 3; i++) pos[i] += (mira[i] - pos[i]) * push;
 	pos[0] += Math.sin(t * 0.6) * 0.018;
 	pos[1] += Math.sin(t * 0.47 + 1) * 0.014;
