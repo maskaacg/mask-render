@@ -75,6 +75,17 @@ jobs:
       - name: Voz pregenerada en la rama (sin coste de Actions)
         if: steps.enc.outputs.motor == 'lista'
         run: python tools/voz_lista.py restaurar --ficha "${{ steps.enc.outputs.ficha }}"
+      - name: ¿Faltan líneas de voz? (texto cambiado en una corrección)
+        id: faltan
+        if: steps.enc.outputs.motor == 'lista'
+        run: |
+          python - "${{ steps.enc.outputs.ficha }}" <<'PY'
+          import json, os, sys
+          f = json.load(open(sys.argv[1], encoding="utf-8"))
+          falta = [l["id"] for l in f["lineas"] if not os.path.exists(f"public/audio/{f['id']}/{l['id']}.wav")]
+          print("Líneas sin voz:", falta)
+          open(os.environ["GITHUB_OUTPUT"], "a").write(f"faltan={'true' if falta else 'false'}\n")
+          PY
       - name: Cache del modelo de voz Kokoro (Apache 2.0)
         if: steps.enc.outputs.motor == 'kokoro'
         uses: actions/cache@v4
@@ -91,16 +102,16 @@ jobs:
           done
           python tools/ficha_audio.py --ficha "${{ steps.enc.outputs.ficha }}" --kokoro-model models/kokoro-v1.0.onnx --kokoro-voices models/voices-v1.0.bin
       - name: Cache de modelos Chatterbox y Whisper
-        if: steps.enc.outputs.motor == 'chatterbox'
+        if: steps.enc.outputs.motor == 'chatterbox' || steps.faltan.outputs.faltan == 'true'
         uses: actions/cache@v4
         with:
           path: ~/.cache/huggingface
           key: hf-chatterbox-mtl-whisper-small
       - name: Voz expresiva Chatterbox (MIT) con control Whisper
-        if: steps.enc.outputs.motor == 'chatterbox'
+        if: steps.enc.outputs.motor == 'chatterbox' || steps.faltan.outputs.faltan == 'true'
         run: |
           python -m pip install --quiet --extra-index-url https://download.pytorch.org/whl/cpu chatterbox-tts faster-whisper num2words scipy
-          python tools/voz_chatterbox.py --ficha "${{ steps.enc.outputs.ficha }}" --hilos 4
+          python tools/voz_chatterbox.py --ficha "${{ steps.enc.outputs.ficha }}" --hilos 4 --reanudar
       - name: Instalar Remotion
         run: npm ci --no-audit --no-fund
       - name: Calcular tramos
