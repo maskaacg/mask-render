@@ -245,6 +245,21 @@ jobs:
             remotion/final/${{ needs.preparar.outputs.id }}.qa.json
           if-no-files-found: error
           retention-days: 3
+      # Copias SIN comprimir (n8n no descomprime más de 200 MB). Las usa WF-PUB-02 tras APROBAR.
+      - name: Máster directo (sin zip)
+        uses: actions/upload-artifact@v7
+        with:
+          path: remotion/final/${{ needs.preparar.outputs.id }}.mp4
+          archive: false
+          if-no-files-found: error
+          retention-days: 7
+      - name: QA directo (sin zip)
+        uses: actions/upload-artifact@v7
+        with:
+          path: remotion/final/${{ needs.preparar.outputs.id }}.qa.json
+          archive: false
+          if-no-files-found: error
+          retention-days: 7
       - name: Versión de revisión
         uses: actions/upload-artifact@v4
         with:
