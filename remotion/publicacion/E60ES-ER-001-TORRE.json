@@ -1,6 +1,6 @@
 {
  "video_id": "E60ES-ER-001-TORRE",
- "version": "v6",
+ "version": "v5",
  "ficha": "fichas/E60-ER-001.json",
  "composicion": "E60EscapeRoom",
  "tramos": 8,
@@ -69,5 +69,5 @@
    "corrector": "Claude"
   }
  ],
- "estado_aprobacion": "v5 con cambios pedidos (interferencia en la lluvia); v6 pendiente de aprobación"
+ "estado_aprobacion": "v5 con cambios pedidos (interferencia en la lluvia); v6 preparada en código (commit ficha_audio.py) pero SIN render: el job de unión de GitHub Actions no arranca (run 43720656114 y 43724360336). encargo_master/run_id siguen apuntando a v5."
 }
