@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Easing, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {cargarFuentes} from '../style/fonts';
+import {MONO, SERIF, cargarFuentes} from '../style/fonts';
 import {CortinaEngranajes, E60} from '../e60/nucleo';
 import {PlanC, PropsC, planificarC} from '../capitulo/plan';
 import {Anillo16, BordeMaqueta16, Cabecera16, Fichas16, Proximo, Recuento, RotuloPuzle, Subtitulo16, TituloCapitulo} from '../capitulo/ui';
@@ -45,7 +45,7 @@ const PLANOS: Record<string, {pos: V3; mira: V3; fov?: number}> = {
 };
 
 const PLANO_DE: Record<string, string> = {
-	g01: 'ventana', g02: 'entrada', g03: 'torre', g04: 'mesa', g05: 'vela',
+	h01: 'vela', g01: 'ventana', g02: 'entrada', g03: 'torre', g04: 'mesa', g05: 'vela',
 	a01: 'escudosSuelo', a02: 'escudos', a07: 'escudos', a11: 'escudos',
 	b01: 'criptex', b02: 'dintel', b04: 'criptex', b05: 'dintel', b09: 'dintel', b11: 'criptex',
 	c01: 'escalera', c02: 'vela', c03: 'escalera', c07: 'p13', c10: 'p13',
@@ -54,6 +54,8 @@ const PLANO_DE: Record<string, string> = {
 };
 // cortes dentro de una línea: [línea, segundos desde su inicio, plano]
 const EXTRA: [string, number, string][] = [
+	['h01', 3.4, 'cerradura'],
+	['h01', 6.6, 'puerta'],
 	['g03', 3.2, 'mesa'],
 	['a11', 1.6, 'losa'],
 	['c10', 2.4, 'nicho'],
@@ -106,7 +108,7 @@ const destello = (t: number, lista: number[]) => {
 };
 
 const camara = (t: number, P0: PlanC): EstadoTorre['cam'] => {
-	const ev: {t: number; plano: string; dur: number}[] = [{t: 0, plano: 'inicio', dur: 0.1}];
+	const ev: {t: number; plano: string; dur: number}[] = [{t: -10, plano: 'inicio', dur: 0.1}];
 	let bloquePrev = 'gancho';
 	for (const l of P0.lineas) {
 		const p = PLANO_DE[l.id];
@@ -171,7 +173,9 @@ export const estadoTorre = (t: number, P0: PlanC): EstadoTorre => {
 	const llave = tr(m4 + 0.3, m4 + 2.8, 0, 1);
 	const giroLlave = tr(m4 + 2.9, m4 + 3.7, 0, 1, Easing.out(Easing.back(1.6)));
 	const apaga = T.d12.inicio + 1.2;
-	const llama = Math.min(tr(T.g05.inicio + 0.2, T.g05.inicio + 1.2, 0, 1), tr(apaga, apaga + 0.5, 1, 0));
+	// v3: en el gancho inicial (h01) la vela ya arde: es un adelanto; luego se «enciende» en g05
+	const llamaGancho = T.h01 ? interpolate(t, [T.h01.inicio - 0.2, T.h01.inicio + 0.4, T.h01.fin + 0.3, T.h01.fin + 1.0], [0, 1, 1, 0], clamp) : 0;
+	const llama = Math.max(llamaGancho, Math.min(tr(T.g05.inicio + 0.2, T.g05.inicio + 1.2, 0, 1), tr(apaga, apaga + 0.5, 1, 0)));
 	const vela = interpolate(t, [T.g05.inicio, apaga], [1, 0.12], clamp);
 	const puerta = tr(T.d12.fin - 1.4, T.d12.fin + 2.2, 0, 1, Easing.out(Easing.cubic));
 	const sombra = interpolate(t, [T.e01.inicio + 1.5, T.e01.inicio + 3.5, T.e02.fin + 0.3, T.e03.inicio + 2.0], [0, 1, 1, 0], clamp);
@@ -183,6 +187,49 @@ export const estadoTorre = (t: number, P0: PlanC): EstadoTorre => {
 		t, cam: camara(t, P0), pista, escudos, losa, criptex, anillos, tapa, descifrado, p13, nicho, llave, giroLlave, verdad, vela, llama, puerta, sombra, libro,
 		relampago: destello(t, relampagos(P0.total)), gramofono, antorchas,
 	};
+};
+
+/** Recordatorio de suscripción integrado en la historia (sin logotipos de terceros). */
+const ChipNarrativo: React.FC<{t: number; a: number; b: number; icono: 'sus' | 'campana'; texto: string}> = ({t, a, b, icono, texto}) => {
+	const o = interpolate(t, [a, a + 0.6, b, b + 0.6], [0, 1, 1, 0], clamp);
+	if (o <= 0) return null;
+	const pulso = 1 + 0.04 * Math.sin((t - a) * 5);
+	return (
+		<div style={{position: 'absolute', right: 90, top: 150, opacity: o, transform: `translateY(${(1 - o) * -20}px) scale(${pulso})`, display: 'flex', alignItems: 'center', gap: 18, padding: '18px 30px', borderRadius: 18, background: 'rgba(20,21,26,0.94)', border: `3px solid ${E60.violeta}`, boxShadow: '0 0 28px rgba(123,92,255,0.45)'}}>
+			<svg width="46" height="46" viewBox="0 0 46 46">
+				{icono === 'sus' ? (
+					<>
+						<circle cx="23" cy="23" r="20" fill="none" stroke={E60.cian} strokeWidth="3" />
+						<path d="M23 12 v22 M12 23 h22" stroke={E60.cian} strokeWidth="4" strokeLinecap="round" />
+					</>
+				) : (
+					<g transform={`rotate(${Math.sin((t - a) * 9) * 14} 23 8)`}>
+						<path d="M23 6 C14 6 12 15 12 22 L9 32 H37 L34 22 C34 15 32 6 23 6 Z" fill="none" stroke={E60.cian} strokeWidth="3" strokeLinejoin="round" />
+						<circle cx="23" cy="37" r="4" fill={E60.cian} />
+					</g>
+				)}
+			</svg>
+			<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, letterSpacing: 4, color: E60.blanco}}>{texto}</div>
+		</div>
+	);
+};
+
+/** Últimos segundos: zonas libres para la pantalla final de YouTube (vídeo + suscripción), sin texto encima. */
+const PantallaFinal: React.FC<{t: number; desde: number; total: number}> = ({t, desde, total}) => {
+	const o = interpolate(t, [desde, desde + 1.2], [0, 1], clamp);
+	if (o <= 0) return null;
+	const marco = interpolate(t, [desde + 0.8, desde + 2.2], [0, 1], clamp);
+	return (
+		<AbsoluteFill style={{opacity: o}}>
+			<AbsoluteFill style={{background: 'rgba(10,8,7,0.62)'}} />
+			<div style={{position: 'absolute', left: 0, right: 0, top: 120, textAlign: 'center', fontFamily: SERIF, fontWeight: 800, fontSize: 64, color: E60.blanco}}>¿Te atreves con la siguiente sala?</div>
+			<div style={{position: 'absolute', left: 230, top: 330, width: 820, height: 461, borderRadius: 14, border: `3px solid rgba(63,224,230,${0.55 * marco})`, boxShadow: `0 0 40px rgba(63,224,230,${0.18 * marco})`}} />
+			<div style={{position: 'absolute', left: 1240, top: 410, width: 300, height: 300, borderRadius: 150, border: `3px solid rgba(123,92,255,${0.65 * marco})`, boxShadow: `0 0 40px rgba(123,92,255,${0.25 * marco})`}} />
+			<div style={{position: 'absolute', left: 0, right: 0, bottom: 70, textAlign: 'center', fontFamily: MONO, fontSize: 22, letterSpacing: 6, color: 'rgba(184,190,200,0.8)'}}>
+				ENIGMA <span style={{color: E60.cian}}>60</span> · {Math.max(0, Math.ceil(total - t))}
+			</div>
+		</AbsoluteFill>
+	);
 };
 
 export const EscapeRoom: React.FC<PropsC> = (props) => {
@@ -207,10 +254,13 @@ export const EscapeRoom: React.FC<PropsC> = (props) => {
 				.map((l) => ({texto: FICHAS[l.id], desde: l.inicio + 0.3, activa: interpolate(t, [l.inicio, l.inicio + 0.3, l.fin + 0.4, l.fin + 0.8], [0, 1, 1, 0], clamp)}))
 		: [];
 	const fichasVis = bloqueAct ? interpolate(t, [ex[bloqueAct].a - 0.4, ex[bloqueAct].a, ex[bloqueAct].b, ex[bloqueAct].b + 0.4], [1, 0, 0, 1], clamp) * interpolate(t, [P0.bloques[bloqueAct].fin, P0.bloques[bloqueAct].fin + 1.2], [1, 0], clamp) : 0;
+	const sinFichas = T.b12 ? interpolate(t, [T.b12.inicio - 0.8, T.b12.inicio - 0.2, T.b12.fin + 0.4, T.b12.fin + 1.0], [1, 0, 0, 1], clamp) : 1;
 	const fundidoIn = interpolate(t, [0, 1.2], [1, 0], clamp);
 	const fundidoOut = interpolate(t, [P0.total - 1.2, P0.total], [0, 1], clamp);
 	const apagon = interpolate(t, [T.d12.inicio + 1.2, T.d12.inicio + 1.5, T.d12.fin - 1.2, T.d12.fin + 0.5], [0, 0.55, 0.55, 0], clamp);
 	const archivera = linea?.fase === 'archivera';
+	const finalDesde = (ficha.pantalla_final_s ?? 0) > 0 ? T.f02.fin + 3.0 : P0.total + 1;
+	const ocultaFinal = interpolate(t, [finalDesde - 0.6, finalDesde], [1, 0], clamp);
 
 	return (
 		<AbsoluteFill style={{background: '#0a0807', overflow: 'hidden'}}>
@@ -222,7 +272,7 @@ export const EscapeRoom: React.FC<PropsC> = (props) => {
 			{BLOQUES.map((b, i) => (
 				<RotuloPuzle key={b} t={t} inicio={P0.bloques[b].inicio - 0.6} n={i + 1} total={BLOQUES.length} titulo={ficha.puzles[i].titulo} />
 			))}
-			<Fichas16 t={t} pistas={fichas} visible={fichasVis} />
+			<Fichas16 t={t} pistas={fichas} visible={fichasVis * sinFichas} />
 			{BLOQUES.map((b) => (
 				<Anillo16 key={b} t={t} inicio={P0.pensar[b].inicio} fin={P0.pensar[b].fin} />
 			))}
@@ -231,7 +281,12 @@ export const EscapeRoom: React.FC<PropsC> = (props) => {
 			<ExpFibonacci t={t} a={ex.p3.a} b={ex.p3.b} />
 			<ExpGuardias t={t} a={ex.p4.a} b={ex.p4.b} />
 			<Recuento t={t} a={T.f01.inicio} b={T.f02.fin + 1.5} puzles={ficha.puzles} rotulo="SOLUCIONES DE LA SALA" />
-			<Proximo t={t} desde={T.f02.inicio} siguiente={ficha.siguiente} aviso={ficha.aviso_ia} rotulo="PRÓXIMA SALA · MIÉRCOLES" />
+			<AbsoluteFill style={{opacity: ocultaFinal}}>
+				<Proximo t={t} desde={T.f02.inicio} siguiente={ficha.siguiente} aviso={ficha.aviso_ia} rotulo="PRÓXIMA SALA · MIÉRCOLES" />
+			</AbsoluteFill>
+			{T.b12 && <ChipNarrativo t={t} a={T.b12.inicio + 3.0} b={T.b12.fin + 0.8} icono="sus" texto="SUSCRÍBETE" />}
+			{(ficha.pantalla_final_s ?? 0) > 0 && <ChipNarrativo t={t} a={T.f02.inicio + 2.5} b={T.f02.fin + 1.2} icono="campana" texto="ACTIVA LA CAMPANITA" />}
+			<PantallaFinal t={t} desde={finalDesde} total={P0.total} />
 			{linea && <Subtitulo16 texto={linea.texto} inicio={linea.inicio} fin={linea.fin} t={t} custodio={archivera} quien="LA ARCHIVERA" color={E60.violeta} />}
 			{BLOQUES.map((b) => (
 				<CortinaEngranajes key={b} t={t} en={P0.mecanismo[b].inicio + 1.6} />
@@ -258,6 +313,11 @@ export const SonidoEscape: React.FC<{ficha: PropsC['ficha']; P0: PlanC; fps: num
 		<>
 			<Audio src={staticFile('audio/sfx/lluvia.wav')} volume={0.32} loop />
 			<Audio src={staticFile('audio/sfx/fuego.wav')} volume={0.14} loop />
+			{(ficha.pantalla_final_s ?? 0) > 0 && (
+				<Sequence from={fr(P0.titulo.inicio)}>
+					<Audio src={staticFile('audio/sfx/musica.wav')} volume={0.09} loop />
+				</Sequence>
+			)}
 			<Sequence from={fr(gIni)} durationInFrames={fr(apaga + 1.5 - gIni)}>
 				<Audio src={staticFile('audio/sfx/gramofono.wav')} volume={0.12} loop />
 			</Sequence>

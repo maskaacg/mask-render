@@ -1,6 +1,6 @@
 # Calendario de ENIGMA 60 (lo usa el productor automático)
 
-Regla de las 48 h: cada vídeo debe estar entregado en Telegram para aprobar **48 h antes** de su
+Regla de las 48 h (excepción única: lun 16 y mar 17 se producen el dom 15; se restablece desde el mié 18): cada vídeo debe estar entregado en Telegram para aprobar **48 h antes** de su
 publicación (el del martes, el domingo), para dar margen a correcciones.
 
 Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
@@ -9,9 +9,8 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 
 | Publicación | Tipo | video_id | Estado |
 |---|---|---|---|
-| Lun 16 | — (v2 de la Torre: APROBACIÓN REVOCADA y publicación cancelada el 15/11) | — | Sin publicación |
-| Mar 17 | **Escape room 1 «La torre del archivero» v3** (16:9, solo YouTube) + **avance v3** 9:16 (TikTok, Shorts, Facebook Reels) | E60ES-ER-001-TORRE / -AVANCE | Pendiente (rehacer v3: conservar lo creativo aprobado y aplicar `CRECIMIENTO.md`; entregar como muy tarde dom 15 a las 17:00) |
-| (aplazado) | Acertijo independiente 9:16 (~2 min) previsto el martes | E60ES-AC-20261117 | Aplazado: el martes pasa a la Torre v3. El Propietario decide la nueva fecha |
+| Lun 16 | **Escape room 1 «La torre del archivero» v3** (16:9, solo YouTube 17:00) + **avance v3** 9:16 (TikTok, Shorts, Facebook Reels 18:00) | E60ES-ER-001-TORRE / -AVANCE | v2 revocada. v3 en producción el dom 15 (excepción única a las 48 h, orden del Propietario) |
+| Mar 17 | Acertijo independiente 9:16 «Las tres cajas fuertes» | E60ES-AC-20261117 | En producción el dom 15 (excepción única a las 48 h) |
 | Mié 18 | Escape room 2 «El museo que miente» (16:9) + avance 9:16 | E60ES-ER-002-MUSEO / -AVANCE | Pendiente |
 | Jue 19 | Acertijo independiente 9:16 | E60ES-AC-20261119 | Pendiente |
 | Vie 20 | Acertijo independiente 9:16 | E60ES-AC-20261120 | Pendiente |

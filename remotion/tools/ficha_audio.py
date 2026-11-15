@@ -185,6 +185,38 @@ def apagar():
     return A.norm(x, 0.4)
 
 
+def musica_misterio():
+    """Música original de MASK GROUP (sintetizada, propia): bucle de 64 s en re menor, pad + arpegio + pulso."""
+    dur = 64.0
+    n = int(dur * SR)
+    tt = np.arange(n) / SR
+    x = np.zeros(n)
+    acordes = [[146.83, 174.61, 220.0], [116.54, 146.83, 174.61], [98.0, 116.54, 146.83], [110.0, 138.59, 164.81]]
+    seg = 8.0
+    for k in range(int(dur / seg)):
+        ac = acordes[k % 4]
+        a, b = int(k * seg * SR), int((k + 1) * seg * SR)
+        ts = tt[a:b] - k * seg
+        e = np.minimum(1, ts / 1.5) * np.minimum(1, (seg - ts) / 1.5)
+        pad = sum(np.sin(2 * np.pi * f * ts) + 0.35 * np.sin(2 * np.pi * f * 2.003 * ts) for f in ac)
+        x[a:b] += pad * e * 0.11
+        # arpegio pulsado (corcheas a 60 ppm) una octava arriba
+        for j in range(int(seg / 0.5)):
+            f = ac[j % 3] * 2 * (2 if j % 6 == 5 else 1)
+            i0 = a + int(j * 0.5 * SR)
+            m = min(int(0.9 * SR), b - i0)
+            tk = np.arange(m) / SR
+            nota = (np.sin(2 * np.pi * f * tk) + 0.25 * np.sin(2 * np.pi * 3 * f * tk)) * np.exp(-tk * 5.5)
+            x[i0:i0 + m] += nota * (0.07 if j % 2 == 0 else 0.045)
+        # pulso grave cada 2 s
+        for j in range(4):
+            i0 = a + int(j * 2.0 * SR)
+            m = min(int(0.6 * SR), b - i0)
+            tk = np.arange(m) / SR
+            x[i0:i0 + m] += np.sin(2 * np.pi * 55 * tk) * np.exp(-tk * 7) * 0.22
+    return A.norm(x, 0.5)
+
+
 SFX = {
     "sonar": sonar,
     "gota": gota,
@@ -206,6 +238,7 @@ SFX = {
     "piedra": piedra,
     "gramofono": gramofono,
     "apagar": apagar,
+    "musica": musica_misterio,
 }
 
 

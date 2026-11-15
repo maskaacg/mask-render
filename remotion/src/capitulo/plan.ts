@@ -14,6 +14,10 @@ export type FichaC = {
 	aviso_ia: string;
 	puzles: {id: string; titulo: string; respuesta: string}[];
 	lineas: LineaC[];
+	/** Segundos de apertura antes de la primera línea (por defecto 8). */
+	apertura_s?: number;
+	/** Segundos finales reservados para la pantalla final de YouTube (por defecto 0). */
+	pantalla_final_s?: number;
 };
 export type PropsC = {ficha: FichaC; duraciones: Record<string, number>; desde?: number};
 export type Tramo = {inicio: number; fin: number};
@@ -29,7 +33,7 @@ export type PlanC = {
 };
 
 export const planificarC = ({ficha, duraciones}: PropsC): PlanC => {
-	let t = 8.0; // apertura en frío: oscuridad, goteo y golpe metálico
+	let t = ficha.apertura_s ?? 8.0; // apertura en frío (por defecto: oscuridad, goteo y golpe metálico)
 	const lineas: PlanC['lineas'] = [];
 	const map: PlanC['t'] = {};
 	const bloques: PlanC['bloques'] = {};
@@ -71,6 +75,6 @@ export const planificarC = ({ficha, duraciones}: PropsC): PlanC => {
 		prev = l;
 	}
 	if (prev) bloques[prev.bloque].fin = t;
-	t += 5;
+	t += 5 + (ficha.pantalla_final_s ?? 0);
 	return {lineas, t: map, bloques, pensar, mecanismo, titulo, transiciones, total: t};
 };

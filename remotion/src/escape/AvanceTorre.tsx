@@ -55,7 +55,7 @@ export const AvanceTorre: React.FC<PropsT> = (props) => {
 	const t = frame / fps;
 	const {L, pensar, total} = planificarT(props);
 	const ev: [number, string][] = [
-		[0, 'ventana'], [L.t01.inicio + 2.6, 'torre'], [L.t01.fin - 2.8, 'vela'], [L.t02.inicio - 0.3, 'mesa'],
+		[0, 'vela'], [L.t01.fin - 1.6, 'torre'], [L.t02.inicio - 0.3, 'mesa'],
 		[L.t03.inicio, 'suelo'], [L.t03.fin - 1.6, 'ganchos'], [L.t05.inicio, 'escudos'], [L.t08.inicio + 0.5, 'puerta'],
 	];
 	let k = 0;
@@ -80,7 +80,7 @@ export const AvanceTorre: React.FC<PropsT> = (props) => {
 		t, cam: {pos, mira, fov: a.fov + (b.fov - a.fov) * f},
 		pista: {escudos: escudosLuz * 0.6, ventana: ventana(L.t01) * 0.0, mesa: ventana(L.t02) * 0.4, puerta: interpolate(t, [L.t08.inicio, L.t08.inicio + 1], [0, 0.5], clamp)},
 		escudos: [0, 0, 0], losa: 0, criptex: 0, anillos: 0, tapa: 0, descifrado: 0, p13: 0, nicho: 0, llave: 0, giroLlave: 0, verdad: 0,
-		vela: 1, llama: interpolate(t, [L.t01.fin - 2.0, L.t01.fin - 1.2], [0, 1], clamp), puerta: 0, sombra: 0, libro: 0,
+		vela: 1, llama: 1, puerta: 0, sombra: 0, libro: 0,
 		relampago: rel, gramofono: 1, antorchas: interpolate(t, [0, 1.2], [0.6, 1], clamp),
 	};
 	void LOSA;
@@ -137,7 +137,7 @@ const SonidoAvance: React.FC<{ficha: FichaT; L: Record<string, Tramo>; pensar: T
 		<>
 			<Audio src={staticFile('audio/sfx/lluvia.wav')} volume={0.3} loop />
 			<Audio src={staticFile('audio/sfx/fuego.wav')} volume={0.12} loop />
-			<Audio src={staticFile('audio/sfx/gramofono.wav')} volume={0.1} loop />
+			<Audio src={staticFile('audio/sfx/musica.wav')} volume={0.1} loop />
 			{relampagos(total).map((r) => sfx('trueno', r + 0.45, 0.5))}
 			{Array.from({length: ficha.pensar_s}, (_, i) => sfx('tic', pensar.inicio + i, 0.45))}
 			{sfx('logo', L.t08.inicio + 0.4, 0.45)}
