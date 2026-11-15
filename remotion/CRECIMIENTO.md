@@ -62,7 +62,15 @@ retención rara vez recupera lo perdido ahí.
   de conectar la API de YouTube; hasta entonces, manual.
 - Descripción: enlace al vídeo anterior/siguiente y a la lista.
 
-## 9. Medición (después de publicar)
-- A las 48 h y a los 7 días: Intro (30 s), duración media, picos/caídas, CTR de impresiones y
-  suscriptores ganados por vídeo. **Pendiente**: requiere acceso a YouTube Analytics (no está
-  conectado). No se inventan cifras.
+## 9. Medición y comunidad (después de publicar)
+- **Automático (desde 15/11)**: `WF-AGENTES-DIARIO` (n8n `eQ3sNux9NfH7z6py`, 21:10 Madrid) hace tres cosas:
+  AGT-25 confirma en Upload-Post qué se publicó y avisa por Telegram; AGT-32 guarda los comentarios
+  nuevos en `mg.comentarios` y los resume; AGT-05 guarda la analítica del día en `mg.analitica_diaria`
+  y envía el informe semanal (domingo) y el mensual (día 1). Cifras tal como vienen; nada estimado.
+- **Obligatorio para el productor antes de escribir una ficha**: ejecutar
+  `SELECT * FROM mg.comentarios_para_claude();` (devuelve los no leídos y los marca como leídos) y
+  `SELECT mg.informe_analitica(7);`. Aplicar lo útil: preguntas repetidas → reto o aclaración en el
+  próximo vídeo; quejas de ritmo, voz o dificultad → ajustar; ideas de la comunidad → anotarlas en la
+  ficha (`nota`). Indicar en el historial de la ficha qué comentario lo motivó.
+- YouTube Analytics: permiso concedido, pero Upload-Post responde `analytics_api_unavailable` mientras
+  el canal no tenga vídeos. Instagram: sin conectar. Retención por minuto y CTR: no disponibles por API.
