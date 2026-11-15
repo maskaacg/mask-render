@@ -45,7 +45,13 @@
    "id": "h01",
    "bloque": "gancho",
    "fase": "narra",
-   "texto": "Una vela. Cuatro cerraduras. Si la llama se apaga antes de abrirlas todas, no saldrás nunca de esta torre. ¿Cuántas abres tú?"
+   "texto": "Entraste en esta torre para refugiarte de la lluvia. Y la puerta se ha cerrado detrás de ti. Una vela, cuatro cerraduras: si la llama se apaga antes de abrirlas todas, no saldrás nunca. ¿Cuántas abres tú?"
+  },
+  {
+   "bloque": "gancho",
+   "fase": "narra",
+   "id": "h02",
+   "texto": "Antes de empezar: si te gustan los retos, suscríbete y activa la campanita para ser el primero en entrar en cada sala nueva."
   },
   {
    "id": "g01",
@@ -57,7 +63,7 @@
    "id": "g02",
    "bloque": "gancho",
    "fase": "narra",
-   "texto": "Has subido a la torre del archivo buscando refugio. Y la puerta acaba de cerrarse detrás de ti."
+   "texto": "Subes la escalera de caracol hasta lo más alto. Aquí arriba está el archivo. Y no hay otra salida."
   },
   {
    "id": "g03",
@@ -217,7 +223,7 @@
    "id": "b12",
    "bloque": "p2",
    "fase": "archivera",
-   "texto": "Dos cerraduras abiertas. Pocos visitantes llegan tan lejos. Si quieres volver a mi archivo cada vez que abra una sala nueva, suscríbete. La puerta seguirá esperándote.",
+   "texto": "Dos cerraduras abiertas. Pocos visitantes llegan tan lejos. Si lo estás disfrutando, deja tu me gusta: así sabré que debo abrir más salas.",
    "voz": "archivera"
   },
   {
@@ -387,12 +393,17 @@
  "auditoria": "Claude 14/11/2026: P1 única (verde-rojo-azul), P2 César −3 verificado, P3 13, P4 plata (única con exactamente una verdad).",
  "apertura_s": 1.0,
  "pantalla_final_s": 20,
- "version": "v3",
+ "version": "v4",
  "historial": [
   {
    "version": "v3",
    "fecha": "2026-11-15",
    "cambios": "Gancho inicial (h01), petición de comentarios en a07, suscripción integrada tras la 2.ª cerradura (b12), campanita al final (f02), 20 s de pantalla final, música de fondo. Puzles sin cambios."
+  },
+  {
+   "version": "v4",
+   "fecha": "2026-11-15",
+   "cambios": "Corrección del Propietario: vuelve el gancho de la lluvia (h01), llamada explícita «suscríbete y activa la campanita para ser el primero» al inicio (h02, con iconos), g02 sin repetir el refugio, b12 pide me gusta en vez de repetir la suscripción."
   }
  ]
 }

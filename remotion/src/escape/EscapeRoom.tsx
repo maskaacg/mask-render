@@ -182,7 +182,7 @@ export const estadoTorre = (t: number, P0: PlanC): EstadoTorre => {
 	const giroLlave = tr(m4 + 2.9, m4 + 3.7, 0, 1, Easing.out(Easing.back(1.6)));
 	const apaga = T.d12.inicio + 1.2;
 	// v3: en el gancho inicial (h01) la vela ya arde: es un adelanto; luego se «enciende» en g05
-	const llamaGancho = T.h01 ? interpolate(t, [T.h01.inicio - 0.2, T.h01.inicio + 0.4, T.h01.fin + 0.3, T.h01.fin + 1.0], [0, 1, 1, 0], clamp) : 0;
+	const llamaGancho = T.h01 ? interpolate(t, [T.h01.inicio - 0.2, T.h01.inicio + 0.4, (T.h02 ?? T.h01).fin + 0.3, (T.h02 ?? T.h01).fin + 1.0], [0, 1, 1, 0], clamp) : 0;
 	const llama = Math.max(llamaGancho, Math.min(tr(T.g05.inicio + 0.2, T.g05.inicio + 1.2, 0, 1), tr(apaga, apaga + 0.5, 1, 0)));
 	const vela = interpolate(t, [T.g05.inicio, apaga], [1, 0.12], clamp);
 	const puerta = tr(T.d12.fin - 1.4, T.d12.fin + 2.2, 0, 1, Easing.out(Easing.cubic));
@@ -292,7 +292,8 @@ export const EscapeRoom: React.FC<PropsC> = (props) => {
 			<AbsoluteFill style={{opacity: ocultaFinal}}>
 				<Proximo t={t} desde={T.f02.inicio} siguiente={ficha.siguiente} aviso={ficha.aviso_ia} rotulo="PRÓXIMA SALA · MIÉRCOLES" />
 			</AbsoluteFill>
-			{T.b12 && <ChipNarrativo t={t} a={T.b12.inicio + 3.0} b={T.b12.fin + 0.8} icono="sus" texto="SUSCRÍBETE" />}
+			{T.h02 && <ChipNarrativo t={t} a={T.h02.inicio + 1.6} b={(T.h02.inicio + T.h02.fin) / 2 + 0.6} icono="sus" texto="SUSCRÍBETE" />}
+			{T.h02 && <ChipNarrativo t={t} a={(T.h02.inicio + T.h02.fin) / 2 + 0.9} b={T.h02.fin + 1.2} icono="campana" texto="ACTIVA LA CAMPANITA" />}
 			{(ficha.pantalla_final_s ?? 0) > 0 && <ChipNarrativo t={t} a={T.f02.inicio + 2.5} b={T.f02.fin + 1.2} icono="campana" texto="ACTIVA LA CAMPANITA" />}
 			<PantallaFinal t={t} desde={finalDesde} total={P0.total} />
 			{linea && <Subtitulo16 texto={linea.texto} inicio={linea.inicio} fin={linea.fin} t={t} custodio={archivera} quien="LA ARCHIVERA" color={E60.violeta} />}
