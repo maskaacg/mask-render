@@ -23,7 +23,18 @@ con la corrección que pidió el Propietario por Telegram (texto libre) y el ví
 5. Respeta las reglas visuales de `remotion/PRODUCCION.md`: colores coherentes (paleta única), sin textos superpuestos,
    paneles opacos, el objeto del que se habla debe verse.
 6. Si tocas TypeScript, comprueba que compila: `cd remotion && npx tsc --noEmit -p .`
-7. Haz commit en la rama del PR con un mensaje que resuma la corrección. Responde en el PR con un resumen de lo cambiado.
+7. **Entrega (tu entorno no puede hacer push):** responde en el PR con un resumen y, AL FINAL, por cada
+   archivo que hayas cambiado o creado, el contenido COMPLETO y final en este formato exacto:
+
+       === ARCHIVO: ruta/del/archivo ===
+       ```
+       (contenido completo)
+       ```
+       === FIN ARCHIVO ===
+
+   Para los `.flac` de voz que haya que regenerar, añade una línea `=== BORRAR: remotion/voz_lista/<id_ficha>/<id_linea>.flac ===`
+   (solo se aceptan borrados de esa carpeta). n8n lee los bloques, comprueba las rutas y sube los cambios a la rama del PR.
+   Más detalle en `cloud/RELEVO-CLAUDE-CODEX.md`.
 8. Si la corrección es ambigua o imposible, **no cambies nada** y explica en el PR qué falta.
 
 ## Prohibido
