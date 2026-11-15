@@ -87,7 +87,8 @@ jobs:
           MOTOR=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1])).get('motor_voz','kokoro'))" "$FICHA")
           if [ "$MOTOR" = "chatterbox" ]; then
             rm -rf "public/audio/$(basename "$FICHA" .json)"
-            python -m pip install --quiet --extra-index-url https://download.pytorch.org/whl/cpu chatterbox-tts faster-whisper num2words scipy
+            python -m pip install --quiet --extra-index-url https://download.pytorch.org/whl/cpu chatterbox-tts faster-whisper num2words scipy "setuptools<81"
+          python -c "from perth.perth_net.perth_net_implicit.perth_watermarker import PerthImplicitWatermarker; print('marca de agua de voz OK')"
             python tools/voz_chatterbox.py --ficha "$FICHA" --hilos 4
           fi
       - name: Instalar Remotion
