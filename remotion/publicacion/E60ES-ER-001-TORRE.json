@@ -15,9 +15,9 @@
  "programado": "2026-11-16T17:00:00",
  "zona": "Europe/Madrid",
  "miniatura": "remotion/publicacion/E60ES-ER-001-TORRE_miniatura.jpg",
- "titulo": "¿Saldrías de esta torre antes de que se apague la vela? | Escape Room 1 · ENIGMA 60",
- "youtube_title": "¿Saldrías de esta torre antes de que se apague la vela? | Escape Room 1",
- "youtube_description": "Te despiertas encerrado en la torre del archivero. Cuatro cerraduras, una vela que se consume… y una archivera que solo deja salir a quien sabe leer.\n\nPausa en cada puzle: tienes 20 segundos para pensar antes de la solución. ¿Cuántas cerraduras abres tú? Cuéntalo en los comentarios.\n\nSi te gustan los retos, suscríbete y activa la campanita: cada semana se abre una sala nueva.\n\n0:00 La torre\n1:00 Puzle 1 · Los tres escudos\n2:44 Puzle 2 · El lema cifrado\n4:46 Puzle 3 · La escalera\n6:24 Puzle 4 · Las tres llaves\n8:05 La archivera\n8:44 Soluciones\n\nEl miércoles, nueva sala: «El museo que miente».\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #enigma60",
+ "titulo": "4 acertijos para escapar de la torre del archivo | Escape Room 1 · ENIGMA 60",
+ "youtube_title": "4 acertijos para escapar de la torre del archivo | Escape Room 1",
+ "youtube_description": "Una tormenta te obliga a refugiarte en una torre abandonada. La puerta se cierra detrás de ti y, en lo más alto, el archivo te pone a prueba: cuatro cerraduras y una vela que se consume.\n\nLos 4 acertijos:\n🛡️ Los tres escudos: con tres pistas, ¿en qué orden cuelgan?\n🔐 El lema cifrado: descifra un mensaje en código César para abrir el criptex.\n🪜 La escalera: ¿qué peldaño sigue en la serie 1, 1, 2, 3, 5, 8?\n🗝️ Las tres llaves: tres armaduras y solo una dice la verdad. ¿Qué llave abre la puerta?\n\nTienes 20 segundos en cada puzle antes de la solución. Deja tus respuestas en los comentarios: ¿cuántas cerraduras abres sin mirar?\n\n0:00 La tormenta\n1:00 Puzle 1 · Los tres escudos\n2:44 Puzle 2 · El lema cifrado\n4:46 Puzle 3 · La escalera\n6:24 Puzle 4 · Las tres llaves\n8:05 El final\n8:44 Repaso de soluciones\n\nEl miércoles, Escape Room 2: «El museo que miente». Suscríbete y activa la campanita para entrar el primero en cada sala nueva.\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #logica #enigmas #enigma60",
  "facebook_title": "¿Saldrías de esta torre antes de que se apague la vela?",
  "facebook_description": "Escape room 1 de ENIGMA 60: cuatro cerraduras, una vela y 20 segundos para pensar cada puzle. ¿Cuántas abres tú? Contenido creado con ayuda de IA. #escaperoom #acertijos #enigma60",
  "tags": [
@@ -71,6 +71,11 @@
   {
    "version": "v5",
    "motivo_cambio": "Propietario: «Se escucha interferencia en el sonido, no como lluvia»",
+   "corrector": "Claude"
+  },
+  {
+   "version": "v6",
+   "motivo_cambio": "Propietario (16/11 19:57): descripción genérica y título que no concuerda; texto reescrito con los 4 puzles (sin soluciones). Cambio a aplicar a mano en YouTube Studio: el vídeo ya estaba publicado",
    "corrector": "Claude"
   }
  ],
