@@ -933,8 +933,8 @@ const Vigilante: React.FC<{x: number; i: number; e: EstadoMuseo; T: TM}> = ({x, 
 					</mesh>
 				))}
 			</group>
-			{/* cartel con su frase, a sus pies */}
-			<group position={[0, 0.55, 0.45]} rotation={[-0.35, 0, 0]}>
+			{/* cartel con su frase, a sus pies (v2: el puzle 4 ya no usa frases de los vigilantes) */}
+			<group position={[0, 0.55, 0.45]} rotation={[-0.35, 0, 0]} visible={false}>
 				<mesh position={[0, -0.3, -0.05]}>
 					<cylinderGeometry args={[0.012, 0.012, 0.6, 6]} />
 					<Oro />
@@ -999,6 +999,34 @@ const Salida: React.FC<{e: EstadoMuseo; T: TM}> = ({e, T}) => {
 			{VIGILANTES_X.map((x, i) => (
 				<Vigilante key={x} x={x} i={i} e={e} T={T} />
 			))}
+			{/* puzle 4 (v2): una vela en el suelo delante de cada puerta. Por debajo de la puerta de la
+			    calle (derecha) entra la corriente: su llama se tumba hacia el pasillo y tiembla. */}
+			{PUERTAS_X.map((x, k) => {
+				const corriente = k === 1;
+				const tt = e.t ?? 0;
+				const temb = corriente ? 0.75 + 0.25 * Math.sin(tt * 23) * Math.sin(tt * 7.3) : 0.96 + 0.04 * Math.sin(tt * 3.1);
+				const inclina = corriente ? 1.05 + 0.18 * Math.sin(tt * 9) : 0; // se tumba hacia el pasillo y a un lado
+				const luzV = e.pista[k === 0 ? 'velaI' : 'velaD'] ?? 0;
+				return (
+					<group key={`vela${x}`} position={[x, 0, -27.35]}>
+						<mesh position={[0, 0.04, 0]}>
+							<cylinderGeometry args={[0.13, 0.15, 0.08, 18]} />
+							<Oro />
+						</mesh>
+						<mesh position={[0, 0.24, 0]}>
+							<cylinderGeometry args={[0.045, 0.05, 0.32, 14]} />
+							<meshStandardMaterial color="#efe6cf" roughness={0.6} emissive="#ffcf8a" emissiveIntensity={0.25 + luzV * 0.3} />
+						</mesh>
+						<group position={[0, 0.41, 0]} rotation={[inclina * 0.35, 0, inclina]}>
+							<mesh position={[0, 0.05, 0]} scale={[1, temb * (corriente ? 1.15 : 1), 1]}>
+								<coneGeometry args={[0.022, 0.1, 10]} />
+								<meshBasicMaterial color="#ffd27a" toneMapped={false} />
+							</mesh>
+						</group>
+						<pointLight position={[0, 0.55, 0.15]} color="#ffbf6a" intensity={(1.4 + luzV) * temb} distance={2.6} decay={1.6} />
+					</group>
+				);
+			})}
 			{VIGILANTES_X.map((x) => (
 				<pointLight key={`l${x}`} position={[x * 0.8, 2.4, -25.9]} color="#ffe2b8" intensity={4.5 * e.luces[4]} distance={3.8} decay={1.5} />
 			))}
@@ -1099,6 +1127,8 @@ export const Museo3D: React.FC<{e: EstadoMuseo; ancho?: number; alto?: number; e
 		vg1: [VIGILANTES_X[0], 1.3, -26.9],
 		vg2: [VIGILANTES_X[1], 1.3, -26.9],
 		puertas: [0, 1.3, -28],
+		velaI: [PUERTAS_X[0], 0.4, -27.35],
+		velaD: [PUERTAS_X[1], 0.4, -27.35],
 		escaparate: ESCAPARATE,
 	};
 	let clave = '';

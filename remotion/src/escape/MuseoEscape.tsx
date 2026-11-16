@@ -46,6 +46,9 @@ export const PLANOS_MUSEO: Record<string, {pos: V3; mira: V3; fov?: number}> = {
 	puertas: {pos: [0, 1.6, -25.0], mira: [0, 1.3, -28], fov: 58},
 	vigilantes: {pos: [0.5, 1.7, -24.4], mira: [0, 1.35, -27.4], fov: 64},
 	puertaDer: {pos: [0.95, 1.6, -26.2], mira: [1.4, 1.3, -28.6], fov: 54},
+	velaI: {pos: [-0.9, 0.95, -26.0], mira: [-1.4, 0.4, -27.35], fov: 46},
+	velaD: {pos: [0.9, 0.95, -26.0], mira: [1.4, 0.4, -27.35], fov: 46},
+	cartel: {pos: [-0.6, 1.9, -25.6], mira: [-1.4, 2.8, -27.9], fov: 50},
 	calle: {pos: [1.1, 1.6, -33.4], mira: [1.4, 1.8, -28.2], fov: 62},
 	escaparate: {pos: [3.0, 1.7, -30.6], mira: ESCAPARATE, fov: 46},
 	final: {pos: [0.6, 1.9, -35.5], mira: [0.8, 2.3, -28], fov: 60},
@@ -56,7 +59,7 @@ const PLANO_DE: Record<string, string> = {
 	a01: 'vitrinas', a02: 'placas', a04: 'v2', a06: 'vitrinas', a07: 'placas', a10: 'vitrinas',
 	b01: 'retrato', b02: 'caja', b03: 'placaRetrato', b07: 'retrato', b08: 'caja', b11: 'caja', b12: 'pintura',
 	c01: 'egipcia', c02: 'gatos', c04: 'balanza', c07: 'gatos', c09: 'balanza', c11: 'gatoFalso',
-	d01: 'puertas', d02: 'salida', d04: 'vg1', d05: 'vg2', d06: 'puertas', d07: 'salida', d09: 'vigilantes', d11: 'puertaDer',
+	d01: 'puertas', d02: 'cartel', d04: 'velaI', d05: 'velaD', d06: 'puertas', d07: 'salida', d09: 'velaD', d10: 'cartel', d11: 'puertaDer',
 	e01: 'calle', e02: 'escaparate', f01: 'final',
 };
 const EXTRA: [string, number, string][] = [
@@ -73,9 +76,9 @@ const PISTA_DE: Record<string, string[]> = {
 	g02: ['reloj'], a01: ['vitrinas'], a02: ['v0', 'v1', 'v2'], a03: ['vitrinas'], a04: ['v2'], a05: ['vitrinas'],
 	b01: ['retrato'], b02: ['caja'], b03: ['placaRetrato'], b04: ['placaRetrato'], b05: ['retrato'], b06: ['placaRetrato'],
 	c01: ['gatos'], c03: ['gatos'], c04: ['balanza'], c05: ['balanza'], c06: ['gatos', 'balanza'],
-	d01: ['puertas'], d02: ['vg1', 'vg2'], d04: ['vg1'], d05: ['vg2'], d06: ['vg1', 'vg2'], e01: ['escaparate'], e02: ['escaparate'],
+	d01: ['puertas'], d02: ['velaI', 'velaD'], d04: ['velaI'], d05: ['velaD'], d06: ['velaI', 'velaD'], d09: ['velaD'], e01: ['escaparate'], e02: ['escaparate'],
 };
-const EN_PENSAR: Record<string, string[]> = {p1: ['vitrinas'], p2: ['placaRetrato'], p3: ['balanza'], p4: ['vg1', 'vg2']};
+const EN_PENSAR: Record<string, string[]> = {p1: ['vitrinas'], p2: ['placaRetrato'], p3: ['balanza'], p4: ['velaI', 'velaD']};
 const FICHAS: Record<string, string> = {
 	a03: 'Las tres placas mienten',
 	a04: 'De «Oro y plata» sale PLATA',
@@ -85,9 +88,9 @@ const FICHAS: Record<string, string> = {
 	c03: '8 gatos · 1 más ligero',
 	c04: 'Balanza de 2 platos, sin pesas',
 	c05: '¿Mínimo de pesadas, seguro?',
-	d03: 'Uno siempre miente; el otro, nunca',
-	d04: 'I · «Al menos uno de los dos miente»',
-	d05: 'II · «La salida es la izquierda»',
+	d03: 'El sótano está sellado: no entra aire',
+	d04: 'Vela izquierda · llama quieta',
+	d05: 'Vela derecha · llama tumbada',
 };
 const BLOQUES = ['p1', 'p2', 'p3', 'p4'];
 
@@ -185,7 +188,7 @@ export const estadoMuseo = (t: number, P0: PlanC): EstadoMuseo => {
 		gatoRoto: tr(m3 + 1.3, m3 + 2.1, 0, 1, Easing.out(Easing.back(1.6))),
 		mapa: tr(T.c11.inicio + 1.6, T.c11.inicio + 3.0, 0, 1),
 		cabezas: tr(T.d02.inicio + 1.4, T.d02.inicio + 2.6, 0, 1),
-		verdad: interpolate(t, [T.d09.inicio, T.d09.inicio + 0.6, T.d10.fin + 0.6, T.d10.fin + 1.3], [0, 1, 1, 0], clamp),
+		verdad: 0,
 		puerta: tr(salida + 0.8, salida + 3.0, 0, 1, Easing.out(Easing.cubic)),
 		calle: tr(salida + 3, salida + 5, 0, 1),
 		alarma: alarmaEnv * (0.55 + 0.45 * Math.sin(t * 7)),

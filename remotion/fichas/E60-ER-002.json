@@ -35,28 +35,32 @@
    "titulo": "Las tres vitrinas",
    "sala": "numismatica",
    "respuesta": "mezcla · oro · plata",
-   "verificacion": "Todas las placas mienten; de «Oro y plata» sale una moneda de plata → esa vitrina es solo plata; «Plata» no puede ser plata → oro; queda oro y plata para «Oro». Única de las 6 permutaciones (comprobado por código)."
+   "verificacion": "Todas las placas mienten; de «Oro y plata» sale una moneda de plata → esa vitrina es solo plata; «Plata» no puede ser plata → oro; queda oro y plata para «Oro». Única de las 6 permutaciones (comprobado por código).",
+   "familia": "etiquetas_todas_falsas"
   },
   {
    "id": "P2",
    "titulo": "El año del retrato",
    "sala": "pinacoteca",
    "respuesta": "1889",
-   "verificacion": "MDCCCLXXXIX = 1000+500+300+50+30+9 = 1889 (comprobado por código)."
+   "verificacion": "MDCCCLXXXIX = 1000+500+300+50+30+9 = 1889 (comprobado por código).",
+   "familia": "numeros_romanos"
   },
   {
    "id": "P3",
    "titulo": "El gato falso",
    "sala": "egipcia",
    "respuesta": "2 pesadas",
-   "verificacion": "8 estatuillas, una más ligera: 1 pesada da 3 resultados (<8), 2 dan 9 (≥8). Método: 3 contra 3; si equilibra, 1 contra 1 de las 2 restantes; si no, 1 contra 1 de las 3 del plato ligero."
+   "verificacion": "8 estatuillas, una más ligera: 1 pesada da 3 resultados (<8), 2 dan 9 (≥8). Método: 3 contra 3; si equilibra, 1 contra 1 de las 2 restantes; si no, 1 contra 1 de las 3 del plato ligero.",
+   "familia": "pesadas_minimas"
   },
   {
    "id": "P4",
-   "titulo": "Los dos vigilantes",
+   "titulo": "Las dos velas",
    "sala": "salida",
    "respuesta": "la de la derecha",
-   "verificacion": "Uno siempre miente y otro siempre dice la verdad. A: «al menos uno de los dos miente» es cierto siempre → A es el sincero → B miente → la salida no está a la izquierda: derecha. Única (comprobado por código)."
+   "verificacion": "Solo entra aire por la puerta de la calle (el sótano está sellado). La única llama movida es la de la derecha → la calle está a la derecha. El cartel SALIDA forma parte del museo que miente. Única: si la calle estuviera a la izquierda, se movería esa llama.",
+   "familia": "observacion_corriente_aire"
   }
  ],
  "lineas": [
@@ -306,38 +310,38 @@
    "id": "d02",
    "bloque": "p4",
    "fase": "narra",
-   "texto": "Delante de cada puerta hay un vigilante de cera. Al acercarte, giran la cabeza hacia ti."
+   "texto": "Sobre la puerta de la izquierda brilla un cartel verde: SALIDA. Y delante de cada puerta, en el suelo, arde una vela."
   },
   {
    "id": "d03",
    "bloque": "p4",
    "fase": "conservador",
-   "texto": "Uno de mis vigilantes siempre dice la verdad. El otro, siempre miente. Cada uno te dirá una sola frase.",
+   "texto": "En mi museo, hasta los carteles mienten, visitante. Y mi sótano está sellado: allí abajo no entra ni una gota de aire.",
    "voz": "conservador"
   },
   {
    "id": "d04",
    "bloque": "p4",
    "fase": "pista",
-   "texto": "El primer vigilante dice: al menos uno de nosotros dos miente."
+   "texto": "Mira la vela de la izquierda. La llama sube recta, completamente quieta."
   },
   {
    "id": "d05",
    "bloque": "p4",
    "fase": "pista",
-   "texto": "El segundo vigilante dice: la salida es la puerta de la izquierda."
+   "texto": "Ahora la de la derecha. La llama se tumba de lado y tiembla, como si alguien soplara por debajo de la puerta."
   },
   {
    "id": "d06",
    "bloque": "p4",
    "fase": "repaso",
-   "texto": "Repasemos. Uno siempre dice la verdad, el otro siempre miente. El primero: al menos uno de los dos miente. El segundo: la salida está a la izquierda."
+   "texto": "Repasemos. El cartel puede mentir. El sótano está sellado. Una llama quieta; la otra, empujada por el aire."
   },
   {
    "id": "d07",
    "bloque": "p4",
    "fase": "pregunta",
-   "texto": "¿Qué puerta te saca del museo? Veinte segundos."
+   "texto": "¿Qué puerta te saca del museo? Escríbelo en los comentarios. Veinte segundos."
   },
   {
    "id": "d08",
@@ -349,13 +353,13 @@
    "id": "d09",
    "bloque": "p4",
    "fase": "solucion",
-   "texto": "Sabemos que uno de los dos miente, así que la frase del primero es cierta. Entonces el primero es el sincero, y el segundo es el mentiroso. Si el mentiroso dice izquierda, la salida está a la derecha."
+   "texto": "Por debajo de la puerta de la calle se cuela el aire frío de la noche, y empuja la llama de su vela. Detrás de la izquierda está el sótano sellado: no hay corriente, y su llama no se mueve."
   },
   {
    "id": "d10",
    "bloque": "p4",
    "fase": "comprobacion",
-   "texto": "¿Y si el primero mintiera? Entonces ninguno de los dos mentiría. Pero uno siempre miente. Imposible. La derecha."
+   "texto": "¿Y el cartel de salida? Señala la izquierda… pero en este museo, todo miente. La derecha."
   },
   {
    "id": "d11",
@@ -394,12 +398,17 @@
  "auditoria": "Claude 15/11/2026: P1 única (6 permutaciones), P2 MDCCCLXXXIX=1889, P3 2 pesadas (3^1<8≤3^2), P4 derecha (única). Verificado por código. Pendiente: escena 3D del museo, voz del conservador y QA visual.",
  "apertura_s": 1.0,
  "pantalla_final_s": 20,
- "version": "v1",
+ "version": "v2",
  "historial": [
   {
    "version": "v1",
    "fecha": "2026-11-15",
    "cambios": "QA de voz (Claude): g02 se oía «las dos en punto» → «la medianoche»; b04 deletreo agrupado (tres ces, tres equis) para que se entienda sin ambigüedad."
+  },
+  {
+   "version": "v2",
+   "fecha": "2026-11-16",
+   "cambios": "El Propietario rechazó la v1 (le gusta la idea del museo). Puzles únicos: «Los dos vigilantes» repetía la mecánica «uno miente y otro dice la verdad» de la Torre; se sustituye por «Las dos velas» (la corriente de aire de la calle tumba la llama de la puerta correcta). Velas 3D nuevas en el suelo de la salida; los vigilantes quedan de decorado sin cartel. Mismas salas, voz y música."
   }
  ],
  "siguiente": "La primera serie de ENIGMA 60"

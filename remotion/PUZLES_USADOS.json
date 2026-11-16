@@ -37,24 +37,22 @@
    "familia": "pesadas_minimas"
   },
   {
+   "video_id": "E60ES-ER-002-MUSEO",
+   "puzle": "P4 Las dos velas",
+   "familia": "observacion_corriente_aire"
+  },
+  {
    "video_id": "E60ES-AC-20261119",
    "puzle": "Las cerillas del relojero",
    "familia": "cerillas_mover_una"
+  },
+  {
+   "video_id": "E60ES-AC-20261117",
+   "puzle": "Los engranajes del faro",
+   "familia": "relacion_engranajes"
   }
  ],
  "pendientes_de_sustituir": [
-  {
-   "video_id": "E60ES-AC-20261117",
-   "puzle": "Las tres cajas fuertes",
-   "familia": "veraces_mentirosos",
-   "repite": "E60ES-ER-001-TORRE P4"
-  },
-  {
-   "video_id": "E60ES-ER-002-MUSEO",
-   "puzle": "P4 Los dos vigilantes",
-   "familia": "veraces_mentirosos",
-   "repite": "E60ES-ER-001-TORRE P4"
-  },
   {
    "video_id": "E60ES-S001-E01",
    "puzle": "P2 Los cajones mal etiquetados",
@@ -76,7 +74,6 @@
  ],
  "sin_programar": {
   "nota": "Fichas antiguas sin fecha: si se reutilizan, deben pasar el verificador.",
-  "E60-2026-11-16-corto engranajes": "relacion_engranajes",
   "E60-2026-11-18-corto lentes": "sistema_ecuaciones",
   "E60-2026-11-20-corto velas": "trampa_lateral",
   "E60-2026-11-21-corto gemas": "sistema_ecuaciones",
@@ -88,7 +85,7 @@
    "video_id": "E60ES-ER-001-TORRE",
    "sala": "torre-archivero",
    "firma": "piedra|tablones|velas",
-   "nota": "también la usan su avance y el acertijo del 17 (a sustituir)"
+   "nota": "también la usa su avance"
   },
   {
    "video_id": "E60ES-ER-002-MUSEO",
@@ -106,6 +103,11 @@
    "video_id": "E60ES-AC-20261119",
    "sala": "relojeria-01",
    "firma": "papel|damero|lampara"
+  },
+  {
+   "video_id": "E60ES-AC-20261117",
+   "sala": "faro-maquinas-01",
+   "firma": "chapa|rejilla|fluorescente"
   }
  ]
 }

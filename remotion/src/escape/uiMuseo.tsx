@@ -161,12 +161,13 @@ export const ExpVigilantes: React.FC<{t: number; a: number; b: number}> = ({t, a
 	if (o <= 0) return null;
 	const d = b - a;
 	const filas = [
-		{sup: 'Si el I dice la verdad', r: 'el II miente → la salida NO es la izquierda', ok: true, f: 0.08},
-		{sup: 'Si el I mintiera', r: 'nadie mentiría… pero uno siempre miente', ok: false, f: 0.62},
+		{sup: 'Vela derecha', r: 'la llama se tumba → entra aire de la calle', ok: true, f: 0.08},
+		{sup: 'Vela izquierda', r: 'llama quieta → detrás, el sótano sellado', ok: false, f: 0.45},
+		{sup: 'Cartel «SALIDA»', r: 'señala la izquierda… y aquí todo miente', ok: false, f: 0.75},
 	];
 	return (
 		<Panel o={o} ancho={1100}>
-			{titulo('I: «AL MENOS UNO MIENTE»   ·   II: «SALIDA A LA IZQUIERDA»')}
+			{titulo('¿POR QUÉ PUERTA ENTRA EL AIRE DE LA CALLE?')}
 			{filas.map((r, i) => {
 				const e = entra(t, a + r.f * d);
 				return (

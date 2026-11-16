@@ -3,6 +3,7 @@ import {ThreeCanvas} from '@remotion/three';
 import * as THREE from 'three';
 import {Camara, hash, tex} from '../diorama/SalaLastre3D';
 import {Cerillas3D, EstadoCerillas} from '../escape/Cerillas3D';
+import {Engranajes3D, EstadoEngranajes} from './Engranajes3D';
 
 // ENIGMA 60 · Habitación propia para cada acertijo corto (orden del Propietario, 16/11/2026).
 // La sala se describe en la ficha (`sala`) y se construye aquí con geometría procedural de three.js
@@ -33,7 +34,7 @@ export type Sala = {
 	mesa?: {color: string};
 	atrezo: Atrezo[];
 };
-export type EstadoSalaCorto = {t: number; cam: {pos: V3; mira: V3; fov: number}; puerta: number; foco: number; cerillas?: EstadoCerillas; relampago?: number};
+export type EstadoSalaCorto = {t: number; cam: {pos: V3; mira: V3; fov: number}; puerta: number; foco: number; cerillas?: EstadoCerillas; engranajes?: EstadoEngranajes; relampago?: number};
 
 export const MESA_ALTO = 0.78;
 /** Centro del acertijo en la sala (sobre el suelo o sobre la mesa central). */
@@ -45,7 +46,7 @@ export const planosSala = (s: Sala) => {
 	return {
 		entrada: {pos: [0.25, 1.62, z0] as V3, mira: [0, 1.45, -s.fondo / 2] as V3, fov: 80},
 		detalle: {pos: [s.ancho / 4, 1.55, z0 - 0.5] as V3, mira: [-s.ancho / 2, 1.25, -s.fondo / 8] as V3, fov: 72},
-		puzle: {pos: [0, c[1] + 1.95, c[2] + 2.85] as V3, mira: [0, c[1] + 0.05, c[2] - 0.15] as V3, fov: 64},
+		puzle: {pos: [0, c[1] + 1.8, c[2] + 2.5] as V3, mira: [0, c[1] + 0.02, c[2] - 0.1] as V3, fov: 62},
 		puerta: {pos: [0, 1.5, -s.fondo / 2 + 2.6] as V3, mira: [0, 1.2, -s.fondo / 2] as V3, fov: 62},
 	};
 };
@@ -357,7 +358,7 @@ export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number;
 			<Camara c={e.cam} />
 			<color attach="background" args={[s.niebla]} />
 			<fogExp2 attach="fog" args={[s.niebla, 0.05]} />
-			<hemisphereLight args={[L.color, '#0a0807', 0.75 * L.intensidad]} />
+			<hemisphereLight args={[L.color, '#0a0807', 1.0 * L.intensidad]} />
 			<pointLight position={[e.cam.pos[0], e.cam.pos[1] + 0.2, e.cam.pos[2]]} color="#ffe2c0" intensity={0.8} distance={4} decay={1.7} />
 			{/* luz principal de la sala */}
 			{L.tipo === 'lampara' && (
@@ -431,6 +432,7 @@ export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number;
 			{s.atrezo.map((a, i) => <Pieza key={i} s={s} a={a} t={t} />)}
 			<PuertaSalida s={s} abre={e.puerta} />
 			{e.cerillas && <Cerillas3D c={{...e.cerillas, centro: c}} />}
+			{e.engranajes && <Engranajes3D c={{...e.engranajes, centro: c}} />}
 		</ThreeCanvas>
 	);
 };

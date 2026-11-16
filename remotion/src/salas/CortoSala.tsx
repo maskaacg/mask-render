@@ -43,13 +43,22 @@ export const CortoSala: React.FC<Props> = (props) => {
 	pos[0] += Math.sin(t * 0.6) * 0.02 + Math.sin(t * 0.21) * 0.1;
 	pos[1] += Math.sin(t * 0.47 + 1) * 0.015 + Math.sin(t * 0.13) * 0.06;
 	const tipo = ficha.puzle.tipo;
-	if (tipo !== 'cerillas') throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
+	if (!['cerillas', 'engranajes'].includes(tipo)) throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
+	const vueltas = tipo === 'engranajes' ? interpolate(t, [sol + 0.6, sol + 9], [0, Number(ficha.puzle.vueltas)], {...clamp, easing: io}) : 0;
 	const e: EstadoSalaCorto = {
 		t,
 		cam: {pos, mira, fov: a.fov + (b.fov - a.fov) * f},
 		puerta: interpolate(t, [plan.total - 3.0, plan.total - 1.2], [0, 1], {...clamp, easing: io}),
 		foco: interpolate(t, [l3 - 0.5, l3 + 0.5, plan.total - 3.6, plan.total - 3.0], [0, 0.8, 0.8, 0], clamp),
-		cerillas: {
+		engranajes: tipo === 'engranajes'
+			? {
+					dientes: ficha.puzle.dientes as number[],
+					vueltasPequeno: vueltas + 0.03 * Math.sin(t * 0.9) * (t < sol ? 1 : 0),
+					aparece: interpolate(t, [l3 - 0.2, l3 + 1.2], [0, 1], clamp),
+					marca: interpolate(t, [sol, sol + 0.6], [0, 1], clamp),
+				}
+			: undefined,
+		cerillas: tipo !== 'cerillas' ? undefined : {
 			inicial: ficha.puzle.inicial as [number, string, number, number],
 			mueve: ficha.puzle.mueve as {de: [number, string]; a: [number, string]},
 			aparece: interpolate(t, [l3 - 0.2, l3 + 2.2], [0, 1], clamp),
@@ -109,6 +118,14 @@ export const CortoSala: React.FC<Props> = (props) => {
 			<div style={{position: 'absolute', left: 56, right: 230, top: 300, opacity: tO, fontFamily: OSWALD, fontWeight: 500, fontSize: 46, lineHeight: 1.15, color: E60.blanco, background: 'rgba(12,10,8,0.82)', borderLeft: `8px solid ${AMBAR}`, padding: '14px 22px', borderRadius: 8}}>
 				{pregunta}
 			</div>
+
+			{/* contador de vueltas (engranajes) */}
+			{tipo === 'engranajes' && t > sol + 0.4 && (
+				<div style={{position: 'absolute', left: 56, right: 56, top: 300, display: 'flex', justifyContent: 'space-around', opacity: interpolate(t, [sol + 0.4, sol + 1, plan.total - 3.6, plan.total - 3], [0, 1, 1, 0], clamp), background: 'rgba(12,10,8,0.82)', borderLeft: `8px solid ${AMBAR}`, padding: '14px 22px', borderRadius: 8, fontFamily: OSWALD, fontSize: 44, color: E60.blanco}}>
+					<span>Pequeño: <b style={{color: AMBAR}}>{Math.floor(vueltas + 1e-6)}</b></span>
+					<span>Grande: <b style={{color: '#ff6f55'}}>{Math.floor(vueltas * (Number((ficha.puzle.dientes as number[])[0]) / Number((ficha.puzle.dientes as number[]).slice(-1)[0])) + 1e-6)}</b></span>
+				</div>
+			)}
 
 			{/* subtítulos */}
 			{!enPensar && linea && (
