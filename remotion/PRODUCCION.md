@@ -16,6 +16,15 @@ Acertijos, avances y cortos-historia duran **como mínimo 70 s** y como máximo 
 - `tools/finalize_qa.py` marca FAIL cualquier vertical fuera de 70–120 s (`CORTO_DEMASIADO_CORTO_…`);
   ese vídeo no se envía a Telegram: se alarga la ficha y se renderiza otra versión.
 
+## Cada puzle es único (Propietario, 16/11)
+Ningún puzle repite **familia** (la mecánica de fondo) con otro vídeo ni dentro del mismo vídeo, aunque
+cambien los objetos, los números o la sala. Ejemplos: «uno dice la verdad y otro miente», «etiquetas
+todas falsas», «balanza/ecuación», «sistema de ecuaciones», «serie numérica», «cifrado César».
+- Cada puzle de una ficha declara `familia` (en `puzle` o en cada elemento de `puzles`).
+- `tools/verificar_puzles_unicos.py` la compara con `PUZLES_USADOS.json`; GitHub Actions no renderiza
+  si se repite. Al entregar un vídeo, añade sus puzles al registro.
+- Cada solución sigue siendo única y se comprueba por código (`tools/verificar_*.py`).
+
 ## QA visual obligatoria antes de enviar (además de la QA técnica)
 La QA técnica (sonoridad, duración, fotogramas) no basta. Antes de enviar cualquier vídeo o versión corregida:
 1. Revisar la **hoja de contactos** (`<ID>-hoja-NN.jpg`, un fotograma cada 4 s, se genera sola en GitHub Actions).

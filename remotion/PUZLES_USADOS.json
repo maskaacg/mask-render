@@ -1,0 +1,28 @@
+{
+ "regla": "Cada puzle de ENIGMA 60 es único: ninguna familia (mecánica de fondo) se repite entre vídeos ni dentro de un mismo vídeo, aunque cambien los objetos, los números o la ambientación. Orden del Propietario, 16/11/2026.",
+ "puzles": [
+  {"video_id": "E60ES-ER-001-TORRE", "puzle": "P1 Los tres escudos", "familia": "orden_por_pistas"},
+  {"video_id": "E60ES-ER-001-TORRE", "puzle": "P2 El lema cifrado", "familia": "cifrado_cesar"},
+  {"video_id": "E60ES-ER-001-TORRE", "puzle": "P3 La escalera", "familia": "serie_fibonacci"},
+  {"video_id": "E60ES-ER-001-TORRE", "puzle": "P4 Las tres llaves", "familia": "veraces_mentirosos"},
+  {"video_id": "E60ES-ER-002-MUSEO", "puzle": "P1 Las tres vitrinas", "familia": "etiquetas_todas_falsas"},
+  {"video_id": "E60ES-ER-002-MUSEO", "puzle": "P2 El año del retrato", "familia": "numeros_romanos"},
+  {"video_id": "E60ES-ER-002-MUSEO", "puzle": "P3 El gato falso", "familia": "pesadas_minimas"},
+  {"video_id": "E60ES-AC-20261119", "puzle": "Las cerillas del archivero", "familia": "cerillas_mover_una"}
+ ],
+ "pendientes_de_sustituir": [
+  {"video_id": "E60ES-AC-20261117", "puzle": "Las tres cajas fuertes", "familia": "veraces_mentirosos", "repite": "E60ES-ER-001-TORRE P4"},
+  {"video_id": "E60ES-ER-002-MUSEO", "puzle": "P4 Los dos vigilantes", "familia": "veraces_mentirosos", "repite": "E60ES-ER-001-TORRE P4"},
+  {"video_id": "E60ES-S001-E01", "puzle": "P2 Los cajones mal etiquetados", "familia": "etiquetas_todas_falsas", "repite": "E60ES-ER-002-MUSEO P1"},
+  {"video_id": "E60ES-S001-E01", "puzle": "P4 La báscula de trimado", "familia": "balanza_ecuacion", "repite": "E60ES-ER-002-MUSEO P3 (misma balanza) — revisar"},
+  {"video_id": "E60ES-S001-E01", "puzle": "P6 El volante de la escotilla", "familia": "sistema_ecuaciones", "repite": "P3 Los manómetros del mismo capítulo"}
+ ],
+ "sin_programar": {
+  "nota": "Fichas antiguas sin fecha: si se reutilizan, deben pasar el verificador.",
+  "E60-2026-11-16-corto engranajes": "relacion_engranajes",
+  "E60-2026-11-18-corto lentes": "sistema_ecuaciones",
+  "E60-2026-11-20-corto velas": "trampa_lateral",
+  "E60-2026-11-21-corto gemas": "sistema_ecuaciones",
+  "E60-2026-11-22-corto espejos": "simetria_espejo"
+ }
+}

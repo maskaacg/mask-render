@@ -69,6 +69,11 @@ jobs:
           for f in kokoro-v1.0.onnx voices-v1.0.bin; do
             [ -s models/$f ] || curl -sSL -o models/$f https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/$f
           done
+      - name: Puzles únicos (no se repite ninguna mecánica)
+        if: env.FICHA != ''
+        run: |
+          VID=$(python3 -c "import re,os;print(re.sub(r'-v[0-9]+.*$','',os.environ['ENCARGO_ID']))")
+          python tools/verificar_puzles_unicos.py --ficha "$FICHA" --video-id "$VID"
       - name: Voz em_alex y efectos
         run: |
           python tools/audio_assets.py --kokoro-model models/kokoro-v1.0.onnx --kokoro-voices models/voices-v1.0.bin --out public/audio

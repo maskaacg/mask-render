@@ -6,24 +6,33 @@
  "ancho": 1080,
  "alto": 1920,
  "fps": 30,
- "titulo": "La balanza del archivero",
+ "titulo": "Las cerillas del archivero",
  "numero": 4,
  "escena": "torre",
  "modo": "puzle",
  "pensar_s": 15,
  "tinte": "#b8963a",
  "puzle": {
-  "tipo": "balanza",
-  "izquierda": {
-   "objeto": "llave",
-   "n": 2,
-   "peso": 30
+  "tipo": "cerillas",
+  "mecanica": "LATERAL",
+  "familia": "cerillas_mover_una",
+  "inicial": [
+   5,
+   "+",
+   7,
+   2
+  ],
+  "mueve": {
+   "de": [
+    1,
+    "v"
+   ],
+   "a": [
+    0,
+    "b"
+   ]
   },
-  "derecha": {
-   "objeto": "moneda",
-   "n": 3
-  },
-  "respuesta": 20
+  "respuesta": "9 − 7 = 2"
  },
  "solucion_reserva": null,
  "lineas": [
@@ -34,47 +43,47 @@
   },
   {
    "fase": "intro",
-   "texto": "No hay cerradura ni llave a la vista. Solo una mesa, y sobre ella, una vieja balanza de latón.",
+   "texto": "Sobre la mesa no hay llaves ni papeles. Solo una caja de cerillas abierta… y una cuenta hecha con ellas.",
    "id": "l02"
   },
   {
    "fase": "intro",
-   "texto": "En un plato, dos llaves de hierro. En el otro, tres monedas antiguas, idénticas entre sí.",
+   "texto": "Cinco más siete, igual a dos. Una cuenta imposible, colocada con mucho cuidado.",
    "id": "l03"
   },
   {
    "fase": "intro",
-   "texto": "La balanza tiembla un instante… y se queda quieta. Perfectamente equilibrada.",
+   "texto": "Al lado, la letra temblorosa del archivero: «La puerta se abre cuando la cuenta dice la verdad».",
    "id": "l04"
   },
   {
    "fase": "enunciado",
-   "texto": "Grabado en el pergamino, el archivero dejó una nota: cada llave pesa treinta gramos. Para salir, di en voz alta el peso de una sola moneda.",
+   "texto": "Solo puedes mover una cerilla. No puedes quitar ninguna ni añadir otras nuevas.",
    "id": "l05"
   },
   {
    "fase": "enunciado",
-   "texto": "Dos llaves pesan lo mismo que tres monedas. ¿Cuánto pesa una moneda?",
+   "texto": "Cinco más siete igual a dos. ¿Qué cerilla mueves para que la cuenta sea cierta?",
    "id": "l06"
   },
   {
    "fase": "solucion",
-   "texto": "Veinte gramos.",
+   "texto": "La cerilla de pie del signo más.",
    "id": "l07"
   },
   {
    "fase": "solucion",
-   "texto": "Las dos llaves suman sesenta gramos. Como la balanza está equilibrada, las tres monedas también pesan sesenta. Sesenta entre tres: veinte gramos cada una.",
+   "texto": "Al quitarla, el más se convierte en menos. Y si la pones arriba a la derecha del cinco, el cinco se convierte en un nueve. Nueve menos siete: dos.",
    "id": "l08"
   },
   {
    "fase": "solucion",
-   "texto": "Lo dices en voz alta. Algo cruje dentro del muro, y la puerta de la torre se entreabre.",
+   "texto": "La cuenta por fin dice la verdad. Algo cruje dentro del muro, y la puerta de la torre se entreabre.",
    "id": "l09"
   },
   {
    "fase": "cta",
-   "texto": "¿Lo habías resuelto antes de que se apagara la vela? Escríbelo en los comentarios.",
+   "texto": "¿La encontraste antes de que se apagara la vela? Escríbelo en los comentarios.",
    "id": "l10"
   },
   {
@@ -85,7 +94,7 @@
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 16/11/2026: comprobado por código (tools/verificar_balanza_20261119.py): con 2 llaves de 30 g frente a 3 monedas iguales, la única masa entera positiva que equilibra es 20 g (búsqueda 1–1000 g; también es la única real: 3x=60). Acertijo no usado antes (la balanza del museo es otro problema: mínimo de pesadas). QA visual de fotogramas de prueba hecha en local. Render run 43838904514: QA técnica PASS (41,7 s, -14,7 LUFS, pico -0,8 dBFS); hoja de contactos revisada: título, pergamino, temporizador y subtítulos sin solaparse, balanza y monedas visibles, solución 20 g en rojo coherente con la voz.",
+ "auditoria": "Claude 16/11/2026: acertijo cambiado para que no repita mecánica (la balanza y las ecuaciones lineales ya salen en el museo y en la serie). Comprobado por código (tools/verificar_cerillas_20261119.py): moviendo una sola cerilla entre todas las posiciones posibles de 5+7=2, la única igualdad válida es 9−7=2. Pendiente de render y QA visual.",
  "motor_voz": "chatterbox",
  "version": "v2",
  "historial": [
@@ -97,7 +106,7 @@
   {
    "version": "v2",
    "fecha": "2026-11-16",
-   "cambios": "Corrección del Propietario: los cortos deben durar como mínimo 70 s. La v1 duraba 41,7 s. Mismo acertijo y misma solución (20 g); se convierte en historia en primera persona (entrada en la torre, balanza equilibrada, nota del archivero, puerta que se abre) con 11 líneas de voz en lugar de 6. Estimación ~90 s; la QA técnica rechaza ahora cualquier vertical por debajo de 70 s."
+   "cambios": "Correcciones del Propietario: (1) mínimo 70 s: la v1 duraba 41,7 s; ahora es una historia de 11 líneas (~85 s estimados). (2) Cada puzle único: se sustituye la balanza (misma familia que la báscula de la serie y las pesadas del museo) por un acertijo de cerillas nuevo, con componente visual propio (Cerillas)."
   }
  ],
  "duracion_objetivo_s": [

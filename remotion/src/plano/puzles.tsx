@@ -322,6 +322,69 @@ export const Espejos: React.FC<PuzleProps> = ({datos, t, enunciado, solucion, ac
 	);
 };
 
+// ---------- 8. Cerillas (mover una sola cerilla para arreglar la igualdad) ----------
+type P2 = [number, number];
+const SEGS: Record<number, string> = {0: 'abcdef', 1: 'bc', 2: 'abged', 3: 'abgcd', 4: 'fgbc', 5: 'afgcd', 6: 'afgedc', 7: 'abc', 8: 'abcdefg', 9: 'abcdfg'};
+const CW = 118, CH = 236, CY = 190; // caja de cada dígito
+const CX = [80, 300, 450, 680, 870]; // dígito · operador · dígito · igual · dígito
+const segmento = (celda: number, s: string): [P2, P2] => {
+	const x = CX[celda], y = CY, w = CW, h = CH, m = y + h / 2;
+	if (celda === 1 || celda === 3) {
+		const cx = x + 60;
+		if (s === 'h') return [[cx - 58, m], [cx + 58, m]];
+		if (s === 'v') return [[cx, m - 58], [cx, m + 58]];
+		if (s === 'i1') return [[cx - 58, m - 26], [cx + 58, m - 26]];
+		return [[cx - 58, m + 26], [cx + 58, m + 26]];
+	}
+	const T: Record<string, [P2, P2]> = {
+		a: [[x, y], [x + w, y]], b: [[x + w, y], [x + w, m]], c: [[x + w, m], [x + w, y + h]], d: [[x, y + h], [x + w, y + h]],
+		e: [[x, m], [x, y + h]], f: [[x, y], [x, m]], g: [[x, m], [x + w, m]],
+	};
+	return T[s];
+};
+const Cerilla: React.FC<{p: [P2, P2]; color: string; cabeza: string; o: number}> = ({p, color, cabeza, o}) => {
+	const [[x1, y1], [x2, y2]] = p;
+	const k = 0.1; // las cerillas no llegan a tocarse en las esquinas
+	const a: P2 = [x1 + (x2 - x1) * k, y1 + (y2 - y1) * k];
+	const b: P2 = [x2 - (x2 - x1) * k, y2 - (y2 - y1) * k];
+	return (
+		<g opacity={o}>
+			<line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={color} strokeWidth={13} strokeLinecap="round" />
+			<circle cx={b[0]} cy={b[1]} r={11} fill={cabeza} />
+		</g>
+	);
+};
+export const Cerillas: React.FC<PuzleProps> = ({datos, t, enunciado, solucion, acento}) => {
+	const [d1, op, d2, d3] = datos.inicial as [number, string, number, number];
+	const de = datos.mueve.de as [number, string];
+	const a = datos.mueve.a as [number, string];
+	const lista: {celda: number; s: string}[] = [];
+	SEGS[d1].split('').forEach((s) => lista.push({celda: 0, s}));
+	lista.push({celda: 1, s: 'h'});
+	if (op === '+') lista.push({celda: 1, s: 'v'});
+	SEGS[d2].split('').forEach((s) => lista.push({celda: 2, s}));
+	lista.push({celda: 3, s: 'i1'}, {celda: 3, s: 'i2'});
+	SEGS[d3].split('').forEach((s) => lista.push({celda: 4, s}));
+	const mov = interpolate(t, [solucion + 0.8, solucion + 2.4], [0, 1], {...clamp, easing: ease});
+	const pA = segmento(de[0], de[1]);
+	const pB = segmento(a[0], a[1]);
+	const mezcla = (u: P2, v: P2): P2 => [u[0] + (v[0] - u[0]) * mov, u[1] + (v[1] - u[1]) * mov - Math.sin(mov * Math.PI) * 120];
+	const madera = '#e9d6a6';
+	return (
+		<g>
+			<rect x={40} y={130} width={1000} height={360} rx={14} fill="rgba(5,10,20,0.35)" stroke={W} strokeWidth={3} {...draw(t, enunciado, 1)} />
+			{lista.map((c, i) => {
+				const esLaQueSeMueve = c.celda === de[0] && c.s === de[1];
+				if (esLaQueSeMueve && t > solucion + 0.8) return null;
+				return <Cerilla key={i} p={segmento(c.celda, c.s)} color={madera} cabeza={acento} o={ap(t, enunciado + 0.3 + i * 0.08)} />;
+			})}
+			{t > solucion + 0.8 && <Cerilla p={[mezcla(pA[0], pB[0]), mezcla(pA[1], pB[1])]} color={ROJO} cabeza={ROJO} o={1} />}
+			{t <= solucion && <Nota x={540} y={600} text="Mueve UNA sola cerilla" size={48} color={acento} o={ap(t, enunciado + 2.4)} />}
+			{t > solucion && <Nota x={540} y={600} text={String(datos.respuesta)} size={64} color={ROJO} o={ap(t, solucion + 2.6)} caja />}
+		</g>
+	);
+};
+
 export const PUZLES: Record<string, React.FC<PuzleProps>> = {
 	engranajes: Engranajes,
 	cajas: Cajas,
@@ -330,4 +393,5 @@ export const PUZLES: Record<string, React.FC<PuzleProps>> = {
 	velas: Velas,
 	gemas: Gemas,
 	espejos: Espejos,
+	cerillas: Cerillas,
 };
