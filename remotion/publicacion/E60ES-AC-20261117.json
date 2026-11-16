@@ -1,13 +1,13 @@
 {
  "video_id": "E60ES-AC-20261117",
- "version": "v2",
+ "version": "v3",
  "ficha": "fichas/E60-2026-11-17-corto.json",
- "composicion": "E60CortoTorre",
+ "composicion": "E60CortoSala",
  "formato": "TikTok / Reels / Shorts 9:16",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": "E60ES-AC-20261117-v2-20261115-071943",
- "run_id": 43685025663,
+ "encargo_master": "E60ES-AC-20261117-v3-20261116-154803",
+ "run_id": 43889578457,
  "plataformas": [
   "tiktok",
   "youtube",
@@ -19,18 +19,19 @@
  "programado": "2026-11-17T18:00:00",
  "zona": "Europe/Madrid",
  "portada": "remotion/publicacion/E60ES-AC-20261117_portada.jpg",
- "titulo": "Solo una caja dice la verdad. ¿Dónde está el chip? 🔐",
- "tiktok_title": "Tres cajas fuertes y solo UNA dice la verdad. ¿Dónde está el chip? 🔐 Escríbelo en comentarios antes de la solución. Más salas completas en YouTube: ENIGMA 60. #acertijos #logica #enigma #retomental #escaperoom",
- "youtube_title": "Solo una dice la verdad: ¿dónde está el chip? 🔐 #shorts #acertijos",
- "youtube_description": "Tres cajas fuertes, tres frases y solo una es cierta. ¿Lo resuelves antes de que acabe la cuenta atrás? Escape rooms completos en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
- "facebook_title": "¿Dónde está el chip?",
- "facebook_description": "Tres cajas fuertes y solo una dice la verdad. ¿Dónde está el chip? Respuesta en comentarios; escape rooms completos en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #logica",
+ "titulo": "Doce vueltas de la rueda pequeña. ¿Cuántas da la grande? ⚙️",
+ "tiktok_title": "Tres engranajes en el faro: 10, 20 y 40 dientes. Si la pequeña da 12 vueltas, ¿cuántas da la grande y en qué sentido? ⚙️ Escríbelo en comentarios antes de la solución. Más salas completas en YouTube: ENIGMA 60. #acertijos #logica #enigma #retomental #escaperoom",
+ "youtube_title": "¿Cuántas vueltas da la rueda grande? Los engranajes del faro ⚙️ #shorts #acertijos",
+ "youtube_description": "Tres ruedas dentadas de 10, 20 y 40 dientes. Si la pequeña da 12 vueltas, ¿cuántas da la grande y en qué sentido gira? Tienes 15 segundos. Escape rooms completos en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
+ "facebook_title": "¿Cuántas vueltas da la rueda grande?",
+ "facebook_description": "Tres engranajes de 10, 20 y 40 dientes. La pequeña da 12 vueltas: ¿cuántas da la grande y en qué sentido? Respuesta en comentarios; escape rooms completos en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #logica",
  "tags": [
   "acertijos",
   "lógica",
   "shorts",
   "enigma 60",
-  "retos"
+  "retos",
+  "engranajes"
  ],
  "youtube": {
   "categoryId": "24",
@@ -52,6 +53,13 @@
    "version": "v1",
    "motivo_cambio": "Propietario: «Quiero que se vea estéticamente el vídeo del submarino o el vídeo de la torre del archivero»",
    "corrector": "Claude"
+  },
+  {
+   "version": "v3",
+   "motivo_cambio": "Puzle «Los engranajes del faro» (sustituye a las cajas fuertes); textos actualizados",
+   "corrector": "Claude"
   }
- ]
+ ],
+ "sha256": "8c227598df3f76b00f7cb922710d3ce18d2fc343d93fad4e0575d2d930ba28bd",
+ "estado_aprobacion": "v3 aprobada por el Propietario (16/11 17:11)"
 }

@@ -1,13 +1,13 @@
 {
  "video_id": "E60ES-AC-20261119",
- "version": "v1",
+ "version": "v2",
  "ficha": "fichas/E60-2026-11-19-corto.json",
- "composicion": "E60CortoTorre",
+ "composicion": "E60CortoSala",
  "formato": "TikTok / Reels / Shorts 9:16",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": "E60ES-AC-20261119-v1-20261116-102045",
- "run_id": 43838904514,
+ "encargo_master": "E60ES-AC-20261119-v2-20261116-144555",
+ "run_id": 43878934206,
  "plataformas": [
   "tiktok",
   "youtube",
@@ -19,19 +19,19 @@
  "programado": "2026-11-19T18:00:00",
  "zona": "Europe/Madrid",
  "portada": "remotion/publicacion/E60ES-AC-20261119_portada.jpg",
- "titulo": "Dos llaves pesan como tres monedas. ¿Cuánto pesa una? ⚖️",
- "tiktok_title": "Dos llaves de 30 g equilibran tres monedas. ¿Cuánto pesa UNA moneda? ⚖️ Escríbelo en comentarios antes de que se apague la vela. Más salas completas en YouTube: ENIGMA 60. #acertijos #logica #enigma #retomental #escaperoom",
- "youtube_title": "¿Cuánto pesa una moneda? La balanza del archivero ⚖️ #shorts #acertijos",
- "youtube_description": "Dos llaves pesan lo mismo que tres monedas y cada llave pesa 30 gramos. ¿Cuánto pesa una moneda? Tienes 15 segundos. Escape rooms completos en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
- "facebook_title": "¿Cuánto pesa una moneda?",
- "facebook_description": "Dos llaves de 30 g equilibran tres monedas. ¿Cuánto pesa cada moneda? Respuesta en comentarios; escape rooms completos en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #logica",
+ "titulo": "Cinco más siete igual a dos. Mueve una cerilla 🔥",
+ "tiktok_title": "5 + 7 = 2 hecho con cerillas en el taller del relojero. Mueve UNA sola cerilla para que sea cierto 🔥 Escríbelo en comentarios antes de la solución. Más salas completas en YouTube: ENIGMA 60. #acertijos #cerillas #logica #enigma #retomental",
+ "youtube_title": "5 + 7 = 2: mueve una cerilla 🔥 Las cerillas del relojero #shorts #acertijos",
+ "youtube_description": "Una cuenta imposible hecha con cerillas: 5 + 7 = 2. Mueve una sola cerilla, sin quitar ni añadir, para que sea cierta. Tienes 15 segundos. Escape rooms completos en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #cerillas",
+ "facebook_title": "5 + 7 = 2: ¿qué cerilla mueves?",
+ "facebook_description": "Cinco más siete igual a dos, con cerillas. Mueve una sola para que la cuenta sea cierta. Respuesta en comentarios; escape rooms completos en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #cerillas",
  "tags": [
   "acertijos",
-  "lógica",
+  "cerillas",
   "shorts",
   "enigma 60",
   "retos",
-  "balanza"
+  "lógica"
  ],
  "youtube": {
   "categoryId": "24",
@@ -48,6 +48,13 @@
   "facebook_media_type": "REELS",
   "facebook_is_ai_generated": true
  },
- "historial": [],
- "sha256": "b53cd7d24316ef13124ca0737d86ffaace42d059ec9b3c20343e96873426435d"
+ "historial": [
+  {
+   "version": "v2",
+   "motivo_cambio": "Puzle «Las cerillas del relojero» (sustituye a la balanza); textos actualizados",
+   "corrector": "Claude"
+  }
+ ],
+ "sha256": "60b4dd8734fad5f4c9cb60dbcf6d0874d06566f61ad46b23546371dbddfac4ed",
+ "estado_aprobacion": "v2 aprobada por el Propietario (16/11 16:02)"
 }

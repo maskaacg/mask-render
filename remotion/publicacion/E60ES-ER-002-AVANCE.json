@@ -1,14 +1,14 @@
 {
  "video_id": "E60ES-ER-002-AVANCE",
- "version": "v1",
+ "version": "v3",
  "ficha": "fichas/E60-ER-002-T.json",
  "composicion": "E60AvanceMuseo",
  "tramos": 2,
  "formato": "TikTok / Reels / Shorts 9:16",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": "E60ES-ER-002-AVANCE-v1-20261115-183845",
- "run_id": 43742335087,
+ "encargo_master": "E60ES-ER-002-AVANCE-v3-20261116-155026",
+ "run_id": 43889999898,
  "plataformas": [
   "tiktok",
   "youtube",
@@ -49,6 +49,13 @@
   "facebook_media_type": "REELS",
   "facebook_is_ai_generated": true
  },
- "historial": [],
- "estado_aprobacion": "v1 pendiente de aprobación"
+ "historial": [
+  {
+   "version": "v3",
+   "motivo_cambio": "Misma pieza con la voz de las líneas reescritas",
+   "corrector": "Claude"
+  }
+ ],
+ "estado_aprobacion": "v3 aprobada por el Propietario (16/11 17:12)",
+ "sha256": "e70ccd74f2fdb37f6912280bc2e0ebeebdb789c47d357e09deef07d30e4c75ca"
 }
