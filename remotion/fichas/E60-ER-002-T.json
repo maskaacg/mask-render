@@ -13,12 +13,17 @@
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
  "nota": "Avance del miércoles 18/11: plantea el primer puzle (las tres vitrinas) SIN solución y remite al vídeo largo de YouTube.",
- "version": "v2",
+ "version": "v3",
  "historial": [
   {
    "version": "v2",
    "fecha": "2026-11-16",
    "cambios": "El Propietario rechazó la v1 (0:50). Ahora dura más de 70 s: 9 líneas en vez de 7 (presentación de las cuatro salas y repaso de las pistas) y 15 s para pensar en lugar de 10. Mismo puzle 1 sin solución, misma sala del museo."
+  },
+  {
+   "version": "v3",
+   "fecha": "2026-11-16",
+   "cambios": "La v2 se envió con la voz antigua en las líneas reescritas (los subtítulos no coincidían con lo que se oía). Se vuelven a locutar todas las líneas cambiadas."
   }
  ],
  "lineas": [
