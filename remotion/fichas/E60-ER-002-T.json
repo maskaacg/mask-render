@@ -78,5 +78,5 @@
   70,
   120
  ],
- "auditoria": "Render v2 run 43878975212: QA técnica PASS (71,2 s, -14,6 LUFS); hoja de contactos revisada."
+ "auditoria": "Render v2 run 43878975212: QA técnica PASS (71,2 s, -14,6 LUFS); hoja de contactos revisada. Render v3 run 43889999898: QA técnica PASS (87,1 s, -14,3 LUFS); todas las líneas relocutadas y verificadas con Whisper."
 }

@@ -84,7 +84,7 @@
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 16/11/2026: comprobado por código (tools/verificar_engranajes_20261117.py): 12×10/40 = 3 vueltas; con tres ruedas en línea el sentido se invierte dos veces → mismo sentido que la pequeña. Familia relacion_engranajes no usada en otros vídeos; sala propia faro-maquinas-01. Fotogramas de prueba en local revisados. Pendiente de render completo con voz y QA.",
+ "auditoria": "Claude 16/11/2026: comprobado por código (tools/verificar_engranajes_20261117.py): 12×10/40 = 3 vueltas; con tres ruedas en línea el sentido se invierte dos veces → mismo sentido que la pequeña. Familia relacion_engranajes no usada en otros vídeos; sala propia faro-maquinas-01. Fotogramas de prueba en local revisados. Pendiente de render completo con voz y QA. Render v3 run 43889578457: QA técnica PASS (95 s, -14,4 LUFS) tras corregir segundos congelados (run 43878894780); hoja de contactos revisada.",
  "motor_voz": "chatterbox",
  "version": "v3",
  "historial": [

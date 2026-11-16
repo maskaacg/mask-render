@@ -395,7 +395,7 @@
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 15/11/2026: P1 única (6 permutaciones), P2 MDCCCLXXXIX=1889, P3 2 pesadas (3^1<8≤3^2), P4 derecha (única). Verificado por código. Pendiente: escena 3D del museo, voz del conservador y QA visual.",
+ "auditoria": "Claude 15/11/2026: P1 única (6 permutaciones), P2 MDCCCLXXXIX=1889, P3 2 pesadas (3^1<8≤3^2), P4 derecha (única). Verificado por código. Pendiente: escena 3D del museo, voz del conservador y QA visual. Render v2 run 43889975711: QA técnica PASS (652,4 s, -14,4 LUFS); voz nueva de d02–d10 verificada con Whisper; fotogramas del puzle 4 revisados (velas, cartel, subtítulos coinciden).",
  "apertura_s": 1.0,
  "pantalla_final_s": 20,
  "version": "v2",
