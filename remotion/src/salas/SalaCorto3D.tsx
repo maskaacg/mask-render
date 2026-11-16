@@ -323,6 +323,28 @@ const Pieza: React.FC<{s: Sala; a: Atrezo; t: number}> = ({s, a, t}) => {
 	);
 };
 
+const Polvo: React.FC<{s: Sala; t: number}> = ({s, t}) => {
+	const ref = React.useRef<THREE.InstancedMesh>(null);
+	const n = 220;
+	React.useLayoutEffect(() => {
+		const m = new THREE.Matrix4();
+		for (let i = 0; i < n; i++) {
+			const y = ((hash(i * 2.1) * s.alto + t * (0.03 + hash(i * 6.1) * 0.04)) % s.alto) + 0.1;
+			const k = 0.004 + hash(i * 4.1) * 0.006;
+			m.makeScale(k, k, k);
+			m.setPosition((hash(i * 1.3) - 0.5) * s.ancho * 0.9 + Math.sin(t * 0.3 + i) * 0.08, y, (hash(i * 2.9) - 0.5) * s.fondo * 0.9);
+			ref.current?.setMatrixAt(i, m);
+		}
+		if (ref.current) ref.current.instanceMatrix.needsUpdate = true;
+	}, [t, s]);
+	return (
+		<instancedMesh ref={ref} args={[undefined, undefined, n]}>
+			<sphereGeometry args={[1, 6, 4]} />
+			<meshBasicMaterial color="#fff2d8" transparent opacity={0.5} />
+		</instancedMesh>
+	);
+};
+
 const PuertaSalida: React.FC<{s: Sala; abre: number}> = ({s, abre}) => (
 	<group position={[0, 0, -s.fondo / 2 + 0.06]}>
 		<Caja p={[0, 1.15, 0]} s={[1.3, 2.4, 0.1]} c="#1a120c" />
@@ -378,7 +400,7 @@ export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number;
 			{L.tipo === 'fluorescente' && (
 				<group position={[0, s.alto - 0.05, 0]}>
 					<Caja p={[0, 0, 0]} s={[1.6, 0.06, 0.18]} c="#dfe8ea" />
-					<pointLight position={[0, -0.4, 0]} color={L.color} intensity={3 * L.intensidad} distance={8} decay={1.4} />
+					<pointLight position={[0, -0.4, 0]} color={L.color} intensity={5.5 * L.intensidad * (hash(Math.floor(t * 9)) > 0.93 ? 0.45 : 1)} distance={10} decay={1.3} />
 				</group>
 			)}
 			{(L.tipo === 'velas' || L.tipo === 'chimenea' || L.tipo === 'luna') && (
@@ -430,6 +452,7 @@ export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number;
 				</group>
 			)}
 			{s.atrezo.map((a, i) => <Pieza key={i} s={s} a={a} t={t} />)}
+			<Polvo s={s} t={t} />
 			<PuertaSalida s={s} abre={e.puerta} />
 			{e.cerillas && <Cerillas3D c={{...e.cerillas, centro: c}} />}
 			{e.engranajes && <Engranajes3D c={{...e.engranajes, centro: c}} />}

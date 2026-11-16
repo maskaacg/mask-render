@@ -40,11 +40,19 @@ export const CortoSala: React.FC<Props> = (props) => {
 	const mix = (x: V3, y: V3) => [0, 1, 2].map((i) => x[i] + (y[i] - x[i]) * f) as V3;
 	const pos = mix(a.pos, b.pos);
 	const mira = mix(a.mira, b.mira);
-	pos[0] += Math.sin(t * 0.6) * 0.02 + Math.sin(t * 0.21) * 0.1;
+	// avance lento de cámara dentro de cada plano (dolly), para que nunca haya segundos congelados
+	const dentro = Math.max(0, t - ev[k][0]);
+	const dir = [0, 1, 2].map((i) => mira[i] - pos[i]);
+	const largo = Math.hypot(dir[0], dir[1], dir[2]) || 1;
+	const avance = Math.min(0.9, dentro * 0.045);
+	for (let i = 0; i < 3; i++) pos[i] += (dir[i] / largo) * avance;
+	pos[0] += Math.sin(t * 0.6) * 0.03 + Math.sin(t * 0.21) * 0.14;
 	pos[1] += Math.sin(t * 0.47 + 1) * 0.015 + Math.sin(t * 0.13) * 0.06;
 	const tipo = ficha.puzle.tipo;
 	if (!['cerillas', 'engranajes'].includes(tipo)) throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
 	const vueltas = tipo === 'engranajes' ? interpolate(t, [sol + 0.6, sol + 9], [0, Number(ficha.puzle.vueltas)], {...clamp, easing: io}) : 0;
+	// el mecanismo sigue girando despacio después de la cuenta (no se queda congelado)
+	const inercia = tipo === 'engranajes' ? Math.max(0, t - (sol + 9)) * 0.12 : 0;
 	const e: EstadoSalaCorto = {
 		t,
 		cam: {pos, mira, fov: a.fov + (b.fov - a.fov) * f},
@@ -53,7 +61,7 @@ export const CortoSala: React.FC<Props> = (props) => {
 		engranajes: tipo === 'engranajes'
 			? {
 					dientes: ficha.puzle.dientes as number[],
-					vueltasPequeno: vueltas + 0.03 * Math.sin(t * 0.9) * (t < sol ? 1 : 0),
+					vueltasPequeno: vueltas + inercia + 0.03 * Math.sin(t * 0.9) * (t < sol ? 1 : 0),
 					aparece: interpolate(t, [l3 - 0.2, l3 + 1.2], [0, 1], clamp),
 					marca: interpolate(t, [sol, sol + 0.6], [0, 1], clamp),
 				}
