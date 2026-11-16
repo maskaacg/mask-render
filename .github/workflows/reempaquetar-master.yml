@@ -4,6 +4,7 @@
 name: reempaquetar-master
 on:
   push:
+    branches: [feat/e60-diorama-20261114]
     paths:
       - 'remotion/encargos/reempaquetar/*.json'
 permissions:
@@ -21,8 +22,13 @@ jobs:
         id: enc
         run: |
           F=$(git diff --name-only HEAD~1 HEAD -- 'remotion/encargos/reempaquetar/*.json' | head -1)
-          echo "run_id=$(jq -r .run_id "$F")" >> "$GITHUB_OUTPUT"
-          echo "id=$(jq -r .encargo_master "$F")" >> "$GITHUB_OUTPUT"
+          test -n "$F"
+          RUN=$(jq -r .run_id "$F"); ID=$(jq -r .encargo_master "$F")
+          # Los valores del encargo se usan en rutas y comandos: solo se aceptan con formato estricto.
+          [[ "$RUN" =~ ^[0-9]{6,20}$ ]] || { echo "run_id no válido"; exit 1; }
+          [[ "$ID" =~ ^[A-Za-z0-9._-]{4,120}$ ]] || { echo "encargo_master no válido"; exit 1; }
+          echo "run_id=$RUN" >> "$GITHUB_OUTPUT"
+          echo "id=$ID" >> "$GITHUB_OUTPUT"
       - name: Descargar máster comprimido del render original
         uses: actions/download-artifact@v4
         with:
