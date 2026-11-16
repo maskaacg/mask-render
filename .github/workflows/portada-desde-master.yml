@@ -28,11 +28,19 @@ jobs:
         run: |
           F=$(git diff --name-only HEAD~1 HEAD -- 'remotion/encargos/portadas/*.json' | head -1)
           test -n "$F"
-          echo "video=$(jq -r .video_id "$F")" >> "$GITHUB_OUTPUT"
-          echo "run_id=$(jq -r .run_id "$F")" >> "$GITHUB_OUTPUT"
-          echo "id=$(jq -r .encargo_master "$F")" >> "$GITHUB_OUTPUT"
-          echo "sha=$(jq -r .sha256 "$F")" >> "$GITHUB_OUTPUT"
-          echo "segundo=$(jq -r '.segundo // empty' "$F")" >> "$GITHUB_OUTPUT"
+          VIDEO=$(jq -r .video_id "$F"); RUN=$(jq -r .run_id "$F"); ID=$(jq -r .encargo_master "$F")
+          SHA=$(jq -r .sha256 "$F"); SEG=$(jq -r '.segundo // empty' "$F")
+          # Los valores del encargo se usan en rutas y comandos: solo se aceptan con formato estricto.
+          [[ "$VIDEO" =~ ^[A-Za-z0-9._-]{4,80}$ ]] || { echo "video_id no válido"; exit 1; }
+          [[ "$RUN" =~ ^[0-9]{6,20}$ ]] || { echo "run_id no válido"; exit 1; }
+          [[ "$ID" =~ ^[A-Za-z0-9._-]{4,120}$ ]] || { echo "encargo_master no válido"; exit 1; }
+          [[ "$SHA" =~ ^[a-f0-9]{64}$ ]] || { echo "sha256 no válido"; exit 1; }
+          [[ -z "$SEG" || "$SEG" =~ ^[0-9]{1,5}(\.[0-9]{1,3})?$ ]] || { echo "segundo no válido"; exit 1; }
+          echo "video=$VIDEO" >> "$GITHUB_OUTPUT"
+          echo "run_id=$RUN" >> "$GITHUB_OUTPUT"
+          echo "id=$ID" >> "$GITHUB_OUTPUT"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          echo "segundo=$SEG" >> "$GITHUB_OUTPUT"
       - name: Descargar máster del render
         uses: actions/download-artifact@v4
         with:

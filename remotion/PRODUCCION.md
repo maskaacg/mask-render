@@ -10,11 +10,18 @@ para dejar margen a correcciones (el corrector automático pasa a las 8:41, 14:4
 Acertijos, avances y cortos-historia duran **como mínimo 70 s** y como máximo 120 s. Los cortos de unos
 40–50 s no monetizan y el Propietario los rechaza.
 - La duración sale de la voz: hacen falta **unas 150–190 palabras** en `lineas` (≈ 2,7 palabras/s con
-  Chatterbox) más los segundos de pensar. Con menos de 140 palabras no se renderiza.
+  Chatterbox) más los segundos de pensar. Con menos de 140 palabras no se encarga el render
+  (`tools/preflight.py` lo marca como FALLO).
 - No se rellena con pausas ni repeticiones: se cuenta una **historia en primera persona** (dónde estás,
   qué ves, qué está en juego, la pista, la pregunta, la solución explicada y qué pasa después).
 - `tools/finalize_qa.py` marca FAIL cualquier vertical fuera de 70–120 s (`CORTO_DEMASIADO_CORTO_…`);
   ese vídeo no se envía a Telegram: se alarga la ficha y se renderiza otra versión.
+
+## Comprobación previa de cada encargo
+Antes de subir un encargo de render, desde `remotion/`: `python tools/preflight.py <ruta del encargo>`.
+Repite en local lo que validará GitHub Actions (identificador, composición aceptada por ese workflow,
+ficha, puzles sin repetir) y además exige las 140 palabras mínimas de los verticales. Si dice NO APTO,
+no se sube: se corrige la ficha o el encargo primero.
 
 ## Cada puzle es único (Propietario, 16/11)
 Ningún puzle repite **familia** (la mecánica de fondo) con otro vídeo ni dentro del mismo vídeo, aunque

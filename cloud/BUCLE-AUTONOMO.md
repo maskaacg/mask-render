@@ -35,3 +35,7 @@ una semana hay que insertar sus filas; si no, el bucle no puede detectar retraso
 Simulación con transacción revertida: vídeo ficticio a 20 h sin entrega → crea `PRODUCIR_VIDEO`
 y 2 avisos; segunda pasada → nada nuevo; al registrar la entrega → la tarea se cierra sola.
 Ejecución real en n8n (880): sin trabajo pendiente, 0 tareas y 0 avisos (correcto a esa hora).
+
+Desde el 16/11/2026 ese mismo workflow es el **reloj único**: tras el bucle y el buzón evalúa el relevo
+(`mg.evaluar_relevo()`) y consulta `mg.reloj_que_toca()` para lanzar `WF-VIGILANTE` o `WF-RENDER-REVISION`
+solo cuando hay trabajo. Ver `cloud/RELEVO-CLAUDE-CODEX.md`.

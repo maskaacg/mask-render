@@ -1,5 +1,11 @@
 # Relevo Claude ⇄ Codex (ENIGMA 60)
 
+> **Cambio del 16/11/2026 (reloj único).** `WF-RELEVO` y los relojes propios de `WF-VIGILANTE` y
+> `WF-RENDER-REVISION` están apagados. `WF-BUZON-TELEGRAM` (n8n `xxrVu2wKsLBufYMu`, cada hora de 8 a
+> 23 h, minuto 7) llama a `mg.evaluar_relevo()` y a `mg.reloj_que_toca()`, y solo si hay una
+> corrección sin atender lanza `WF-VIGILANTE`. Lo que sigue describe la lógica, que no cambia; las
+> horas de reloj que aparecen más abajo son las anteriores.
+
 Orden del Propietario del 15/11/2026: el sistema no se detiene si Claude agota su límite semanal.
 Este documento describe lo que está **implementado y probado**, y lo que **falta**.
 

@@ -1,6 +1,8 @@
 # Motor de escenas Remotion · prototipo ENIGMA 60
 
-Rama experimental. **TEST TÉCNICO, no publicable.** No sustituye a `cloud/render_video.py` ni toca `main`.
+Este README describe el prototipo original del motor. Para producir vídeos reales de ENIGMA 60 manda
+`PRODUCCION.md` (reglas), `CALENDARIO.md` (qué sale cada día) y `CORRECTOR.md` (correcciones); antes de
+subir un encargo, `python tools/preflight.py <encargo>`.
 
 - Ficha del episodio: `src/episodes/e60_cinco_sellos_proto.json` (acciones con tiempo, voz, efectos, zona de subtítulos, QA).
 - Componentes: sala en perspectiva de un punto de fuga, puerta con bisagra 3D y cuña de luz, cerradura de tres ranuras, mesa con cinco sellos, polvo, subtítulo con caja.
