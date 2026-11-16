@@ -6,68 +6,104 @@
  "ancho": 1080,
  "alto": 1920,
  "fps": 30,
- "titulo": "La balanza del archivero",
+ "titulo": "El taller del orfebre",
  "numero": 4,
- "escena": "torre",
+ "escena": "taller_orfebre",
  "modo": "puzle",
- "pensar_s": 15,
+ "pensar_s": 20,
  "tinte": "#b8963a",
  "puzle": {
-  "tipo": "balanza",
-  "izquierda": {
-   "objeto": "llave",
-   "n": 2,
-   "peso": 30
+  "tipo": "balanza2",
+  "pesada1": {
+   "llaves": 2,
+   "monedas": 3
   },
-  "derecha": {
-   "objeto": "moneda",
-   "n": 3
+  "pesada2": {
+   "llaves": 1,
+   "monedas": 1,
+   "pesa": 50
   },
-  "respuesta": 20
+  "respuesta": 20,
+  "llave": 30
  },
  "solucion_reserva": null,
  "lineas": [
   {
    "fase": "intro",
-   "texto": "En la torre del archivero, una balanza de latón.",
+   "texto": "La puerta del taller del orfebre se cierra a tu espalda. Clic.",
    "id": "l01"
   },
   {
-   "fase": "enunciado",
-   "texto": "Dos llaves pesan lo mismo que tres monedas. Cada llave pesa treinta gramos.",
+   "fase": "intro",
+   "texto": "Sobre la mesa: una balanza de latón, dos llaves de hierro y tres monedas de oro, todas iguales.",
    "id": "l02"
+  },
+  {
+   "fase": "intro",
+   "texto": "Y en la pared, una caja fuerte con una sola rueda. La nota del orfebre dice: se abre con el peso, en gramos, de una moneda.",
+   "id": "l03"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Primera pesada: dos llaves pesan exactamente lo mismo que tres monedas.",
+   "id": "l04"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Segunda pesada: una llave y una moneda, juntas, equilibran la pesa de cincuenta gramos.",
+   "id": "l05"
   },
   {
    "fase": "enunciado",
    "texto": "¿Cuánto pesa una moneda?",
-   "id": "l03"
+   "id": "l06"
   },
   {
    "fase": "solucion",
    "texto": "Veinte gramos.",
-   "id": "l04"
+   "id": "l07"
   },
   {
    "fase": "solucion",
-   "texto": "Dos llaves son sesenta gramos. Repartidos entre tres monedas, veinte cada una.",
-   "id": "l05"
+   "texto": "Si dos llaves valen lo que tres monedas, una llave vale moneda y media.",
+   "id": "l08"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Entonces, una llave y una moneda son dos monedas y media: cincuenta gramos. Cada moneda pesa veinte, y cada llave, treinta.",
+   "id": "l09"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Giras la rueda hasta el veinte… y la caja fuerte se abre.",
+   "id": "l10"
   },
   {
    "fase": "cta",
-   "texto": "¿Lo has resuelto? Escríbelo en los comentarios. Mañana, otro enigma.",
-   "id": "l06"
+   "texto": "¿Lo has resuelto antes de que acabe la cuenta atrás? Escríbelo en los comentarios.",
+   "id": "l11"
+  },
+  {
+   "fase": "cta",
+   "texto": "Mañana, otra habitación y otro enigma.",
+   "id": "l12"
   }
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 16/11/2026: comprobado por código (tools/verificar_balanza_20261119.py): con 2 llaves de 30 g frente a 3 monedas iguales, la única masa entera positiva que equilibra es 20 g (búsqueda 1–1000 g; también es la única real: 3x=60). Acertijo no usado antes (la balanza del museo es otro problema: mínimo de pesadas). QA visual de fotogramas de prueba hecha en local. Render run 43838904514: QA técnica PASS (41,7 s, -14,7 LUFS, pico -0,8 dBFS); hoja de contactos revisada: título, pergamino, temporizador y subtítulos sin solaparse, balanza y monedas visibles, solución 20 g en rojo coherente con la voz.",
+ "auditoria": "Claude 16/11/2026 v2: comprobado por código (tools/verificar_balanza_20261119.py): 2L=3M y L+M=50 tienen solución única M=20, L=30 (sistema lineal con determinante distinto de 0; búsqueda entera 1–1000 g confirma una sola pareja). Puzle nuevo: no usado en ningún otro vídeo (la balanza del museo es otro problema: mínimo de pesadas).",
  "motor_voz": "chatterbox",
- "version": "v1",
+ "version": "v2",
  "historial": [
   {
    "version": "v1",
    "fecha": "2026-11-16",
    "cambios": "Productor automático: estética de la torre (E60CortoTorre) por preferencia del Propietario del 15/11; título e intro pasan del «sótano» a la torre para que lo que se dice coincida con lo que se ve; voz Chatterbox (narrador, referencia sintética Kokoro). Sin comentarios de la audiencia todavía (mg.comentarios_para_claude vacío)."
+  },
+  {
+   "version": "v2",
+   "fecha": "2026-11-16",
+   "cambios": "Rechazo del Propietario (repetía errores ya señalados): ahora dura más de 70 s, habitación propia en 3D (taller del orfebre, no la torre), puzle en 3D dentro de la sala (balanza con llaves, monedas y pesa físicas, pizarra de tiza y caja fuerte con rueda) en vez de un dibujo en un cuadro; acertijo ampliado a dos pesadas."
   }
  ]
 }

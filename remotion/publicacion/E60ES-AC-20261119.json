@@ -1,13 +1,13 @@
 {
  "video_id": "E60ES-AC-20261119",
- "version": "v1",
+ "version": "v2",
  "ficha": "fichas/E60-2026-11-19-corto.json",
- "composicion": "E60CortoTorre",
+ "composicion": "E60CortoTaller",
  "formato": "TikTok / Reels / Shorts 9:16",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": "E60ES-AC-20261119-v1-20261116-102045",
- "run_id": 43838904514,
+ "encargo_master": null,
+ "run_id": null,
  "plataformas": [
   "tiktok",
   "youtube",
@@ -19,12 +19,12 @@
  "programado": "2026-11-19T18:00:00",
  "zona": "Europe/Madrid",
  "portada": "remotion/publicacion/E60ES-AC-20261119_portada.jpg",
- "titulo": "Dos llaves pesan como tres monedas. ¿Cuánto pesa una? ⚖️",
- "tiktok_title": "Dos llaves de 30 g equilibran tres monedas. ¿Cuánto pesa UNA moneda? ⚖️ Escríbelo en comentarios antes de que se apague la vela. Más salas completas en YouTube: ENIGMA 60. #acertijos #logica #enigma #retomental #escaperoom",
- "youtube_title": "¿Cuánto pesa una moneda? La balanza del archivero ⚖️ #shorts #acertijos",
- "youtube_description": "Dos llaves pesan lo mismo que tres monedas y cada llave pesa 30 gramos. ¿Cuánto pesa una moneda? Tienes 15 segundos. Escape rooms completos en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
+ "titulo": "Encerrado en el taller: ¿cuánto pesa una moneda? ⚖️",
+ "tiktok_title": "Te encierran en el taller del orfebre. La caja fuerte se abre con el peso de UNA moneda ⚖️ Dos pesadas y 20 segundos. ¿Lo sacas? Escríbelo en comentarios. Más salas en YouTube: ENIGMA 60. #acertijos #logica #enigma #retomental #escaperoom",
+ "youtube_title": "La caja se abre con el peso de una moneda ⚖️ #shorts #acertijos",
+ "youtube_description": "Dos llaves pesan como tres monedas; una llave y una moneda, como la pesa de 50 g. ¿Cuánto pesa una moneda? Tienes 20 segundos. Escape rooms completos en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
  "facebook_title": "¿Cuánto pesa una moneda?",
- "facebook_description": "Dos llaves de 30 g equilibran tres monedas. ¿Cuánto pesa cada moneda? Respuesta en comentarios; escape rooms completos en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #logica",
+ "facebook_description": "Encerrado en el taller del orfebre: la caja fuerte se abre con el peso de una moneda. Dos pesadas, una respuesta. Escape rooms completos en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #logica",
  "tags": [
   "acertijos",
   "lógica",
@@ -48,6 +48,12 @@
   "facebook_media_type": "REELS",
   "facebook_is_ai_generated": true
  },
- "historial": [],
- "sha256": "b53cd7d24316ef13124ca0737d86ffaace42d059ec9b3c20343e96873426435d"
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Rechazada por el Propietario (16/11): duraba 42 s (< 70 s), el puzle era un dibujo en un cuadro y reutilizaba la torre",
+   "corrector": "Claude"
+  }
+ ],
+ "sha256": null
 }

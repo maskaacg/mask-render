@@ -51,7 +51,7 @@ retención rara vez recupera lo perdido ahí.
 - 9:16, ≤ 60 s, gancho en el primer segundo, un puzle sin resolver y cierre «La solución, en el vídeo
   completo de YouTube». Fragmento real del largo, adaptado a vertical (no estirado).
 
-## 6 bis. Estética de los acertijos (preferencia del Propietario, 15/11)
+## 6 bis. Estética de los acertijos (15/11; SUSTITUIDO el 16/11 por las reglas de cortos de `PRODUCCION.md`: habitación propia en 3D, puzle en 3D dentro de la sala, 70–120 s)
 - Los acertijos verticales usan la composición **`E60CortoTorre`** (sala 3D de la torre, vela y
   acertijo sobre pergamino), no el plano 2D `E60CortoPlano`. Petición literal: «Quiero que se vea
   estéticamente el vídeo del submarino o el vídeo de la torre del archivero».

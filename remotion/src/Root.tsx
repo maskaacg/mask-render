@@ -5,6 +5,7 @@ import {CincoSellosProto} from './episodes/CincoSellosProto';
 import {ShortEpisode} from './shorts/ShortEpisode';
 import {Props, planificar} from './shorts/timeline';
 import {CortoPlano} from './plano/CortoPlano';
+import {CortoTaller} from './escape/CortoTaller';
 import {CortoTorre} from './escape/CortoTorre';
 import {Historia} from './historia/Historia';
 import {PropsH, planificarH} from './historia/plan';
@@ -78,6 +79,21 @@ export const RemotionRoot: React.FC = () => (
 		<Composition
 			id="E60CortoTorre"
 			component={CortoTorre}
+			defaultProps={ejemplo}
+			fps={30}
+			width={1080}
+			height={1920}
+			durationInFrames={30 * 60}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificar(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60CortoTaller"
+			component={CortoTaller}
 			defaultProps={ejemplo}
 			fps={30}
 			width={1080}
