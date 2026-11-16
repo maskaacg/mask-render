@@ -6,8 +6,8 @@
  "formato": "TikTok / Reels / Shorts 9:16",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": null,
- "run_id": null,
+ "encargo_master": "E60ES-AC-20261119-v1-20261116-102045",
+ "run_id": 43838904514,
  "plataformas": [
   "tiktok",
   "youtube",
@@ -48,5 +48,6 @@
   "facebook_media_type": "REELS",
   "facebook_is_ai_generated": true
  },
- "historial": []
+ "historial": [],
+ "sha256": "b53cd7d24316ef13124ca0737d86ffaace42d059ec9b3c20343e96873426435d"
 }

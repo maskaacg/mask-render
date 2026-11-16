@@ -12,7 +12,7 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 | Lun 16 | **Escape room 1 «La torre del archivero» v6** (16:9, solo YouTube 17:00) + **avance v3** 9:16 (TikTok, Shorts, Facebook Reels 18:00) | E60ES-ER-001-TORRE / -AVANCE | Avance v3 APROBADO (en cola hasta que se apruebe la Torre). Torre: v3 con cambios pedidos → v4 entregada el dom 15 a las 08:18, pendiente de APROBAR. Excepción única a las 48 h |
 | Mar 17 | Acertijo independiente 9:16 «Las tres cajas fuertes» (estética de la torre, composición E60CortoTorre) | E60ES-AC-20261117 | v1 con cambios pedidos → v2 entregada el dom 15 a las 07:53, pendiente de APROBAR. Excepción única a las 48 h |
 | Mié 18 | Escape room 2 «El museo que miente» (16:9, E60EscapeMuseo) + avance 9:16 (E60AvanceMuseo) | E60ES-ER-002-MUSEO / -AVANCE | v1 entregada el dom 15 (Telegram, pendiente de APROBAR) |
-| Jue 19 | Acertijo independiente 9:16 | E60ES-AC-20261119 | Pendiente |
+| Jue 19 | Acertijo independiente 9:16 «La balanza del archivero» (E60CortoTorre) | E60ES-AC-20261119 | Entregado v1 (lun 16, Telegram, pendiente de APROBAR) |
 | Vie 20 | Acertijo independiente 9:16 | E60ES-AC-20261120 | Pendiente |
 | Sáb 21 | Serie, capítulo 1 (16:9, voz «Chatterbox expresiva») + avance 9:16 | E60ES-S001-E01 / -AVANCE | Pendiente (re-voz) |
 | Dom 22 | Acertijo independiente 9:16 | E60ES-AC-20261122 | Pendiente |

@@ -60,7 +60,7 @@
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 16/11/2026: comprobado por código (tools/verificar_balanza_20261119.py): con 2 llaves de 30 g frente a 3 monedas iguales, la única masa entera positiva que equilibra es 20 g (búsqueda 1–1000 g; también es la única real: 3x=60). Acertijo no usado antes (la balanza del museo es otro problema: mínimo de pesadas). QA visual de fotogramas de prueba hecha en local.",
+ "auditoria": "Claude 16/11/2026: comprobado por código (tools/verificar_balanza_20261119.py): con 2 llaves de 30 g frente a 3 monedas iguales, la única masa entera positiva que equilibra es 20 g (búsqueda 1–1000 g; también es la única real: 3x=60). Acertijo no usado antes (la balanza del museo es otro problema: mínimo de pesadas). QA visual de fotogramas de prueba hecha en local. Render run 43838904514: QA técnica PASS (41,7 s, -14,7 LUFS, pico -0,8 dBFS); hoja de contactos revisada: título, pergamino, temporizador y subtítulos sin solaparse, balanza y monedas visibles, solución 20 g en rojo coherente con la voz.",
  "motor_voz": "chatterbox",
  "version": "v1",
  "historial": [
