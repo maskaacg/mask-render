@@ -82,6 +82,17 @@ jobs:
           python - "${{ steps.enc.outputs.ficha }}" <<'PY'
           import json, os, sys
           f = json.load(open(sys.argv[1], encoding="utf-8"))
+          # Texto cambiado respecto a la voz guardada: se borra su WAV para que se vuelva a locutar
+          # (antes solo se detectaban líneas nuevas y se reutilizaba voz con el texto viejo).
+          viejo = {}
+          pv = f"voz_lista/{f['id']}/props.json"
+          if os.path.exists(pv):
+              viejo = {l["id"]: (l["texto"], l.get("voz")) for l in json.load(open(pv, encoding="utf-8"))["ficha"]["lineas"]}
+          cambiadas = [l["id"] for l in f["lineas"] if l["id"] in viejo and viejo[l["id"]] != (l["texto"], l.get("voz"))]
+          for lid in cambiadas:
+              w = f"public/audio/{f['id']}/{lid}.wav"
+              if os.path.exists(w): os.remove(w)
+          print("Líneas con texto cambiado (se vuelven a locutar):", cambiadas)
           falta = [l["id"] for l in f["lineas"] if not os.path.exists(f"public/audio/{f['id']}/{l['id']}.wav")]
           print("Líneas sin voz:", falta)
           open(os.environ["GITHUB_OUTPUT"], "a").write(f"faltan={'true' if falta else 'false'}\n")
