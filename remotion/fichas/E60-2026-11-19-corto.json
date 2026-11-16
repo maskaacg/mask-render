@@ -29,45 +29,79 @@
  "lineas": [
   {
    "fase": "intro",
-   "texto": "En la torre del archivero, una balanza de latón.",
+   "texto": "Medianoche. La puerta de la torre se cierra a tu espalda, y la vela del archivero empieza a consumirse.",
    "id": "l01"
   },
   {
-   "fase": "enunciado",
-   "texto": "Dos llaves pesan lo mismo que tres monedas. Cada llave pesa treinta gramos.",
+   "fase": "intro",
+   "texto": "No hay cerradura ni llave a la vista. Solo una mesa, y sobre ella, una vieja balanza de latón.",
    "id": "l02"
   },
   {
-   "fase": "enunciado",
-   "texto": "¿Cuánto pesa una moneda?",
+   "fase": "intro",
+   "texto": "En un plato, dos llaves de hierro. En el otro, tres monedas antiguas, idénticas entre sí.",
    "id": "l03"
+  },
+  {
+   "fase": "intro",
+   "texto": "La balanza tiembla un instante… y se queda quieta. Perfectamente equilibrada.",
+   "id": "l04"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Grabado en el pergamino, el archivero dejó una nota: cada llave pesa treinta gramos. Para salir, di en voz alta el peso de una sola moneda.",
+   "id": "l05"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Dos llaves pesan lo mismo que tres monedas. ¿Cuánto pesa una moneda?",
+   "id": "l06"
   },
   {
    "fase": "solucion",
    "texto": "Veinte gramos.",
-   "id": "l04"
+   "id": "l07"
   },
   {
    "fase": "solucion",
-   "texto": "Dos llaves son sesenta gramos. Repartidos entre tres monedas, veinte cada una.",
-   "id": "l05"
+   "texto": "Las dos llaves suman sesenta gramos. Como la balanza está equilibrada, las tres monedas también pesan sesenta. Sesenta entre tres: veinte gramos cada una.",
+   "id": "l08"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Lo dices en voz alta. Algo cruje dentro del muro, y la puerta de la torre se entreabre.",
+   "id": "l09"
   },
   {
    "fase": "cta",
-   "texto": "¿Lo has resuelto? Escríbelo en los comentarios. Mañana, otro enigma.",
-   "id": "l06"
+   "texto": "¿Lo habías resuelto antes de que se apagara la vela? Escríbelo en los comentarios.",
+   "id": "l10"
+  },
+  {
+   "fase": "cta",
+   "texto": "Mañana, la torre guarda otro enigma.",
+   "id": "l11"
   }
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
  "auditoria": "Claude 16/11/2026: comprobado por código (tools/verificar_balanza_20261119.py): con 2 llaves de 30 g frente a 3 monedas iguales, la única masa entera positiva que equilibra es 20 g (búsqueda 1–1000 g; también es la única real: 3x=60). Acertijo no usado antes (la balanza del museo es otro problema: mínimo de pesadas). QA visual de fotogramas de prueba hecha en local. Render run 43838904514: QA técnica PASS (41,7 s, -14,7 LUFS, pico -0,8 dBFS); hoja de contactos revisada: título, pergamino, temporizador y subtítulos sin solaparse, balanza y monedas visibles, solución 20 g en rojo coherente con la voz.",
  "motor_voz": "chatterbox",
- "version": "v1",
+ "version": "v2",
  "historial": [
   {
    "version": "v1",
    "fecha": "2026-11-16",
    "cambios": "Productor automático: estética de la torre (E60CortoTorre) por preferencia del Propietario del 15/11; título e intro pasan del «sótano» a la torre para que lo que se dice coincida con lo que se ve; voz Chatterbox (narrador, referencia sintética Kokoro). Sin comentarios de la audiencia todavía (mg.comentarios_para_claude vacío)."
+  },
+  {
+   "version": "v2",
+   "fecha": "2026-11-16",
+   "cambios": "Corrección del Propietario: los cortos deben durar como mínimo 70 s. La v1 duraba 41,7 s. Mismo acertijo y misma solución (20 g); se convierte en historia en primera persona (entrada en la torre, balanza equilibrada, nota del archivero, puerta que se abre) con 11 líneas de voz en lugar de 6. Estimación ~90 s; la QA técnica rechaza ahora cualquier vertical por debajo de 70 s."
   }
+ ],
+ "duracion_objetivo_s": [
+  70,
+  120
  ]
 }

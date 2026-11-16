@@ -6,6 +6,16 @@ para dejar margen a correcciones (el corrector automático pasa a las 8:41, 14:4
 - Vídeo del martes → listo el domingo. Miércoles → lunes. Jueves → martes, etc.
 - Si un vídeo no llega al plazo, avisar al Propietario en cuanto se sepa; no se acorta el plazo en silencio.
 
+## Duración de los vídeos verticales 9:16: de 70 a 120 s (Propietario, 14/11 y 16/11)
+Acertijos, avances y cortos-historia duran **como mínimo 70 s** y como máximo 120 s. Los cortos de unos
+40–50 s no monetizan y el Propietario los rechaza.
+- La duración sale de la voz: hacen falta **unas 150–190 palabras** en `lineas` (≈ 2,7 palabras/s con
+  Chatterbox) más los segundos de pensar. Con menos de 140 palabras no se renderiza.
+- No se rellena con pausas ni repeticiones: se cuenta una **historia en primera persona** (dónde estás,
+  qué ves, qué está en juego, la pista, la pregunta, la solución explicada y qué pasa después).
+- `tools/finalize_qa.py` marca FAIL cualquier vertical fuera de 70–120 s (`CORTO_DEMASIADO_CORTO_…`);
+  ese vídeo no se envía a Telegram: se alarga la ficha y se renderiza otra versión.
+
 ## QA visual obligatoria antes de enviar (además de la QA técnica)
 La QA técnica (sonoridad, duración, fotogramas) no basta. Antes de enviar cualquier vídeo o versión corregida:
 1. Revisar la **hoja de contactos** (`<ID>-hoja-NN.jpg`, un fotograma cada 4 s, se genera sola en GitHub Actions).

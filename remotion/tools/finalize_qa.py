@@ -75,6 +75,16 @@ def main():
         fallos.append(f"SONORIDAD_{lufs}")
     if frozen:
         fallos.append(f"SEGUNDOS_CONGELADOS_{frozen}")
+    # Regla del Propietario (14/11 y 16/11/2026): todo vídeo vertical 9:16 (acertijos, avances,
+    # cortos-historia) dura de 70 a 120 s. Por debajo de 70 s no llega a Telegram.
+    duracion = float(probe["format"]["duration"])
+    if int(v["height"]) > int(v["width"]):
+        dmin = float(os.getenv("CORTO_MIN_S", "70"))
+        dmax = float(os.getenv("CORTO_MAX_S", "120"))
+        if duracion < dmin:
+            fallos.append(f"CORTO_DEMASIADO_CORTO_{duracion:.1f}s_MIN_{dmin:.0f}s")
+        elif duracion > dmax:
+            fallos.append(f"CORTO_DEMASIADO_LARGO_{duracion:.1f}s_MAX_{dmax:.0f}s")
 
     qa = {
         "encargo_id": a.id,

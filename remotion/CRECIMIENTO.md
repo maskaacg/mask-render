@@ -48,7 +48,7 @@ retención rara vez recupera lo perdido ahí.
   que exista una vía automática.
 
 ## 6. Avances que llevan al largo
-- 9:16, ≤ 60 s, gancho en el primer segundo, un puzle sin resolver y cierre «La solución, en el vídeo
+- 9:16, **70–120 s** (regla de PRODUCCION.md; antes ≤ 60 s, anulado el 16/11), gancho en el primer segundo, un puzle sin resolver y cierre «La solución, en el vídeo
   completo de YouTube». Fragmento real del largo, adaptado a vertical (no estirado).
 
 ## 6 bis. Estética de los acertijos (preferencia del Propietario, 15/11)
