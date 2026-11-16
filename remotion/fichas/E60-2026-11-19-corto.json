@@ -6,9 +6,9 @@
  "ancho": 1080,
  "alto": 1920,
  "fps": 30,
- "titulo": "La balanza del sótano",
+ "titulo": "La balanza del archivero",
  "numero": 4,
- "escena": "sotano",
+ "escena": "torre",
  "modo": "puzle",
  "pensar_s": 15,
  "tinte": "#b8963a",
@@ -29,7 +29,7 @@
  "lineas": [
   {
    "fase": "intro",
-   "texto": "En el sótano del archivo, una balanza de latón.",
+   "texto": "En la torre del archivero, una balanza de latón.",
    "id": "l01"
   },
   {
@@ -60,5 +60,14 @@
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+ "auditoria": "Claude 16/11/2026: comprobado por código (tools/verificar_balanza_20261119.py): con 2 llaves de 30 g frente a 3 monedas iguales, la única masa entera positiva que equilibra es 20 g (búsqueda 1–1000 g; también es la única real: 3x=60). Acertijo no usado antes (la balanza del museo es otro problema: mínimo de pesadas). QA visual de fotogramas de prueba hecha en local.",
+ "motor_voz": "chatterbox",
+ "version": "v1",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-16",
+   "cambios": "Productor automático: estética de la torre (E60CortoTorre) por preferencia del Propietario del 15/11; título e intro pasan del «sótano» a la torre para que lo que se dice coincida con lo que se ve; voz Chatterbox (narrador, referencia sintética Kokoro). Sin comentarios de la audiencia todavía (mg.comentarios_para_claude vacío)."
+  }
+ ]
 }
