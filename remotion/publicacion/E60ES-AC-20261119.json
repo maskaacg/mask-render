@@ -42,7 +42,8 @@
  },
  "tiktok": {
   "privacy_level": "PUBLIC_TO_EVERYONE",
-  "is_aigc": true
+  "is_aigc": true,
+  "cover_timestamp_ms": 53200
  },
  "facebook": {
   "facebook_media_type": "REELS",
