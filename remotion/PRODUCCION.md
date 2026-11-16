@@ -1,5 +1,14 @@
 # ENIGMA 60 · Reglas de producción (decididas por el Propietario)
 
+
+## Decisiones del 16/11 (Propietario) — obligatorias para el productor y el corrector
+1. **Títulos de los vídeos largos**: escape rooms «<Nombre de la sala> || Escape Room #<N>» (ej. «El museo que miente || Escape Room #2»); capítulos de la serie «<Título del capítulo> || <Nombre de la serie> #<N>». Sin preguntas ni coletillas.
+2. **Descripciones concretas, nunca genéricas**: gancho real del guion, lista de los puzles con su pregunta (sin soluciones), 20 s para pensar, llamada a comentar, capítulos **medidos en el render final**, enlace a la sala anterior/siguiente y aviso de IA. Cada frase tiene que poder comprobarse en el guion.
+3. **Portada dentro del vídeo**: el canal no puede subir miniaturas propias (verificación por teléfono bloqueada). Todo vídeo largo abre con 1,2 s de portada opaca y legible (`PortadaEnVideo`; en escape rooms, su `Miniatura*`). Revisa ese fotograma (frame 6) con `npx remotion still` antes de renderizar. Para cortos: `tiktok.cover_timestamp_ms` en el fotograma con la pregunta en pantalla, y la portada JPG del repo sacada de ese mismo fotograma del máster (`portada-desde-master.yml`).
+4. **Cortos con su propia habitación 3D** y el puzle en 3D dentro de la sala (`E60CortoSala` + `sala` nueva, o componente 3D específico como `Engranajes3D`/`Cerillas3D`). Nada de cuadros con dibujos 2D. Las fichas antiguas en formato 2D (p. ej. `E60-2026-11-20/21/22-corto.json`, estado BORRADOR) no se renderizan tal cual: se rehacen en este formato.
+5. **Capítulo 1 de la serie (E60ES-S001-E01)**: el Propietario quería ver antes la biblia y el guion. Antes de renderizar, déjale con `ops.dejar_mensaje('CLAUDE','INFO','Serie ENIGMA 60 · capítulo 1','…')` un resumen (premisa, personajes, puzles y megapuzle **sin soluciones**) y sigue con el render para no perder el plazo del jueves 19/11 a las 17:00.
+6. **Metadatos de publicación** (`remotion/publicacion/<video_id>.json`): `version`, `encargo_master`, `run_id` y `sha256` deben ser los del máster que se manda a Telegram; si no coinciden, WF-PUB-02 no programa el vídeo al pulsar APROBAR (fallo del 16/11).
+
 ## Plazo: 48 horas antes de publicar
 Todo vídeo debe estar **renderizado y enviado a Telegram para aprobación al menos 48 h antes de su hora de publicación**,
 para dejar margen a correcciones (el corrector automático pasa a las 8:41, 14:41 y 20:41).
