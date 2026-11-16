@@ -35,6 +35,14 @@ def main():
         propias = familias_ficha(ficha)
         vistas = collections.Counter(f for _, f in propias)
         fallos += [f"{f} se repite dentro del mismo vídeo" for f, n in vistas.items() if n > 1]
+        sala = ficha.get("sala")
+        if ficha.get("formato") == "corto" and not isinstance(sala, dict):
+            fallos.append("SIN_SALA_PROPIA: el corto debe declarar `sala` (composición E60CortoSala)")
+        if isinstance(sala, dict):
+            firma = "|".join([sala["pared"]["patron"], sala["suelo"]["patron"], sala["luz"]["tipo"]])
+            for r in json.load(open(os.path.join(RAIZ, "PUZLES_USADOS.json"), encoding="utf-8")).get("salas", []):
+                if r["video_id"] != a.video_id and (r["sala"] == sala["id"] or r["firma"] == firma):
+                    fallos.append(f'sala «{sala["id"]}» ({firma}) repite la de {r["video_id"]} ({r["sala"]})')
         for pid, fam in propias:
             for r in reg:
                 if r["familia"] == fam and r["video_id"] != a.video_id:

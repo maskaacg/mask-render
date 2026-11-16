@@ -5,20 +5,20 @@ import {P2, SEGS, segmento, CY, CH} from '../plano/puzles';
 // Usa la misma geometría de segmentos que la versión plana, convertida a metros.
 export const CERILLAS_CENTRO: [number, number, number] = [0, 0, 0.75];
 const ESC = 0.0019; // metros por píxel del diseño plano
-const aMundo = ([x, y]: P2): [number, number] => [CERILLAS_CENTRO[0] + (x - 540) * ESC, CERILLAS_CENTRO[2] + (y - (CY + CH / 2)) * ESC];
+const aMundo = ([x, y]: P2, c: [number, number, number]): [number, number] => [c[0] + (x - 540) * ESC, c[2] + (y - (CY + CH / 2)) * ESC];
 
-export type EstadoCerillas = {inicial: [number, string, number, number]; mueve: {de: [number, string]; a: [number, string]}; aparece: number; mov: number; brillo: number};
+export type EstadoCerillas = {inicial: [number, string, number, number]; mueve: {de: [number, string]; a: [number, string]}; aparece: number; mov: number; brillo: number; centro?: [number, number, number]};
 
-const Palo: React.FC<{a: P2; b: P2; y?: number; color?: string; cabeza?: string; o?: number}> = ({a, b, y = 0.018, color = '#d9b878', cabeza = '#7a1e14', o = 1}) => {
-	const [x1, z1] = aMundo(a);
-	const [x2, z2] = aMundo(b);
+const Palo: React.FC<{a: P2; b: P2; c0: [number, number, number]; y?: number; color?: string; cabeza?: string; o?: number}> = ({a, b, c0, y = 0.018, color = '#d9b878', cabeza = '#7a1e14', o = 1}) => {
+	const [x1, z1] = aMundo(a, c0);
+	const [x2, z2] = aMundo(b, c0);
 	const k = 0.1;
 	const ax = x1 + (x2 - x1) * k, az = z1 + (z2 - z1) * k, bx = x2 - (x2 - x1) * k, bz = z2 - (z2 - z1) * k;
 	const len = Math.hypot(bx - ax, bz - az);
 	const ang = Math.atan2(bz - az, bx - ax);
 	if (o <= 0.001) return null;
 	return (
-		<group position={[(ax + bx) / 2, y, (az + bz) / 2]} rotation={[0, -ang, 0]} scale={[1, o, o]}>
+		<group position={[(ax + bx) / 2, c0[1] + y, (az + bz) / 2]} rotation={[0, -ang, 0]} scale={[1, o, o]}>
 			<mesh>
 				<boxGeometry args={[len, 0.022, 0.022]} />
 				<meshStandardMaterial color={color} roughness={0.8} />
@@ -47,11 +47,12 @@ export const Cerillas3D: React.FC<{c: EstadoCerillas}> = ({c}) => {
 	const m = c.mov;
 	const mez = (u: P2, v: P2): P2 => [u[0] + (v[0] - u[0]) * m, u[1] + (v[1] - u[1]) * m];
 	const alto = 0.018 + Math.sin(Math.min(1, m) * Math.PI) * 0.35;
-	const [cx, , cz] = CERILLAS_CENTRO;
+	const c0 = c.centro ?? CERILLAS_CENTRO;
+	const [cx, cy, cz] = c0;
 	return (
 		<group>
 			{/* tablón de madera oscura sobre el suelo */}
-			<mesh position={[cx, 0.004, cz]} rotation={[-Math.PI / 2, 0, 0]}>
+			<mesh position={[cx, cy + 0.004, cz]} rotation={[-Math.PI / 2, 0, 0]}>
 				<planeGeometry args={[2.0, 0.95]} />
 				<meshStandardMaterial color="#2a1a10" roughness={0.9} />
 			</mesh>
@@ -59,10 +60,10 @@ export const Cerillas3D: React.FC<{c: EstadoCerillas}> = ({c}) => {
 				if (s.celda === dc && s.s === ds && m > 0) return null;
 				const [a, b] = segmento(s.celda, s.s);
 				const o = Math.max(0, Math.min(1, c.aparece * lista.length - i));
-				return <Palo key={i} a={a} b={b} o={o} />;
+				return <Palo key={i} a={a} b={b} c0={c0} o={o} />;
 			})}
-			{m > 0 && <Palo a={mez(pA[0], pB[0])} b={mez(pA[1], pB[1])} y={alto} color={m >= 1 ? '#f0c27a' : '#e9cf98'} cabeza="#c0331f" />}
-			{c.brillo > 0.01 && <pointLight position={[cx, 0.6, cz + 0.1]} color="#ffbf6a" intensity={1.6 * c.brillo} distance={2.2} decay={1.4} />}
+			{m > 0 && <Palo c0={c0} a={mez(pA[0], pB[0])} b={mez(pA[1], pB[1])} y={alto} color={m >= 1 ? '#f0c27a' : '#e9cf98'} cabeza="#c0331f" />}
+			{c.brillo > 0.01 && <pointLight position={[cx, cy + 0.6, cz + 0.1]} color="#ffbf6a" intensity={1.6 * c.brillo} distance={2.2} decay={1.4} />}
 		</group>
 	);
 };

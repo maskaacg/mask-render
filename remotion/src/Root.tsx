@@ -6,6 +6,8 @@ import {ShortEpisode} from './shorts/ShortEpisode';
 import {Props, planificar} from './shorts/timeline';
 import {CortoPlano} from './plano/CortoPlano';
 import {CortoTorre} from './escape/CortoTorre';
+import {CortoSala} from './salas/CortoSala';
+import fichaSala19 from '../fichas/E60-2026-11-19-corto.json';
 import {Historia} from './historia/Historia';
 import {PropsH, planificarH} from './historia/plan';
 import fichaProto from '../fichas/E60-PROTO-historia-01.json';
@@ -79,6 +81,21 @@ export const RemotionRoot: React.FC = () => (
 			id="E60CortoTorre"
 			component={CortoTorre}
 			defaultProps={ejemplo}
+			fps={30}
+			width={1080}
+			height={1920}
+			durationInFrames={30 * 60}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificar(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60CortoSala"
+			component={CortoSala}
+			defaultProps={{ficha: fichaSala19 as unknown as Props['ficha'], duraciones: {}} as Props}
 			fps={30}
 			width={1080}
 			height={1920}

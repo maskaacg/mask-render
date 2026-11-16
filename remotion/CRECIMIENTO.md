@@ -51,7 +51,11 @@ retención rara vez recupera lo perdido ahí.
 - 9:16, **70–120 s** (regla de PRODUCCION.md; antes ≤ 60 s, anulado el 16/11), gancho en el primer segundo, un puzle sin resolver y cierre «La solución, en el vídeo
   completo de YouTube». Fragmento real del largo, adaptado a vertical (no estirado).
 
-## 6 bis. Estética de los acertijos (preferencia del Propietario, 15/11)
+## 6 bis. Estética de los acertijos (preferencia del Propietario, 15/11; ampliada el 16/11)
+- **Cada vídeo corto tiene su propia habitación 3D** (16/11): composición **`E60CortoSala`**, con la sala
+  descrita en `ficha.sala` (paredes, suelo, luz, atrezo). Ni el `id` ni la combinación pared + suelo + luz
+  pueden repetirse con otro vídeo (lo comprueba `tools/verificar_puzles_unicos.py`). Lo de la torre que
+  sigue abajo queda solo para los avances del escape room de la torre.
 - Los acertijos verticales usan la composición **`E60CortoTorre`** (sala 3D de la torre, vela y
   acertijo sobre pergamino), no el plano 2D `E60CortoPlano`. Petición literal: «Quiero que se vea
   estéticamente el vídeo del submarino o el vídeo de la torre del archivero».

@@ -6,9 +6,9 @@
  "ancho": 1080,
  "alto": 1920,
  "fps": 30,
- "titulo": "Las cerillas del archivero",
+ "titulo": "Las cerillas del relojero",
  "numero": 4,
- "escena": "torre",
+ "escena": "sala_propia",
  "modo": "puzle",
  "pensar_s": 15,
  "tinte": "#b8963a",
@@ -38,27 +38,27 @@
  "lineas": [
   {
    "fase": "intro",
-   "texto": "Medianoche. La puerta de la torre se cierra a tu espalda, y la vela del archivero empieza a consumirse.",
+   "texto": "Medianoche. La puerta del taller del relojero se cierra a tu espalda, y todos los relojes de la pared marcan la misma hora.",
    "id": "l01"
   },
   {
    "fase": "intro",
-   "texto": "En el suelo, sobre un tablón, alguien ha dejado una caja de cerillas abierta… y una cuenta hecha con ellas.",
+   "texto": "Tic, tac. Los péndulos no se detienen, y en el banco de trabajo hay herramientas a medio usar, como si el relojero acabara de marcharse.",
    "id": "l02"
   },
   {
    "fase": "intro",
-   "texto": "Cinco más siete, igual a dos. Una cuenta imposible, colocada con mucho cuidado.",
+   "texto": "En el centro, sobre la mesa grande, alguien ha dejado una caja de cerillas abierta… y una cuenta hecha con ellas.",
    "id": "l03"
   },
   {
    "fase": "intro",
-   "texto": "Al lado, la letra temblorosa del archivero: «La puerta se abre cuando la cuenta dice la verdad».",
+   "texto": "Cinco más siete, igual a dos. Una cuenta imposible, colocada con mucho cuidado.",
    "id": "l04"
   },
   {
    "fase": "enunciado",
-   "texto": "Solo puedes mover una cerilla. No puedes quitar ninguna ni añadir otras nuevas.",
+   "texto": "Junto a la caja, una nota: «La puerta se abre cuando la cuenta dice la verdad». Solo puedes mover una cerilla, sin quitar ni añadir ninguna.",
    "id": "l05"
   },
   {
@@ -78,23 +78,23 @@
   },
   {
    "fase": "solucion",
-   "texto": "La cuenta por fin dice la verdad. Algo cruje dentro del muro, y la puerta de la torre se entreabre.",
+   "texto": "Los relojes se detienen a la vez. Suena un clic en la puerta del fondo… y se abre.",
    "id": "l09"
   },
   {
    "fase": "cta",
-   "texto": "¿La encontraste antes de que se apagara la vela? Escríbelo en los comentarios.",
+   "texto": "¿La encontraste antes de que acabara el tiempo? Escríbelo en los comentarios.",
    "id": "l10"
   },
   {
    "fase": "cta",
-   "texto": "Mañana, la torre guarda otro enigma.",
+   "texto": "Mañana, otra habitación y otro enigma.",
    "id": "l11"
   }
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 16/11/2026: acertijo cambiado para que no repita mecánica (la balanza y las ecuaciones lineales ya salen en el museo y en la serie). Comprobado por código (tools/verificar_cerillas_20261119.py): moviendo una sola cerilla entre todas las posiciones posibles de 5+7=2, la única igualdad válida es 9−7=2. Pendiente de render y QA visual.",
+ "auditoria": "Claude 16/11/2026: acertijo cambiado para que no repita mecánica (la balanza y las ecuaciones lineales ya salen en el museo y en la serie). Comprobado por código (tools/verificar_cerillas_20261119.py): moviendo una sola cerilla entre todas las posiciones posibles de 5+7=2, la única igualdad válida es 9−7=2. Fotogramas de prueba en local revisados (sala propia, cerillas 3D sobre la mesa). Pendiente de render completo con voz y QA.",
  "motor_voz": "chatterbox",
  "version": "v2",
  "historial": [
@@ -106,11 +106,92 @@
   {
    "version": "v2",
    "fecha": "2026-11-16",
-   "cambios": "Correcciones del Propietario: (1) mínimo 70 s: la v1 duraba 41,7 s; ahora es una historia de 11 líneas (~85 s estimados). (2) Cada puzle único: se sustituye la balanza (misma familia que la báscula de la serie y las pesadas del museo) por un acertijo de cerillas nuevo, con componente visual propio (Cerillas). (3) Puzle en 3D dentro de la torre, como en los vídeos largos: las cerillas son objetos sobre el suelo y la cerilla se levanta y cambia de sitio en la escena, sin pergamino ni dibujo."
+   "cambios": "Correcciones del Propietario del 16/11: (1) mínimo 70 s (la v1 duraba 41,7 s): historia de 11 líneas, ~90 s estimados; (2) puzle único: la balanza se sustituye por cerillas (5+7=2 → 9−7=2, única por código); (3) puzle en 3D, no dibujo en pergamino; (4) habitación propia: «El taller del relojero» (composición E60CortoSala, sala relojeria-01)."
   }
  ],
  "duracion_objetivo_s": [
   70,
   120
- ]
+ ],
+ "sala": {
+  "id": "relojeria-01",
+  "nombre": "El taller del relojero",
+  "ancho": 5.6,
+  "fondo": 6.4,
+  "alto": 3.2,
+  "pared": {
+   "patron": "papel",
+   "color": "#3c5a4a",
+   "color2": "#22352c"
+  },
+  "suelo": {
+   "patron": "damero",
+   "color": "#d8cfb8",
+   "color2": "#2a2420"
+  },
+  "techo": "#1a1512",
+  "luz": {
+   "tipo": "lampara",
+   "color": "#ffd8a0",
+   "intensidad": 1.0
+  },
+  "niebla": "#0b0d0c",
+  "puzle_en": "mesa",
+  "mesa": {
+   "color": "#3a2414"
+  },
+  "atrezo": [
+   {
+    "tipo": "reloj",
+    "pared": "N",
+    "x": -1.7,
+    "color": "#8a6a2c"
+   },
+   {
+    "tipo": "reloj",
+    "pared": "N",
+    "x": 1.7,
+    "escala": 0.8,
+    "color": "#5a3a22"
+   },
+   {
+    "tipo": "reloj",
+    "pared": "E",
+    "x": -1.2,
+    "escala": 1.1,
+    "color": "#b8963a"
+   },
+   {
+    "tipo": "estanteria",
+    "pared": "O",
+    "x": -1.3,
+    "color": "#3a2414"
+   },
+   {
+    "tipo": "banco",
+    "pared": "O",
+    "x": 1.5,
+    "color": "#4a2e1a"
+   },
+   {
+    "tipo": "ventana",
+    "pared": "E",
+    "x": 1.4,
+    "color": "#18223e"
+   },
+   {
+    "tipo": "cuadro",
+    "pared": "S",
+    "x": 1.4,
+    "color": "#4a3a2a"
+   },
+   {
+    "tipo": "caja",
+    "x": -2.1,
+    "z": 2.4,
+    "escala": 0.8,
+    "color": "#4a3020"
+   }
+  ]
+ }
 }
