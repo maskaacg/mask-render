@@ -1,0 +1,70 @@
+# Saca fotogramas candidatos para la portada de un vídeo YA APROBADO, a partir de su máster.
+# No renderiza, no publica, no sube a Drive. Solo guarda JPG en remotion/publicacion/candidatas/<video_id>/
+# y, si el encargo indica "segundo", fija remotion/publicacion/<video_id>_portada.jpg con ese fotograma.
+# Se lanza al subir remotion/encargos/portadas/<video_id>.json con
+# {"video_id": "...", "run_id": ..., "encargo_master": "...", "sha256": "<hash aprobado>", "segundo": opcional}
+name: portada-desde-master
+on:
+  push:
+    branches: [feat/e60-diorama-20261114]
+    paths:
+      - 'remotion/encargos/portadas/*.json'
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: portada-desde-master
+  cancel-in-progress: false
+jobs:
+  portada:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Leer encargo
+        id: enc
+        run: |
+          F=$(git diff --name-only HEAD~1 HEAD -- 'remotion/encargos/portadas/*.json' | head -1)
+          test -n "$F"
+          echo "video=$(jq -r .video_id "$F")" >> "$GITHUB_OUTPUT"
+          echo "run_id=$(jq -r .run_id "$F")" >> "$GITHUB_OUTPUT"
+          echo "id=$(jq -r .encargo_master "$F")" >> "$GITHUB_OUTPUT"
+          echo "sha=$(jq -r .sha256 "$F")" >> "$GITHUB_OUTPUT"
+          echo "segundo=$(jq -r '.segundo // empty' "$F")" >> "$GITHUB_OUTPUT"
+      - name: Descargar máster del render
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ steps.enc.outputs.id }}
+          run-id: ${{ steps.enc.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: final
+      - name: Comprobar que es el máster aprobado
+        run: |
+          REAL=$(sha256sum "final/${{ steps.enc.outputs.id }}.mp4" | cut -d' ' -f1)
+          echo "APROBADO=${{ steps.enc.outputs.sha }} REAL=$REAL"
+          test "$REAL" = "${{ steps.enc.outputs.sha }}"
+      - name: Fotogramas
+        run: |
+          sudo apt-get install -y -qq ffmpeg >/dev/null
+          M="final/${{ steps.enc.outputs.id }}.mp4"
+          V="${{ steps.enc.outputs.video }}"
+          D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$M")
+          OUT="remotion/publicacion/candidatas/$V"
+          mkdir -p "$OUT"
+          for P in 3 10 18 26 34 42 50 60 70 80; do
+            T=$(python3 -c "print(round($D*$P/100,1))")
+            ffmpeg -v error -y -ss "$T" -i "$M" -frames:v 1 -q:v 3 "$OUT/f_${P}pc_${T}s.jpg"
+          done
+          if [ -n "${{ steps.enc.outputs.segundo }}" ]; then
+            ffmpeg -v error -y -ss "${{ steps.enc.outputs.segundo }}" -i "$M" -frames:v 1 -q:v 2 "remotion/publicacion/${V}_portada.jpg"
+          fi
+          ls -la "$OUT"
+      - name: Guardar en la rama
+        run: |
+          git config user.name "mask-render-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add remotion/publicacion
+          git commit -m "Portada: fotogramas del máster aprobado ${{ steps.enc.outputs.video }}" || exit 0
+          git push origin HEAD:${{ github.ref_name }}
