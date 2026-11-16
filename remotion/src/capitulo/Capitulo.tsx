@@ -6,7 +6,7 @@ import {EstadoCap, SalaCapitulo3D} from './SalaCapitulo3D';
 import {PlanC, PropsC, planificarC} from './plan';
 import {
 	Anillo16, BordeMaqueta16, Cabecera16, ExpBalanza, ExpCajas16, ExpCajones, ExpEscalones, ExpIndicador, ExpReloj, Fichas16, Proximo, Recuento,
-	RotuloPuzle, Subtitulo16, TituloCapitulo,
+	RotuloPuzle, Subtitulo16, TituloCapitulo, PortadaEnVideo,
 } from './ui';
 
 cargarFuentes();
@@ -243,6 +243,7 @@ export const Capitulo: React.FC<PropsC> = (props) => {
 			))}
 			<AbsoluteFill style={{background: '#14151A', opacity: Math.max(fundidoIn, fundidoOut, ganchoOscuro * 0.6)}} />
 
+			<PortadaEnVideo t={t} temporada={ficha.temporada} capitulo={ficha.capitulo} titulo={ficha.titulo} />
 			<SonidoCapitulo ficha={ficha} P={P} fps={fps} />
 		</AbsoluteFill>
 	);

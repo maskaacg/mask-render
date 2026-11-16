@@ -21,17 +21,34 @@ export const Cabecera16: React.FC<{t: number; temporada: string; capitulo: numbe
 	</div>
 );
 
-export const TituloCapitulo: React.FC<{t: number; inicio: number; fin: number; temporada: string; capitulo: number; titulo: string; unidad?: string}> = ({t, inicio, fin, temporada, capitulo, titulo, unidad = 'CAPÍTULO'}) => {
+// Portada dentro del vídeo (decisión del Propietario 16/11/2026): el primer segundo de cada vídeo largo es la
+// portada (título grande y legible), para poder elegirla como miniatura aunque el canal no permita subir una propia.
+export const PortadaEnVideo: React.FC<{t: number; temporada: string; capitulo: number; titulo: string; unidad?: string; children?: React.ReactNode}> = ({children, ...p}) => {
+	// Opaca y nítida durante 1,2 s (sin escena detrás que la ensucie); desaparece en 0,3 s.
+	const o = interpolate(p.t, [1.2, 1.5], [1, 0], clamp);
+	if (o <= 0) return null;
+	return (
+		<AbsoluteFill style={{opacity: o, background: '#0e0f13'}}>
+			{children ? (
+				<div style={{position: 'absolute', left: 0, top: 0, width: 1280, height: 720, transform: 'scale(1.5)', transformOrigin: '0 0'}}>{children}</div>
+			) : (
+				<TituloCapitulo {...p} inicio={-2} fin={10} portada />
+			)}
+		</AbsoluteFill>
+	);
+};
+
+export const TituloCapitulo: React.FC<{t: number; inicio: number; fin: number; temporada: string; capitulo: number; titulo: string; unidad?: string; portada?: boolean}> = ({t, inicio, fin, temporada, capitulo, titulo, unidad = 'CAPÍTULO', portada = false}) => {
 	const o = ventana(t, inicio, fin, 0.8);
 	if (o <= 0) return null;
 	const sub = interpolate(t, [inicio + 0.4, inicio + 1.4], [0, 1], clamp);
 	return (
-		<AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', opacity: o, background: `rgba(20,21,26,${0.55 * o})`}}>
+		<AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', opacity: o, background: `rgba(20,21,26,${(portada ? 0.82 : 0.55) * o})`}}>
 			<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, letterSpacing: 12, color: E60.cian}}>ENIGMA 60</div>
 			<div style={{fontFamily: SERIF, fontWeight: 800, fontSize: 150, color: E60.blanco, lineHeight: 1.05, marginTop: 18}}>{temporada}</div>
 			<div style={{width: 520 * sub, height: 3, background: E60.plata, margin: '28px 0'}} />
 			<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, letterSpacing: 8, color: E60.plata, opacity: sub}}>{unidad} {capitulo}</div>
-			<div style={{fontFamily: SERIF, fontWeight: 600, fontStyle: 'normal', fontSize: 64, color: E60.blanco, opacity: sub, marginTop: 10}}>{titulo}</div>
+			<div style={{fontFamily: SERIF, fontWeight: portada ? 800 : 600, fontStyle: 'normal', fontSize: portada ? 104 : 64, lineHeight: 1.05, textAlign: 'center', maxWidth: 1600, color: E60.blanco, opacity: sub, marginTop: 10, textShadow: portada ? '0 6px 30px rgba(0,0,0,0.85)' : undefined}}>{titulo}</div>
 		</AbsoluteFill>
 	);
 };

@@ -3,10 +3,11 @@ import {AbsoluteFill, Audio, Easing, Sequence, interpolate as interpolateRaw, st
 import {cargarFuentes} from '../style/fonts';
 import {CortinaEngranajes, E60} from '../e60/nucleo';
 import {PlanC, PropsC, planificarC} from '../capitulo/plan';
-import {Anillo16, BordeMaqueta16, Cabecera16, Fichas16, Proximo, Recuento, RotuloPuzle, Subtitulo16, TituloCapitulo} from '../capitulo/ui';
+import {Anillo16, BordeMaqueta16, Cabecera16, Fichas16, Proximo, Recuento, RotuloPuzle, Subtitulo16, TituloCapitulo, PortadaEnVideo} from '../capitulo/ui';
 import {BALANZA, ESCAPARATE, EstadoMuseo, GATOS_Z, GATO_FALSO, Museo3D, RELOJ, RETRATO, VITRINA_Z, VITRINAS_X, gatoX} from './Museo3D';
 import {ExpBalanza, ExpRomanos, ExpVigilantes, ExpVitrinas, RelojHUD} from './uiMuseo';
 import {ChipNarrativo, PantallaFinal} from './EscapeRoom';
+import {MiniaturaMuseo} from './MiniaturaMuseo';
 
 cargarFuentes();
 
@@ -261,6 +262,9 @@ export const MuseoEscape: React.FC<PropsC> = (props) => {
 			))}
 			<AbsoluteFill style={{background: '#e8eeff', opacity: cruce}} />
 			<AbsoluteFill style={{background: '#08080c', opacity: Math.max(fundidoIn, fundidoOut)}} />
+			<PortadaEnVideo t={t} temporada={ficha.temporada} capitulo={ficha.capitulo} titulo={ficha.titulo} unidad="SALA">
+				<MiniaturaMuseo />
+			</PortadaEnVideo>
 			<SonidoMuseo ficha={ficha} P0={P0} fps={fps} />
 		</AbsoluteFill>
 	);

@@ -10,9 +10,10 @@ const interpolate = (input: number, inputRange: readonly number[], outputRange: 
 import {MONO, SERIF, cargarFuentes} from '../style/fonts';
 import {CortinaEngranajes, E60} from '../e60/nucleo';
 import {PlanC, PropsC, planificarC} from '../capitulo/plan';
-import {Anillo16, BordeMaqueta16, Cabecera16, Fichas16, Proximo, Recuento, RotuloPuzle, Subtitulo16, TituloCapitulo} from '../capitulo/ui';
+import {Anillo16, BordeMaqueta16, Cabecera16, Fichas16, Proximo, Recuento, RotuloPuzle, Subtitulo16, TituloCapitulo, PortadaEnVideo} from '../capitulo/ui';
 import {CERRADURA, COLUMNA, EstadoTorre, LOSA, NICHO, P, TorreArchivero3D, VENTANA_DEG, peldano} from './TorreArchivero3D';
 import {ExpCifrado, ExpEscudos, ExpFibonacci, ExpGuardias} from './uiER';
+import {MiniaturaTorre} from './MiniaturaTorre';
 
 cargarFuentes();
 
@@ -301,6 +302,9 @@ export const EscapeRoom: React.FC<PropsC> = (props) => {
 				<CortinaEngranajes key={b} t={t} en={P0.mecanismo[b].inicio + 1.6} />
 			))}
 			<AbsoluteFill style={{background: '#0a0807', opacity: Math.max(fundidoIn, fundidoOut, apagon)}} />
+			<PortadaEnVideo t={t} temporada={ficha.temporada} capitulo={ficha.capitulo} titulo={ficha.titulo} unidad="SALA">
+				<MiniaturaTorre />
+			</PortadaEnVideo>
 			<SonidoEscape ficha={ficha} P0={P0} fps={fps} />
 		</AbsoluteFill>
 	);
