@@ -94,7 +94,7 @@
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 16/11/2026: acertijo cambiado para que no repita mecánica (la balanza y las ecuaciones lineales ya salen en el museo y en la serie). Comprobado por código (tools/verificar_cerillas_20261119.py): moviendo una sola cerilla entre todas las posiciones posibles de 5+7=2, la única igualdad válida es 9−7=2. Fotogramas de prueba en local revisados (sala propia, cerillas 3D sobre la mesa). Pendiente de render completo con voz y QA.",
+ "auditoria": "Claude 16/11/2026: acertijo cambiado para que no repita mecánica (la balanza y las ecuaciones lineales ya salen en el museo y en la serie). Comprobado por código (tools/verificar_cerillas_20261119.py): moviendo una sola cerilla entre todas las posiciones posibles de 5+7=2, la única igualdad válida es 9−7=2. Fotogramas de prueba en local revisados (sala propia, cerillas 3D sobre la mesa). Pendiente de render completo con voz y QA. Render v2 run 43878934206: QA técnica PASS (88,6 s, -14,4 LUFS); hoja de contactos revisada: sala propia, cerillas 3D, cuenta atrás y solución 9−7=2 coherentes con la voz.",
  "motor_voz": "chatterbox",
  "version": "v2",
  "historial": [

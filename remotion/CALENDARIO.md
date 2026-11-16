@@ -11,8 +11,8 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 |---|---|---|---|
 | Lun 16 | **Escape room 1 «La torre del archivero» v6** (16:9, solo YouTube 17:00) + **avance v3** 9:16 (TikTok, Shorts, Facebook Reels 18:00) | E60ES-ER-001-TORRE / -AVANCE | Avance v3 APROBADO (en cola hasta que se apruebe la Torre). Torre: v3 con cambios pedidos → v4 entregada el dom 15 a las 08:18, pendiente de APROBAR. Excepción única a las 48 h |
 | Mar 17 | Acertijo 9:16 «Los engranajes del faro» (sala propia, E60CortoSala) | E60ES-AC-20261117 | v3 preparada el lun 16 (sustituye a «Las tres cajas fuertes»: mecánica repetida y < 70 s). Pendiente de render |
-| Mié 18 | Escape room 2 «El museo que miente» (16:9, E60EscapeMuseo) + avance 9:16 (E60AvanceMuseo) | E60ES-ER-002-MUSEO / -AVANCE | v1 RECHAZADAS el lun 16 (gusta la idea). v2 preparadas: puzle 4 nuevo «Las dos velas» y avance > 70 s. Pendiente de render |
-| Jue 19 | Acertijo 9:16 «Las cerillas del relojero» (sala propia, E60CortoSala) | E60ES-AC-20261119 | v1 RECHAZADA el lun 16. v2 preparada (cerillas 3D, > 70 s). Pendiente de render |
+| Mié 18 | Escape room 2 «El museo que miente» (16:9, E60EscapeMuseo) + avance 9:16 (E60AvanceMuseo) | E60ES-ER-002-MUSEO / -AVANCE | v1 RECHAZADAS el lun 16 (gusta la idea). v2: avance entregado (lun 16 15:23, 71,2 s, pendiente de APROBAR); museo con «Las dos velas» renderizándose |
+| Jue 19 | Acertijo 9:16 «Las cerillas del relojero» (sala propia, E60CortoSala) | E60ES-AC-20261119 | v1 RECHAZADA el lun 16. Entregado v2 (lun 16 15:23, Telegram, 88,6 s, pendiente de APROBAR) |
 | Vie 20 | Acertijo independiente 9:16 | E60ES-AC-20261120 | Pendiente |
 | Sáb 21 | Serie, capítulo 1 (16:9, voz «Chatterbox expresiva») + avance 9:16 | E60ES-S001-E01 / -AVANCE | Pendiente (re-voz) |
 | Dom 22 | Acertijo independiente 9:16 | E60ES-AC-20261122 | Pendiente |
