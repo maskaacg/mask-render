@@ -43,7 +43,7 @@
   },
   {
    "fase": "intro",
-   "texto": "Sobre la mesa no hay llaves ni papeles. Solo una caja de cerillas abierta… y una cuenta hecha con ellas.",
+   "texto": "En el suelo, sobre un tablón, alguien ha dejado una caja de cerillas abierta… y una cuenta hecha con ellas.",
    "id": "l02"
   },
   {
@@ -106,7 +106,7 @@
   {
    "version": "v2",
    "fecha": "2026-11-16",
-   "cambios": "Correcciones del Propietario: (1) mínimo 70 s: la v1 duraba 41,7 s; ahora es una historia de 11 líneas (~85 s estimados). (2) Cada puzle único: se sustituye la balanza (misma familia que la báscula de la serie y las pesadas del museo) por un acertijo de cerillas nuevo, con componente visual propio (Cerillas)."
+   "cambios": "Correcciones del Propietario: (1) mínimo 70 s: la v1 duraba 41,7 s; ahora es una historia de 11 líneas (~85 s estimados). (2) Cada puzle único: se sustituye la balanza (misma familia que la báscula de la serie y las pesadas del museo) por un acertijo de cerillas nuevo, con componente visual propio (Cerillas). (3) Puzle en 3D dentro de la torre, como en los vídeos largos: las cerillas son objetos sobre el suelo y la cerilla se levanta y cambia de sitio en la escena, sin pergamino ni dibujo."
   }
  ],
  "duracion_objetivo_s": [

@@ -2,6 +2,7 @@ import React, {useMemo} from 'react';
 import {ThreeCanvas} from '@remotion/three';
 import * as THREE from 'three';
 import {Camara, hash, tex} from '../diorama/SalaLastre3D';
+import {Cerillas3D, CERILLAS_CENTRO, EstadoCerillas} from './Cerillas3D';
 
 // ENIGMA 60 · Escape room 1 «La torre del archivero». Interior de torre de castillo (kit castillo,
 // procedural, three.js MIT; texturas dibujadas en canvas, propias). Todo depende solo del estado.
@@ -64,6 +65,7 @@ export type EstadoTorre = {
 	relampago: number;
 	gramofono: number;
 	antorchas: number;
+	cerillas?: EstadoCerillas; // acertijo corto de cerillas, en el suelo
 };
 
 // ---------- texturas
@@ -926,7 +928,7 @@ export const TorreArchivero3D: React.FC<{e: EstadoTorre; ancho?: number; alto?: 
 	const OBJ: Record<string, V3> = {
 		escudos: P(-90, R - 0.2, 1.8), losa: [LOSA[0], 0, LOSA[2]], criptex: [LOSA[0], 1.0, LOSA[2]], dintel: [0, 3.35, -4.1], regla: [0, 3.72, -4.1],
 		escalera: [COLUMNA[0], 1.4, COLUMNA[2]], p13: peldano(13).pos, nicho: NICHO, puerta: [0, 1.3, -4.1],
-		g1: P(GUARDIAS[0], R - 0.6, 1.3), g2: P(GUARDIAS[1], R - 0.6, 1.3), g3: P(GUARDIAS[2], R - 0.6, 1.3), mesa: P(MESA_DEG, R - 0.95, 0.9), ventana: P(VENTANA_DEG, R, 3),
+		g1: P(GUARDIAS[0], R - 0.6, 1.3), g2: P(GUARDIAS[1], R - 0.6, 1.3), g3: P(GUARDIAS[2], R - 0.6, 1.3), mesa: P(MESA_DEG, R - 0.95, 0.9), ventana: P(VENTANA_DEG, R, 3), cerillas: CERILLAS_CENTRO,
 	};
 	let clave = 'puerta';
 	let luzPista = 0;
@@ -962,6 +964,7 @@ export const TorreArchivero3D: React.FC<{e: EstadoTorre; ancho?: number; alto?: 
 				<Armadura key={d} deg={d} i={i} e={e} T={T} />
 			))}
 			<Mesa e={e} />
+			{e.cerillas && <Cerillas3D c={e.cerillas} />}
 			<Estanterias T={T} />
 			<Ventana e={e} T={T} />
 			{[-112, 58, 180, -20].map((d, k) => (

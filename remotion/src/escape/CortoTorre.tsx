@@ -30,8 +30,14 @@ export const CortoTorre: React.FC<Props> = (props) => {
 	const sol = F.solucion.inicio;
 	const Puzle = PUZLES[ficha.puzle.tipo];
 
-	// cámara: torre → vela → mesa (acertijo) → vela al resolver → puerta al final
-	const ev: [number, string][] = [[-10, 'torre'], [0, 'torre'], [Math.max(0.5, enun - 3.2), 'vela'], [enun - 0.6, 'mesa'], [plan.total - 3.2, 'puerta']];
+	// Acertijos con objetos 3D en la sala (como en los vídeos largos): el puzle vive en el escenario,
+	// no en un dibujo sobre un panel. Los demás tipos conservan el pergamino.
+	const en3D = ficha.puzle.tipo === 'cerillas';
+	const l2 = plan.lineas[1]?.inicio ?? enun;
+	// cámara: torre → vela → mesa (acertijo) → puerta al final; en 3D: torre → cerillas en el suelo → puerta
+	const ev: [number, string][] = en3D
+		? [[-10, 'torre'], [0, 'torre'], [Math.max(0.5, l2 - 0.8), 'cerillas'], [plan.total - 3.2, 'puerta']]
+		: [[-10, 'torre'], [0, 'torre'], [Math.max(0.5, enun - 3.2), 'vela'], [enun - 0.6, 'mesa'], [plan.total - 3.2, 'puerta']];
 	let k = 0;
 	for (let i = 0; i < ev.length; i++) if (t >= ev[i][0]) k = i;
 	const f = interpolate(t, [ev[k][0], ev[k][0] + 1.8], [0, 1], {...clamp, easing: io});
@@ -40,7 +46,8 @@ export const CortoTorre: React.FC<Props> = (props) => {
 	const mix = (x: V3, y: V3) => [0, 1, 2].map((i) => x[i] + (y[i] - x[i]) * f) as V3;
 	const pos = mix(a.pos, b.pos);
 	const mira = mix(a.mira, b.mira);
-	pos[0] += Math.sin(t * 0.6) * 0.02;
+	pos[0] += Math.sin(t * 0.6) * 0.02 + (en3D ? Math.sin(t * 0.21) * 0.12 : 0);
+	if (en3D) pos[1] += Math.sin(t * 0.13) * 0.08;
 	pos[1] += Math.sin(t * 0.47 + 1) * 0.015;
 	let rel = 0;
 	for (const r of relampagos(plan.total)) {
@@ -54,7 +61,17 @@ export const CortoTorre: React.FC<Props> = (props) => {
 		escudos: [0, 0, 0], losa: 0, criptex: 0, anillos: 0, tapa: 0, descifrado: 0, p13: 0, nicho: 0, llave: 0, giroLlave: 0, verdad: 0,
 		vela: 1, llama: 1, puerta: 0, sombra: 0, libro: 0,
 		relampago: rel, gramofono: 1, antorchas: interpolate(t, [0, 1.2], [0.6, 1], clamp) + 0.3 * resuelto,
+		cerillas: en3D
+			? {
+					inicial: ficha.puzle.inicial as [number, string, number, number],
+					mueve: ficha.puzle.mueve as {de: [number, string]; a: [number, string]},
+					aparece: interpolate(t, [l2 - 0.2, l2 + 2.2], [0, 1], clamp),
+					mov: interpolate(t, [sol + 0.8, sol + 2.6], [0, 1], {...clamp, easing: io}),
+					brillo: interpolate(t, [l2 - 0.5, l2 + 0.5], [0, 1], clamp),
+				}
+			: undefined,
 	};
+	if (en3D) e.pista = {...e.pista, mesa: 0, cerillas: interpolate(t, [enun - 0.5, enun + 0.5, plan.total - 3.6, plan.total - 3.0], [0, 0.7, 0.7, 0], clamp)};
 
 	// pergamino con el acertijo
 	const perg = interpolate(t, [enun - 0.5, enun + 0.4], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
@@ -85,7 +102,7 @@ export const CortoTorre: React.FC<Props> = (props) => {
 			</div>
 
 			{/* pergamino iluminado por la vela */}
-			<div style={{position: 'absolute', left: 40, top: 640, width: 1000, height: 900, opacity: perg, transform: `translateY(${(1 - perg) * 40}px)`}}>
+			<div style={{position: 'absolute', left: 40, top: 640, width: 1000, height: 900, opacity: en3D ? 0 : perg, transform: `translateY(${(1 - perg) * 40}px)`}}>
 				<div style={{position: 'absolute', inset: 0, borderRadius: 26, background: 'linear-gradient(180deg, rgba(20,16,12,0.86), rgba(12,10,8,0.92))', border: `3px solid ${AMBAR}`, boxShadow: `0 0 50px rgba(240,185,85,0.22), inset 0 0 60px rgba(240,185,85,0.08)`}} />
 				<svg width={1000} height={900} viewBox="0 0 1080 972" style={{position: 'absolute', inset: 0}}>
 					<g transform="translate(0 -20)">{Puzle && <Puzle datos={ficha.puzle} t={t} enunciado={enun} solucion={sol} acento={AMBAR} />}</g>

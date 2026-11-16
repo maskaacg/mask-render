@@ -55,6 +55,10 @@ retención rara vez recupera lo perdido ahí.
 - Los acertijos verticales usan la composición **`E60CortoTorre`** (sala 3D de la torre, vela y
   acertijo sobre pergamino), no el plano 2D `E60CortoPlano`. Petición literal: «Quiero que se vea
   estéticamente el vídeo del submarino o el vídeo de la torre del archivero».
+- **El puzle vive en la sala en 3D** (orden del Propietario, 16/11): igual que en los largos (escudos en el
+  suelo, ganchos en la pared), los objetos del acertijo están en el escenario y se mueven en él. Prohibido
+  resolverlo con un dibujo en un pergamino o panel 2D. Hoy está hecho para `cerillas` (`Cerillas3D`);
+  cada tipo nuevo necesita su versión 3D antes de producirse.
 - Se renderizan con `render-remotion` (encargo en `remotion/encargos/`), igual que antes.
 
 ## 7. Títulos y miniaturas

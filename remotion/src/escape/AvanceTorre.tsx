@@ -46,6 +46,7 @@ export const PLANOS: Record<string, {pos: V3; mira: V3; fov: number}> = {
 	escudos: {pos: [-0.3, 1.85, 0.5], mira: [-3.4, 0.7, 0.05], fov: 84},
 	ganchos: {pos: [-1.6, 1.6, 0.1], mira: [-4.1, 1.85, 0.0], fov: 66},
 	puerta: {pos: [0, 1.45, -0.9], mira: [0, 1.25, -4.1], fov: 62},
+	cerillas: {pos: [0, 1.95, 3.55], mira: [0, 0.05, 0.45], fov: 64}, // acertijo de cerillas en el suelo (vertical)
 };
 
 export const AvanceTorre: React.FC<PropsT> = (props) => {

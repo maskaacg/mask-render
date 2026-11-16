@@ -323,11 +323,11 @@ export const Espejos: React.FC<PuzleProps> = ({datos, t, enunciado, solucion, ac
 };
 
 // ---------- 8. Cerillas (mover una sola cerilla para arreglar la igualdad) ----------
-type P2 = [number, number];
-const SEGS: Record<number, string> = {0: 'abcdef', 1: 'bc', 2: 'abged', 3: 'abgcd', 4: 'fgbc', 5: 'afgcd', 6: 'afgedc', 7: 'abc', 8: 'abcdefg', 9: 'abcdfg'};
-const CW = 118, CH = 236, CY = 190; // caja de cada dígito
+export type P2 = [number, number];
+export const SEGS: Record<number, string> = {0: 'abcdef', 1: 'bc', 2: 'abged', 3: 'abgcd', 4: 'fgbc', 5: 'afgcd', 6: 'afgedc', 7: 'abc', 8: 'abcdefg', 9: 'abcdfg'};
+export const CW = 118, CH = 236, CY = 190; // caja de cada dígito
 const CX = [80, 300, 450, 680, 870]; // dígito · operador · dígito · igual · dígito
-const segmento = (celda: number, s: string): [P2, P2] => {
+export const segmento = (celda: number, s: string): [P2, P2] => {
 	const x = CX[celda], y = CY, w = CW, h = CH, m = y + h / 2;
 	if (celda === 1 || celda === 3) {
 		const cx = x + 60;
