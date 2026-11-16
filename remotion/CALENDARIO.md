@@ -5,6 +5,14 @@ publicación (el del martes, el domingo), para dar margen a correcciones.
 
 Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 
+
+## Patrón semanal fijo (Propietario, 08/11 y semana del 16/11)
+- **Lunes y miércoles**: escape room 16:9 (YouTube 17:00) + su avance 9:16 (18:00).
+- **Sábado**: capítulo de la serie 16:9 (YouTube 17:00) + su avance 9:16 (18:00).
+- **Martes, jueves, viernes y domingo**: acertijo independiente 9:16 (18:00).
+- Usa EXACTAMENTE los `video_id` de la tabla (son los que vigila el bucle en `mg.calendario`).
+- Cada lunes, el productor añade aquí y en `mg.calendario` la semana que empieza 7 días después con este mismo patrón (escape rooms y capítulos con el número siguiente) y avisa al Propietario con `ops.dejar_mensaje` (INFO). Si el Propietario cambia el patrón, manda su decisión.
+
 ## Semana del 16/11/2026
 
 | Publicación | Tipo | video_id | Estado |
@@ -16,6 +24,19 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 | Vie 20 | Acertijo independiente 9:16 | E60ES-AC-20261120 | Pendiente |
 | Sáb 21 | Serie, capítulo 1 (16:9, voz «Chatterbox expresiva») + avance 9:16 | E60ES-S001-E01 / -AVANCE | Pendiente (re-voz) |
 | Dom 22 | Acertijo independiente 9:16 | E60ES-AC-20261122 | Pendiente |
+
+
+## Semana del 23/11/2026
+
+| Publicación | Tipo | video_id | Estado |
+|---|---|---|---|
+| Lun 23 | Escape Room #3 (16:9) + avance 9:16 | E60ES-ER-003 / E60ES-ER-003-AVANCE | Pendiente |
+| Mar 24 | Acertijo 9:16 (sala 3D propia) | E60ES-AC-20261124 | Pendiente |
+| Mié 25 | Escape Room #4 (16:9) + avance 9:16 | E60ES-ER-004 / E60ES-ER-004-AVANCE | Pendiente |
+| Jue 26 | Acertijo 9:16 | E60ES-AC-20261126 | Pendiente |
+| Vie 27 | Acertijo 9:16 | E60ES-AC-20261127 | Pendiente |
+| Sáb 28 | Serie, capítulo 2 (16:9) + avance 9:16 | E60ES-S001-E02 / E60ES-S001-E02-AVANCE | Pendiente |
+| Dom 29 | Acertijo 9:16 | E60ES-AC-20261129 | Pendiente |
 
 Cada vídeo del calendario debe estar también en Neon (`mg.calendario`: video_id, publica_en, tipo,
 notas): el bucle autónomo lo usa para detectar retrasos. Al añadir una semana, insertar sus filas.
