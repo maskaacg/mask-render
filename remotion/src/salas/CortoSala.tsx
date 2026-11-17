@@ -6,6 +6,7 @@ import {V3} from '../escape/AvanceTorre';
 import {Sala, SalaCorto3D, EstadoSalaCorto, planosSala} from './SalaCorto3D';
 import {PUZLES} from '../plano/puzles';
 import {Props, planificar} from '../shorts/timeline';
+import {AGUA, estadoTrasvases} from './Jarras3D';
 
 cargarFuentes();
 
@@ -49,10 +50,26 @@ export const CortoSala: React.FC<Props> = (props) => {
 	pos[0] += Math.sin(t * 0.6) * 0.03 + Math.sin(t * 0.21) * 0.14;
 	pos[1] += Math.sin(t * 0.47 + 1) * 0.015 + Math.sin(t * 0.13) * 0.06;
 	const tipo = ficha.puzle.tipo;
-	if (!['cerillas', 'engranajes'].includes(tipo)) throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
+	if (!['cerillas', 'engranajes', 'jarras'].includes(tipo)) throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
 	const vueltas = tipo === 'engranajes' ? interpolate(t, [sol + 0.6, sol + 9], [0, Number(ficha.puzle.vueltas)], {...clamp, easing: io}) : 0;
 	// el mecanismo sigue girando despacio después de la cuenta (no se queda congelado)
 	const inercia = tipo === 'engranajes' ? Math.max(0, t - (sol + 9)) * 0.12 : 0;
+	// jarras: cada trasvase se reparte dentro de la línea de voz que lo narra (`reparto` = trasvases por línea de solución, empezando en la 2.ª)
+	let kJ = 0;
+	if (tipo === 'jarras') {
+		const reparto = ficha.puzle.reparto as number[];
+		const solL = plan.lineas.filter((l) => l.fase === 'solucion');
+		reparto.forEach((n, j) => {
+			const L = solL[j + 1];
+			if (!L) return;
+			const d = (L.fin - L.inicio) / n;
+			for (let m = 0; m < n; m++) {
+				const a0 = L.inicio + d * m + 0.1;
+				kJ += interpolate(t, [a0, a0 + Math.min(2.4, d * 0.92)], [0, 1], {...clamp, easing: io}); // trasvases secuenciales: la suma de progresos es el índice
+			}
+		});
+	}
+	const J = tipo === 'jarras' ? estadoTrasvases(ficha.puzle.capacidades as number[], ficha.puzle.inicial as number[], ficha.puzle.trasvases as [number, number][], kJ) : undefined;
 	const e: EstadoSalaCorto = {
 		t,
 		cam: {pos, mira, fov: a.fov + (b.fov - a.fov) * f},
@@ -66,6 +83,7 @@ export const CortoSala: React.FC<Props> = (props) => {
 					marca: interpolate(t, [sol, sol + 0.6], [0, 1], clamp),
 				}
 			: undefined,
+		jarras: J && {capacidades: ficha.puzle.capacidades as number[], litros: J.litros, vierte: J.vierte, aparece: interpolate(t, [l3 - 0.2, l3 + 1.0], [0, 1], clamp)},
 		cerillas: tipo !== 'cerillas' ? undefined : {
 			inicial: ficha.puzle.inicial as [number, string, number, number],
 			mueve: ficha.puzle.mueve as {de: [number, string]; a: [number, string]},
@@ -132,6 +150,16 @@ export const CortoSala: React.FC<Props> = (props) => {
 				<div style={{position: 'absolute', left: 56, right: 56, top: 300, display: 'flex', justifyContent: 'space-around', opacity: interpolate(t, [sol + 0.4, sol + 1, plan.total - 3.6, plan.total - 3], [0, 1, 1, 0], clamp), background: 'rgba(12,10,8,0.82)', borderLeft: `8px solid ${AMBAR}`, padding: '14px 22px', borderRadius: 8, fontFamily: OSWALD, fontSize: 44, color: E60.blanco}}>
 					<span>Pequeño: <b style={{color: AMBAR}}>{Math.floor(vueltas + 1e-6)}</b></span>
 					<span>Grande: <b style={{color: '#ff6f55'}}>{Math.floor(vueltas * (Number((ficha.puzle.dientes as number[])[0]) / Number((ficha.puzle.dientes as number[]).slice(-1)[0])) + 1e-6)}</b></span>
+				</div>
+			)}
+
+			{/* contador de litros (jarras): mismo orden que en la mesa y mismo color del agua */}
+			{J && t > l3 + 0.6 && !enPensar && (
+				<div style={{position: 'absolute', left: 56, right: 56, top: 300, display: 'flex', justifyContent: 'space-around', opacity: interpolate(t, [l3 + 0.6, l3 + 1.2, plan.total - 3.6, plan.total - 3], [0, 1, 1, 0], clamp), background: 'rgba(12,10,8,0.95)', borderLeft: `8px solid ${AGUA}`, padding: '14px 22px', borderRadius: 8, fontFamily: OSWALD, fontSize: 44, color: E60.blanco}}>
+					{(ficha.puzle.capacidades as number[]).map((cap, i) => (
+						<span key={i}>{cap} L: <b style={{color: AGUA}}>{Math.round(J.litros[i])}</b></span>
+					))}
+					{t > sol + 0.4 && <span style={{color: AMBAR}}>Trasvases: <b>{Math.min((ficha.puzle.trasvases as unknown[]).length, Math.floor(kJ + 0.2))}</b></span>}
 				</div>
 			)}
 

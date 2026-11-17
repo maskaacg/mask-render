@@ -1,0 +1,61 @@
+{
+ "video_id": "E60ES-AC-20261120",
+ "version": "v1",
+ "ficha": "fichas/E60-2026-11-20-corto.json",
+ "composicion": "E60CortoSala",
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": null,
+ "run_id": null,
+ "plataformas": [
+  "tiktok",
+  "youtube",
+  "facebook"
+ ],
+ "pendiente_conectar": [
+  "instagram"
+ ],
+ "programado": "2026-11-20T18:00:00",
+ "zona": "Europe/Madrid",
+ "portada": "remotion/publicacion/E60ES-AC-20261120_portada.jpg",
+ "titulo": "Tres jarras, ningún grifo: consigue 4 y 4 💧",
+ "tiktok_title": "Jarras de 8, 5 y 3 litros en la rebotica del boticario. La de 8 está llena. Sin grifo y sin marcas, deja 4 litros en la de 8 y 4 en la de 5. ¿Cuántos trasvases como mínimo? Escríbelo en comentarios antes de la solución. Escape rooms completos en YouTube: ENIGMA 60. #acertijos #logica #enigma #retomental #jarras",
+ "youtube_title": "Jarras de 8, 5 y 3 litros: ¿cuántos trasvases? 💧 #shorts #acertijos",
+ "youtube_description": "Tres jarras sin marcas: 8 litros llena, 5 y 3 vacías. Sin grifo ni desagüe, solo vertiendo de una a otra, deja 4 litros en la de 8 y 4 en la de 5. ¿Cuántos trasvases necesitas como mínimo? Tienes 15 segundos. Escape rooms completos en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
+ "facebook_title": "Jarras de 8, 5 y 3 litros: ¿cuántos trasvases como mínimo?",
+ "facebook_description": "La jarra de 8 litros está llena; la de 5 y la de 3, vacías. Sin grifo ni marcas, consigue 4 y 4. ¿Cuántos trasvases necesitas como mínimo? Respuesta en comentarios; escape rooms completos en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #logica",
+ "tags": [
+  "acertijos",
+  "jarras",
+  "shorts",
+  "enigma 60",
+  "retos",
+  "lógica"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true,
+  "cover_timestamp_ms": null
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva: «Las jarras del boticario» (sala propia 3D, puzle trasvase_jarras único y verificado por código)",
+   "corrector": "Claude (productor automático)"
+  }
+ ],
+ "sha256": null,
+ "estado_aprobacion": "pendiente de entregar"
+}

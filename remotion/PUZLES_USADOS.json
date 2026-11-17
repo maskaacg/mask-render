@@ -50,6 +50,11 @@
    "video_id": "E60ES-AC-20261117",
    "puzle": "Los engranajes del faro",
    "familia": "relacion_engranajes"
+  },
+  {
+   "video_id": "E60ES-AC-20261120",
+   "puzle": "Las jarras del boticario",
+   "familia": "trasvase_jarras"
   }
  ],
  "pendientes_de_sustituir": [
@@ -108,6 +113,11 @@
    "video_id": "E60ES-AC-20261117",
    "sala": "faro-maquinas-01",
    "firma": "chapa|rejilla|fluorescente"
+  },
+  {
+   "video_id": "E60ES-AC-20261120",
+   "sala": "rebotica-boticario-01",
+   "firma": "azulejo|losas|velas"
   }
  ]
 }
