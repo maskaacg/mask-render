@@ -21,7 +21,7 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 | Mar 17 | Acertijo 9:16 «Los engranajes del faro» (sala propia, E60CortoSala) | E60ES-AC-20261117 | Entregado v3 (lun 16 16:43, Telegram, 95 s, pendiente de APROBAR; sustituye a «Las tres cajas fuertes»). Fuera del plazo de 48 h |
 | Mié 18 | Escape room 2 «El museo que miente» (16:9, E60EscapeMuseo) + avance 9:16 (E60AvanceMuseo) | E60ES-ER-002-MUSEO / -AVANCE | v1 RECHAZADAS el lun 16 (gusta la idea). Entregados: museo v2 con «Las dos velas» (10:52) y avance v3 (87 s), lun 16, pendientes de APROBAR (avance v2 anulado: voz antigua) |
 | Jue 19 | Acertijo 9:16 «Las cerillas del relojero» (sala propia, E60CortoSala) | E60ES-AC-20261119 | v1 RECHAZADA el lun 16. Entregado v2 (lun 16 15:23, Telegram, 88,6 s, pendiente de APROBAR) |
-| Vie 20 | Acertijo independiente 9:16 | E60ES-AC-20261120 | Pendiente |
+| Vie 20 | Acertijo 9:16 «Las jarras del boticario» (sala propia, E60CortoSala + Jarras3D) | E60ES-AC-20261120 | Entregado v1 (mar 17, Telegram, 97,3 s, pendiente de APROBAR; sustituye a la ficha 2D «Las cuatro velas») |
 | Sáb 21 | Serie, capítulo 1 (16:9, voz «Chatterbox expresiva») + avance 9:16 | E60ES-S001-E01 / -AVANCE | Pendiente (re-voz) |
 | Dom 22 | Acertijo independiente 9:16 | E60ES-AC-20261122 | Pendiente |
 
