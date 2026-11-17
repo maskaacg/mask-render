@@ -19,6 +19,8 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
+    outputs:
+      encargo_id: ${{ steps.salida.outputs.encargo_id }}
     timeout-minutes: 120
     defaults:
       run:
@@ -114,6 +116,9 @@ jobs:
           VB=$(python3 -c "print(max(300, min(2500, int(40*8*1000/float('$DUR')) - 128)))")
           ffmpeg -hide_banner -loglevel error -y -i final/$ID.mp4 -vf "scale='if(gt(iw,ih),854,480)':-2" -c:v libx264 -preset veryfast -b:v ${VB}k -maxrate $((VB*12/10))k -bufsize $((VB*2))k -c:a aac -b:a 96k -movflags +faststart final/$ID-revision.mp4
           ffmpeg -hide_banner -loglevel error -y -i final/$ID.mp4 -vf "fps=1/4,scale=270:-2,tile=6x3" -frames:v 1 -q:v 4 final/$ID-hoja-01.jpg || true
+      - name: ID para el reproductor de la app
+        id: salida
+        run: echo "encargo_id=$ENCARGO_ID" >> "$GITHUB_OUTPUT"
       - name: Versión de revisión
         uses: actions/upload-artifact@v4
         with:
@@ -147,3 +152,29 @@ jobs:
             remotion/final/*.qa.json
           if-no-files-found: error
           retention-days: 3
+
+  # Reproductor de MASK GROUP CONTROL (decisión del propietario, 17/11/2026): la copia de REVISIÓN
+  # (480/854 px, ~40 MB) se sube como release pública para verla en la app. El máster no se sube.
+  # Trabajo aparte con permiso de escritura: el render sigue siendo de solo lectura.
+  revision-app:
+    needs: render
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      ID: ${{ needs.render.outputs.encargo_id }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.render.outputs.encargo_id }}-revision
+          path: rev
+      - name: Publicar copia de revisión como release
+        run: |
+          echo "$ID" | grep -Eq '^[A-Za-z0-9._-]{4,80}$' || { echo "ID no válido"; exit 1; }
+          F="rev/$ID-revision.mp4"; test -s "$F"
+          SHA=$(sha256sum "$F" | cut -d' ' -f1)
+          gh release view "revision-$ID" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 && { echo "Ya existe"; exit 0; }
+          gh release create "revision-$ID" "$F" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease \
+            --title "Revisión $ID" --notes "Copia de revisión para MASK GROUP CONTROL. No es el máster ni una publicación. SHA-256 copia: $SHA"
