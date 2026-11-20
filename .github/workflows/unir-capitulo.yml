@@ -13,6 +13,8 @@ permissions:
 jobs:
   unir:
     runs-on: ubuntu-latest
+    outputs:
+      id: ${{ steps.enc.outputs.id }}
     timeout-minutes: 45
     defaults:
       run:
@@ -107,3 +109,28 @@ jobs:
             remotion/final/${{ steps.enc.outputs.id }}.qa.json
           if-no-files-found: error
           retention-days: 3
+
+  # Copia de REVISIÓN como release pública para verla en MASK GROUP CONTROL (igual que render-remotion).
+  # El máster no se sube. Trabajo aparte con permiso de escritura.
+  revision-app:
+    needs: unir
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      ID: ${{ needs.unir.outputs.id }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.unir.outputs.id }}-revision
+          path: rev
+      - name: Publicar copia de revisión como release
+        run: |
+          echo "$ID" | grep -Eq '^[A-Za-z0-9._-]{4,80}$' || { echo "ID no válido"; exit 1; }
+          F="rev/$ID-revision.mp4"; test -s "$F"
+          SHA=$(sha256sum "$F" | cut -d' ' -f1)
+          gh release view "revision-$ID" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 && { echo "Ya existe"; exit 0; }
+          gh release create "revision-$ID" "$F" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease \
+            --title "Revisión $ID" --notes "Copia de revisión para MASK GROUP CONTROL. No es el máster ni una publicación. SHA-256 copia: $SHA"
