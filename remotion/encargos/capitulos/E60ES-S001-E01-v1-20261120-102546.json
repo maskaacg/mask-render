@@ -1,0 +1,11 @@
+{
+ "encargo_id": "E60ES-S001-E01-v1-20261120-102546",
+ "composicion": "E60Capitulo",
+ "ficha": "fichas/E60-S01-C01.json",
+ "tramos": 8,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "video_id": "E60ES-S001-E01",
+ "version": "v1",
+ "solicitado_por": "Claude (productor ENIGMA 60)",
+ "fecha": "2026-11-20T10:25:55+01:00"
+}
