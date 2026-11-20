@@ -148,7 +148,7 @@
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 20/11/2026: código único 854 entre las 720 combinaciones de 3 cifras distintas y cada placa es necesaria (tools/verificar_caja_20261122.py). Familia codigo_por_pistas no usada (verificar_puzles_unicos.py). Sustituye a la ficha 2D «Los símbolos del espejo» (BORRADOR, formato antiguo).",
+ "auditoria": "Claude 20/11/2026: código único 854 entre las 720 combinaciones de 3 cifras distintas y cada placa es necesaria (tools/verificar_caja_20261122.py). Familia codigo_por_pistas no usada (verificar_puzles_unicos.py). Sustituye a la ficha 2D «Los símbolos del espejo» (BORRADOR, formato antiguo). Render run 44711610023: QA técnica PASS (101,5 s, -14,4 LUFS, pico -1,4 dBFS). QA visual (Claude 20/11): hoja de contactos cada 4 s y fotogramas de prueba revisados: las 5 placas legibles y sin tapar durante la cuenta atrás, ruedas 8-5-4 en el orden narrado, paleta latón coherente, un solo panel a la vez, subtítulos en su franja.",
  "motor_voz": "chatterbox",
  "version": "v1",
  "historial": [

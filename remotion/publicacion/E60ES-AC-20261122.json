@@ -6,8 +6,8 @@
  "formato": "TikTok / Reels / Shorts 9:16",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": null,
- "run_id": null,
+ "encargo_master": "E60ES-AC-20261122-v1-20261120-103234",
+ "run_id": 44711610023,
  "plataformas": [
   "tiktok",
   "youtube",
@@ -44,7 +44,7 @@
  "tiktok": {
   "privacy_level": "PUBLIC_TO_EVERYONE",
   "is_aigc": true,
-  "cover_timestamp_ms": null
+  "cover_timestamp_ms": 52000
  },
  "facebook": {
   "facebook_media_type": "REELS",
@@ -57,6 +57,6 @@
    "corrector": "Claude (productor automático)"
   }
  ],
- "sha256": null,
- "estado_aprobacion": "pendiente de render"
+ "sha256": "20a8b106685d4e2db66d5d266292f21d36321a7c6e4e0a9c9977652c8229f893",
+ "estado_aprobacion": "v1 entregada a Telegram (20/11), pendiente de APROBAR"
 }

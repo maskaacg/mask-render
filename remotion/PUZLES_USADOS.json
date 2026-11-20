@@ -55,6 +55,11 @@
    "video_id": "E60ES-AC-20261120",
    "puzle": "Las jarras del boticario",
    "familia": "trasvase_jarras"
+  },
+  {
+   "video_id": "E60ES-AC-20261122",
+   "puzle": "La caja del cartógrafo",
+   "familia": "codigo_por_pistas"
   }
  ],
  "pendientes_de_sustituir": [
@@ -118,6 +123,11 @@
    "video_id": "E60ES-AC-20261120",
    "sala": "rebotica-boticario-01",
    "firma": "azulejo|losas|velas"
+  },
+  {
+   "video_id": "E60ES-AC-20261122",
+   "sala": "camarote-cartografo-01",
+   "firma": "tablas|tablones|lampara"
   }
  ]
 }
