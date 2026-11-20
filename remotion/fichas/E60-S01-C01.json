@@ -429,7 +429,7 @@
    "texto": "Próximo capítulo: El mamparo. Se abre el sábado que viene; activa la campanita para bajar el primero."
   }
  ],
- "auditoria": "Claude 20/11/2026: soluciones únicas comprobadas por código (tools/verificar_s001_e01.py: P1 91; P2 RADAR; P3 8-4-7; P4 2:45). Familias comprobadas con tools/verificar_puzles_unicos.py. QA visual: pendiente de fotogramas de prueba y hoja de contactos.",
+ "auditoria": "Claude 20/11/2026: soluciones únicas comprobadas por código (tools/verificar_s001_e01.py: P1 91; P2 RADAR; P3 8-4-7; P4 2:45); familias comprobadas con verificar_puzles_unicos.py. Voz Chatterbox: 61 líneas, Whisper OK salvo n31 («847» = «ocho, cuatro, siete», comprobada a mano). Máster run 44725264886: QA técnica PASS (620,4 s, -14,5 LUFS, movimiento mínimo 0,119). QA visual (Claude): fotogramas de prueba de cada puzle y hojas de contactos revisadas; colores coherentes, paneles opacos, cuaderno legible como «16» y «91» girado. Nota: en el cambio entre explicación y fichas hay un fundido de <0,5 s donde coinciden dos paneles.",
  "motor_voz": "chatterbox",
  "pantalla_final_s": 20,
  "version": "v1",

@@ -7,8 +7,8 @@
  "formato": "YouTube 16:9",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": null,
- "run_id": null,
+ "encargo_master": "E60ES-S001-E01-v1-20261120-120928",
+ "run_id": 44725264886,
  "plataformas": [
   "youtube"
  ],
@@ -17,7 +17,7 @@
  "miniatura": "remotion/publicacion/E60ES-S001-E01_miniatura.jpg",
  "titulo": "La sala de lastre || Profundidad 600 #1",
  "youtube_title": "La sala de lastre || Profundidad 600 #1",
- "youtube_description": "Despiertas con agua helada por los tobillos, a seiscientos metros de profundidad, en la sala de lastre de un submarino. No hay nadie más. Una escotilla sellada, el agua que sigue subiendo… y cuatro cerraduras entre tú y la salida.\n\nLos 4 acertijos:\n📓 El cuaderno boca abajo: en la tapa se lee 16, pero el cuaderno flota del revés. ¿Qué número abre el candado?\n🗄️ Los tres cajones: sonar, rotor y radar. ¿En qué cajón está el fusible?\n🎛️ Los manómetros: A es el doble de B, C es B más tres y entre los tres suman 19. ¿Qué marca cada uno?\n🕰️ El reloj parado: se detuvo a las 3:10. ¿A qué hora sonó la alarma?\n\nTienes 20 segundos en cada puzle antes de la solución. Deja tus respuestas en los comentarios: ¿cuántas cerraduras abriste sin mirar la solución?\n\nY si ves algo violeta en esta sala… apúntalo. Lo vas a necesitar.\n\n{CAPITULOS}\n\nPrimer capítulo de «Profundidad 600», la primera serie de ENIGMA 60. ¿Te perdiste los escape rooms? «La torre del archivo» y «El museo que miente» están en el canal. Próximo capítulo: «El mamparo», el sábado que viene. Suscríbete y activa la campanita para bajar el primero.\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#acertijos #escaperoom #serie #enigmas #enigma60",
+ "youtube_description": "Despiertas con agua helada por los tobillos, a seiscientos metros de profundidad, en la sala de lastre de un submarino. No hay nadie más. Una escotilla sellada, el agua que sigue subiendo… y cuatro cerraduras entre tú y la salida.\n\nLos 4 acertijos:\n📓 El cuaderno boca abajo: en la tapa se lee 16, pero el cuaderno flota del revés. ¿Qué número abre el candado?\n🗄️ Los tres cajones: sonar, rotor y radar. ¿En qué cajón está el fusible?\n🎛️ Los manómetros: A es el doble de B, C es B más tres y entre los tres suman 19. ¿Qué marca cada uno?\n🕰️ El reloj parado: se detuvo a las 3:10. ¿A qué hora sonó la alarma?\n\nTienes 20 segundos en cada puzle antes de la solución. Deja tus respuestas en los comentarios: ¿cuántas cerraduras abriste sin mirar la solución?\n\nY si ves algo violeta en esta sala… apúntalo. Lo vas a necesitar.\n\n0:00 La sala de lastre\n0:54 Puzle 1 · El cuaderno boca abajo\n2:53 Puzle 2 · Los tres cajones\n5:06 Puzle 3 · Los manómetros\n6:51 Puzle 4 · El reloj parado\n8:52 Una voz en el altavoz\n\nPrimer capítulo de «Profundidad 600», la primera serie de ENIGMA 60. ¿Te perdiste los escape rooms? «La torre del archivo» y «El museo que miente» están en el canal. Próximo capítulo: «El mamparo», el sábado que viene. Suscríbete y activa la campanita para bajar el primero.\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#acertijos #escaperoom #serie #enigmas #enigma60",
  "tags": [
   "acertijos",
   "acertijos de lógica",
@@ -43,9 +43,13 @@
    "version": "v1",
    "motivo_cambio": "Primera entrega del capítulo 1: ficha rehecha con 4 puzles de familias no usadas, voz Chatterbox expresiva, portada en vídeo, suscripción integrada, campanita y pantalla final de 20 s",
    "corrector": "Claude"
+  },
+  {
+   "version": "v1",
+   "motivo_cambio": "Primer máster (run 44710675189) descartado por QA técnica FAIL (segundos congelados); re-render con más deriva de cámara y parpadeo de luz: run 44725264886 QA PASS. Capítulos medidos en el máster final.",
+   "corrector": "Claude"
   }
  ],
- "estado_aprobacion": "pendiente de APROBAR (Telegram)",
- "sha256": null,
- "nota": "Capítulos de la descripción ({CAPITULOS}) a medir en el máster final."
+ "estado_aprobacion": "v1 entregada a Telegram (20/11), pendiente de APROBAR",
+ "sha256": "6262e5817bdc85cdecfe98bd887bc9d63c4935c2496edd3d76b585fd74d79c3c"
 }

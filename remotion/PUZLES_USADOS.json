@@ -60,28 +60,29 @@
    "video_id": "E60ES-AC-20261122",
    "puzle": "La caja del cartógrafo",
    "familia": "codigo_por_pistas"
-  }
- ],
- "pendientes_de_sustituir": [
-  {
-   "video_id": "E60ES-S001-E01",
-   "puzle": "P2 Los cajones mal etiquetados",
-   "familia": "etiquetas_todas_falsas",
-   "repite": "E60ES-ER-002-MUSEO P1"
   },
   {
    "video_id": "E60ES-S001-E01",
-   "puzle": "P4 La báscula de trimado",
-   "familia": "balanza_ecuacion",
-   "repite": "E60ES-ER-002-MUSEO P3 (misma balanza) — revisar"
+   "puzle": "P1 El cuaderno boca abajo",
+   "familia": "rotacion_180_digitos"
   },
   {
    "video_id": "E60ES-S001-E01",
-   "puzle": "P6 El volante de la escotilla",
-   "familia": "sistema_ecuaciones",
-   "repite": "P3 Los manómetros del mismo capítulo"
+   "puzle": "P2 Los tres cajones",
+   "familia": "palindromo"
+  },
+  {
+   "video_id": "E60ES-S001-E01",
+   "puzle": "P3 Los manómetros",
+   "familia": "sistema_ecuaciones"
+  },
+  {
+   "video_id": "E60ES-S001-E01",
+   "puzle": "P4 El reloj parado",
+   "familia": "aritmetica_horaria"
   }
  ],
+ "pendientes_de_sustituir": [],
  "sin_programar": {
   "nota": "Fichas antiguas sin fecha: si se reutilizan, deben pasar el verificador.",
   "E60-2026-11-18-corto lentes": "sistema_ecuaciones",
