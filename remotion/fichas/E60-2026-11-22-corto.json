@@ -6,55 +6,237 @@
  "ancho": 1080,
  "alto": 1920,
  "fps": 30,
- "titulo": "Los símbolos del espejo",
- "numero": 7,
- "escena": "espejos",
+ "titulo": "La caja del cartógrafo",
+ "numero": 6,
+ "escena": "sala_propia",
  "modo": "puzle",
  "pensar_s": 15,
- "tinte": "#7a9a7a",
+ "tinte": "#b08a46",
  "puzle": {
-  "tipo": "espejos",
-  "digitos": [
-   1,
-   2,
-   3
+  "tipo": "caja_fuerte",
+  "mecanica": "DEDUCCION",
+  "familia": "codigo_por_pistas",
+  "placas": [
+   {
+    "cifras": [
+     7,
+     6,
+     0
+    ],
+    "texto": "NINGUNA"
+   },
+   {
+    "cifras": [
+     8,
+     0,
+     6
+    ],
+    "texto": "1 BIEN COLOCADA"
+   },
+   {
+    "cifras": [
+     5,
+     4,
+     3
+    ],
+    "texto": "2 MAL COLOCADAS"
+   },
+   {
+    "cifras": [
+     1,
+     4,
+     7
+    ],
+    "texto": "1 MAL COLOCADA"
+   },
+   {
+    "cifras": [
+     5,
+     1,
+     6
+    ],
+    "texto": "1 MAL COLOCADA"
+   }
   ],
-  "respuesta": 4
+  "pistas": [
+   [
+    0,
+    0
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    1
+   ]
+  ],
+  "respuesta": "854",
+  "cifras_distintas": true
  },
  "solucion_reserva": null,
  "lineas": [
   {
+   "id": "l01",
    "fase": "intro",
-   "texto": "En la pared del archivo, tres símbolos grabados en piedra.",
-   "id": "l01"
+   "texto": "Medianoche en el camarote del cartógrafo. El barco cruje, y los mapas tiemblan clavados en las paredes de madera."
   },
   {
+   "id": "l02",
+   "fase": "intro",
+   "texto": "Sobre la mesa, una caja fuerte de latón con tres ruedas numeradas. Dentro está la llave de la puerta."
+  },
+  {
+   "id": "l03",
+   "fase": "intro",
+   "texto": "Delante, cinco placas grabadas: los intentos fallidos del cartógrafo, y lo que la caja le respondió a cada uno."
+  },
+  {
+   "id": "l04",
    "fase": "enunciado",
-   "texto": "Parecen dibujos, pero siguen una regla.",
-   "id": "l02"
+   "texto": "Siete, seis, cero: ninguna cifra correcta. Ocho, cero, seis: una correcta y bien colocada. Cinco, cuatro, tres: dos correctas, pero mal colocadas."
   },
   {
+   "id": "l05",
    "fase": "enunciado",
-   "texto": "¿Cómo es el cuarto símbolo?",
-   "id": "l03"
+   "texto": "Uno, cuatro, siete: una correcta, mal colocada. Cinco, uno, seis: una correcta, mal colocada. Las tres cifras del código son distintas."
   },
   {
+   "id": "l06",
+   "fase": "enunciado",
+   "texto": "¿Cuál es el código? Escríbelo en los comentarios."
+  },
+  {
+   "id": "l07",
    "fase": "solucion",
-   "texto": "Son números pegados a su reflejo. Uno, dos, tres…",
-   "id": "l04"
+   "texto": "Ocho, cinco, cuatro."
   },
   {
+   "id": "l08",
    "fase": "solucion",
-   "texto": "Así que el cuarto es un cuatro junto a su imagen en el espejo.",
-   "id": "l05"
+   "texto": "Siete, seis, cero: nada. Fuera esas tres cifras. Entonces, en ocho, cero, seis, la bien colocada es el ocho: va primero."
   },
   {
+   "id": "l09",
+   "fase": "solucion",
+   "texto": "¿Y el uno? Si estuviera, cumpliría él solo dos placas, y en cinco, cuatro, tres solo quedaría el tres. Faltaría una cifra. Así que entran el cuatro y el cinco."
+  },
+  {
+   "id": "l10",
+   "fase": "solucion",
+   "texto": "El cuatro ya estuvo en medio y estaba mal: va al final. Y el cinco, en medio. Ocho, cinco, cuatro: la puerta de la caja se abre."
+  },
+  {
+   "id": "l11",
    "fase": "cta",
-   "texto": "¿Lo has resuelto? Escríbelo en los comentarios. Mañana, otro enigma.",
-   "id": "l06"
+   "texto": "¿Lo abriste antes de la solución? Cuéntalo en los comentarios."
+  },
+  {
+   "id": "l12",
+   "fase": "cta",
+   "texto": "Mañana, otra habitación y otro enigma."
   }
  ],
  "estado": "BORRADOR_PENDIENTE_APROBACION",
  "aviso_ia": "Contenido creado con ayuda de IA",
- "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+ "auditoria": "Claude 20/11/2026: código único 854 entre las 720 combinaciones de 3 cifras distintas y cada placa es necesaria (tools/verificar_caja_20261122.py). Familia codigo_por_pistas no usada (verificar_puzles_unicos.py). Sustituye a la ficha 2D «Los símbolos del espejo» (BORRADOR, formato antiguo).",
+ "motor_voz": "chatterbox",
+ "version": "v1",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-20",
+   "cambios": "Producción nueva (productor Claude): «La caja del cartógrafo», sala propia 3D (camarote de madera con lámpara), caja fuerte y placas en 3D (CajaFuerte3D). Comentarios del 16/11 («la primera fácil, la cuarta muy difícil»): dificultad media y explicación paso a paso."
+  }
+ ],
+ "duracion_objetivo_s": 100,
+ "sala": {
+  "id": "camarote-cartografo-01",
+  "nombre": "El camarote del cartógrafo",
+  "ancho": 5.0,
+  "fondo": 5.8,
+  "alto": 2.7,
+  "pared": {
+   "patron": "tablas",
+   "color": "#7a5434",
+   "color2": "#3a2414"
+  },
+  "suelo": {
+   "patron": "tablones",
+   "color": "#5a3e26",
+   "color2": "#2a1a10"
+  },
+  "techo": "#1a120c",
+  "luz": {
+   "tipo": "lampara",
+   "color": "#ffd9a0",
+   "intensidad": 1.1
+  },
+  "niebla": "#0b0806",
+  "puzle_en": "mesa",
+  "mesa": {
+   "color": "#5a3a22"
+  },
+  "atrezo": [
+   {
+    "tipo": "mapa",
+    "pared": "N",
+    "x": -1.4,
+    "color": "#c9b48a"
+   },
+   {
+    "tipo": "mapa",
+    "pared": "N",
+    "x": 1.4,
+    "color": "#bfa676"
+   },
+   {
+    "tipo": "ventana",
+    "pared": "E",
+    "x": -0.8,
+    "color": "#0e1630"
+   },
+   {
+    "tipo": "estanteria",
+    "pared": "O",
+    "x": -0.6,
+    "color": "#3a2616"
+   },
+   {
+    "tipo": "reloj",
+    "pared": "O",
+    "x": 1.2
+   },
+   {
+    "tipo": "barril",
+    "pared": "S",
+    "x": 1.8,
+    "escala": 0.7,
+    "color": "#4a3020"
+   },
+   {
+    "tipo": "alfombra",
+    "x": 0,
+    "z": 2.0,
+    "escala": 0.9,
+    "color": "#2a3a5a"
+   },
+   {
+    "tipo": "caja",
+    "x": -1.9,
+    "z": 2.2,
+    "escala": 0.6,
+    "color": "#5a4028"
+   }
+  ]
+ }
 }

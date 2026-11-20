@@ -7,6 +7,7 @@ import {Sala, SalaCorto3D, EstadoSalaCorto, planosSala} from './SalaCorto3D';
 import {PUZLES} from '../plano/puzles';
 import {Props, planificar} from '../shorts/timeline';
 import {AGUA, estadoTrasvases} from './Jarras3D';
+import {PlacaPista} from './CajaFuerte3D';
 
 cargarFuentes();
 
@@ -29,6 +30,11 @@ export const CortoSala: React.FC<Props> = (props) => {
 	const sol = F.solucion.inicio;
 	const S = ficha.sala;
 	const PL = planosSala(S);
+	// caja fuerte: plano más cercano para que las placas se lean en vertical
+	if (ficha.puzle.tipo === 'caja_fuerte') {
+		const y0 = PL.puzle.mira[1];
+		PL.puzle = {pos: [0, y0 + 1.7, PL.puzle.mira[2] + 1.95], mira: [0, y0 + 0.05, PL.puzle.mira[2] + 0.05], fov: 64};
+	}
 	const l2 = plan.lineas[1]?.inicio ?? enun;
 	const l3 = plan.lineas[2]?.inicio ?? enun;
 	// cámara: entrada → detalle de la sala → el puzle → la puerta que se abre al final
@@ -45,12 +51,13 @@ export const CortoSala: React.FC<Props> = (props) => {
 	const dentro = Math.max(0, t - ev[k][0]);
 	const dir = [0, 1, 2].map((i) => mira[i] - pos[i]);
 	const largo = Math.hypot(dir[0], dir[1], dir[2]) || 1;
-	const avance = Math.min(0.9, dentro * 0.045);
+	// caja fuerte: el avance se limita para que las cinco placas sigan en cuadro mientras se piensa
+	const avance = Math.min(ficha.puzle.tipo === 'caja_fuerte' && ev[k][1] === 'puzle' ? 0.12 : 0.9, dentro * 0.045);
 	for (let i = 0; i < 3; i++) pos[i] += (dir[i] / largo) * avance;
 	pos[0] += Math.sin(t * 0.6) * 0.03 + Math.sin(t * 0.21) * 0.14;
 	pos[1] += Math.sin(t * 0.47 + 1) * 0.015 + Math.sin(t * 0.13) * 0.06;
 	const tipo = ficha.puzle.tipo;
-	if (!['cerillas', 'engranajes', 'jarras'].includes(tipo)) throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
+	if (!['cerillas', 'engranajes', 'jarras', 'caja_fuerte'].includes(tipo)) throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
 	const vueltas = tipo === 'engranajes' ? interpolate(t, [sol + 0.6, sol + 9], [0, Number(ficha.puzle.vueltas)], {...clamp, easing: io}) : 0;
 	// el mecanismo sigue girando despacio después de la cuenta (no se queda congelado)
 	const inercia = tipo === 'engranajes' ? Math.max(0, t - (sol + 9)) * 0.12 : 0;
@@ -70,7 +77,41 @@ export const CortoSala: React.FC<Props> = (props) => {
 		});
 	}
 	const J = tipo === 'jarras' ? estadoTrasvases(ficha.puzle.capacidades as number[], ficha.puzle.inicial as number[], ficha.puzle.trasvases as [number, number][], kJ) : undefined;
+	// caja fuerte: resalte de cada placa mientras la voz la nombra y ruedas que giran al resolver
+	let cajaFuerte: EstadoSalaCorto['cajaFuerte'];
+	if (tipo === 'caja_fuerte') {
+		const L = Object.fromEntries(plan.lineas.map((l) => [l.id, l]));
+		const luz = [0, 0, 0, 0, 0];
+		const marca = (i: number, a: number, b: number) => (luz[i] = Math.max(luz[i], interpolate(t, [a - 0.2, a + 0.2, b, b + 0.4], [0, 1, 1, 0], clamp)));
+		const trozos = (id: string, placas: number[]) => {
+			const l = L[id];
+			if (!l) return;
+			const d = (l.fin - l.inicio) / placas.length;
+			placas.forEach((pi, j) => marca(pi, l.inicio + j * d, l.inicio + (j + 1) * d));
+		};
+		trozos('l04', [0, 1, 2]);
+		trozos('l05', [3, 4]);
+		trozos('l08', [0, 1]);
+		trozos('l09', [3, 4, 2]);
+		trozos('l10', [3, 2]);
+		const r = (L.l08?.fin ?? sol) - 1.6;
+		const r2 = L.l10?.inicio ?? sol;
+		const fin = L.l10?.fin ?? sol;
+		const cod = String(ficha.puzle.respuesta).split('').map(Number);
+		cajaFuerte = {
+			placas: ficha.puzle.placas as PlacaPista[],
+			ruedas: [
+				interpolate(t, [r, r + 1.4], [0, cod[0]], {...clamp, easing: io}),
+				interpolate(t, [r2 + 2.2, r2 + 3.4], [0, cod[1]], {...clamp, easing: io}),
+				interpolate(t, [r2 + 0.6, r2 + 1.8], [0, cod[2]], {...clamp, easing: io}),
+			],
+			luz,
+			puertaCaja: interpolate(t, [fin - 1.6, fin + 0.2], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)}),
+			aparece: interpolate(t, [l3 - 0.2, l3 + 1.0], [0, 1], clamp),
+		};
+	}
 	const e: EstadoSalaCorto = {
+		cajaFuerte,
 		t,
 		cam: {pos, mira, fov: a.fov + (b.fov - a.fov) * f},
 		puerta: interpolate(t, [plan.total - 3.0, plan.total - 1.2], [0, 1], {...clamp, easing: io}),
