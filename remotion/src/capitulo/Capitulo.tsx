@@ -90,11 +90,13 @@ const camara = (t: number, P: PlanC): EstadoCap['cam'] => {
 	const mira = mix(prev.mira, cur.mira);
 	// empuje lento hacia el objeto mientras dura el plano + deriva continua
 	const sig = ev[k + 1]?.t ?? P.total;
-	const push = interpolate(t, [ev[k].t + ev[k].dur, sig], [0, 0.06], clamp);
+	const push = interpolate(t, [ev[k].t + ev[k].dur, sig], [0, 0.1], clamp);
 	for (let i = 0; i < 3; i++) pos[i] += (mira[i] - pos[i]) * push;
-	pos[0] += Math.sin(t * 0.7) * 0.02;
-	pos[1] += Math.sin(t * 0.53 + 1) * 0.016;
-	mira[0] += Math.sin(t * 0.41 + 2) * 0.025;
+	// deriva continua (balanceo del submarino): v1 20/11 más amplia, la QA marcaba segundos congelados en planos oscuros
+	pos[0] += Math.sin(t * 0.7) * 0.05 + Math.sin(t * 0.23) * 0.04;
+	pos[1] += Math.sin(t * 0.53 + 1) * 0.035;
+	mira[0] += Math.sin(t * 0.41 + 2) * 0.06;
+	mira[1] += Math.sin(t * 0.31 + 0.5) * 0.03;
 	const fov = (prev.fov ?? 52) + ((cur.fov ?? 52) - (prev.fov ?? 52)) * f;
 	return {pos, mira, fov};
 };
@@ -205,6 +207,8 @@ export const Capitulo: React.FC<PropsC> = (props) => {
 	return (
 		<AbsoluteFill style={{background: '#0b0f12', overflow: 'hidden'}}>
 			<SalaCapitulo3D e={e} />
+			{/* parpadeo leve de la luz de emergencia del submarino (blanca cálida, no tiñe objetos): evita segundos congelados en planos oscuros */}
+			<AbsoluteFill style={{background: '#fff4e0', opacity: 0.016 + 0.016 * Math.sin(t * 1.7) + 0.006 * Math.sin(t * 5.3)}} />
 			<AbsoluteFill style={{background: '#dff6ff', opacity: interpolate(t, [M.p3.inicio + 2.6, M.p3.inicio + 2.7, M.p3.inicio + 3.3], [0, 0.3, 0], clamp)}} />
 			<BordeMaqueta16 />
 			<Cabecera16 t={t} temporada={ficha.temporada} capitulo={ficha.capitulo} titulo={ficha.titulo} desde={P.titulo.fin} />

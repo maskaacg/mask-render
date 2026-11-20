@@ -43,7 +43,7 @@ export const TituloCapitulo: React.FC<{t: number; inicio: number; fin: number; t
 	if (o <= 0) return null;
 	const sub = interpolate(t, [inicio + 0.4, inicio + 1.4], [0, 1], clamp);
 	return (
-		<AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', opacity: o, background: `rgba(20,21,26,${(portada ? 0.82 : 0.55) * o})`}}>
+		<AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', opacity: o, background: `rgba(20,21,26,${(portada ? 0.82 : 0.55) * o})`, transform: portada ? undefined : `scale(${1 + 0.04 * interpolate(t, [inicio, fin], [0, 1], clamp)})`}}>
 			<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, letterSpacing: 12, color: E60.cian}}>ENIGMA 60</div>
 			<div style={{fontFamily: SERIF, fontWeight: 800, fontSize: 150, color: E60.blanco, lineHeight: 1.05, marginTop: 18}}>{temporada}</div>
 			<div style={{width: 520 * sub, height: 3, background: E60.plata, margin: '28px 0'}} />
