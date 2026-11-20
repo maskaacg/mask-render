@@ -4,8 +4,9 @@ import {cargarFuentes} from '../style/fonts';
 import {CortinaEngranajes} from '../e60/nucleo';
 import {EstadoCap, SalaCapitulo3D} from './SalaCapitulo3D';
 import {PlanC, PropsC, planificarC} from './plan';
+import {ChipNarrativo, PantallaFinal} from '../escape/EscapeRoom';
 import {
-	Anillo16, BordeMaqueta16, Cabecera16, ExpBalanza, ExpCajas16, ExpCajones, ExpEscalones, ExpIndicador, ExpReloj, Fichas16, Proximo, Recuento,
+	Anillo16, BordeMaqueta16, Cabecera16, ExpCajas16, ExpCajones, ExpGiro, ExpReloj, Fichas16, Proximo, Recuento,
 	RotuloPuzle, Subtitulo16, TituloCapitulo, PortadaEnVideo,
 } from './ui';
 
@@ -44,9 +45,7 @@ const PLANO_DE: Record<string, string> = {
 	n06: 'caja', n07: 'cuaderno', r01: 'caja', n12: 'cuaderno', n14: 'caja',
 	x02: 'sala', n15: 'tanques', n16: 'cuadro', n17: 'cajones', n24: 'cuadro', x03: 'tanques',
 	n25: 'tanques', n27: 'AB', n28: 'C', n29: 'placa', r03: 'tanques', n30: 'tanques', n33: 'valvulas',
-	t01: 'sala', t02: 'bascula',
-	n34: 'armario', n36: 'reloj', n41: 'armario',
-	n42: 'dial', n43: 'armario', n44: 'dial', n45: 'escotilla', n48: 'dial', k05: 'escotilla',
+	n34: 'armario', n36: 'reloj', n41: 'armario', n49: 'escotilla',
 	n50: 'pasillo', n52: 'altavoz', n54: 'final',
 };
 
@@ -54,29 +53,22 @@ const PISTA_DE: Record<string, string[]> = {
 	n06: ['caja'], n07: ['caja'], n08: ['caja'], n09: ['caja'], n10: ['caja'], r01: ['caja'],
 	n16: ['cuadro'], n17: ['cajones'], n18: ['cajones'], n19: ['cajones'], r02: ['cajones'],
 	n27: ['A', 'B'], n28: ['C', 'B'], n29: ['placa'], r03: ['A', 'B', 'C'],
-	t02: ['bascula'], t03: ['bascula'], t04: ['bascula'], t05: ['bascula'],
 	n34: ['armario'], n35: ['armario'], n36: ['reloj'], n37: ['reloj'], r04: ['reloj'],
-	n42: ['indicador'], n43: ['armario'], n44: ['indicador'], n45: ['indicador'], r05: ['indicador'],
 };
 
 const FICHAS: Record<string, string> = {
-	n09: 'Min 1–5: 2 · 6 · 12 · 20 · 30 m',
-	n10: 'Cada minuto baja 2 m más',
-	n17: 'LLAVE · FUSIBLE · LLAVE Y FUSIBLE',
-	n18: 'Todas las etiquetas mienten',
-	n19: 'Un cajón, un solo objeto',
+	n09: 'En la tapa se lee: 16',
+	n10: 'El cuaderno flota boca abajo',
+	n17: 'Arriba SONAR · medio ROTOR · abajo RADAR',
+	n18: 'Igual del derecho y del revés · no es el del medio',
+	n19: 'Solo puedes forzar un cajón',
 	n27: 'A = 2 × B',
 	n28: 'C = B + 3',
 	n29: 'A + B + C = 19',
-	t03: 'Izquierda: lingote de 7 kg',
-	t04: 'Pesas: 1 · 3 · 9 kg',
 	n36: 'El reloj se paró a las 3:10',
 	n37: 'Inundación 45 min antes · alarma 20 min después',
-	n43: 'Derecha +3 · Izquierda −2',
-	n44: 'De 0 a 10, nunca bajo 0',
-	n45: 'Máximo 5 vueltas',
 };
-const BLOQUES = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
+const BLOQUES = ['p1', 'p2', 'p3', 'p5']; // v1 20/11: 4 puzles (p4 báscula y p6 volante retirados por repetir familia)
 
 const camara = (t: number, P: PlanC): EstadoCap['cam'] => {
 	const ev: {t: number; plano: string; dur: number}[] = [{t: 0, plano: 'suelo', dur: 0.1}];
@@ -121,8 +113,8 @@ export const Capitulo: React.FC<PropsC> = (props) => {
 	const linterna = tr(T.n14.inicio + 0.8, T.n14.inicio + 1.6, 0, 1);
 	const caja = tr(M.p1.inicio + 0.6, M.p1.inicio + 1.8, 0, 1, Easing.out(Easing.back(1.3)));
 	const linternaEnCaja = caja > 0 ? tr(T.n14.inicio + 0.6, T.n14.inicio + 1.0, 1, 0) : 0;
-	const cajon = tr(T.n22.inicio + 1.8, T.n22.inicio + 2.8, 0, 1, Easing.out(Easing.cubic));
-	const fusible = tr(M.p2.inicio + 0.3, M.p2.inicio + 2.6, 0, 1);
+	const cajon = tr(M.p2.inicio - 0.2, M.p2.inicio + 0.6, 0, 1, Easing.out(Easing.cubic));
+	const fusible = tr(M.p2.inicio + 0.7, M.p2.inicio + 2.6, 0, 1);
 	const energia = tr(M.p2.inicio + 2.7, M.p2.inicio + 3.4, 0, 1);
 	const chispa = interpolate(t, [M.p2.inicio + 2.6, M.p2.inicio + 2.7, M.p2.inicio + 3.2], [0, 1, 0], clamp);
 	const sol3 = T.n31.inicio;
@@ -130,25 +122,22 @@ export const Capitulo: React.FC<PropsC> = (props) => {
 	const baila = (i: number) => 5 + 3.8 * Math.sin(t * (1.7 + i * 0.6) + i * 2) + 1.2 * Math.sin(t * (7.3 + i) + i);
 	const agujas = [8, 4, 7].map((r, i) => (baila(i) * (1 - asiento) + r * asiento) * energia) as EstadoCap['agujas'];
 	const valv = (i: number, r: number) => tr(M.p3.inicio + 0.3 + i * 0.8, M.p3.inicio + 1.0 + i * 0.8, 0, -r * 0.62, Easing.out(Easing.back(1.5)));
-	const soplado = interpolate(t, [M.p3.inicio + 2.6, M.p3.inicio + 2.9, T.t01.inicio, T.t02.inicio], [0, 1, 1, 0], clamp);
+	const soplado = interpolate(t, [M.p3.inicio + 2.6, M.p3.inicio + 2.9, M.p3.fin, M.p3.fin + 2.0], [0, 1, 1, 0], clamp);
 	const agua = interpolate(t, [0, M.p3.inicio + 3], [-1.64, -1.34], clamp);
-	const inclinacion = interpolate(t, [M.p3.inicio + 3.0, M.p3.inicio + 4.5, M.p4.inicio + 1.0, M.p4.inicio + 3.0], [0, 0.055, 0.055, 0], {...clamp, easing: io});
-	const s4 = T.t07.inicio;
-	const pesas: EstadoCap['pesas'] = [tr(s4 + 2.6, s4 + 3.8, 0, 1), tr(s4 + 0.4, s4 + 1.6, 0, 1), tr(s4 + 1.5, s4 + 2.7, 0, 1)];
-	const torque = 7 + 3 * pesas[1] - 9 * pesas[2] - 1 * pesas[0];
-	const brazo = Math.max(-0.3, Math.min(0.3, (0.24 * torque) / 7)) + Math.sin(t * 2.1) * 0.006;
+	// el suelo se inclina al soltar el lastre y vuelve a nivelarse durante la frase de la acción
+	const inclinacion = interpolate(t, [M.p3.inicio + 3.0, M.p3.inicio + 4.5, M.p3.fin - 1.0, M.p3.fin + 1.5], [0, 0.055, 0.055, 0], {...clamp, easing: io});
+	const pesas: EstadoCap['pesas'] = [0, 0, 0];
+	const brazo = 0;
 	const n40 = T.n40;
 	const relojMin = interpolate(t, [n40.inicio + 0.3, n40.inicio + 0.45 * (n40.fin - n40.inicio), n40.inicio + 0.55 * (n40.fin - n40.inicio), n40.fin - 0.3], [190, 145, 145, 165], {...clamp, easing: io});
 	const tv = n40.inicio + 0.45 * (n40.fin - n40.inicio);
 	const violeta = interpolate(t, [tv - 0.2, tv, tv + 1.4, tv + 1.9], [0, 1, 1, 0], clamp);
 	const armario = tr(M.p5.inicio + 0.6, M.p5.inicio + 2.0, 0, 1, Easing.out(Easing.cubic));
-	const pasos6 = [0, 3, 6, 9, 12, 10];
-	const i6 = M.p6.inicio + 0.2;
-	let indicador = 0;
-	for (let k = 1; k < pasos6.length; k++) indicador += (pasos6[k] - pasos6[k - 1]) * tr(i6 + (k - 1) * 0.65, i6 + (k - 1) * 0.65 + 0.5, 0, 1);
-	const escotilla = tr(T.n49.inicio + 0.3, T.n49.inicio + 2.2, 0, 1, Easing.out(Easing.cubic));
+	// palanca de emergencia: el volante gira solo y la escotilla cede
+	const indicador = tr(T.n49.inicio + 0.2, T.n49.inicio + 2.4, 0, 10);
+	const escotilla = tr(T.n49.fin - 1.6, T.n49.fin + 0.6, 0, 1, Easing.out(Easing.cubic));
 	const altavoz = interpolate(t, [T.n52.inicio - 1.2, T.n52.inicio - 0.2, T.n53.fin + 0.3, T.n53.fin + 1.2], [0, 1, 1, 0], clamp);
-	const alarma = interpolate(t, [M.p4.inicio + 2.0, M.p4.inicio + 3.5, T.n50.inicio, T.n50.inicio + 2], [1, 0.45, 0.45, 0.2], clamp);
+	const alarma = interpolate(t, [M.p3.fin, M.p3.fin + 1.5, T.n50.inicio, T.n50.inicio + 2], [1, 0.45, 0.45, 0.2], clamp);
 
 	// luz de pista cian
 	const pista: Record<string, number> = {};
@@ -159,7 +148,7 @@ export const Capitulo: React.FC<PropsC> = (props) => {
 		const v = interpolate(t, [l.inicio - 0.3, l.inicio, l.fin + 0.4, l.fin + 0.9], [0, 1, 1, 0], clamp);
 		objs.forEach((o, j) => sube(o, j === 0 ? v : v * 0.6));
 	}
-	const enPensar: Record<string, string[]> = {p1: ['caja'], p2: ['cajones'], p3: ['A', 'B', 'C'], p4: ['bascula'], p5: ['reloj'], p6: ['indicador']};
+	const enPensar: Record<string, string[]> = {p1: ['caja'], p2: ['cajones'], p3: ['A', 'B', 'C'], p5: ['reloj']};
 	for (const b of BLOQUES) {
 		const pe = P.pensar[b];
 		const v = interpolate(t, [pe.inicio, pe.inicio + 0.5, pe.fin, pe.fin + 0.5], [0, 0.55, 0.55, 0], clamp);
@@ -174,21 +163,17 @@ export const Capitulo: React.FC<PropsC> = (props) => {
 	let guante: EstadoCap['guante'] = {visible: 0, pos: [0, 0, 0], rot: [0, 0, 0]};
 	const gGancho = interpolate(t, [0.5, 1.2, T.n02.fin, T.n02.fin + 0.8], [0, 1, 1, 0], clamp);
 	const g1 = w(M.p1.inicio + 0.2, M.p1.inicio + 2.0);
-	const g2 = w(T.n22.inicio + 1.5, M.p2.inicio + 2.8);
+	const g2 = w(M.p2.inicio - 0.3, M.p2.inicio + 2.8);
 	const g3 = w(M.p3.inicio, M.p3.inicio + 2.6);
-	const g4 = w(s4 + 0.2, s4 + 3.9);
-	const g6 = w(M.p6.inicio, M.p6.inicio + 3.6);
+	const g6 = w(T.n49.inicio, T.n49.inicio + 2.6);
 	if (gGancho > 0) guante = {visible: gGancho, pos: [0.28, interpolate(t, [0, T.n02.fin], [-1.48, -1.58], clamp), 3.55], rot: [0.35, 0.3, 0]};
 	else if (g1 > 0) guante = {visible: g1, pos: [0.82, agua + 0.32 - caja * 0.05, 3.3], rot: [0.5, 0.4, 0]};
 	else if (g2 > 0) {
-		const a = interpolate(t, [M.p2.inicio + 0.3, M.p2.inicio + 2.6], [0, 1], clamp);
+		const a = interpolate(t, [M.p2.inicio + 0.7, M.p2.inicio + 2.6], [0, 1], clamp);
 		guante = {visible: g2, pos: [1.6 + a * 0.35, -0.95 + a * 1.3, 1.45], rot: [Math.PI / 2, -Math.PI / 2, 0], orden: 'YXZ'};
 	} else if (g3 > 0) {
 		const z = interpolate(t, [M.p3.inicio, M.p3.inicio + 0.4, M.p3.inicio + 1.2, M.p3.inicio + 2.0, M.p3.inicio + 2.6], [-1.0, -1.0, -2.6, -2.6, -4.2], {...clamp, easing: io});
 		guante = {visible: g3, pos: [-0.66, -1.02, z], rot: [Math.PI / 2, Math.PI / 2, 0], orden: 'YXZ'};
-	} else if (g4 > 0) {
-		const lado = t < s4 + 1.5 ? -1 : 1;
-		guante = {visible: g4, pos: [0.62 + lado * 0.42, -0.35, -0.25], rot: [0.6, 0, 0]};
 	} else if (g6 > 0) guante = {visible: g6, pos: [0.25, 0.05, -5.5], rot: [Math.PI / 2, 0, 0]};
 
 	const e: EstadoCap = {
@@ -210,6 +195,8 @@ export const Capitulo: React.FC<PropsC> = (props) => {
 				.map((l) => ({texto: FICHAS[l.id], desde: l.inicio + 0.3, activa: interpolate(t, [l.inicio, l.inicio + 0.3, l.fin + 0.4, l.fin + 0.8], [0, 1, 1, 0], clamp)}))
 		: [];
 	const fichasVis = bloqueAct ? interpolate(t, [ex[bloqueAct].a - 0.4, ex[bloqueAct].a, ex[bloqueAct].b, ex[bloqueAct].b + 0.4], [1, 0, 0, 1], clamp) * interpolate(t, [P.bloques[bloqueAct].fin, P.bloques[bloqueAct].fin + 1.2], [1, 0], clamp) : 0;
+	// últimos 20 s: pantalla final de YouTube (CRECIMIENTO.md §5)
+	const finalDesde = (ficha.pantalla_final_s ?? 0) > 0 ? T.n56.fin + 3.0 : P.total + 1;
 	const fundidoIn = interpolate(t, [0, 0.8], [1, 0], clamp);
 	const fundidoOut = interpolate(t, [P.total - 1.2, P.total], [0, 1], clamp);
 	const ganchoOscuro = interpolate(t, [0, 3.5], [1, 0.25], clamp) * interpolate(t, [3.5, 6], [1, 0], clamp);
@@ -229,14 +216,17 @@ export const Capitulo: React.FC<PropsC> = (props) => {
 			{BLOQUES.map((b) => (
 				<Anillo16 key={b} t={t} inicio={P.pensar[b].inicio} fin={P.pensar[b].fin} />
 			))}
-			<ExpEscalones t={t} a={ex.p1.a} b={ex.p1.b} />
+			<ExpGiro t={t} a={ex.p1.a} b={ex.p1.b} />
 			<ExpCajones t={t} a={ex.p2.a} b={ex.p2.b} />
 			<ExpCajas16 t={t} a={ex.p3.a} b={ex.p3.b} valor={4} />
-			<ExpBalanza t={t} a={ex.p4.a} b={ex.p4.b} />
 			<ExpReloj t={t} a={ex.p5.a} b={ex.p5.b} />
-			<ExpIndicador t={t} a={ex.p6.a} b={ex.p6.b} />
 			<Recuento t={t} a={T.n54.inicio} b={T.n56.fin + 1.5} puzles={ficha.puzles} />
-			<Proximo t={t} desde={T.n56.inicio} siguiente={ficha.siguiente} aviso={ficha.aviso_ia} />
+			<AbsoluteFill style={{opacity: interpolate(t, [finalDesde - 0.2, finalDesde + 0.8], [1, 0], clamp)}}>
+				<Proximo t={t} desde={T.n56.inicio} siguiente={ficha.siguiente} aviso={ficha.aviso_ia} />
+			</AbsoluteFill>
+			{T.s01 && <ChipNarrativo t={t} a={T.s01.inicio + 0.6} b={T.s01.fin + 1.0} icono="sus" texto="SUSCRÍBETE" />}
+			<ChipNarrativo t={t} a={T.n56.inicio + 2.0} b={T.n56.fin + 1.2} icono="campana" texto="ACTIVA LA CAMPANITA" />
+			<PantallaFinal t={t} desde={finalDesde} total={P.total} />
 			{linea && <Subtitulo16 texto={linea.texto} inicio={linea.inicio} fin={linea.fin} t={t} custodio={linea.fase === 'custodio'} />}
 			{BLOQUES.map((b) => (
 				<CortinaEngranajes key={b} t={t} en={P.mecanismo[b].inicio + 1.6} />
@@ -277,9 +267,10 @@ export const SonidoCapitulo: React.FC<{ficha: PropsC['ficha']; P: PlanC; fps: nu
 			{sfx('aire', M.p3.inicio + 2.6, 0.7)}
 			{sfx('burbujas', M.p3.inicio + 2.7, 0.6)}
 			{sfx('casco', M.p3.inicio + 3.2, 0.6)}
-			{sfx('casco', M.p4.inicio + 1.0, 0.6)}
+			{sfx('casco', M.p3.fin + 0.2, 0.5)}
 			{sfx('campana', M.p2.inicio + 2.6, 0.2)}
-			{sfx('bisagra', T.n49.inicio + 0.3, 0.6)}
+			{sfx('cerrojo', T.n49.inicio + 0.2, 0.55)}
+			{sfx('bisagra', T.n49.fin - 1.6, 0.6)}
 			{sfx('logo', T.n56.inicio, 0.45)}
 			{P.lineas.map((l) => (
 				<Sequence key={l.id} from={Math.round(l.inicio * fps)}>

@@ -29,7 +29,7 @@ export type EstadoCap = {
 	inclinacion: number;
 	caja: number; // tapa 0..1
 	linternaEnCaja: number;
-	cajon: number; // cajón «LLAVE Y FUSIBLE» 0..1
+	cajon: number; // cajón de abajo «RADAR» 0..1
 	fusible: number; // 0 en el cajón … 1 colocado en el cuadro
 	chispa: number;
 	brazo: number; // ángulo de la báscula (rad, + = izquierda abajo)
@@ -42,7 +42,10 @@ export type EstadoCap = {
 
 const useTexCap = () =>
 	useMemo(() => {
+		// P1 «El cuaderno boca abajo»: el cuaderno flota del revés; su dueño escribió 91, el espectador ve «16».
 		const cuaderno = tex(512, 384, (c) => {
+			c.translate(512, 384);
+			c.rotate(Math.PI);
 			c.fillStyle = '#e9e1c9';
 			c.fillRect(0, 0, 512, 384);
 			c.strokeStyle = 'rgba(80,110,160,0.35)';
@@ -54,12 +57,26 @@ const useTexCap = () =>
 			}
 			c.fillStyle = '#23324d';
 			c.font = '600 30px "IBM Plex Mono", monospace';
-			c.fillText('REGISTRO DE INMERSIÓN', 40, 34);
-			c.font = '400 34px "IBM Plex Mono", monospace';
-			['min 1 ·  2 m', 'min 2 ·  6 m', 'min 3 · 12 m', 'min 4 · 20 m', 'min 5 · 30 m', 'min 6 · ?? '].forEach((l, i) => c.fillText(l, 50, 100 + i * 46));
-			c.fillStyle = 'rgba(60,40,20,0.25)';
+			c.textAlign = 'center';
+			c.fillText('REGISTRO DE INMERSIÓN', 256, 44);
+			// «91» a rotulador: el 1 es un palo recto (sin pie) para que, del revés, se lea «16»
+			c.strokeStyle = '#141414';
+			c.lineWidth = 26;
+			c.lineCap = 'round';
 			c.beginPath();
-			c.arc(420, 300, 60, 0, Math.PI * 2);
+			c.arc(200, 185, 52, 0, Math.PI * 2);
+			c.stroke();
+			c.beginPath();
+			c.moveTo(252, 185);
+			c.quadraticCurveTo(254, 315, 160, 322); // cola curva del 9: del revés es la del 6
+			c.stroke();
+			c.beginPath();
+			c.moveTo(340, 130);
+			c.lineTo(340, 320);
+			c.stroke();
+			c.fillStyle = 'rgba(60,40,20,0.22)';
+			c.beginPath();
+			c.arc(430, 330, 46, 0, Math.PI * 2);
 			c.fill();
 		});
 		const etiqueta = (txt: string) =>
@@ -142,9 +159,11 @@ const useTexCap = () =>
 			c.fillRect(0, 0, 256, 192);
 			c.fillStyle = '#2a2318';
 			c.font = '400 30px "Architects Daughter", cursive';
-			c.fillText('¡Todas las', 22, 70);
-			c.fillText('etiquetas', 22, 112);
-			c.fillText('están mal!', 22, 154);
+			c.font = '400 25px "Architects Daughter", cursive';
+			c.fillText('Se lee igual', 18, 52);
+			c.fillText('al derecho y', 18, 88);
+			c.fillText('al revés.', 18, 124);
+			c.fillText('¡No el del medio!', 18, 164);
 		});
 		const placaVolante = tex(512, 256, (c) => {
 			c.fillStyle = '#8a6a3c';
@@ -152,10 +171,9 @@ const useTexCap = () =>
 			c.fillStyle = '#2b2012';
 			c.font = '600 44px "IBM Plex Mono", monospace';
 			c.textAlign = 'center';
-			c.fillText('DERECHA  +3', 256, 80);
-			c.fillText('IZQUIERDA  −2', 256, 140);
+			c.fillText('EMERGENCIA', 256, 90);
 			c.font = '600 32px "IBM Plex Mono", monospace';
-			c.fillText('0 → 10 · MÁX. 5 VUELTAS', 256, 205);
+			c.fillText('APERTURA DE ESCOTILLA', 256, 170);
 		});
 		const lingote = tex(256, 128, (c) => {
 			c.fillStyle = '#6b6f75';
@@ -166,7 +184,7 @@ const useTexCap = () =>
 			c.textBaseline = 'middle';
 			c.fillText('7 kg', 128, 68);
 		});
-		return {cuaderno, eLlave: etiqueta('LLAVE'), eFusible: etiqueta('FUSIBLE'), eAmbos: etiqueta('LLAVE Y FUSIBLE'), esferaReloj, cero, dial, nota, placaVolante, lingote};
+		return {cuaderno, eLlave: etiqueta('SONAR'), eFusible: etiqueta('ROTOR'), eAmbos: etiqueta('RADAR'), esferaReloj, cero, dial, nota, placaVolante, lingote};
 	}, []);
 
 const halo = (v: number) => ({emissive: '#3fe0e6', emissiveIntensity: v * 0.15});
@@ -615,7 +633,7 @@ export const SalaCapitulo3D: React.FC<{e: EstadoCap}> = ({e}) => {
 				))}
 				<CajaHerramientas e={e} T={C} />
 				<CuadroYCajones e={e} T={C} />
-				<Bascula e={e} T={C} />
+				{/* báscula retirada en v1 (20/11): su puzle repetía familia */}
 				<Reloj e={e} T={C} />
 				<ArmarioYDial e={e} T={C} />
 				<Altavoces v={e.altavoz} t={t} />

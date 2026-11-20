@@ -15,56 +15,48 @@
  "aviso_ia": "Contenido creado con ayuda de IA",
  "voces": {
   "narrador": {
-   "voz": "em_alex",
-   "velocidad": 0.95
+   "papel": "narrador",
+   "ref": "voces/ref_narrador.wav"
   },
   "custodio": {
-   "voz": "em_santa",
-   "velocidad": 0.85,
+   "papel": "custodio",
+   "ref": "voces/ref_custodio.wav",
    "efecto": "metal"
   }
  },
  "megapuzle": {
   "capitulo": 1,
   "digito": 0,
-  "donde": "centro de la esfera del reloj parado, durante la explicación del puzle 4"
+  "donde": "centro de la esfera del reloj parado (destello violeta), durante la explicación del puzle 4"
  },
  "puzles": [
   {
    "id": "P1",
-   "titulo": "El registro de inmersión",
-   "respuesta": "42",
-   "verificacion": "bajadas 4,6,8,10 → 12; 30+12=42"
+   "titulo": "El cuaderno boca abajo",
+   "respuesta": "91",
+   "familia": "rotacion_180_digitos",
+   "verificacion": "«16» girado 180° → 91; único entre 00–99 (tools/verificar_s001_e01.py)"
   },
   {
    "id": "P2",
-   "titulo": "Los cajones mal etiquetados",
-   "respuesta": "LLAVE Y FUSIBLE",
-   "verificacion": "2 asignaciones con todas las etiquetas falsas; abrir LLAVE Y FUSIBLE las distingue"
+   "titulo": "Los tres cajones",
+   "respuesta": "RADAR (abajo)",
+   "familia": "palindromo",
+   "verificacion": "SONAR/ROTOR/RADAR: palíndromos ROTOR y RADAR; «no es el del medio» deja solo RADAR (tools/verificar_s001_e01.py)"
   },
   {
    "id": "P3",
    "titulo": "Los manómetros",
    "respuesta": "8-4-7",
-   "verificacion": "A=2B, C=B+3, A+B+C=19 → B=4"
+   "familia": "sistema_ecuaciones",
+   "verificacion": "A=2B, C=B+3, A+B+C=19 → (8,4,7) única en 0–12 (tools/verificar_s001_e01.py)"
   },
   {
    "id": "P4",
-   "titulo": "La báscula de trimado",
-   "respuesta": "3 con el lingote; 9 y 1 al otro lado",
-   "verificacion": "7+3 = 9+1; única entre las 27 colocaciones posibles"
-  },
-  {
-   "id": "P5",
    "titulo": "El reloj parado",
    "respuesta": "2:45",
-   "verificacion": "3:10 − 45 min + 20 min = 2:45"
-  },
-  {
-   "id": "P6",
-   "titulo": "El volante de la escotilla",
-   "respuesta": "4 derecha, 1 izquierda",
-   "verificacion": "3a − 2b = 10 con a+b ≤ 5 → (4,1) única"
+   "familia": "aritmetica_horaria",
+   "verificacion": "3:10 − 45 min = 2:25; + 20 min = 2:45; única (tools/verificar_s001_e01.py)"
   }
  ],
  "lineas": [
@@ -114,55 +106,55 @@
    "id": "n07",
    "bloque": "p1",
    "fase": "narra",
-   "texto": "Tiene un candado de dos dígitos. Y atado a la caja, un cuaderno empapado: el registro de inmersión."
+   "texto": "Tiene un candado de dos dígitos. Y atado a la caja, flotando, un cuaderno empapado: el registro de inmersión."
   },
   {
    "id": "n08",
    "bloque": "p1",
    "fase": "narra",
-   "texto": "Alguien anotó la profundidad cada minuto mientras el submarino bajaba."
+   "texto": "En la tapa, alguien apuntó el código a toda prisa, con rotulador grueso."
   },
   {
    "id": "n09",
    "bloque": "p1",
    "fase": "pista",
-   "texto": "Minuto uno: dos metros. Minuto dos: seis. Minuto tres: doce. Minuto cuatro: veinte. Minuto cinco: treinta."
+   "texto": "Desde donde estás, se lee con claridad: dieciséis."
   },
   {
    "id": "n10",
    "bloque": "p1",
    "fase": "pista",
-   "texto": "La página del minuto seis está arrancada. Pero en el margen hay una nota: cada minuto bajábamos dos metros más que el anterior."
+   "texto": "Pero fíjate en el título del cuaderno: las letras están cabeza abajo. El cuaderno flota boca abajo."
   },
   {
    "id": "r01",
    "bloque": "p1",
    "fase": "repaso",
-   "texto": "Repasemos. Dos, seis, doce, veinte, treinta. Y cada minuto, dos metros más que el anterior."
+   "texto": "Repasemos. Ves un dieciséis. Pero el cuaderno está del revés. ¿Qué número escribió de verdad quien lo apuntó?"
   },
   {
    "id": "n11",
    "bloque": "p1",
    "fase": "pregunta",
-   "texto": "El candado pide la profundidad del minuto seis. ¿Cuál es? Pausa el vídeo si lo necesitas. Tienes veinte segundos."
+   "texto": "El candado pide ese número. Escribe tu respuesta en los comentarios. Tienes veinte segundos."
   },
   {
    "id": "n12",
    "bloque": "p1",
    "fase": "solucion",
-   "texto": "Cuarenta y dos."
+   "texto": "Noventa y uno."
   },
   {
    "id": "n13",
    "bloque": "p1",
    "fase": "solucion",
-   "texto": "Mira lo que baja cada minuto: cuatro metros, luego seis, luego ocho, luego diez. Cada vez dos más. El sexto minuto baja doce. Treinta más doce: cuarenta y dos."
+   "texto": "Gira el cuaderno media vuelta, como lo tenía su dueño. El seis, cabeza abajo, es un nueve. El uno sigue siendo un uno. Y al girar, también cambian de sitio: primero va el nueve, después el uno."
   },
   {
    "id": "k01",
    "bloque": "p1",
    "fase": "comprobacion",
-   "texto": "Compruébalo: doce es dos más que diez. La regla se cumple."
+   "texto": "Compruébalo: escribe noventa y uno en un papel y dale la vuelta. Verás un dieciséis."
   },
   {
    "id": "n14",
@@ -192,67 +184,73 @@
    "id": "n17",
    "bloque": "p2",
    "fase": "pista",
-   "texto": "Debajo, un mueble con tres cajones. Las etiquetas dicen: llave, fusible, y llave y fusible."
+   "texto": "Debajo, un mueble con tres cajones. Cada uno tiene una palabra grabada. Arriba: sonar. En medio: rotor. Abajo: radar."
   },
   {
    "id": "n18",
    "bloque": "p2",
    "fase": "pista",
-   "texto": "Pegada al mueble, una nota escrita a toda prisa: todas las etiquetas están mal."
+   "texto": "Pegada al mueble, una nota del mecánico: guardé el fusible en el cajón cuya palabra se lee igual del derecho y del revés. Y no es el del medio."
   },
   {
    "id": "n19",
    "bloque": "p2",
    "fase": "pista",
-   "texto": "Intentas abrir el primero, pero el óxido lo ha soldado. Solo podrás forzar un cajón, y sacar una sola cosa, antes de que el mueble se bloquee."
+   "texto": "Los cajones están soldados por el óxido. Solo podrás forzar uno antes de que el mueble se bloquee."
   },
   {
    "id": "r02",
    "bloque": "p2",
    "fase": "repaso",
-   "texto": "Repasemos. Tres cajones. Tres etiquetas. Todas mienten. Y solo puedes mirar una cosa."
+   "texto": "Repasemos. Sonar, rotor y radar. Una palabra que se lee igual en los dos sentidos. Y no es la del medio."
   },
   {
    "id": "n20",
    "bloque": "p2",
    "fase": "pregunta",
-   "texto": "¿Qué cajón abres para saber qué hay en los tres? Veinte segundos."
+   "texto": "¿Qué cajón fuerzas? Escríbelo en los comentarios. Veinte segundos."
   },
   {
    "id": "n21",
    "bloque": "p2",
    "fase": "solucion",
-   "texto": "El que dice llave y fusible."
+   "texto": "El de abajo: radar."
   },
   {
    "id": "n22",
    "bloque": "p2",
    "fase": "solucion",
-   "texto": "Como todas las etiquetas mienten, ese cajón no puede tener las dos cosas: tiene solo una. Lo abres, y sale… el fusible."
+   "texto": "Lee cada palabra al revés. Sonar se convierte en ranos: no sirve. Rotor sigue siendo rotor. Y radar sigue siendo radar. Quedan dos."
   },
   {
    "id": "n23",
    "bloque": "p2",
    "fase": "solucion",
-   "texto": "Ahora el de la etiqueta llave no puede tener la llave, así que tiene las dos cosas. Y el de fusible guarda la llave."
+   "texto": "Pero la nota dice que no es el del medio. Y el del medio es rotor. Así que el fusible está en radar."
   },
   {
    "id": "k02",
    "bloque": "p2",
    "fase": "comprobacion",
-   "texto": "Ninguna etiqueta queda en su sitio. Todas mentían, tal y como decía la nota."
+   "texto": "Compruébalo: radar, leído de derecha a izquierda, vuelve a ser radar. Y está abajo, no en medio."
   },
   {
    "id": "n24",
    "bloque": "p2",
    "fase": "accion",
-   "texto": "Colocas el fusible. Los manómetros se iluminan… y sus agujas empiezan a bailar."
+   "texto": "Fuerzas el cajón de abajo. Dentro está el fusible. Lo colocas, los manómetros se iluminan… y sus agujas empiezan a bailar."
   },
   {
    "id": "x03",
    "bloque": "p2",
    "fase": "narra",
    "texto": "El zumbido de la corriente recorre las paredes. En algún lugar del barco, algo acaba de despertar contigo."
+  },
+  {
+   "id": "s01",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "Los que llegan hasta aquí suelen volver. Si quieres bajar a la siguiente sala, suscríbete: en este submarino quedan nueve."
   },
   {
    "id": "n25",
@@ -294,7 +292,7 @@
    "id": "n30",
    "bloque": "p3",
    "fase": "pregunta",
-   "texto": "¿Qué marca cada manómetro? Veinte segundos."
+   "texto": "¿Qué marca cada manómetro? Escribe los tres números en los comentarios. Veinte segundos."
   },
   {
    "id": "n31",
@@ -318,67 +316,13 @@
    "id": "n33",
    "bloque": "p3",
    "fase": "accion",
-   "texto": "El lastre sale disparado. El suelo se inclina… y el agua, por fin, deja de subir."
-  },
-  {
-   "id": "t01",
-   "bloque": "p4",
-   "fase": "narra",
-   "texto": "Pero el submarino no se endereza. La proa apunta hacia arriba y todo lo que no está atornillado resbala hacia atrás."
-  },
-  {
-   "id": "t02",
-   "bloque": "p4",
-   "fase": "narra",
-   "texto": "Junto a los tanques hay una báscula de trimado: dos platillos que mueven los contrapesos del barco. Si se equilibra, el submarino se nivela."
-  },
-  {
-   "id": "t03",
-   "bloque": "p4",
-   "fase": "pista",
-   "texto": "En el platillo izquierdo hay un lingote de plomo de siete kilos. Soldado. No se puede mover."
-  },
-  {
-   "id": "t04",
-   "bloque": "p4",
-   "fase": "pista",
-   "texto": "En una caja tienes tres pesas: una de un kilo, una de tres y una de nueve. Puedes ponerlas en cualquiera de los dos platillos, o dejarlas fuera."
-  },
-  {
-   "id": "t05",
-   "bloque": "p4",
-   "fase": "repaso",
-   "texto": "Siete kilos a un lado. Pesas de uno, tres y nueve. Hay que dejar los dos platillos iguales."
-  },
-  {
-   "id": "t06",
-   "bloque": "p4",
-   "fase": "pregunta",
-   "texto": "¿Dónde pones cada pesa? Veinte segundos."
-  },
-  {
-   "id": "t07",
-   "bloque": "p4",
-   "fase": "solucion",
-   "texto": "La de tres, junto al lingote. La de nueve y la de uno, en el otro platillo."
-  },
-  {
-   "id": "t08",
-   "bloque": "p4",
-   "fase": "solucion",
-   "texto": "A la izquierda: siete más tres, diez. A la derecha: nueve más uno, diez. Y no hay otra forma de conseguirlo con esas tres pesas."
-  },
-  {
-   "id": "t09",
-   "bloque": "p4",
-   "fase": "accion",
-   "texto": "La báscula se queda quieta. Con un gemido largo, el submarino se nivela."
+   "texto": "El lastre sale disparado. El suelo se inclina, cruje… y vuelve a nivelarse. El agua, por fin, deja de subir."
   },
   {
    "id": "n34",
    "bloque": "p5",
    "fase": "narra",
-   "texto": "Junto a la escotilla hay un armario de emergencia. Su cerradura pide una hora."
+   "texto": "Ahora, la escotilla del fondo. Junto a ella hay un armario de emergencia. Su cerradura pide una hora."
   },
   {
    "id": "n35",
@@ -408,7 +352,7 @@
    "id": "n38",
    "bloque": "p5",
    "fase": "pregunta",
-   "texto": "¿A qué hora sonó la alarma? Veinte segundos."
+   "texto": "¿A qué hora sonó la alarma? Déjala en los comentarios. Veinte segundos."
   },
   {
    "id": "n39",
@@ -432,67 +376,13 @@
    "id": "n41",
    "bloque": "p5",
    "fase": "accion",
-   "texto": "El armario se abre. Dentro, una placa con las instrucciones de la escotilla."
-  },
-  {
-   "id": "n42",
-   "bloque": "p6",
-   "fase": "narra",
-   "texto": "La escotilla tiene un volante y, encima, un indicador de cero a doce."
-  },
-  {
-   "id": "n43",
-   "bloque": "p6",
-   "fase": "pista",
-   "texto": "La placa explica el mecanismo: cada vuelta a la derecha sube el indicador tres marcas. Cada vuelta a la izquierda lo baja dos."
-  },
-  {
-   "id": "n44",
-   "bloque": "p6",
-   "fase": "pista",
-   "texto": "Empieza en cero. La escotilla se abre en diez. Y el indicador nunca puede bajar de cero."
-  },
-  {
-   "id": "n45",
-   "bloque": "p6",
-   "fase": "pista",
-   "texto": "Pero el eje está oxidado: aguantará cinco vueltas como mucho. Ni una más."
-  },
-  {
-   "id": "r05",
-   "bloque": "p6",
-   "fase": "repaso",
-   "texto": "Repasemos. Derecha, más tres. Izquierda, menos dos. De cero a diez. Nunca por debajo de cero. Cinco vueltas como mucho."
-  },
-  {
-   "id": "n46",
-   "bloque": "p6",
-   "fase": "pregunta",
-   "texto": "¿Cuántas vueltas das a cada lado? Veinte segundos."
-  },
-  {
-   "id": "n47",
-   "bloque": "p6",
-   "fase": "solucion",
-   "texto": "Cuatro a la derecha y una a la izquierda."
-  },
-  {
-   "id": "n48",
-   "bloque": "p6",
-   "fase": "solucion",
-   "texto": "Cuatro vueltas a la derecha suben el indicador a doce. Una a la izquierda lo baja a diez. Cinco vueltas justas."
-  },
-  {
-   "id": "k05",
-   "bloque": "p6",
-   "fase": "comprobacion",
-   "texto": "Con menos vueltas no se llega a diez, y con cinco solo hay una combinación posible."
+   "texto": "El armario se abre. Dentro, una palanca roja: la apertura de emergencia de la escotilla."
   },
   {
    "id": "n49",
-   "bloque": "p6",
-   "fase": "accion",
-   "texto": "La escotilla cede."
+   "bloque": "p5",
+   "fase": "narra",
+   "texto": "Tiras con todas tus fuerzas. El volante gira solo, el cierre chirría… y la escotilla cede."
   },
   {
    "id": "n50",
@@ -524,7 +414,7 @@
    "id": "n54",
    "bloque": "cierre",
    "fase": "narra",
-   "texto": "Cuarenta y dos. El cajón de llave y fusible. Ocho, cuatro, siete. Tres con el lingote, nueve y uno al otro lado. Las dos y cuarenta y cinco. Cuatro y una. ¿Cuántos has resuelto tú? Déjalo en los comentarios."
+   "texto": "Noventa y uno. El cajón de radar. Ocho, cuatro, siete. Las dos y cuarenta y cinco. ¿Cuántas cerraduras abriste sin mirar la solución? Déjalo en los comentarios."
   },
   {
    "id": "n55",
@@ -536,8 +426,19 @@
    "id": "n56",
    "bloque": "cierre",
    "fase": "narra",
-   "texto": "Próximo capítulo: El mamparo."
+   "texto": "Próximo capítulo: El mamparo. Se abre el sábado que viene; activa la campanita para bajar el primero."
   }
  ],
- "auditoria": "Claude 14/11/2026: soluciones comprobadas por código (P1 42; P2 cajón LLAVE Y FUSIBLE; P3 8-4-7; P4 3 con el lingote, 9 y 1 al otro lado; P5 2:45; P6 4D+1I; megapuzle INTI)."
+ "auditoria": "Claude 20/11/2026: soluciones únicas comprobadas por código (tools/verificar_s001_e01.py: P1 91; P2 RADAR; P3 8-4-7; P4 2:45). Familias comprobadas con tools/verificar_puzles_unicos.py. QA visual: pendiente de fotogramas de prueba y hoja de contactos.",
+ "motor_voz": "chatterbox",
+ "pantalla_final_s": 20,
+ "version": "v1",
+ "video_id": "E60ES-S001-E01",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-20",
+   "cambios": "Ficha rehecha por el productor (Claude) para cumplir PRODUCCION.md: 4 puzles de familias no usadas (antes 6; «cajones mal etiquetados», «báscula» y «volante» repetían familia), voz «Chatterbox expresiva», comentarios antes de cada solución, una suscripción integrada tras el 2.º acierto, campanita al final y 20 s de pantalla final. Comentario de @luzceliztrivino5654 (16/11, Torre): «la primera fácil, la cuarta muy difícil» → curva de dificultad suave, el más difícil en tercer lugar."
+  }
+ ]
 }

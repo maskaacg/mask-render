@@ -188,26 +188,67 @@ export const ExpEscalones: React.FC<{t: number; a: number; b: number}> = ({t, a,
 	);
 };
 
-/** P2 · cajones: etiqueta tachada → contenido real. */
+/** P1 (v1 20/11) · el cuaderno boca abajo: «16» girado media vuelta es 91. */
+export const ExpGiro: React.FC<{t: number; a: number; b: number}> = ({t, a, b}) => {
+	const o = ventana(t, a, b, 0.4);
+	if (o <= 0) return null;
+	const d = b - a;
+	const giro = interpolate(t, [a + 0.22 * d, a + 0.42 * d], [180, 0], {...clamp, easing: Easing.inOut(Easing.cubic)});
+	const col = giro < 90 ? E60.cian : E60.blanco;
+	return (
+		<Panel o={o} ancho={860}>
+			{titulo('MEDIA VUELTA AL CUADERNO')}
+			<div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around', height: 330}}>
+				<div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18}}>
+					<div style={{width: 260, height: 260, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+						{/* el mismo «91» a rotulador que el cuaderno: el 1 sin pie, para que girado se lea 16 */}
+						<svg width={200} height={170} viewBox="0 0 200 170" style={{transform: `rotate(${giro}deg)`}}>
+							<g fill="none" stroke={col} strokeWidth={16} strokeLinecap="round">
+								<circle cx={62} cy={55} r={34} />
+								<path d="M96 55 Q97 140 38 146" />
+								<line x1={152} y1={20} x2={152} y2={145} />
+							</g>
+						</svg>
+					</div>
+					<div style={{fontFamily: MONO, fontSize: 26, color: E60.plata}}>{giro > 90 ? 'lo que ves: 16' : 'lo que escribió: 91'}</div>
+				</div>
+				<div style={{display: 'flex', flexDirection: 'column', gap: 14, opacity: entra(t, a + 0.5 * d)}}>
+					<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, color: E60.blanco}}>6 cabeza abajo → 9</div>
+					<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, color: E60.blanco}}>1 → 1</div>
+					<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 30, color: E60.cian}}>y cambian de sitio</div>
+				</div>
+			</div>
+		</Panel>
+	);
+};
+
+/** P2 (v1 20/11) · los tres cajones: la palabra al revés; ROTOR queda fuera por estar en medio. */
 export const ExpCajones: React.FC<{t: number; a: number; b: number}> = ({t, a, b}) => {
 	const o = ventana(t, a, b, 0.4);
 	if (o <= 0) return null;
 	const d = b - a;
 	const filas = [
-		{etq: 'LLAVE Y FUSIBLE', real: 'FUSIBLE', paso: 0.12},
-		{etq: 'LLAVE', real: 'LLAVE Y FUSIBLE', paso: 0.55},
-		{etq: 'FUSIBLE', real: 'LLAVE', paso: 0.75},
+		{pos: 'ARRIBA', w: 'SONAR', rev: 'RANOS', vale: false, paso: 0.18},
+		{pos: 'MEDIO', w: 'ROTOR', rev: 'ROTOR', vale: false, medio: true, paso: 0.32},
+		{pos: 'ABAJO', w: 'RADAR', rev: 'RADAR', vale: true, paso: 0.44},
 	];
+	const tacharMedio = entra(t, a + 0.62 * d, 0.4);
 	return (
-		<Panel o={o}>
-			{titulo('ETIQUETA FALSA → CONTENIDO REAL')}
+		<Panel o={o} ancho={900}>
+			{titulo('LA PALABRA, AL REVÉS')}
 			{filas.map((f, i) => {
 				const r = entra(t, a + f.paso * d, 0.4);
+				const fuera = (!f.vale && !f.medio && r > 0.5) || (f.medio && tacharMedio > 0.5);
+				const color = f.vale && tacharMedio > 0.5 ? E60.cian : E60.blanco;
 				return (
-					<div key={i} style={{display: 'flex', alignItems: 'center', gap: 24, height: 92}}>
-						<div style={{width: 360, fontFamily: MONO, fontWeight: 600, fontSize: 32, color: E60.plata, textDecoration: r > 0.5 ? 'line-through' : 'none', textDecorationColor: '#d9534f', textDecorationThickness: 4}}>{f.etq}</div>
+					<div key={i} style={{display: 'flex', alignItems: 'center', gap: 24, height: 96}}>
+						<div style={{width: 150, fontFamily: MONO, fontSize: 24, color: E60.plata}}>{f.pos}</div>
+						<div style={{width: 200, fontFamily: MONO, fontWeight: 600, fontSize: 40, color, textDecoration: fuera ? 'line-through' : 'none', textDecorationColor: '#d9534f', textDecorationThickness: 4}}>{f.w}</div>
 						<div style={{fontFamily: MONO, fontSize: 36, color: E60.plata, opacity: r}}>→</div>
-						<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 34, color: E60.cian, opacity: r, transform: `scale(${0.8 + 0.2 * r})`}}>{f.real}</div>
+						<div style={{width: 200, fontFamily: MONO, fontWeight: 600, fontSize: 40, color: f.rev === f.w ? color : E60.plata, opacity: r}}>{f.rev}</div>
+						<div style={{fontFamily: MONO, fontSize: 26, color: f.medio && tacharMedio > 0.5 ? '#ff9d7a' : f.rev === f.w ? E60.cian : '#ff9d7a', opacity: r}}>
+							{f.medio && tacharMedio > 0.5 ? 'está en medio' : f.rev === f.w ? 'igual' : 'distinta'}
+						</div>
 					</div>
 				);
 			})}
