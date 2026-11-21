@@ -399,8 +399,8 @@ const Estrellas: React.FC<{o: number; t: number}> = ({o, t}) => {
 	}, []);
 	if (o <= 0.01) return null;
 	return (
-		<points geometry={geo} rotation={[0, t * 0.025, 0]}>
-			<pointsMaterial color="#ffffff" size={0.16} sizeAttenuation transparent opacity={o} fog={false} />
+		<points geometry={geo} rotation={[0, t * 0.05, 0]}>
+			<pointsMaterial color="#ffffff" size={0.24} sizeAttenuation transparent opacity={o} fog={false} />
 		</points>
 	);
 };

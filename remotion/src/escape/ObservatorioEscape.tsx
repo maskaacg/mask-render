@@ -192,7 +192,7 @@ export const estadoObservatorio = (t: number, P0: PlanC): EstadoObservatorio => 
 		const rayo = interpolate(t, [fr('d09', 0.08), fr('d09', 0.9)], [0, 1], clamp);
 		const resalta = Math.max(interpolate(t, [T.d04.inicio, T.d04.inicio + 0.4, T.d04.fin, T.d04.fin + 0.5], [0, 1, 1, 0], clamp), interpolate(t, [P0.pensar.p4.inicio, P0.pensar.p4.inicio + 0.5, P0.pensar.p4.fin, P0.pensar.p4.fin + 0.5], [0, 0.6, 0.6, 0], clamp));
 		e.espejos = {rayo, lente: [rayo > 0.97 ? 1 : 0, 0, 0], resalta};
-		e.cielo = tr(T.e01.inicio + 0.2, T.e01.inicio + 3.0, 0, 1);
+		e.cielo = tr(T.d11.inicio + 3.0, T.d11.inicio + 6.0, 0, 1);
 		e.luna = minutos(t, P0) / 30;
 	}
 	return e;
@@ -419,6 +419,15 @@ export const ObservatorioEscape: React.FC<PropsC> = (props) => {
 			</AbsoluteFill>
 			{T.b12 && <ChipNarrativo t={t} a={T.b12.inicio + 0.9} b={T.b12.fin + 1.2} icono="sus" texto="SUSCRÍBETE" />}
 			{(ficha.pantalla_final_s ?? 0) > 0 && <ChipNarrativo t={t} a={T.f02.inicio + 2.5} b={T.f02.fin + 1.2} icono="campana" texto="ACTIVA LA CAMPANITA" />}
+			{/* resplandor de luna que se desplaza despacio desde que se abre la cúpula: fondo limpio pero vivo (QA de movimiento) */}
+			{t > T.d11.inicio + 2 && (
+				<AbsoluteFill
+					style={{
+						opacity: interpolate(t, [T.d11.inicio + 2, T.d11.inicio + 4], [0, 1], clamp),
+						background: `radial-gradient(circle at ${50 + 38 * Math.sin(t * 0.35)}% ${40 + 22 * Math.cos(t * 0.27)}%, rgba(150,180,255,0.30) 0%, rgba(110,140,230,0.12) 22%, rgba(0,0,0,0) 48%)`,
+					}}
+				/>
+			)}
 			<PantallaFinal t={t} desde={finalDesde} total={P0.total} />
 			{linea && <Subtitulo16 texto={linea.texto} inicio={linea.inicio} fin={linea.fin} t={t} />}
 			{BLOQUES.map((b) => (
