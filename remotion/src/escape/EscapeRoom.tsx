@@ -224,14 +224,14 @@ export const ChipNarrativo: React.FC<{t: number; a: number; b: number; icono: 's
 };
 
 /** Últimos segundos: zonas libres para la pantalla final de YouTube (vídeo + suscripción), sin texto encima. */
-export const PantallaFinal: React.FC<{t: number; desde: number; total: number}> = ({t, desde, total}) => {
+export const PantallaFinal: React.FC<{t: number; desde: number; total: number; titulo?: string}> = ({t, desde, total, titulo = '¿Te atreves con la siguiente sala?'}) => {
 	const o = interpolate(t, [desde, desde + 1.2], [0, 1], clamp);
 	if (o <= 0) return null;
 	const marco = interpolate(t, [desde + 0.8, desde + 2.2], [0, 1], clamp);
 	return (
 		<AbsoluteFill style={{opacity: o}}>
 			<AbsoluteFill style={{background: 'rgba(10,8,7,0.62)'}} />
-			<div style={{position: 'absolute', left: 0, right: 0, top: 120, textAlign: 'center', fontFamily: SERIF, fontWeight: 800, fontSize: 64, color: E60.blanco}}>¿Te atreves con la siguiente sala?</div>
+			<div style={{position: 'absolute', left: 0, right: 0, top: 120, textAlign: 'center', fontFamily: SERIF, fontWeight: 800, fontSize: 64, color: E60.blanco}}>{titulo}</div>
 			<div style={{position: 'absolute', left: 230, top: 330, width: 820, height: 461, borderRadius: 14, border: `3px solid rgba(63,224,230,${0.55 * marco})`, boxShadow: `0 0 40px rgba(63,224,230,${0.18 * marco})`}} />
 			<div style={{position: 'absolute', left: 1240, top: 410, width: 300, height: 300, borderRadius: 150, border: `3px solid rgba(123,92,255,${0.65 * marco})`, boxShadow: `0 0 40px rgba(123,92,255,${0.25 * marco})`}} />
 			<div style={{position: 'absolute', left: 0, right: 0, bottom: 70, textAlign: 'center', fontFamily: MONO, fontSize: 22, letterSpacing: 6, color: 'rgba(184,190,200,0.8)'}}>

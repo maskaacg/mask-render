@@ -68,6 +68,12 @@ const FICHAS: Record<string, string> = {
 	n36: 'El reloj se paró a las 3:10',
 	n37: 'Inundación 45 min antes · alarma 20 min después',
 };
+// Quién habla (v2 21/11): rótulo y color del subtítulo de cada personaje. El narrador no lleva rótulo.
+const HABLA: Record<string, [string, string]> = {
+	custodio: ['OPERADOR CERO · ALTAVOCES DEL ABISAL', '#3FE0E6'],
+	archivera: ['ALMA · RADIO DEL VIGÍA', '#F2B35B'],
+	conservador: ['DAMIÁN · RADIO DEL VIGÍA', '#9FD18B'],
+};
 const BLOQUES = ['p1', 'p2', 'p3', 'p5']; // v1 20/11: 4 puzles (p4 báscula y p6 volante retirados por repetir familia)
 
 const camara = (t: number, P: PlanC): EstadoCap['cam'] => {
@@ -230,8 +236,8 @@ export const Capitulo: React.FC<PropsC> = (props) => {
 			</AbsoluteFill>
 			{T.s01 && <ChipNarrativo t={t} a={T.s01.inicio + 0.6} b={T.s01.fin + 1.0} icono="sus" texto="SUSCRÍBETE" />}
 			<ChipNarrativo t={t} a={T.n56.inicio + 2.0} b={T.n56.fin + 1.2} icono="campana" texto="ACTIVA LA CAMPANITA" />
-			<PantallaFinal t={t} desde={finalDesde} total={P.total} />
-			{linea && <Subtitulo16 texto={linea.texto} inicio={linea.inicio} fin={linea.fin} t={t} custodio={linea.fase === 'custodio'} />}
+			<PantallaFinal t={t} desde={finalDesde} total={P.total} titulo={(ficha as any).pantalla_final_titulo} />
+			{linea && <Subtitulo16 texto={linea.texto} inicio={linea.inicio} fin={linea.fin} t={t} custodio={Boolean(HABLA[linea.fase])} quien={HABLA[linea.fase]?.[0]} color={HABLA[linea.fase]?.[1]} />}
 			{BLOQUES.map((b) => (
 				<CortinaEngranajes key={b} t={t} en={P.mecanismo[b].inicio + 1.6} />
 			))}
