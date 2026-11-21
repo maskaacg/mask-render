@@ -1,0 +1,63 @@
+{
+ "video_id": "E60ES-S001-E01-AVANCE",
+ "version": "v1",
+ "ficha": "fichas/E60-S01-C01-T.json",
+ "composicion": "E60AvanceProfundidad",
+ "tramos": 2,
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": null,
+ "run_id": null,
+ "plataformas": [
+  "tiktok",
+  "youtube",
+  "facebook"
+ ],
+ "pendiente_conectar": [
+  "instagram"
+ ],
+ "programado": "2026-11-21T18:00:00",
+ "zona": "Europe/Madrid",
+ "requiere_publicado_antes": "E60ES-S001-E01",
+ "portada": "remotion/publicacion/E60ES-S001-E01-AVANCE_portada.jpg",
+ "titulo": "Despiertas en un submarino hundido. ¿Qué número abre el candado? 🔒",
+ "tiktok_title": "Despiertas a 600 metros de profundidad en un submarino evacuado hace 18 años. En la tapa se lee 16… pero el cuaderno flota boca abajo. ¿Qué número abre el candado? 🔒 Escríbelo en comentarios. Solución en el capítulo 1 de «Profundidad 600» en YouTube (ENIGMA 60). #acertijos #misterio #serie #enigma #retomental",
+ "youtube_title": "Despiertas en un submarino hundido. ¿Qué número abre el candado? 🔒 #shorts #acertijos",
+ "youtube_description": "A 600 metros de profundidad, en un submarino evacuado hace 18 años, la radio se enciende sola. En la tapa del cuaderno se lee 16, pero el cuaderno flota boca abajo. ¿Qué número abre el candado? Tienes 20 segundos. La solución y 3 puzles más, en el capítulo 1 de «Profundidad 600», la serie de ENIGMA 60. Contenido creado con ayuda de IA. #shorts #acertijos #misterio",
+ "facebook_title": "¿Qué número abre el candado?",
+ "facebook_description": "En la tapa se lee 16, pero el cuaderno flota boca abajo. ¿Qué número abre el candado? Respuesta en comentarios; la solución, en el capítulo 1 de «Profundidad 600» en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #misterio",
+ "tags": [
+  "acertijos",
+  "misterio",
+  "serie",
+  "shorts",
+  "enigma 60",
+  "profundidad 600"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true,
+  "cover_timestamp_ms": null
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva: faltaba el avance del capítulo 1 (puzle 1 sin solución)",
+   "corrector": "Claude"
+  }
+ ],
+ "estado_aprobacion": "v1 en render; el Propietario autorizó (21/11 13:30) aprobar y publicar hoy de forma extraordinaria",
+ "sha256": null
+}

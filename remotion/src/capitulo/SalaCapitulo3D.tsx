@@ -483,7 +483,7 @@ const Altavoces: React.FC<{v: number; t: number}> = ({v, t}) => {
 	);
 };
 
-export const SalaCapitulo3D: React.FC<{e: EstadoCap}> = ({e}) => {
+export const SalaCapitulo3D: React.FC<{e: EstadoCap; ancho?: number; alto?: number; escala?: number}> = ({e, ancho = W3D, alto = H3D, escala = 1920 / W3D}) => {
 	const T = useTexturas();
 	const C = useTexCap();
 	const {t} = e;
@@ -514,7 +514,7 @@ export const SalaCapitulo3D: React.FC<{e: EstadoCap}> = ({e}) => {
 	const energia = e.energia;
 
 	return (
-		<ThreeCanvas width={W3D} height={H3D} style={{position: 'absolute', left: 0, top: 0, transform: `scale(${1920 / W3D})`, transformOrigin: '0 0'}} camera={{fov: 50, position: [0, 0, 5]}} gl={{antialias: true}}>
+		<ThreeCanvas width={ancho} height={alto} style={{position: 'absolute', left: 0, top: 0, transform: `scale(${escala})`, transformOrigin: '0 0'}} camera={{fov: 50, position: [0, 0, 5]}} gl={{antialias: true}}>
 			<Camara c={e.cam} />
 			<color attach="background" args={['#0b0f12']} />
 			<fogExp2 attach="fog" args={['#0a1316', 0.07]} />
