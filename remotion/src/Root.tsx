@@ -27,6 +27,8 @@ import fichaER01T from '../fichas/E60-ER-001-T.json';
 import {MiniaturaTorre} from './escape/MiniaturaTorre';
 import {MuseoEscape, MuseoEscapeAudio} from './escape/MuseoEscape';
 import fichaER02 from '../fichas/E60-ER-002.json';
+import {MiniaturaObservatorio, ObservatorioEscape, ObservatorioEscapeAudio} from './escape/ObservatorioEscape';
+import fichaER03 from '../fichas/E60-ER-003.json';
 import {AvanceMuseo, AvanceMuseoAudio} from './escape/AvanceMuseo';
 import fichaER02T from '../fichas/E60-ER-002-T.json';
 import {MiniaturaMuseo} from './escape/MiniaturaMuseo';
@@ -287,6 +289,38 @@ export const RemotionRoot: React.FC = () => (
 				height: props.ficha.alto,
 			})}
 		/>
+		<Composition
+			id="E60EscapeObservatorio"
+			component={ObservatorioEscape}
+			defaultProps={{ficha: fichaER03 as unknown as PropsC['ficha'], duraciones: {}} as PropsC}
+			fps={24}
+			width={1920}
+			height={1080}
+			durationInFrames={24 * 600}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60EscapeObservatorioAudio"
+			component={ObservatorioEscapeAudio}
+			defaultProps={{ficha: fichaER03 as unknown as PropsC['ficha'], duraciones: {}} as PropsC}
+			fps={24}
+			width={1920}
+			height={1080}
+			durationInFrames={24 * 600}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition id="E60MiniaturaObservatorio" component={MiniaturaObservatorio} fps={24} width={1280} height={720} durationInFrames={1} defaultProps={{vertical: false}} />
+		<Composition id="E60PortadaObservatorio" component={MiniaturaObservatorio} fps={24} width={1080} height={1920} durationInFrames={1} defaultProps={{vertical: true}} />
 		<Composition id="E60MiniaturaMuseo" component={MiniaturaMuseo} fps={24} width={1280} height={720} durationInFrames={1} defaultProps={{vertical: false}} />
 		<Composition id="E60PortadaMuseo" component={MiniaturaMuseo} fps={24} width={1080} height={1920} durationInFrames={1} defaultProps={{vertical: true}} />
 		<Composition id="E60Estilo10" component={E60Estilo10} defaultProps={{estilo: 'isla3d' as const}} fps={30} width={1080} height={1920} durationInFrames={30} />

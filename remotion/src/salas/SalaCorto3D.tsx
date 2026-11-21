@@ -361,7 +361,7 @@ const PuertaSalida: React.FC<{s: Sala; abre: number}> = ({s, abre}) => (
 	</group>
 );
 
-export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number; alto?: number; escala?: number}> = ({s, e, ancho = 720, alto = 1280, escala = 1080 / 720}) => {
+export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number; alto?: number; escala?: number; sinTecho?: boolean; children?: React.ReactNode}> = ({s, e, ancho = 720, alto = 1280, escala = 1080 / 720, sinTecho = false, children}) => {
 	const T = useMemo(
 		() => ({
 			pared: texPared(s.pared, [Math.max(1, Math.round(s.ancho / 2.5)), Math.max(1, Math.round(s.alto / 2.5))]),
@@ -432,10 +432,12 @@ export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number;
 				<planeGeometry args={[s.ancho, s.fondo]} />
 				<meshStandardMaterial map={T.suelo} roughness={0.85} />
 			</mesh>
-			<mesh position={[0, s.alto, 0]} rotation={[Math.PI / 2, 0, 0]}>
-				<planeGeometry args={[s.ancho, s.fondo]} />
-				<Mat c={s.techo} r={0.95} />
-			</mesh>
+			{!sinTecho && (
+				<mesh position={[0, s.alto, 0]} rotation={[Math.PI / 2, 0, 0]}>
+					<planeGeometry args={[s.ancho, s.fondo]} />
+					<Mat c={s.techo} r={0.95} />
+				</mesh>
+			)}
 			{([['N', [0, s.alto / 2, -s.fondo / 2], 0, s.ancho], ['S', [0, s.alto / 2, s.fondo / 2], Math.PI, s.ancho], ['E', [s.ancho / 2, s.alto / 2, 0], -Math.PI / 2, s.fondo], ['O', [-s.ancho / 2, s.alto / 2, 0], Math.PI / 2, s.fondo]] as [string, V3, number, number][]).map(([k, p, r, w]) => (
 				<mesh key={k} position={p} rotation={[0, r, 0]}>
 					<planeGeometry args={[w, s.alto]} />
@@ -460,6 +462,7 @@ export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number;
 			{e.engranajes && <Engranajes3D c={{...e.engranajes, centro: c}} />}
 			{e.jarras && <Jarras3D c={{...e.jarras, centro: c}} />}
 			{e.cajaFuerte && <CajaFuerte3D c={{...e.cajaFuerte, centro: c}} />}
+			{children}
 		</ThreeCanvas>
 	);
 };

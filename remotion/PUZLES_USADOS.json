@@ -80,6 +80,26 @@
    "video_id": "E60ES-S001-E01",
    "puzle": "P4 El reloj parado",
    "familia": "aritmetica_horaria"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "puzle": "P1 El montón de cajas",
+   "familia": "conteo_cubos_ocultos"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "puzle": "P2 Las cuatro farolas",
+   "familia": "interruptores_vecinos"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "puzle": "P3 Los anillos del telescopio",
+   "familia": "torres_hanoi"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "puzle": "P4 Los espejos de la cúpula",
+   "familia": "trayectoria_reflejos"
   }
  ],
  "pendientes_de_sustituir": [],
@@ -129,6 +149,12 @@
    "video_id": "E60ES-AC-20261122",
    "sala": "camarote-cartografo-01",
    "firma": "tablas|tablones|lampara"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "sala": "observatorio-apagado",
+   "firma": "observatorio",
+   "nota": "4 salas: ladrillo|losas|lampara, piedra|damero|luna, tablas|losas|chimenea, chapa|tablones|luna; y su avance"
   }
  ]
 }
