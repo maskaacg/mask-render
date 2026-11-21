@@ -131,5 +131,6 @@
   "respuesta": "91",
   "verificacion": "Mismo P1 del capítulo E60-S01-C01 (tools/verificar_s001_e01.py); aquí no se da la solución.",
   "video_id": "E60ES-S001-E01"
- }
+ },
+ "auditoria": "Render v1 run 44904314349: QA técnica PASS (113,9 s, -14,6 LUFS); cierre locutado con Chatterbox; hoja de contactos revisada. Portada = fotograma 84 s (cuenta atrás y cuaderno)."
 }
