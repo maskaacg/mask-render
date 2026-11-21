@@ -1,0 +1,62 @@
+{
+ "video_id": "E60ES-ER-003-AVANCE",
+ "version": "v1",
+ "ficha": "fichas/E60-ER-003-T.json",
+ "composicion": "E60AvanceObservatorio",
+ "tramos": 2,
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "",
+ "run_id": null,
+ "plataformas": [
+  "tiktok",
+  "youtube",
+  "facebook"
+ ],
+ "pendiente_conectar": [
+  "instagram"
+ ],
+ "programado": "2026-11-23T18:00:00",
+ "zona": "Europe/Madrid",
+ "requiere_publicado_antes": "E60ES-ER-003",
+ "portada": "remotion/publicacion/E60ES-ER-003-AVANCE_portada.jpg",
+ "titulo": "¿Cuántas cajas hay, contando las que no ves? 📦",
+ "tiktok_title": "Un montón de cajas en escalera: ninguna flota y solo ves las tapas. ¿Cuántas cajas hay en total? 📦 Escríbelo en comentarios. La solución y 3 salas más, en el vídeo completo de YouTube (ENIGMA 60). #acertijos #escaperoom #logica #enigma #retomental",
+ "youtube_title": "¿Cuántas cajas hay, contando las que no ves? 📦 #shorts #acertijos",
+ "youtube_description": "Cajas apiladas en escalera sobre una base de 3 × 3, sin la esquina delantera derecha. Ninguna flota y solo ves las tapas. ¿Cuántas hay? Tienes 15 segundos. Solución y 3 salas más en el escape room completo «El observatorio apagado» del canal. Contenido creado con ayuda de IA. #shorts #acertijos #escaperoom",
+ "facebook_title": "¿Cuántas cajas hay, contando las que no ves?",
+ "facebook_description": "Ninguna caja flota y solo ves las tapas. ¿Cuántas cajas hay en el montón? Respuesta en comentarios; la solución, en el vídeo completo en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #escaperoom",
+ "tags": [
+  "acertijos",
+  "escape room",
+  "shorts",
+  "lógica",
+  "enigma 60"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true,
+  "cover_timestamp_ms": null
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva: avance de «El observatorio apagado» con el puzle 1 sin solución",
+   "corrector": "Claude (productor automático)"
+  }
+ ],
+ "estado_aprobacion": "v1 en render",
+ "sha256": ""
+}

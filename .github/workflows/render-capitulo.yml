@@ -47,7 +47,7 @@ jobs:
           import json, re, sys
           e = json.load(open(sys.argv[1]))
           assert re.fullmatch(r'[A-Za-z0-9._-]{4,80}', e['encargo_id']), 'ID no válido'
-          assert e.get('composicion') in ('E60Capitulo', 'E60EscapeRoom', 'E60AvanceTorre', 'E60EscapeMuseo', 'E60AvanceMuseo', 'E60EscapeObservatorio'), 'Composición no permitida'
+          assert e.get('composicion') in ('E60Capitulo', 'E60EscapeRoom', 'E60AvanceTorre', 'E60EscapeMuseo', 'E60AvanceMuseo', 'E60EscapeObservatorio', 'E60AvanceObservatorio'), 'Composición no permitida'
           assert re.fullmatch(r'fichas/[A-Za-z0-9._-]+\.json', e['ficha']), 'Ficha no válida'
           f = json.load(open(e['ficha']))
           print(f"id={e['encargo_id']}")

@@ -31,6 +31,8 @@ import {MiniaturaObservatorio, ObservatorioEscape, ObservatorioEscapeAudio} from
 import fichaER03 from '../fichas/E60-ER-003.json';
 import {AvanceMuseo, AvanceMuseoAudio} from './escape/AvanceMuseo';
 import fichaER02T from '../fichas/E60-ER-002-T.json';
+import {AvanceObservatorio, AvanceObservatorioAudio} from './escape/AvanceObservatorio';
+import fichaER03T from '../fichas/E60-ER-003-T.json';
 import {MiniaturaMuseo} from './escape/MiniaturaMuseo';
 
 // Props de ejemplo para el Studio; en producción llegan con --props=out/props_<id>.json
@@ -278,6 +280,36 @@ export const RemotionRoot: React.FC = () => (
 			id="E60AvanceMuseoAudio"
 			component={AvanceMuseoAudio}
 			defaultProps={{ficha: fichaER02T as unknown as PropsT['ficha'], duraciones: {}} as PropsT}
+			fps={24}
+			width={1080}
+			height={1920}
+			durationInFrames={24 * 90}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarT(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60AvanceObservatorio"
+			component={AvanceObservatorio}
+			defaultProps={{ficha: fichaER03T as unknown as PropsT['ficha'], duraciones: {}} as PropsT}
+			fps={24}
+			width={1080}
+			height={1920}
+			durationInFrames={24 * 90}
+			calculateMetadata={({props}) => ({
+				durationInFrames: Math.ceil(planificarT(props).total * props.ficha.fps),
+				fps: props.ficha.fps,
+				width: props.ficha.ancho,
+				height: props.ficha.alto,
+			})}
+		/>
+		<Composition
+			id="E60AvanceObservatorioAudio"
+			component={AvanceObservatorioAudio}
+			defaultProps={{ficha: fichaER03T as unknown as PropsT['ficha'], duraciones: {}} as PropsT}
 			fps={24}
 			width={1080}
 			height={1920}

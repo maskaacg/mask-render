@@ -39,7 +39,7 @@ jobs:
           print(f"fid={e['ficha_id']}")
           print(f"run={e['origen_run_id']}")
           c = e.get('composicion', 'E60Capitulo')
-          assert c in ('E60Capitulo', 'E60EscapeRoom', 'E60AvanceTorre', 'E60EscapeMuseo', 'E60AvanceMuseo', 'E60EscapeObservatorio'), 'Composición no permitida'
+          assert c in ('E60Capitulo', 'E60EscapeRoom', 'E60AvanceTorre', 'E60EscapeMuseo', 'E60AvanceMuseo', 'E60EscapeObservatorio', 'E60AvanceObservatorio'), 'Composición no permitida'
           print(f"audio={c}Audio")
           EOF2
       - uses: actions/setup-node@v4
