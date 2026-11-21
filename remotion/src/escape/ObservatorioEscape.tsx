@@ -36,6 +36,7 @@ const PL: Record<SalaId, Record<string, Plano>> = (() => {
 			cajas: {pos: [0.7, 1.85, zc + 2.2], mira: [0, 0.45, zc], fov: 48},
 			cajasAlto: {pos: [-0.15, 1.95, zc + 0.95], mira: [-0.43, 1.15, zc - 0.43], fov: 46},
 			cajasExp: {pos: [-0.2, 2.05, zc + 3.0], mira: [-1.0, 0.7, zc], fov: 54},
+			pensar: {pos: [0.7, 1.85, zc + 2.2], mira: [0.05, 0.45, zc], fov: 48},
 			cruza: cruza(A),
 		},
 		galeria: {
@@ -43,13 +44,15 @@ const PL: Record<SalaId, Record<string, Plano>> = (() => {
 			farolas: {pos: [0, 1.45, zf + 3.6], mira: [0, 0.95, zf - 0.4], fov: 56},
 			palancas: {pos: [0.4, 1.25, zf + 2.2], mira: [0, 0.35, zf + 0.4], fov: 54},
 			farolasExp: {pos: [-0.5, 1.5, zf + 3.8], mira: [-2.0, 0.95, zf - 0.4], fov: 60},
+			pensar: {pos: [0.75, 1.05, 3.75], mira: [0.75, 1.75, zf - 0.4], fov: 68},
 			cruza: cruza(G),
 		},
 		telescopio: {
 			...planosSala(T),
 			anillos: {pos: [0, 1.6, zm + 1.6], mira: [0, 0.98, zm], fov: 46},
-			anillosExp: {pos: [-0.2, 1.7, zm + 2.1], mira: [-0.6, 0.98, zm], fov: 52},
-			telescopio: {pos: [-0.6, 1.55, zm + 1.6], mira: [1.7, 1.7, -T.fondo / 2 + 1.3], fov: 58},
+			anillosExp: {pos: [-0.15, 1.75, zm + 2.3], mira: [-0.6, 0.98, zm], fov: 50},
+			pensar: {pos: [0.25, 1.65, zm + 2.1], mira: [0.35, 1.0, zm], fov: 50},
+			telescopio: {pos: [-0.4, 1.45, 1.0], mira: [1.7, 1.7, -T.fondo / 2 + 1.3], fov: 64},
 			reloj: {pos: [0.8, 1.7, 0.4], mira: [T.ancho / 2, 1.9, 0.2], fov: 50},
 			cruza: {pos: [0.4, 2.2, zm + 0.6], mira: [1.0, 3.6, -1.6], fov: 64},
 		},
@@ -59,6 +62,7 @@ const PL: Record<SalaId, Record<string, Plano>> = (() => {
 			tablero: {pos: [0, 2.35, ze + 3.3], mira: [0, 0.2, ze - 0.2], fov: 56},
 			cenital: {pos: [0, 3.45, ze + 1.7], mira: [0, 0, ze - 0.2], fov: 62},
 			cenitalExp: {pos: [-1.7, 3.45, ze + 1.9], mira: [-1.7, 0, ze - 0.2], fov: 64},
+			pensar: {pos: [1.1, 3.45, ze + 1.9], mira: [1.1, 0, ze - 0.2], fov: 64},
 			cerraduras: {pos: [0, 1.0, ze + 1.4], mira: [0, 0.6, -C.fondo / 2], fov: 56},
 			techo: {pos: [0, 1.5, 1.6], mira: [0, 4.2, -1.8], fov: 70},
 			final: {pos: [0, 1.3, 2.7], mira: [0, 3.4, -2.2], fov: 74},
@@ -110,6 +114,8 @@ const camara = (t: number, P0: PlanC, sala: SalaId): Plano => {
 		const p = PLANO_DE[l.id];
 		if (p) ev.push({t: Math.max(inicioSala + 1.5, l.inicio - (l.fase === 'accion' ? 0.4 : 1.0)), plano: p, dur: 1.6});
 	}
+	// cuenta atrás: plano propio con el objeto a la izquierda del anillo (no queda tapado)
+	for (const b of ['p1', 'p2', 'p3', 'p4']) if (SALA_DE_BLOQUE[b] === sala && P0.pensar[b]) ev.push({t: P0.pensar[b].inicio - 0.6, plano: 'pensar', dur: 1.2});
 	// al terminar cada sala, la cámara cruza la puerta abierta antes del fundido
 	const sig = sala === 'almacen' ? c.p2 : sala === 'galeria' ? c.p3 : sala === 'telescopio' ? c.p4 : 1e9;
 	if (sig < 1e8) ev.push({t: sig - 4.5, plano: 'cruza', dur: 4.0});
@@ -131,11 +137,13 @@ const camara = (t: number, P0: PlanC, sala: SalaId): Plano => {
 	const mira = mix(prev.mira, cur.mira);
 	const siguiente = ev[k + 1]?.t ?? P0.total;
 	const a0 = ev[k].t + ev[k].dur;
-	const push = siguiente > a0 + 0.01 ? interpolate(t, [a0, siguiente], [0, Math.min(0.12, 0.01 * (siguiente - a0))], clamp) : 0;
+	const push = siguiente > a0 + 0.01 ? interpolate(t, [a0, siguiente], [0, Math.min(0.18, 0.015 * (siguiente - a0))], clamp) : 0;
 	for (let i = 0; i < 3; i++) pos[i] += (mira[i] - pos[i]) * push;
-	pos[0] += Math.sin(t * 0.6) * 0.025 + Math.sin(t * 0.23 + 0.7) * 0.035;
-	pos[1] += Math.sin(t * 0.47 + 1) * 0.018;
-	mira[0] += Math.sin(t * 0.37 + 2) * 0.03;
+	pos[0] += Math.sin(t * 0.6) * 0.05 + Math.sin(t * 0.23 + 0.7) * 0.06;
+	pos[1] += Math.sin(t * 0.47 + 1) * 0.035;
+	pos[2] += Math.sin(t * 0.31 + 0.3) * 0.04;
+	mira[0] += Math.sin(t * 0.37 + 2) * 0.06;
+	mira[1] += Math.sin(t * 0.29 + 0.4) * 0.04;
 	return {pos, mira, fov: prev.fov + (cur.fov - prev.fov) * f};
 };
 
@@ -405,7 +413,7 @@ export const ObservatorioEscape: React.FC<PropsC> = (props) => {
 			<ExpFarolas t={t} a={ex.p2.a} b={ex.p2.b} T={T} />
 			<ExpAnillos t={t} a={ex.p3.a} b={ex.p3.b} T={T} />
 			<ExpEspejos t={t} a={ex.p4.a} b={ex.p4.b} T={T} />
-			<Recuento t={t} a={T.f01.inicio} b={T.f02.fin + 1.5} puzles={ficha.puzles} rotulo="SOLUCIONES DEL OBSERVATORIO" />
+			<Recuento t={t} a={T.f01.inicio} b={T.f02.fin + 1.5} puzles={ficha.puzles.map((p, i) => ({titulo: ['Las cajas', 'Las farolas', 'Los anillos', 'Los espejos'][i] ?? p.titulo, respuesta: p.respuesta}))} rotulo="SOLUCIONES DEL OBSERVATORIO" />
 			<AbsoluteFill style={{opacity: ocultaFinal}}>
 				<Proximo t={t} desde={T.f02.inicio} siguiente={ficha.siguiente} aviso={ficha.aviso_ia} rotulo="EL MIÉRCOLES" />
 			</AbsoluteFill>

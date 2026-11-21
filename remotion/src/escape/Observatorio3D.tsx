@@ -35,7 +35,7 @@ export const SALAS: Record<'almacen' | 'galeria' | 'telescopio' | 'cupula', Sala
 		id: 'observatorio-galeria', nombre: 'Pasillo de las farolas', ancho: 6.4, fondo: 8, alto: 3.4,
 		pared: {patron: 'piedra', color: '#5d5a58', color2: '#252423'},
 		suelo: {patron: 'damero', color: '#4a4744', color2: '#1d1c1b'},
-		techo: '#161616', luz: {tipo: 'luna', color: '#9fb6ff', intensidad: 0.75}, niebla: '#07080c', puzle_en: 'suelo',
+		techo: '#161616', luz: {tipo: 'luna', color: '#9fb6ff', intensidad: 1.15}, niebla: '#07080c', puzle_en: 'suelo',
 		atrezo: [{tipo: 'ventana', pared: 'O', x: -1.5}, {tipo: 'ventana', pared: 'E', x: 1.2}, {tipo: 'banco', pared: 'O', x: 1.6}, {tipo: 'cuadro', pared: 'E', x: -1.8}],
 	},
 	telescopio: {
@@ -380,7 +380,7 @@ const Espejos3D: React.FC<{c: EstadoEspejos; centro: V3; s: Sala}> = ({c, centro
 };
 
 /** Estrellas al abrirse la cúpula. */
-const Estrellas: React.FC<{o: number}> = ({o}) => {
+const Estrellas: React.FC<{o: number; t: number}> = ({o, t}) => {
 	const geo = useMemo(() => {
 		const g = new THREE.BufferGeometry();
 		const n = 700;
@@ -399,7 +399,7 @@ const Estrellas: React.FC<{o: number}> = ({o}) => {
 	}, []);
 	if (o <= 0.01) return null;
 	return (
-		<points geometry={geo}>
+		<points geometry={geo} rotation={[0, t * 0.025, 0]}>
 			<pointsMaterial color="#ffffff" size={0.16} sizeAttenuation transparent opacity={o} fog={false} />
 		</points>
 	);
@@ -438,7 +438,7 @@ export const Observatorio3D: React.FC<{e: EstadoObservatorio; ancho?: number; al
 						</mesh>
 					)}
 					<pointLight position={[-s.ancho / 2 + 0.3, 0.6, c[2] - 0.9 + BALDOSA]} color={PALETA.rayo} intensity={1.6} distance={2.5} decay={1.6} />
-					<Estrellas o={cielo} />
+					<Estrellas o={cielo} t={e.base.t} />
 				</>
 			)}
 		</SalaCorto3D>
