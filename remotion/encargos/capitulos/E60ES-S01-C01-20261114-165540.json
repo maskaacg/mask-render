@@ -1,0 +1,11 @@
+{
+ "encargo_id": "E60ES-S01-C01-20261114-165540",
+ "composicion": "E60Capitulo",
+ "ficha": "fichas/E60-S01-C01.json",
+ "tramos": 8,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "serie": "Profundidad 600",
+ "capitulo": 1,
+ "solicitado_por": "n8n WF-TEST-REMOTION-03",
+ "fecha": "2026-11-14T16:55:40.485+01:00"
+}

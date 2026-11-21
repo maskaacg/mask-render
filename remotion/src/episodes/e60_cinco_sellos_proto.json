@@ -1,0 +1,51 @@
+{
+  "id": "E60ES-CINCO-SELLOS-PROTO-ESC01-02",
+  "marca": "ENIGMA_60",
+  "idioma": "es",
+  "formato": "corto",
+  "ancho": 1080,
+  "alto": 1920,
+  "fps": 30,
+  "duracion": 12,
+  "estado": "TEST_TECNICO_NO_PUBLICABLE",
+  "voz": { "modelo": "Kokoro-82M", "voz": "em_alex", "licencia": "Apache-2.0" },
+  "escenas": [
+    { "n": 1, "inicio": 0, "fin": 5.8, "titulo": "Encierro", "aporta": "Estás atrapado" },
+    { "n": 2, "inicio": 5.8, "fin": 12, "titulo": "La cerradura", "aporta": "Objetivo: tres ranuras, cinco sellos" }
+  ],
+  "acciones": [
+    { "objeto": "puerta", "tipo": "cerrar", "inicio": 0.3, "fin": 1.1, "curva": "aceleracion", "rebote": 0.35, "angulo_inicial": -42 },
+    { "objeto": "camara", "tipo": "sacudida", "inicio": 1.1, "fin": 1.55, "intensidad": 14 },
+    { "objeto": "polvo", "tipo": "caer", "inicio": 1.1, "fin": 4.2 },
+    { "objeto": "camara", "tipo": "travelling", "inicio": 5.8, "fin": 7.8, "escala_final": 1.32, "foco": [540, 860] },
+    { "objeto": "ranura_1", "tipo": "encender", "inicio": 6.6 },
+    { "objeto": "ranura_2", "tipo": "encender", "inicio": 7.05 },
+    { "objeto": "ranura_3", "tipo": "encender", "inicio": 7.5 },
+    { "objeto": "mesa_sellos", "tipo": "entrar", "inicio": 7.7, "fin": 8.7 }
+  ],
+  "voz_lineas": [
+    { "id": "v01_llegas_tarde", "inicio": 1.55 },
+    { "id": "v02_archivo_cerrado", "inicio": 2.75 },
+    { "id": "v03_ranuras_sellos", "inicio": 6.45 },
+    { "id": "v04_una_combinacion", "inicio": 9.05 }
+  ],
+  "efectos": [
+    { "id": "sfx_ambiente", "inicio": 0, "volumen": 0.55 },
+    { "id": "sfx_bisagra", "inicio": 0.15, "volumen": 0.7 },
+    { "id": "sfx_golpe", "inicio": 1.1, "volumen": 1.0 },
+    { "id": "sfx_polvo", "inicio": 1.15, "volumen": 0.6 },
+    { "id": "sfx_aire", "inicio": 5.7, "volumen": 0.5 },
+    { "id": "sfx_click_a", "inicio": 6.6, "volumen": 0.8 },
+    { "id": "sfx_click_b", "inicio": 7.05, "volumen": 0.8 },
+    { "id": "sfx_click_c", "inicio": 7.5, "volumen": 0.8 }
+  ],
+  "subtitulos": { "zona": [80, 210, 1000, 420], "nota": "Zona superior: no tapa la cerradura (centro) ni los sellos (abajo)" },
+  "qa": [
+    "La puerta gira sobre su bisagra al menos 0,5 s con aceleracion final",
+    "El golpe coincide con el contacto de la puerta (+-1 fotograma)",
+    "La cuña de luz del suelo se estrecha con la puerta",
+    "Los cinco sellos legibles, nada los tapa",
+    "Ningun segundo sin movimiento",
+    "Subtitulos dentro de su zona"
+  ]
+}

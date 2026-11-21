@@ -1,0 +1,82 @@
+{
+ "id": "E60-ER-002-T",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "avance_vertical_escape_room",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 24,
+ "sala": 2,
+ "titulo": "El museo que miente",
+ "pensar_s": 15,
+ "motor_voz": "chatterbox",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "nota": "Avance del miércoles 18/11: plantea el primer puzle (las tres vitrinas) SIN solución y remite al vídeo largo de YouTube.",
+ "version": "v3",
+ "historial": [
+  {
+   "version": "v2",
+   "fecha": "2026-11-16",
+   "cambios": "El Propietario rechazó la v1 (0:50). Ahora dura más de 70 s: 9 líneas en vez de 7 (presentación de las cuatro salas y repaso de las pistas) y 15 s para pensar en lugar de 10. Mismo puzle 1 sin solución, misma sala del museo."
+  },
+  {
+   "version": "v3",
+   "fecha": "2026-11-16",
+   "cambios": "La v2 se envió con la voz antigua en las líneas reescritas (los subtítulos no coincidían con lo que se oía). Se vuelven a locutar todas las líneas cambiadas."
+  }
+ ],
+ "lineas": [
+  {
+   "id": "t01",
+   "fase": "narra",
+   "texto": "Medianoche en un museo cerrado. Las luces se apagan, la puerta se cierra con llave a tu espalda… y a las doce y media saltará la alarma. Tú sigues dentro."
+  },
+  {
+   "id": "t02",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Bienvenido a mi museo, visitante. Aquí todo te miente: las placas, los carteles… y hasta yo."
+  },
+  {
+   "id": "t02b",
+   "fase": "narra",
+   "texto": "Cuatro salas te separan de la calle. Y en cada una, una cerradura que solo se abre con la verdad."
+  },
+  {
+   "id": "t03",
+   "fase": "narra",
+   "texto": "Primera sala: las monedas. Tres vitrinas tapadas con terciopelo. En la primera placa pone oro. En la segunda, plata. En la tercera, oro y plata."
+  },
+  {
+   "id": "t04",
+   "fase": "pista",
+   "texto": "El conservador te advierte: las tres placas mienten. Ninguna dice lo que hay dentro."
+  },
+  {
+   "id": "t05",
+   "fase": "pista",
+   "texto": "Metes la mano en la vitrina que dice oro y plata, y sacas una sola moneda. Es de plata."
+  },
+  {
+   "id": "t05b",
+   "fase": "narra",
+   "texto": "Repasemos. Tres vitrinas: una de oro, una de plata y una con las dos monedas. Todas las placas mienten. Y de la de oro y plata ha salido plata."
+  },
+  {
+   "id": "t06",
+   "fase": "pregunta",
+   "texto": "¿Qué hay de verdad en cada vitrina? Tienes quince segundos."
+  },
+  {
+   "id": "t07",
+   "fase": "cierre",
+   "texto": "Déjalo en los comentarios. La solución de esta vitrina, y tres salas más con sus trampas, te esperan en el vídeo completo de YouTube: El museo que miente."
+  }
+ ],
+ "duracion_objetivo_s": [
+  70,
+  120
+ ],
+ "auditoria": "Render v2 run 43878975212: QA técnica PASS (71,2 s, -14,6 LUFS); hoja de contactos revisada. Render v3 run 43889999898: QA técnica PASS (87,1 s, -14,3 LUFS); todas las líneas relocutadas y verificadas con Whisper."
+}

@@ -1,0 +1,13 @@
+{
+ "encargo_id": "E60ES-S001-T47-E07-RC-RM061955-V2",
+ "video_id": "E60ES-S001-T47-E07-RC-RM061955",
+ "version": "v2",
+ "composicion": "E60CortoPlano",
+ "ficha": "fichas/E60-2026-11-22-corto.json",
+ "fecha": "2026-11-22",
+ "titulo": "Los símbolos del espejo",
+ "modo": "puzle",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "Cambios del Propietario 14/11: mensaje único, escenario propio, estilo Plano + Linterna",
+ "solicitado_por": "n8n WF-RENDER-REMOTION-CORTOS"
+}

@@ -1,0 +1,12 @@
+{
+ "encargo_id": "E60ES-S001-E01-v1-20261120-120928",
+ "composicion": "E60Capitulo",
+ "ficha": "fichas/E60-S01-C01.json",
+ "tramos": 8,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "video_id": "E60ES-S001-E01",
+ "version": "v1",
+ "motivo": "Re-render: el máster anterior (run 44710675189) falló la QA técnica por segundos congelados; no se entregó",
+ "solicitado_por": "Claude (productor ENIGMA 60)",
+ "fecha": "2026-11-20T12:09:28+01:00"
+}

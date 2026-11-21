@@ -1,0 +1,61 @@
+{
+ "video_id": "E60ES-ER-002-MUSEO",
+ "version": "v2",
+ "ficha": "fichas/E60-ER-002.json",
+ "composicion": "E60EscapeMuseo",
+ "tramos": 8,
+ "formato": "YouTube 16:9",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-ER-002-MUSEO-v2-20261116-155018",
+ "run_id": 43889975711,
+ "plataformas": [
+  "youtube"
+ ],
+ "programado": "2026-11-18T17:00:00",
+ "zona": "Europe/Madrid",
+ "miniatura": "remotion/publicacion/E60ES-ER-002-MUSEO_miniatura.jpg",
+ "titulo": "El museo que miente || Escape Room #2",
+ "youtube_title": "El museo que miente || Escape Room #2",
+ "youtube_description": "Abriste el libro que dejó la archivera… y apareces encerrado en un museo a medianoche. Cuatro salas, una alarma que salta a las doce y media, y una regla: aquí cada placa y cada cartel te miente.\n\nLos 4 acertijos:\n🪙 Las tres vitrinas: todas las placas mienten. ¿Qué hay en cada vitrina?\n🖼️ El año del retrato: descifra la fecha en números romanos.\n🐈 El gato falso: 8 estatuillas y una pesa menos. ¿Cuántas pesadas necesitas como mínimo?\n🕯️ Las dos velas: el cartel de SALIDA miente. ¿Por qué puerta se sale de verdad?\n\nTienes 20 segundos en cada puzle antes de la solución. Deja tus respuestas en los comentarios: ¿cuántas salas superas sin mirar?\n\n0:00 El museo\n1:07 Puzle 1 · Las tres vitrinas\n3:08 Puzle 2 · El año del retrato\n5:28 Puzle 3 · El gato falso\n7:33 Puzle 4 · Las dos velas\n\n¿Te perdiste la primera sala? Escape Room #1: La torre del archivo, en el canal. Este sábado empieza la primera serie de ENIGMA 60: suscríbete y activa la campanita para entrar el primero.\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #logica #enigmas #enigma60",
+ "facebook_title": "El museo que miente || Escape Room #2",
+ "facebook_description": "Escape room 2 de ENIGMA 60: cuatro salas, una alarma a las 00:30 y 20 segundos para pensar cada puzle. ¿Cuántas superas tú? Contenido creado con ayuda de IA. #escaperoom #acertijos #enigma60",
+ "tags": [
+  "escape room",
+  "acertijos",
+  "acertijos de lógica",
+  "enigmas",
+  "puzles",
+  "juegos mentales",
+  "escape room virtual",
+  "acertijos con respuesta",
+  "enigma 60",
+  "retos de lógica"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es",
+  "defaultAudioLanguage": "es"
+ },
+ "facebook": {
+  "facebook_media_type": "VIDEO",
+  "facebook_is_ai_generated": true
+ },
+ "historial": [
+  {
+   "version": "v2",
+   "motivo_cambio": "Puzle 4 «Los dos vigilantes» sustituido por «Las dos velas» (no repetir mecánica de la Torre); capítulos 9:34 y 10:08 retirados hasta medirlos en el máster v2",
+   "corrector": "Claude"
+  },
+  {
+   "version": "v2",
+   "motivo_cambio": "Propietario (16/11 20:01): título «Nombre de la sala || Escape Room #N» y descripción con los 4 puzles (sin soluciones)",
+   "corrector": "Claude"
+  }
+ ],
+ "estado_aprobacion": "v2 aprobada por el Propietario (16/11 17:12)",
+ "sha256": "1714fc76ff6d050531d4633f0126b02387759f76a8fa41d7e8647cface9a813a"
+}

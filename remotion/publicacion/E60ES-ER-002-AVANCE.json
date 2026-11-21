@@ -1,0 +1,61 @@
+{
+ "video_id": "E60ES-ER-002-AVANCE",
+ "version": "v3",
+ "ficha": "fichas/E60-ER-002-T.json",
+ "composicion": "E60AvanceMuseo",
+ "tramos": 2,
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-ER-002-AVANCE-v3-20261116-155026",
+ "run_id": 43889999898,
+ "plataformas": [
+  "tiktok",
+  "youtube",
+  "facebook"
+ ],
+ "pendiente_conectar": [
+  "instagram"
+ ],
+ "programado": "2026-11-18T18:00:00",
+ "zona": "Europe/Madrid",
+ "requiere_publicado_antes": "E60ES-ER-002-MUSEO",
+ "portada": "remotion/publicacion/E60ES-ER-002-AVANCE_portada.jpg",
+ "titulo": "¿Qué hay en cada vitrina? 🏛️",
+ "tiktok_title": "Tres vitrinas, tres placas… y las tres mienten. ¿Qué hay de verdad en cada una? 🏛️ Escríbelo en comentarios. La solución y 3 salas más, en el vídeo completo de YouTube (ENIGMA 60). #acertijos #escaperoom #logica #enigma #retomental",
+ "youtube_title": "¿Qué hay en cada vitrina? 🏛️ #shorts #acertijos",
+ "youtube_description": "Tres vitrinas y tres placas que mienten. ¿Lo resuelves en 10 segundos? Solución y 3 salas más en el escape room completo «El museo que miente» del canal. Contenido creado con ayuda de IA. #shorts #acertijos #escaperoom",
+ "facebook_title": "¿Qué hay en cada vitrina?",
+ "facebook_description": "Tres vitrinas y tres placas que mienten. ¿Qué hay de verdad en cada una? Respuesta en comentarios; la solución, en el vídeo completo en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #escaperoom",
+ "tags": [
+  "acertijos",
+  "escape room",
+  "shorts",
+  "lógica",
+  "enigma 60"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "historial": [
+  {
+   "version": "v3",
+   "motivo_cambio": "Misma pieza con la voz de las líneas reescritas",
+   "corrector": "Claude"
+  }
+ ],
+ "estado_aprobacion": "v3 aprobada por el Propietario (16/11 17:12)",
+ "sha256": "e70ccd74f2fdb37f6912280bc2e0ebeebdb789c47d357e09deef07d30e4c75ca"
+}

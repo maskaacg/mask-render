@@ -1,0 +1,8 @@
+{
+ "encargo_id": "E60ES-RELEVO-T-v2-20261115-073827",
+ "composicion": "E60AvanceTorre",
+ "ficha": "fichas/E60-RELEVO-T.json",
+ "tramos": 2,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "Corrección por Codex"
+}

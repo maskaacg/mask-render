@@ -1,0 +1,8 @@
+{
+ "encargo_id": "E60ES-ER-001-TORRE-v2-20261114-235838",
+ "composicion": "E60EscapeRoom",
+ "ficha": "fichas/E60-ER-001.json",
+ "tramos": 8,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "v2: colores de escudos coherentes, textos sin superponer, encuadres"
+}

@@ -1,0 +1,12 @@
+{
+ "encargo_id": "E60ES-S001-E01-v2-20261121-045927",
+ "composicion": "E60Capitulo",
+ "ficha": "fichas/E60-S01-C01.json",
+ "tramos": 8,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "video_id": "E60ES-S001-E01",
+ "version": "v2",
+ "motivo": "Corrección prioritaria del Propietario (21/11): serie narrativa, no escape room. Personajes Alma, Damián y Operador Cero; puzles con función narrativa; final con gancho.",
+ "solicitado_por": "Claude (productor ENIGMA 60)",
+ "fecha": "2026-11-21T04:59:27+01:00"
+}

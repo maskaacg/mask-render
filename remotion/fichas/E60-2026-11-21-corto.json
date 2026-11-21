@@ -1,0 +1,53 @@
+{
+ "id": "E60-2026-11-21-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "El Archivo de las Sombras: las tres gemas",
+ "numero": 6,
+ "escena": "archivo",
+ "modo": "avance",
+ "pensar_s": 6,
+ "tinte": "#a04a5a",
+ "puzle": {
+  "tipo": "gemas",
+  "ecuaciones": [
+   "ROJA + AZUL = 10",
+   "AZUL − VERDE = 2",
+   "VERDE = 3"
+  ],
+  "respuesta": 5
+ },
+ "solucion_reserva": [
+  "Cinco.",
+  "Si la verde vale tres, la azul vale cinco. Y si roja más azul son diez, la roja también vale cinco."
+ ],
+ "lineas": [
+  {
+   "fase": "intro",
+   "texto": "Una sala circular de estanterías infinitas. Bienvenido al Archivo de las Sombras.",
+   "id": "l01"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Tres gemas. La roja más la azul suman diez. La azul menos la verde, dos.",
+   "id": "l02"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "La verde vale tres. ¿Cuánto vale la roja?",
+   "id": "l03"
+  },
+  {
+   "fase": "cta",
+   "texto": "La solución y el resto del caso, hoy en el vídeo completo de YouTube. Enlace en el perfil.",
+   "id": "l04"
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 14/11/2026: lógica comprobada; solución única"
+}

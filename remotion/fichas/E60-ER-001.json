@@ -1,0 +1,409 @@
+{
+ "id": "E60-ER-001",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "escape_room_independiente",
+ "ancho": 1920,
+ "alto": 1080,
+ "fps": 24,
+ "temporada": "Escape room",
+ "capitulo": 1,
+ "titulo": "La torre del archivero",
+ "siguiente": "El museo que miente",
+ "pensar_s": 20,
+ "motor_voz": "chatterbox",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "puzles": [
+  {
+   "id": "P1",
+   "titulo": "Los tres escudos",
+   "respuesta": "verde · rojo · azul",
+   "verificacion": "6 órdenes posibles; solo verde-rojo-azul cumple las 3 pistas"
+  },
+  {
+   "id": "P2",
+   "titulo": "El lema cifrado",
+   "respuesta": "EL TIEMPO NO PERDONA",
+   "verificacion": "César −3 en alfabeto de 26 letras: HO WLHPSR QR SHUGRQD"
+  },
+  {
+   "id": "P3",
+   "titulo": "La escalera",
+   "respuesta": "13",
+   "verificacion": "1,1,2,3,5,8 → 5+8=13"
+  },
+  {
+   "id": "P4",
+   "titulo": "Las tres llaves",
+   "respuesta": "plata",
+   "verificacion": "solo con plata dice la verdad exactamente un guardia"
+  }
+ ],
+ "lineas": [
+  {
+   "id": "h01",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Entraste en esta torre para refugiarte de la lluvia. Y la puerta se ha cerrado detrás de ti. Una vela, cuatro cerraduras: si la llama se apaga antes de abrirlas todas, no saldrás nunca. ¿Cuántas abres tú?"
+  },
+  {
+   "bloque": "gancho",
+   "fase": "narra",
+   "id": "h02",
+   "texto": "Antes de empezar: si te gustan los retos, suscríbete y activa la campanita para ser el primero en entrar en cada sala nueva."
+  },
+  {
+   "id": "g01",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Medianoche. La tormenta golpea las ventanas de un castillo que lleva cien años vacío."
+  },
+  {
+   "id": "g02",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Subes la escalera de caracol hasta lo más alto. Aquí arriba está el archivo. Y no hay otra salida."
+  },
+  {
+   "id": "g03",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Estanterías hasta el techo. Una escalera de caracol. Antorchas que no debería haber encendido nadie. Y sobre la mesa, un gramófono que empieza a girar solo."
+  },
+  {
+   "id": "g04",
+   "bloque": "gancho",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Bienvenido a mi archivo, visitante. Nadie sale de esta torre sin demostrar que sabe leer. Cuatro cerraduras. Una vela. Cuando se apague, se apagará todo."
+  },
+  {
+   "id": "g05",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "La vela de la mesa acaba de encenderse. Y empieza a derretirse."
+  },
+  {
+   "id": "a01",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "En la pared hay tres ganchos numerados: uno, dos y tres. Y en el suelo, tres escudos caídos: uno rojo, uno azul y uno verde."
+  },
+  {
+   "id": "a02",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "Bajo los ganchos, una placa de bronce: devuelve cada escudo a su sitio."
+  },
+  {
+   "id": "a03",
+   "bloque": "p1",
+   "fase": "pista",
+   "texto": "Primera pista: el escudo rojo no cuelga en el gancho uno."
+  },
+  {
+   "id": "a04",
+   "bloque": "p1",
+   "fase": "pista",
+   "texto": "Segunda: el azul cuelga más a la derecha que el rojo."
+  },
+  {
+   "id": "a05",
+   "bloque": "p1",
+   "fase": "pista",
+   "texto": "Tercera: el verde no está en el gancho tres."
+  },
+  {
+   "id": "a06",
+   "bloque": "p1",
+   "fase": "repaso",
+   "texto": "Repasemos. El rojo, nunca en el uno. El azul, a la derecha del rojo. Y el verde, nunca en el tres."
+  },
+  {
+   "id": "a07",
+   "bloque": "p1",
+   "fase": "pregunta",
+   "texto": "¿En qué orden cuelgan los tres escudos? Escríbelo en los comentarios antes de ver la solución. Veinte segundos."
+  },
+  {
+   "id": "a08",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "Verde, rojo y azul."
+  },
+  {
+   "id": "a09",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "Si el rojo no está en el uno y el azul tiene que quedar a su derecha, el rojo solo puede ir en el dos, y el azul en el tres. Para el verde solo queda el gancho uno."
+  },
+  {
+   "id": "a10",
+   "bloque": "p1",
+   "fase": "comprobacion",
+   "texto": "Compruébalo: el rojo no está en el uno, el azul está a su derecha y el verde no está en el tres. No hay otra forma."
+  },
+  {
+   "id": "a11",
+   "bloque": "p1",
+   "fase": "accion",
+   "texto": "Los escudos encajan. Se oye un mecanismo dentro del muro, y una losa del suelo se hunde un palmo."
+  },
+  {
+   "id": "b01",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "Debajo de la losa hay un cilindro de latón con seis anillos de letras. Un criptex. Hay que formar una palabra."
+  },
+  {
+   "id": "b02",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "Sobre la puerta, tallado en la piedra, hay un lema. Pero no se puede leer."
+  },
+  {
+   "id": "b03",
+   "deletreo": true,
+   "bloque": "p2",
+   "fase": "pista",
+   "texto": "Dice: hache, o. Uve doble, ele, hache, pe, ese, erre. Cu, erre. Ese, hache, u, ge, erre, cu, de."
+  },
+  {
+   "id": "b04",
+   "bloque": "p2",
+   "fase": "pista",
+   "texto": "En el criptex hay una inscripción diminuta: retrocede tres letras. Alfabeto de veintiséis, sin eñe."
+  },
+  {
+   "id": "b05",
+   "bloque": "p2",
+   "fase": "pista",
+   "texto": "Y debajo: la segunda palabra del lema abre el cilindro."
+  },
+  {
+   "id": "b06",
+   "bloque": "p2",
+   "fase": "repaso",
+   "texto": "Repasemos. Cada letra del lema está tres posiciones por delante de la verdadera. Hay que retroceder tres para leerlo."
+  },
+  {
+   "id": "b07",
+   "bloque": "p2",
+   "fase": "pregunta",
+   "texto": "¿Qué dice el lema? ¿Y qué palabra abre el criptex? Veinte segundos."
+  },
+  {
+   "id": "b08",
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "El tiempo no perdona. Y la palabra es: tiempo."
+  },
+  {
+   "id": "b09",
+   "deletreo": true,
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "Hache, retrocede tres: ge, efe, e. O, retrocede tres: ele. Primera palabra, el. Uve doble se convierte en te, ele en i, hache en e, pe en eme, ese en pe, erre en o. Tiempo."
+  },
+  {
+   "id": "b10",
+   "bloque": "p2",
+   "fase": "comprobacion",
+   "texto": "Haz lo mismo con el resto y aparece el lema completo: el tiempo no perdona."
+  },
+  {
+   "id": "b11",
+   "deletreo": true,
+   "bloque": "p2",
+   "fase": "accion",
+   "texto": "Los seis anillos giran. Te, i, e, eme, o, pe. El criptex se abre y deja caer un medallón con un número grabado en el reverso: uno, uno, dos, tres, cinco, ocho."
+  },
+  {
+   "id": "b12",
+   "bloque": "p2",
+   "fase": "archivera",
+   "texto": "Dos cerraduras abiertas. Pocos visitantes llegan tan lejos. Si lo estás disfrutando, deja tu me gusta: así sabré que debo abrir más salas.",
+   "voz": "archivera"
+  },
+  {
+   "id": "c01",
+   "bloque": "p3",
+   "fase": "narra",
+   "texto": "La escalera de caracol sube hacia la oscuridad. Cada peldaño tiene un número tallado, del uno al veinte."
+  },
+  {
+   "id": "c02",
+   "bloque": "p3",
+   "fase": "narra",
+   "texto": "La vela ya ha perdido la mitad de su altura."
+  },
+  {
+   "id": "c03",
+   "bloque": "p3",
+   "fase": "pista",
+   "texto": "En la barandilla hay una advertencia: pisa el peldaño equivocado y la escalera se cerrará para siempre."
+  },
+  {
+   "id": "c04",
+   "bloque": "p3",
+   "fase": "pista",
+   "texto": "El medallón da la serie: uno, uno, dos, tres, cinco, ocho. Y en su borde: cada número es la suma de los dos anteriores."
+  },
+  {
+   "id": "c05",
+   "bloque": "p3",
+   "fase": "repaso",
+   "texto": "Repasemos. Uno, uno, dos, tres, cinco, ocho. Cada número, la suma de los dos de antes."
+  },
+  {
+   "id": "c06",
+   "bloque": "p3",
+   "fase": "pregunta",
+   "texto": "¿Qué peldaño tienes que pisar ahora? Veinte segundos."
+  },
+  {
+   "id": "c07",
+   "bloque": "p3",
+   "fase": "solucion",
+   "texto": "El trece."
+  },
+  {
+   "id": "c08",
+   "bloque": "p3",
+   "fase": "solucion",
+   "texto": "Uno más uno, dos. Uno más dos, tres. Dos más tres, cinco. Tres más cinco, ocho. Y cinco más ocho, trece."
+  },
+  {
+   "id": "c09",
+   "bloque": "p3",
+   "fase": "comprobacion",
+   "texto": "Es la serie que usaban los antiguos arquitectos para medir sus escaleras. Cada paso, la suma de los dos anteriores."
+  },
+  {
+   "id": "c10",
+   "bloque": "p3",
+   "fase": "accion",
+   "texto": "El peldaño trece se hunde con un chasquido. En la pared se abre un nicho con tres llaves: una de oro, una de plata y una de hierro."
+  },
+  {
+   "id": "d01",
+   "bloque": "p4",
+   "fase": "narra",
+   "texto": "Solo una abre la puerta. Si usas la equivocada, la cerradura se bloqueará."
+  },
+  {
+   "id": "d02",
+   "bloque": "p4",
+   "fase": "narra",
+   "texto": "A los lados de la puerta montan guardia tres armaduras. Cada una tiene una frase grabada en el escudo."
+  },
+  {
+   "id": "d03",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "La primera armadura dice: la llave de oro abre la puerta."
+  },
+  {
+   "id": "d04",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "La segunda: la llave de plata no la abre."
+  },
+  {
+   "id": "d05",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "La tercera: la llave de oro no la abre."
+  },
+  {
+   "id": "d06",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "Y en el dintel, la regla del archivo: de las tres armaduras, solo una dice la verdad."
+  },
+  {
+   "id": "d07",
+   "bloque": "p4",
+   "fase": "repaso",
+   "texto": "Repasemos. Tres frases. Solo una es cierta. ¿Con qué llave se cumple eso?"
+  },
+  {
+   "id": "d08",
+   "bloque": "p4",
+   "fase": "pregunta",
+   "texto": "¿Qué llave abre la puerta? Veinte segundos."
+  },
+  {
+   "id": "d09",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "La de plata."
+  },
+  {
+   "id": "d10",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "Prueba con oro: la primera y la segunda dirían la verdad. Son dos, así que no. Prueba con hierro: la segunda y la tercera dirían la verdad. Tampoco. Con plata, solo la tercera dice la verdad."
+  },
+  {
+   "id": "d11",
+   "bloque": "p4",
+   "fase": "comprobacion",
+   "texto": "Una sola armadura sincera, como exige la regla. La llave de plata."
+  },
+  {
+   "id": "d12",
+   "bloque": "p4",
+   "fase": "accion",
+   "texto": "La llave gira. La vela se apaga en ese mismo instante. Y la puerta… se abre."
+  },
+  {
+   "id": "e01",
+   "bloque": "giro",
+   "fase": "narra",
+   "texto": "Al otro lado no hay una escalera hacia la salida. Hay otra sala del archivo. Y en la pared, la sombra de alguien que te estaba esperando."
+  },
+  {
+   "id": "e02",
+   "bloque": "giro",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Has leído bien, visitante. Por eso te dejaré marchar. Pero llévate esto: en mi archivo hay un libro con tu nombre. Y todavía no has leído el final."
+  },
+  {
+   "id": "e03",
+   "bloque": "giro",
+   "fase": "narra",
+   "texto": "La sombra desaparece. Sobre el atril queda un libro cerrado. En la portada, una sola palabra: museo."
+  },
+  {
+   "id": "f01",
+   "bloque": "cierre",
+   "fase": "narra",
+   "texto": "Verde, rojo y azul. Tiempo. Trece. La llave de plata. ¿Cuántas cerraduras has abierto tú antes de que se apagara la vela? Cuéntalo en los comentarios."
+  },
+  {
+   "id": "f02",
+   "bloque": "cierre",
+   "fase": "narra",
+   "texto": "El miércoles se abre una nueva sala: el museo que miente. Activa la campanita y entra el primero."
+  }
+ ],
+ "auditoria": "Claude 14/11/2026: P1 única (verde-rojo-azul), P2 César −3 verificado, P3 13, P4 plata (única con exactamente una verdad).",
+ "apertura_s": 1.0,
+ "pantalla_final_s": 20,
+ "version": "v4",
+ "historial": [
+  {
+   "version": "v3",
+   "fecha": "2026-11-15",
+   "cambios": "Gancho inicial (h01), petición de comentarios en a07, suscripción integrada tras la 2.ª cerradura (b12), campanita al final (f02), 20 s de pantalla final, música de fondo. Puzles sin cambios."
+  },
+  {
+   "version": "v4",
+   "fecha": "2026-11-15",
+   "cambios": "Corrección del Propietario: vuelve el gancho de la lluvia (h01), llamada explícita «suscríbete y activa la campanita para ser el primero» al inicio (h02, con iconos), g02 sin repetir el refugio, b12 pide me gusta en vez de repetir la suscripción."
+  }
+ ]
+}

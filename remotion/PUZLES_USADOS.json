@@ -1,0 +1,160 @@
+{
+ "regla": "Cada puzle de ENIGMA 60 es único: ninguna familia (mecánica de fondo) se repite entre vídeos ni dentro de un mismo vídeo, aunque cambien los objetos, los números o la ambientación. Orden del Propietario, 16/11/2026.",
+ "puzles": [
+  {
+   "video_id": "E60ES-ER-001-TORRE",
+   "puzle": "P1 Los tres escudos",
+   "familia": "orden_por_pistas"
+  },
+  {
+   "video_id": "E60ES-ER-001-TORRE",
+   "puzle": "P2 El lema cifrado",
+   "familia": "cifrado_cesar"
+  },
+  {
+   "video_id": "E60ES-ER-001-TORRE",
+   "puzle": "P3 La escalera",
+   "familia": "serie_fibonacci"
+  },
+  {
+   "video_id": "E60ES-ER-001-TORRE",
+   "puzle": "P4 Las tres llaves",
+   "familia": "veraces_mentirosos"
+  },
+  {
+   "video_id": "E60ES-ER-002-MUSEO",
+   "puzle": "P1 Las tres vitrinas",
+   "familia": "etiquetas_todas_falsas"
+  },
+  {
+   "video_id": "E60ES-ER-002-MUSEO",
+   "puzle": "P2 El año del retrato",
+   "familia": "numeros_romanos"
+  },
+  {
+   "video_id": "E60ES-ER-002-MUSEO",
+   "puzle": "P3 El gato falso",
+   "familia": "pesadas_minimas"
+  },
+  {
+   "video_id": "E60ES-ER-002-MUSEO",
+   "puzle": "P4 Las dos velas",
+   "familia": "observacion_corriente_aire"
+  },
+  {
+   "video_id": "E60ES-AC-20261119",
+   "puzle": "Las cerillas del relojero",
+   "familia": "cerillas_mover_una"
+  },
+  {
+   "video_id": "E60ES-AC-20261117",
+   "puzle": "Los engranajes del faro",
+   "familia": "relacion_engranajes"
+  },
+  {
+   "video_id": "E60ES-AC-20261120",
+   "puzle": "Las jarras del boticario",
+   "familia": "trasvase_jarras"
+  },
+  {
+   "video_id": "E60ES-AC-20261122",
+   "puzle": "La caja del cartógrafo",
+   "familia": "codigo_por_pistas"
+  },
+  {
+   "video_id": "E60ES-S001-E01",
+   "puzle": "P1 El cuaderno boca abajo",
+   "familia": "rotacion_180_digitos"
+  },
+  {
+   "video_id": "E60ES-S001-E01",
+   "puzle": "P2 Los tres cajones",
+   "familia": "palindromo"
+  },
+  {
+   "video_id": "E60ES-S001-E01",
+   "puzle": "P3 Los manómetros",
+   "familia": "sistema_ecuaciones"
+  },
+  {
+   "video_id": "E60ES-S001-E01",
+   "puzle": "P4 El reloj parado",
+   "familia": "aritmetica_horaria"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "puzle": "P1 El montón de cajas",
+   "familia": "conteo_cubos_ocultos"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "puzle": "P2 Las cuatro farolas",
+   "familia": "interruptores_vecinos"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "puzle": "P3 Los anillos del telescopio",
+   "familia": "torres_hanoi"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "puzle": "P4 Los espejos de la cúpula",
+   "familia": "trayectoria_reflejos"
+  }
+ ],
+ "pendientes_de_sustituir": [],
+ "sin_programar": {
+  "nota": "Fichas antiguas sin fecha: si se reutilizan, deben pasar el verificador.",
+  "E60-2026-11-18-corto lentes": "sistema_ecuaciones",
+  "E60-2026-11-20-corto velas": "trampa_lateral",
+  "E60-2026-11-21-corto gemas": "sistema_ecuaciones",
+  "E60-2026-11-22-corto espejos": "simetria_espejo"
+ },
+ "regla_salas": "Cada vídeo corto tiene su propia habitación 3D: ni el id de sala ni la combinación pared + suelo + luz se repiten con otro vídeo (orden del Propietario, 16/11/2026). Los largos y sus avances comparten la sala del largo.",
+ "salas": [
+  {
+   "video_id": "E60ES-ER-001-TORRE",
+   "sala": "torre-archivero",
+   "firma": "piedra|tablones|velas",
+   "nota": "también la usa su avance"
+  },
+  {
+   "video_id": "E60ES-ER-002-MUSEO",
+   "sala": "museo-que-miente",
+   "firma": "museo",
+   "nota": "y su avance"
+  },
+  {
+   "video_id": "E60ES-S001-E01",
+   "sala": "sala-lastre",
+   "firma": "submarino",
+   "nota": "y su avance"
+  },
+  {
+   "video_id": "E60ES-AC-20261119",
+   "sala": "relojeria-01",
+   "firma": "papel|damero|lampara"
+  },
+  {
+   "video_id": "E60ES-AC-20261117",
+   "sala": "faro-maquinas-01",
+   "firma": "chapa|rejilla|fluorescente"
+  },
+  {
+   "video_id": "E60ES-AC-20261120",
+   "sala": "rebotica-boticario-01",
+   "firma": "azulejo|losas|velas"
+  },
+  {
+   "video_id": "E60ES-AC-20261122",
+   "sala": "camarote-cartografo-01",
+   "firma": "tablas|tablones|lampara"
+  },
+  {
+   "video_id": "E60ES-ER-003",
+   "sala": "observatorio-apagado",
+   "firma": "observatorio",
+   "nota": "4 salas: ladrillo|losas|lampara, piedra|damero|luna, tablas|losas|chimenea, chapa|tablones|luna; y su avance"
+  }
+ ]
+}

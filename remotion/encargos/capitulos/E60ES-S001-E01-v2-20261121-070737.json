@@ -1,0 +1,12 @@
+{
+ "encargo_id": "E60ES-S001-E01-v2-20261121-070737",
+ "composicion": "E60Capitulo",
+ "ficha": "fichas/E60-S01-C01.json",
+ "tramos": 8,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "video_id": "E60ES-S001-E01",
+ "version": "v2",
+ "motivo": "QA visual del máster 44863840794 (no entregado): el subtítulo del Operador Cero decía «EL CUSTODIO» y la pantalla final era de escape room. Se añaden rótulos de quién habla (Alma, Damián, Operador Cero). Voces reutilizadas (voz_lista).",
+ "solicitado_por": "Claude (productor ENIGMA 60)",
+ "fecha": "2026-11-21T07:07:37+01:00"
+}

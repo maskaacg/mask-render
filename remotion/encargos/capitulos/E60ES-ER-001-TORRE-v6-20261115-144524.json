@@ -1,0 +1,8 @@
+{
+ "encargo_id": "E60ES-ER-001-TORRE-v6-20261115-144524",
+ "composicion": "E60EscapeRoom",
+ "ficha": "fichas/E60-ER-001.json",
+ "tramos": 8,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "v6: corrección del Propietario («Se escucha interferencia en el sonido, no como lluvia»)"
+}

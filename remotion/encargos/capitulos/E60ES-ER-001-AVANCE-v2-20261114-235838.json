@@ -1,0 +1,8 @@
+{
+ "encargo_id": "E60ES-ER-001-AVANCE-v2-20261114-235838",
+ "composicion": "E60AvanceTorre",
+ "ficha": "fichas/E60-ER-001-T.json",
+ "tramos": 2,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "v2: colores de escudos coherentes y encuadre"
+}
