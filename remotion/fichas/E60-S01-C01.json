@@ -15,11 +15,21 @@
  "aviso_ia": "Contenido creado con ayuda de IA",
  "voces": {
   "narrador": {
-   "papel": "narrador",
+   "papel": "narrador (voz interior del espectador)",
    "ref": "voces/ref_narrador.wav"
   },
+  "archivera": {
+   "papel": "ALMA (radio del Vigía)",
+   "ref": "voces/ref_archivera.wav",
+   "nota": "provisional: reaprovecha la referencia de la archivera"
+  },
+  "conservador": {
+   "papel": "DAMIÁN (radio del Vigía)",
+   "ref": "voces/ref_conservador.wav",
+   "nota": "provisional: reaprovecha la referencia del conservador"
+  },
   "custodio": {
-   "papel": "custodio",
+   "papel": "OPERADOR CERO (altavoces del Abisal)",
    "ref": "voces/ref_custodio.wav",
    "efecto": "metal"
   }
@@ -61,6 +71,27 @@
  ],
  "lineas": [
   {
+   "id": "g01",
+   "bloque": "gancho",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Vigía a Abisal. Vigía a Abisal… Sé que nadie va a contestar. Llevo dieciocho años llamando a este canal."
+  },
+  {
+   "id": "g02",
+   "bloque": "gancho",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Damián, para. Mira el sonar. La baliza del Abisal se acaba de encender. Sola."
+  },
+  {
+   "id": "g03",
+   "bloque": "gancho",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Eso es imposible. Ese submarino está muerto desde dos mil ocho."
+  },
+  {
    "id": "n01",
    "bloque": "gancho",
    "fase": "narra",
@@ -82,7 +113,28 @@
    "id": "n03",
    "bloque": "gancho",
    "fase": "narra",
-   "texto": "Estás en un submarino. A seiscientos metros de profundidad. Y no hay nadie más."
+   "texto": "Estás en un submarino. A seiscientos metros de profundidad. No recuerdas cómo has llegado aquí. Y no ves a nadie más."
+  },
+  {
+   "id": "g04",
+   "bloque": "gancho",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "¿Hola? Si alguien puede oírme… la radio de tu sala acaba de abrir el canal. Te oímos respirar."
+  },
+  {
+   "id": "g05",
+   "bloque": "gancho",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Soy Alma. Estoy en el Vigía, el barco de apoyo, justo encima de ti. Y él es Damián."
+  },
+  {
+   "id": "g06",
+   "bloque": "gancho",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "No sé quién eres ni cómo has entrado ahí. Ese submarino se evacuó hace dieciocho años y lleva sellado desde entonces."
   },
   {
    "id": "n04",
@@ -91,10 +143,24 @@
    "texto": "Al fondo, una escotilla sellada. Delante, una sala llena de tanques, válvulas y relojes. Y el agua sigue subiendo."
   },
   {
+   "id": "g07",
+   "bloque": "gancho",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "El casco está cediendo. Si no vacías los tanques de lastre, seguirás hundiéndote. Y nosotros solo podemos hablar contigo mientras dure la ventana."
+  },
+  {
+   "id": "g08",
+   "bloque": "gancho",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Una hora. Es lo único que nos da el protocolo. Sesenta minutos."
+  },
+  {
    "id": "n05",
    "bloque": "gancho",
    "fase": "narra",
-   "texto": "Si quieres salir de aquí, vas a tener que pensar rápido."
+   "texto": "Sesenta minutos para salir de aquí. Y para entender qué haces tú dentro de un submarino que no debería existir."
   },
   {
    "id": "n06",
@@ -107,6 +173,20 @@
    "bloque": "p1",
    "fase": "narra",
    "texto": "Tiene un candado de dos dígitos. Y atado a la caja, flotando, un cuaderno empapado: el registro de inmersión."
+  },
+  {
+   "id": "a01",
+   "bloque": "p1",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Si es el registro del Abisal, lo necesito. Ahí está lo que pasó en la última inmersión. Ábrelo, por favor."
+  },
+  {
+   "id": "d00",
+   "bloque": "p1",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Primero la luz, Alma. A oscuras no va a leer nada."
   },
   {
    "id": "n08",
@@ -130,7 +210,8 @@
    "id": "r01",
    "bloque": "p1",
    "fase": "repaso",
-   "texto": "Repasemos. Ves un dieciséis. Pero el cuaderno está del revés. ¿Qué número escribió de verdad quien lo apuntó?"
+   "voz": "archivera",
+   "texto": "Espera… si el título está del revés, el número también. ¿Cómo lo vería quien lo escribió?"
   },
   {
    "id": "n11",
@@ -169,6 +250,32 @@
    "texto": "El haz de la linterna corta la oscuridad. Ahora la sala tiene forma: un pasillo de acero, tres tanques verdes a la izquierda y tuberías de latón a la derecha."
   },
   {
+   "id": "a02",
+   "bloque": "p1",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Noventa y uno… Damián, es el número de la inmersión. La última del Abisal fue la noventa y uno."
+  },
+  {
+   "id": "a03",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "Abres el cuaderno. En la primera página, con la misma letra: inmersión noventa y uno, catorce de marzo de dos mil ocho."
+  },
+  {
+   "id": "a04",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "La tinta no se ha corrido. Ni una gota. Como si alguien lo hubiera escrito esta misma noche."
+  },
+  {
+   "id": "a05",
+   "bloque": "p1",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Eso no tiene sentido. Ese cuaderno lleva dieciocho años bajo el agua."
+  },
+  {
    "id": "n15",
    "bloque": "p2",
    "fase": "narra",
@@ -179,6 +286,13 @@
    "bloque": "p2",
    "fase": "narra",
    "texto": "En la pared, un cuadro eléctrico con un hueco vacío. Falta un fusible."
+  },
+  {
+   "id": "d01",
+   "bloque": "p2",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Sin corriente no hay bombas, y sin bombas no vacías el lastre. Busca ese fusible. Rápido."
   },
   {
    "id": "n17",
@@ -202,7 +316,8 @@
    "id": "r02",
    "bloque": "p2",
    "fase": "repaso",
-   "texto": "Repasemos. Sonar, rotor y radar. Una palabra que se lee igual en los dos sentidos. Y no es la del medio."
+   "voz": "archivera",
+   "texto": "Fíjate en cómo están escritas. Hay palabras a las que les da igual por qué lado empieces a leerlas."
   },
   {
    "id": "n20",
@@ -247,22 +362,51 @@
    "texto": "El zumbido de la corriente recorre las paredes. En algún lugar del barco, algo acaba de despertar contigo."
   },
   {
-   "id": "s01",
+   "id": "d02",
    "bloque": "p2",
-   "fase": "narra",
-   "texto": "Los que llegan hasta aquí suelen volver. Si quieres bajar a la siguiente sala, suscríbete: en este submarino quedan nueve."
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Tengo telemetría. Los sistemas del Abisal vuelven a hablar con el Vigía."
+  },
+  {
+   "id": "d03",
+   "bloque": "p2",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Y hay algo más. El registro dice que alguien usó la terminal de tu sala hace cinco minutos."
+  },
+  {
+   "id": "a06",
+   "bloque": "p2",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "¿Hace cinco minutos? Damián, aparte de quien esté ahí abajo…"
+  },
+  {
+   "id": "d04",
+   "bloque": "p2",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Aparte de quien esté ahí abajo, no debería haber nadie. Ni vivo, ni muerto."
   },
   {
    "id": "n25",
    "bloque": "p3",
    "fase": "narra",
-   "texto": "Tres tanques de lastre: A, B y C. Si vacías el lastre, el submarino deja de hundirse."
+   "texto": "Tres tanques de lastre: A, B y C. Si los vacías, el submarino deja de hundirse."
   },
   {
    "id": "n26",
    "bloque": "p3",
    "fase": "narra",
    "texto": "Las válvulas solo se abren con el código de los tres manómetros. Pero están rotos: sus agujas no paran de moverse."
+  },
+  {
+   "id": "d05",
+   "bloque": "p3",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Las válvulas del Abisal tenían un cierre de seguridad: los tres valores a la vez. Si fallas, se bloquean. No hay segundo intento."
   },
   {
    "id": "n27",
@@ -286,7 +430,8 @@
    "id": "r03",
    "bloque": "p3",
    "fase": "repaso",
-   "texto": "Repasemos. A es el doble de B. C es B más tres. Y los tres juntos suman diecinueve."
+   "voz": "archivera",
+   "texto": "Todo depende de B. Si sabes cuánto marca B, sabes cuánto marcan los otros dos."
   },
   {
    "id": "n30",
@@ -319,6 +464,26 @@
    "texto": "El lastre sale disparado. El suelo se inclina, cruje… y vuelve a nivelarse. El agua, por fin, deja de subir."
   },
   {
+   "id": "d06",
+   "bloque": "p3",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Lo has hecho. Estás estable… Bien. Muy bien."
+  },
+  {
+   "id": "a07",
+   "bloque": "p3",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Damián, mira la profundidad. Seiscientos metros justos. Ha vuelto exactamente al punto donde se perdió."
+  },
+  {
+   "id": "s01",
+   "bloque": "p3",
+   "fase": "narra",
+   "texto": "Si quieres descubrir qué ocurrió realmente en este submarino, suscríbete. Esto acaba de empezar."
+  },
+  {
    "id": "n34",
    "bloque": "p5",
    "fase": "narra",
@@ -329,6 +494,13 @@
    "bloque": "p5",
    "fase": "narra",
    "texto": "En la puerta, grabado: la hora en que sonó la alarma."
+  },
+  {
+   "id": "a08",
+   "bloque": "p5",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "El informe oficial dice que la alarma sonó en cuanto empezó a entrar el agua, y que la tripulación tuvo tiempo de sobra para evacuar. Quiero saber si es verdad."
   },
   {
    "id": "n36",
@@ -346,7 +518,8 @@
    "id": "r04",
    "bloque": "p5",
    "fase": "repaso",
-   "texto": "Repasemos. El reloj se paró a las tres y diez. La inundación empezó cuarenta y cinco minutos antes. Y la alarma, veinte minutos después de la inundación."
+   "voz": "archivera",
+   "texto": "Cuidado con el orden. Primero vuelve atrás desde el reloj. Después, avanza."
   },
   {
    "id": "n38",
@@ -371,6 +544,34 @@
    "bloque": "p5",
    "fase": "comprobacion",
    "texto": "La alarma sonó tarde. Para entonces, el agua ya llevaba veinte minutos entrando."
+  },
+  {
+   "id": "a09",
+   "bloque": "p5",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Veinte minutos. El informe miente. Alguien retrasó la alarma veinte minutos."
+  },
+  {
+   "id": "d07",
+   "bloque": "p5",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Veinte minutos con el agua dentro y sin aviso… Había treinta y una personas a bordo."
+  },
+  {
+   "id": "a10",
+   "bloque": "p5",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Damián…"
+  },
+  {
+   "id": "d08",
+   "bloque": "p5",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Estoy bien. Sigue. Saca de ahí a quien sea que tengamos dentro."
   },
   {
    "id": "n41",
@@ -401,20 +602,54 @@
    "bloque": "giro",
    "fase": "custodio",
    "voz": "custodio",
-   "texto": "Bienvenido a bordo del Abisal. Has resuelto la primera sala en menos tiempo del previsto."
+   "texto": "Aquí Operador Cero. Bienvenido de nuevo a bordo del Abisal. Esta vez has tardado menos."
   },
   {
    "id": "n53",
    "bloque": "giro",
    "fase": "custodio",
    "voz": "custodio",
-   "texto": "Quedan nueve. Y yo tengo todo el tiempo del mundo."
+   "texto": "Quedan nueve compartimentos. Y yo tengo todo el tiempo del mundo."
+  },
+  {
+   "id": "g09",
+   "bloque": "giro",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "¿De nuevo? ¿Qué significa de nuevo? ¿Quién eres?"
+  },
+  {
+   "id": "g10",
+   "bloque": "giro",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "No es una grabación, Damián. Está respondiendo. Y la señal sale de dentro del submarino."
+  },
+  {
+   "id": "g11",
+   "bloque": "giro",
+   "fase": "conservador",
+   "voz": "conservador",
+   "texto": "Escúchame bien: no hagas nada de lo que te diga esa voz. Nada."
+  },
+  {
+   "id": "g12",
+   "bloque": "giro",
+   "fase": "archivera",
+   "voz": "archivera",
+   "texto": "Se nos acaba la ventana. La señal se está…"
+  },
+  {
+   "id": "g13",
+   "bloque": "giro",
+   "fase": "narra",
+   "texto": "Estática. Y después, silencio. Solo el agua, y una puerta cerrada desde el otro lado."
   },
   {
    "id": "n54",
    "bloque": "cierre",
    "fase": "narra",
-   "texto": "Noventa y uno. El cajón de radar. Ocho, cuatro, siete. Las dos y cuarenta y cinco. ¿Cuántas cerraduras abriste sin mirar la solución? Déjalo en los comentarios."
+   "texto": "Noventa y uno. El cajón de radar. Ocho, cuatro, siete. Las dos y cuarenta y cinco. ¿Cuántas resolviste sin mirar la solución? Y la pregunta de verdad: ¿quién retrasó la alarma? Te leo en los comentarios."
   },
   {
    "id": "n55",
@@ -426,19 +661,30 @@
    "id": "n56",
    "bloque": "cierre",
    "fase": "narra",
-   "texto": "Próximo capítulo: El mamparo. Se abre el sábado que viene; activa la campanita para bajar el primero."
+   "texto": "Próximo capítulo: El mamparo. Se abre el sábado que viene. Activa la campanita para bajar el primero."
   }
  ],
- "auditoria": "Claude 20/11/2026: soluciones únicas comprobadas por código (tools/verificar_s001_e01.py: P1 91; P2 RADAR; P3 8-4-7; P4 2:45); familias comprobadas con verificar_puzles_unicos.py. Voz Chatterbox: 61 líneas, Whisper OK salvo n31 («847» = «ocho, cuatro, siete», comprobada a mano). Máster run 44725264886: QA técnica PASS (620,4 s, -14,5 LUFS, movimiento mínimo 0,119). QA visual (Claude): fotogramas de prueba de cada puzle y hojas de contactos revisadas; colores coherentes, paneles opacos, cuaderno legible como «16» y «91» girado. Nota: en el cambio entre explicación y fichas hay un fundido de <0,5 s donde coinciden dos paneles.",
+ "auditoria": "v2 pendiente: regenerar todas las voces, render, QA técnica y visual. Soluciones sin cambios (tools/verificar_s001_e01.py).",
  "motor_voz": "chatterbox",
  "pantalla_final_s": 20,
- "version": "v1",
+ "version": "v2",
  "video_id": "E60ES-S001-E01",
  "historial": [
   {
    "version": "v1",
    "fecha": "2026-11-20",
    "cambios": "Ficha rehecha por el productor (Claude) para cumplir PRODUCCION.md: 4 puzles de familias no usadas (antes 6; «cajones mal etiquetados», «báscula» y «volante» repetían familia), voz «Chatterbox expresiva», comentarios antes de cada solución, una suscripción integrada tras el 2.º acierto, campanita al final y 20 s de pantalla final. Comentario de @luzceliztrivino5654 (16/11, Torre): «la primera fácil, la cuarta muy difícil» → curva de dificultad suave, el más difícil en tercer lugar."
+  },
+  {
+   "version": "v2",
+   "fecha": "2026-11-21",
+   "cambios": "Corrección prioritaria del Propietario (21/11): el capítulo deja de ser un escape room. Apertura en frío por radio; Alma y Damián (Vigía) y Operador Cero (sustituye a El Custodio); cada puzle revela historia (inmersión 91 con tinta fresca, acceso a la terminal hace 5 min, vuelta a los 600 m, alarma retrasada 20 min = el informe oficial miente); final con gancho («bienvenido de nuevo»). Mismos 4 puzles, sala 3D, cámara y megapuzle."
   }
- ]
+ ],
+ "personajes": {
+  "espectador": "Protagonista sin identidad. Cámara subjetiva. Despierta a bordo sin recordar cómo llegó.",
+  "alma": "Oceanógrafa del Vigía. Curiosa, toma la iniciativa, quiere el registro. Da las pistas sin darse cuenta.",
+  "damian": "Jefe de rescate del Vigía. Pragmático, desconfiado. Lleva 18 años llamando al Abisal (motivo personal oculto).",
+  "operador_cero": "Voz de los altavoces del Abisal. Sabe más que nadie. Dice «de nuevo»."
+ }
 }
