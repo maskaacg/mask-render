@@ -30,7 +30,7 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 
 | Publicación | Tipo | video_id | Estado |
 |---|---|---|---|
-| Lun 23 | Escape Room #3 (16:9) + avance 9:16 | E60ES-ER-003 / E60ES-ER-003-AVANCE | Pendiente |
+| Lun 23 | Escape Room #3 «El observatorio apagado» (16:9, E60EscapeObservatorio, solo YouTube 17:00) + avance 9:16 (E60AvanceObservatorio, 18:00) | E60ES-ER-003 / E60ES-ER-003-AVANCE | Escape room: Entregado v1 (sáb 21, Telegram, pendiente de APROBAR). Avance: Entregado v1 (sáb 21 11:04, Telegram, 88,4 s, pendiente de APROBAR) |
 | Mar 24 | Acertijo 9:16 (sala 3D propia) | E60ES-AC-20261124 | Pendiente |
 | Mié 25 | Escape Room #4 (16:9) + avance 9:16 | E60ES-ER-004 / E60ES-ER-004-AVANCE | Pendiente |
 | Jue 26 | Acertijo 9:16 | E60ES-AC-20261126 | Pendiente |

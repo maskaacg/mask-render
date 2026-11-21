@@ -7,8 +7,8 @@
  "formato": "YouTube 16:9",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": "",
- "run_id": null,
+ "encargo_master": "E60ES-ER-003-v1-20261121-124606",
+ "run_id": 44900668312,
  "plataformas": [
   "youtube"
  ],
@@ -45,6 +45,6 @@
    "corrector": "Claude (productor automático)"
   }
  ],
- "estado_aprobacion": "v1 en render",
- "sha256": ""
+ "estado_aprobacion": "v1 entregada a Telegram (21/11), pendiente de APROBAR",
+ "sha256": "f576d142d67ecf536e63cbffbc07d54a4f4ffdf0c0f990bd4a61633eba1a3471"
 }
