@@ -1,14 +1,14 @@
 {
  "video_id": "E60ES-S001-E01",
- "version": "v1",
+ "version": "v2",
  "ficha": "fichas/E60-S01-C01.json",
  "composicion": "E60Capitulo",
  "tramos": 8,
  "formato": "YouTube 16:9",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": "E60ES-S001-E01-v1-20261120-120928",
- "run_id": 44725264886,
+ "encargo_master": "E60ES-S001-E01-v2-20261121-070737",
+ "run_id": 44874065485,
  "plataformas": [
   "youtube"
  ],
@@ -17,18 +17,18 @@
  "miniatura": "remotion/publicacion/E60ES-S001-E01_miniatura.jpg",
  "titulo": "La sala de lastre || Profundidad 600 #1",
  "youtube_title": "La sala de lastre || Profundidad 600 #1",
- "youtube_description": "Despiertas con agua helada por los tobillos, a seiscientos metros de profundidad, en la sala de lastre de un submarino. No hay nadie más. Una escotilla sellada, el agua que sigue subiendo… y cuatro cerraduras entre tú y la salida.\n\nLos 4 acertijos:\n📓 El cuaderno boca abajo: en la tapa se lee 16, pero el cuaderno flota del revés. ¿Qué número abre el candado?\n🗄️ Los tres cajones: sonar, rotor y radar. ¿En qué cajón está el fusible?\n🎛️ Los manómetros: A es el doble de B, C es B más tres y entre los tres suman 19. ¿Qué marca cada uno?\n🕰️ El reloj parado: se detuvo a las 3:10. ¿A qué hora sonó la alarma?\n\nTienes 20 segundos en cada puzle antes de la solución. Deja tus respuestas en los comentarios: ¿cuántas cerraduras abriste sin mirar la solución?\n\nY si ves algo violeta en esta sala… apúntalo. Lo vas a necesitar.\n\n0:00 La sala de lastre\n0:54 Puzle 1 · El cuaderno boca abajo\n2:53 Puzle 2 · Los tres cajones\n5:06 Puzle 3 · Los manómetros\n6:51 Puzle 4 · El reloj parado\n8:52 Una voz en el altavoz\n\nPrimer capítulo de «Profundidad 600», la primera serie de ENIGMA 60. ¿Te perdiste los escape rooms? «La torre del archivo» y «El museo que miente» están en el canal. Próximo capítulo: «El mamparo», el sábado que viene. Suscríbete y activa la campanita para bajar el primero.\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#acertijos #escaperoom #serie #enigmas #enigma60",
+ "youtube_description": "«Vigía a Abisal… Sé que nadie va a contestar». Dieciocho años después de desaparecer a 600 metros de profundidad con 31 personas a bordo, la baliza del submarino Abisal se enciende sola. Y alguien despierta dentro: tú.\n\nAlma y Damián te guían por radio desde el barco de apoyo, pero el protocolo solo les da una hora. Cada cerradura que abres responde a una pregunta… y abre otra más grande. ¿Por qué la tinta del registro sigue fresca? ¿Quién usó tu terminal hace cinco minutos? ¿Y por qué el informe oficial miente sobre la alarma?\n\nLos 4 acertijos:\n📓 El cuaderno boca abajo: en la tapa se lee 16, pero el cuaderno flota del revés. ¿Qué número abre el candado?\n🗄️ Los tres cajones: sonar, rotor y radar. ¿En qué cajón está el fusible?\n🎛️ Los manómetros: A es el doble de B, C es B más tres y entre los tres suman 19. ¿Qué marca cada uno?\n🕰️ El reloj parado: se detuvo a las 3:10. ¿A qué hora sonó la alarma?\n\nTienes 20 segundos en cada uno antes de la solución. Cuéntame en los comentarios cuántos resolviste… y quién crees que retrasó la alarma.\n\nY si ves algo violeta en esta sala… apúntalo. Lo vas a necesitar.\n\n0:00 Vigía a Abisal\n2:06 El cuaderno boca abajo\n4:46 Los tres cajones\n7:25 Los manómetros\n9:41 El reloj parado\n12:11 Operador Cero\n\nCapítulo 1 de «Profundidad 600», la primera serie de ENIGMA 60. Próximo capítulo: «El mamparo», el sábado que viene. Si quieres descubrir qué ocurrió realmente en el Abisal, suscríbete y activa la campanita.\n\nContenido creado con ayuda de IA (voces sintéticas y escenas 3D generadas por ordenador).\n\n#acertijos #misterio #serie #enigmas #enigma60",
  "tags": [
   "acertijos",
-  "acertijos de lógica",
-  "escape room",
-  "serie de acertijos",
+  "misterio",
+  "serie de misterio",
   "submarino",
   "enigmas",
   "puzles",
   "retos de lógica",
   "enigma 60",
-  "profundidad 600"
+  "profundidad 600",
+  "ciencia ficción"
  ],
  "youtube": {
   "categoryId": "24",
@@ -48,8 +48,18 @@
    "version": "v1",
    "motivo_cambio": "Primer máster (run 44710675189) descartado por QA técnica FAIL (segundos congelados); re-render con más deriva de cámara y parpadeo de luz: run 44725264886 QA PASS. Capítulos medidos en el máster final.",
    "corrector": "Claude"
+  },
+  {
+   "version": "v2",
+   "motivo_cambio": "Corrección prioritaria del Propietario (21/11): capítulo narrativo de serie, no escape room. Alma y Damián por radio, Operador Cero, puzles con función narrativa, final con gancho. Primer máster (run 44863840794) no entregado por QA visual: rótulo «EL CUSTODIO» y pantalla final de escape room.",
+   "corrector": "Claude"
+  },
+  {
+   "version": "v2",
+   "motivo_cambio": "Máster definitivo run 44874065485: rótulos de quién habla, Operador Cero, pantalla final «¿Bajas al siguiente compartimento?». QA técnica PASS (856,6 s, -14,6 LUFS); QA visual hecha por Claude. Capítulos medidos.",
+   "corrector": "Claude"
   }
  ],
- "estado_aprobacion": "v1 entregada a Telegram (20/11), pendiente de APROBAR",
- "sha256": "6262e5817bdc85cdecfe98bd887bc9d63c4935c2496edd3d76b585fd74d79c3c"
+ "estado_aprobacion": "v2 enviada a revisión (21/11), pendiente de APROBAR",
+ "sha256": "a0eb07addb39868a67a756689cd470d3a01ce5e8f5c1f04645960021901f4984"
 }
