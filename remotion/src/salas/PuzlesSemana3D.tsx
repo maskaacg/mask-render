@@ -90,7 +90,8 @@ const Sombras: React.FC<P> = ({p, tm}) => {
 				<meshStandardMaterial color="#ece8de" roughness={0.95} />
 			</mesh>
 			{/* estatua: pedestal, cuerpo y cabeza (blanca) */}
-			<group position={[c[0], c[1], c[2] - 0.35]}>
+			{/* la estatua gira despacio sobre su peana: las sombras se mueven (nunca hay segundos quietos) */}
+			<group position={[c[0], c[1], c[2] - 0.35]} rotation={[0, t * 0.45, 0]}>
 				<Caja p={[0, 0.09, 0]} s={[0.26, 0.18, 0.26]} c="#e9e4d8" sombra />
 				<mesh position={[0, 0.42, 0]} castShadow>
 					<cylinderGeometry args={[0.07, 0.11, 0.5, 18]} />
@@ -107,7 +108,7 @@ const Sombras: React.FC<P> = ({p, tm}) => {
 			</group>
 			{/* tres focos con pantalla opaca hacia la cámara: su color no se ve hasta la solución */}
 			{orden.map((k, i) => (
-				<group key={i} position={[c[0] + xs[i], c[1] + 0.34, c[2] + 0.75]}>
+				<group key={i} position={[c[0] + xs[i] + Math.sin(t * 0.8 + i * 2.1) * 0.03, c[1] + 0.34, c[2] + 0.75]}>
 					<Caja p={[0, -0.17, 0]} s={[0.04, 0.32, 0.04]} c="#2a2622" m={0.6} r={0.4} />
 					<mesh rotation={[0.25, 0, 0]}>
 						<cylinderGeometry args={[0.11, 0.08, 0.2, 18]} />

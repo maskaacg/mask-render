@@ -1,0 +1,60 @@
+{
+ "video_id": "E60ES-AC-20261129",
+ "version": "v1",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-AC-20261129-v1-20261122-045140",
+ "run_id": 44982512293,
+ "zona": "Europe/Madrid",
+ "sha256": "e00bb67b407a78dcc735fc61262bebbc7647d163bc390aace5a7e7fbfba538fc",
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva de la semana 23-29/11 (Claude)",
+   "corrector": "Claude"
+  }
+ ],
+ "estado_aprobacion": "v1 entregada (22/11), pendiente de APROBAR",
+ "ficha": "fichas/E60-2026-11-29-corto.json",
+ "composicion": "E60CortoSala",
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "plataformas": [
+  "tiktok",
+  "youtube",
+  "facebook"
+ ],
+ "pendiente_conectar": [
+  "instagram"
+ ],
+ "portada": "remotion/publicacion/E60ES-AC-20261129_portada.jpg",
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true,
+  "cover_timestamp_ms": 1000
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "programado": "2026-11-29T18:00:00",
+ "titulo": "El ascensor tardó 30 segundos: ¿en qué planta se paró? 🛗",
+ "youtube_title": "El ascensor tardó 30 segundos: ¿en qué planta se paró? 🛗 #shorts #acertijos",
+ "youtube_description": "Sale de la planta 1, tarda 8 s por planta, para una sola vez con las puertas abiertas 6 s y el viaje dura 30 s. El hotel tiene 3 plantas. ¿Dónde paró y dónde se quedó? 15 segundos y solución explicada. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
+ "tiktok_title": "Un ascensor sale de la planta 1: 8 s por planta, una parada de 6 s y 30 s en total, en un hotel de 3 plantas. ¿Dónde paró y en qué planta se quedó? Solución explicada en el vídeo. #acertijos #logica #enigma #retomental",
+ "facebook_title": "¿En qué planta se paró el ascensor?",
+ "facebook_description": "8 s por planta, una parada de 6 s y 30 s en total. ¿Dónde se quedó? Solución en el vídeo. ENIGMA 60. Contenido creado con ayuda de IA. #acertijos #logica",
+ "tags": [
+  "acertijos",
+  "ascensor",
+  "lógica",
+  "shorts",
+  "enigma 60"
+ ]
+}
