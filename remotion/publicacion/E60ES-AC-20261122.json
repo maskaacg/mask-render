@@ -1,13 +1,13 @@
 {
  "video_id": "E60ES-AC-20261122",
- "version": "v1",
- "ficha": "fichas/E60-2026-11-22-corto.json",
+ "version": "v2",
+ "ficha": "fichas/E60-2026-11-22b-corto.json",
  "composicion": "E60CortoSala",
  "formato": "TikTok / Reels / Shorts 9:16",
  "canal": "ENIGMA_60",
  "perfil_upload_post": "enigama60",
- "encargo_master": "E60ES-AC-20261122-v1-20261120-103234",
- "run_id": 44711610023,
+ "encargo_master": "E60ES-AC-20261122-v2-20261122-034427",
+ "run_id": 44977470129,
  "plataformas": [
   "tiktok",
   "youtube",
@@ -19,20 +19,20 @@
  "programado": "2026-11-22T18:00:00",
  "zona": "Europe/Madrid",
  "portada": "remotion/publicacion/E60ES-AC-20261122_portada.jpg",
- "titulo": "Cinco pistas, tres cifras: abre la caja 🔐",
- "tiktok_title": "La caja fuerte del cartógrafo y cinco placas con sus intentos: 760 ninguna correcta; 806 una bien colocada; 543 dos mal colocadas; 147 una mal colocada; 516 una mal colocada. ¿Cuál es el código? Escríbelo en comentarios antes de la solución. Escape rooms completos en YouTube: ENIGMA 60. #acertijos #logica #enigma #retomental #codigo",
- "youtube_title": "Cinco pistas para abrir la caja fuerte: ¿cuál es el código? 🔐 #shorts #acertijos",
- "youtube_description": "Una caja fuerte de tres cifras distintas y cinco intentos grabados en placas: 760 ninguna correcta; 806 una correcta y bien colocada; 543 dos correctas mal colocadas; 147 una correcta mal colocada; 516 una correcta mal colocada. ¿Cuál es el código? Tienes 15 segundos. Escape rooms completos en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
- "facebook_title": "Cinco pistas, tres cifras: ¿cuál es el código de la caja fuerte?",
- "facebook_description": "760: ninguna. 806: una bien colocada. 543: dos mal colocadas. 147: una mal colocada. 516: una mal colocada. ¿Qué código abre la caja del cartógrafo? Respuesta en comentarios; escape rooms completos en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #logica",
+ "titulo": "2 pesas, 1 balanza: ¿dónde cuelgas cada una? ⚖️",
+ "tiktok_title": "La puerta del molino solo se abre si la balanza queda recta. Izquierda: 3 kg en el gancho 4 y 2 kg en el 1. Derecha: 2 kg en el 2. Tus pesas (3 kg y 1 kg) van a la derecha, cada una en un gancho libre. ¿Dónde cuelgas cada una? Respuesta explicada en el vídeo. #acertijos #logica #enigma #retomental #balanza",
+ "youtube_title": "2 pesas y una balanza: ¿dónde cuelgas cada una? ⚖️ #shorts #acertijos",
+ "youtube_description": "La puerta del molino se abre si la balanza queda recta. Izquierda: 3 kg en el gancho 4 y 2 kg en el 1. Derecha: 2 kg en el 2. Cuelgas 3 kg y 1 kg a la derecha, cada una en un gancho libre. 15 segundos para pensar y la solución explicada paso a paso. Escape rooms completos y la serie «Profundidad 600» en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
+ "facebook_title": "¿Dónde cuelgas las dos pesas para equilibrar la balanza?",
+ "facebook_description": "3 kg en el 4 y 2 kg en el 1 a la izquierda; 2 kg en el 2 a la derecha. Tú tienes 3 kg y 1 kg para la derecha. ¿Dónde van? La solución, explicada en el vídeo. ENIGMA 60. Contenido creado con ayuda de IA. #acertijos #logica",
  "tags": [
   "acertijos",
-  "caja fuerte",
-  "código",
+  "balanza",
+  "lógica",
   "shorts",
   "enigma 60",
   "retos",
-  "lógica"
+  "palanca"
  ],
  "youtube": {
   "categoryId": "24",
@@ -44,7 +44,7 @@
  "tiktok": {
   "privacy_level": "PUBLIC_TO_EVERYONE",
   "is_aigc": true,
-  "cover_timestamp_ms": 52000
+  "cover_timestamp_ms": 1000
  },
  "facebook": {
   "facebook_media_type": "REELS",
@@ -55,8 +55,13 @@
    "version": "v1",
    "motivo_cambio": "Producción nueva: «La caja del cartógrafo» (sala propia 3D, puzle codigo_por_pistas único y verificado por código)",
    "corrector": "Claude (productor automático)"
+  },
+  {
+   "version": "v2",
+   "motivo_cambio": "Acertijo NUEVO para el hueco del dom 22/11 tras revocar la v1: «La balanza del molinero» (palanca_momentos, sala propia, gancho 0-3 s, solución dentro del corto). La v1 y su portada se conservan en publicacion/historial/.",
+   "corrector": "Claude"
   }
  ],
- "sha256": "20a8b106685d4e2db66d5d266292f21d36321a7c6e4e0a9c9977652c8229f893",
- "estado_aprobacion": "v1 entregada a Telegram (20/11), pendiente de APROBAR"
+ "sha256": "457a3191042ba375ca6a65d1902f2eaa421d472522591c46b8afc6bd7f30bd82",
+ "estado_aprobacion": "v2 pendiente de entrega y de APROBAR (la v1 está REVOCADA y cancelada en Upload-Post)"
 }

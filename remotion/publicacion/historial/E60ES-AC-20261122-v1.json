@@ -1,0 +1,62 @@
+{
+ "video_id": "E60ES-AC-20261122",
+ "version": "v1",
+ "ficha": "fichas/E60-2026-11-22-corto.json",
+ "composicion": "E60CortoSala",
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-AC-20261122-v1-20261120-103234",
+ "run_id": 44711610023,
+ "plataformas": [
+  "tiktok",
+  "youtube",
+  "facebook"
+ ],
+ "pendiente_conectar": [
+  "instagram"
+ ],
+ "programado": "2026-11-22T18:00:00",
+ "zona": "Europe/Madrid",
+ "portada": "remotion/publicacion/E60ES-AC-20261122_portada.jpg",
+ "titulo": "Cinco pistas, tres cifras: abre la caja 🔐",
+ "tiktok_title": "La caja fuerte del cartógrafo y cinco placas con sus intentos: 760 ninguna correcta; 806 una bien colocada; 543 dos mal colocadas; 147 una mal colocada; 516 una mal colocada. ¿Cuál es el código? Escríbelo en comentarios antes de la solución. Escape rooms completos en YouTube: ENIGMA 60. #acertijos #logica #enigma #retomental #codigo",
+ "youtube_title": "Cinco pistas para abrir la caja fuerte: ¿cuál es el código? 🔐 #shorts #acertijos",
+ "youtube_description": "Una caja fuerte de tres cifras distintas y cinco intentos grabados en placas: 760 ninguna correcta; 806 una correcta y bien colocada; 543 dos correctas mal colocadas; 147 una correcta mal colocada; 516 una correcta mal colocada. ¿Cuál es el código? Tienes 15 segundos. Escape rooms completos en el canal. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
+ "facebook_title": "Cinco pistas, tres cifras: ¿cuál es el código de la caja fuerte?",
+ "facebook_description": "760: ninguna. 806: una bien colocada. 543: dos mal colocadas. 147: una mal colocada. 516: una mal colocada. ¿Qué código abre la caja del cartógrafo? Respuesta en comentarios; escape rooms completos en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #logica",
+ "tags": [
+  "acertijos",
+  "caja fuerte",
+  "código",
+  "shorts",
+  "enigma 60",
+  "retos",
+  "lógica"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true,
+  "cover_timestamp_ms": 52000
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva: «La caja del cartógrafo» (sala propia 3D, puzle codigo_por_pistas único y verificado por código)",
+   "corrector": "Claude (productor automático)"
+  }
+ ],
+ "sha256": "20a8b106685d4e2db66d5d266292f21d36321a7c6e4e0a9c9977652c8229f893",
+ "estado_aprobacion": "v1 entregada a Telegram (20/11), pendiente de APROBAR"
+}

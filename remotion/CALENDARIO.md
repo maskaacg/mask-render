@@ -23,7 +23,7 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 | Jue 19 | Acertijo 9:16 «Las cerillas del relojero» (sala propia, E60CortoSala) | E60ES-AC-20261119 | v1 RECHAZADA el lun 16. Entregado v2 (lun 16 15:23, Telegram, 88,6 s, pendiente de APROBAR) |
 | Vie 20 | Acertijo 9:16 «Las jarras del boticario» (sala propia, E60CortoSala + Jarras3D) | E60ES-AC-20261120 | Entregado v1 (mar 17, Telegram, 97,3 s, pendiente de APROBAR; sustituye a la ficha 2D «Las cuatro velas») |
 | Sáb 21 | Serie «Profundidad 600», cap. 1 «La sala de lastre» (16:9, voz «Chatterbox expresiva», 4 puzles) + avance 9:16 | E60ES-S001-E01 / -AVANCE | Capítulo: Entregado v1 (vie 20, Telegram, 10:20, pendiente de APROBAR; fuera del plazo de 48 h). Avance: Pendiente (falta composición vertical de la serie) |
-| Dom 22 | Acertijo 9:16 **«La balanza del molinero»** v2 (sala propia almacen-molino-01, E60CortoSala + Balanza3D) | E60ES-AC-20261122 | v1 «La caja del cartógrafo» APROBACIÓN REVOCADA (21/11, cancelada en Upload-Post, se conserva). v2 NUEVA en render (dom 22 03:02), pendiente de entregar y APROBAR. Fuera del plazo de 48 h por el hueco |
+| Dom 22 | Acertijo 9:16 **«La balanza del molinero»** v2 (sala propia almacen-molino-01, E60CortoSala + Balanza3D) | E60ES-AC-20261122 | v1 «La caja del cartógrafo» APROBACIÓN REVOCADA (21/11, cancelada en Upload-Post, se conserva). v2 NUEVA renderizada (run 44977470129, QA PASS 89,3 s), pendiente de entregar y APROBAR. Fuera del plazo de 48 h por el hueco |
 
 
 ## Semana del 23/11/2026
