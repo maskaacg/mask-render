@@ -1,0 +1,62 @@
+{
+ "video_id": "E60ES-ER-004-AVANCE",
+ "version": "v1",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-ER-004-AVANCE-v1-20261122-053906",
+ "run_id": 44985988651,
+ "zona": "Europe/Madrid",
+ "sha256": "4b112214fa2e7c71ceb472dfeba5c3619d5c2a0ae38731eeab7ffc55ffb96e76",
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva de la semana 23-29/11 (Claude)",
+   "corrector": "Claude"
+  }
+ ],
+ "estado_aprobacion": "v1 entregada (22/11), pendiente de APROBAR",
+ "ficha": "fichas/E60-ER-004-T.json",
+ "composicion": "E60CortoSala",
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "plataformas": [
+  "tiktok",
+  "youtube",
+  "facebook"
+ ],
+ "pendiente_conectar": [
+  "instagram"
+ ],
+ "portada": "remotion/publicacion/E60ES-ER-004-AVANCE_portada.jpg",
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true,
+  "cover_timestamp_ms": 1000
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "programado": "2026-11-25T18:00:00",
+ "requiere_publicado_antes": "E60ES-ER-004",
+ "titulo": "¿Qué campana falta? 🔔",
+ "youtube_title": "¿Qué campana falta? 🔔 #shorts #acertijos",
+ "youtube_description": "Cuatro campanas, cuatro compases: en cada compás suenan las cuatro una vez y ninguna repite posición. En el último falta una. ¿Cuál? Solución explicada en el vídeo, y cuatro puertas más en el escape room completo «El castillo sin amanecer» del canal. Contenido creado con ayuda de IA. #shorts #acertijos #escaperoom",
+ "tiktok_title": "Cuatro campanas y una partitura incompleta: en cada compás suenan las cuatro una vez y ninguna repite posición. ¿Qué campana falta? Solución en el vídeo y el escape room completo en YouTube (ENIGMA 60). #acertijos #escaperoom #logica #enigma #retomental",
+ "facebook_title": "¿Qué campana falta?",
+ "facebook_description": "Una partitura de cuatro campanas con un hueco. ¿Cuál falta? Solución en el vídeo; el escape room completo, en YouTube (ENIGMA 60). Contenido creado con ayuda de IA. #acertijos #escaperoom",
+ "tags": [
+  "acertijos",
+  "escape room",
+  "campanas",
+  "lógica",
+  "shorts",
+  "enigma 60"
+ ]
+}

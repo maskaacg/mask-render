@@ -1,0 +1,61 @@
+{
+ "video_id": "E60ES-AC-20261124",
+ "version": "v1",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-AC-20261124-v1-20261122-052834",
+ "run_id": 44985217736,
+ "zona": "Europe/Madrid",
+ "sha256": "b322f9eda7596e23eeca9b4f342323bae4734fa0db719d96ce3b4dc7c0a5f668",
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva de la semana 23-29/11 (Claude)",
+   "corrector": "Claude"
+  }
+ ],
+ "estado_aprobacion": "v1 entregada (22/11), pendiente de APROBAR",
+ "ficha": "fichas/E60-2026-11-24-corto.json",
+ "composicion": "E60CortoSala",
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "plataformas": [
+  "tiktok",
+  "youtube",
+  "facebook"
+ ],
+ "pendiente_conectar": [
+  "instagram"
+ ],
+ "portada": "remotion/publicacion/E60ES-AC-20261124_portada.jpg",
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true,
+  "cover_timestamp_ms": 1000
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "programado": "2026-11-24T18:00:00",
+ "titulo": "3 sombras de colores: ¿de qué color es cada lámpara? 🎨",
+ "youtube_title": "3 sombras de colores: ¿de qué color es cada lámpara? 🎨 #shorts #acertijos",
+ "youtube_description": "Tres lámparas tapadas (roja, verde y azul) iluminan una estatua y en la pared aparecen tres sombras: cian, magenta y amarilla. Cada sombra cae al lado contrario de su lámpara. ¿De qué color es cada una, de izquierda a derecha? 15 segundos y solución explicada paso a paso. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
+ "tiktok_title": "Tres lámparas tapadas y tres sombras de colores: cian, magenta y amarilla. Cada sombra cae al lado contrario de su lámpara. ¿De qué color es cada lámpara, de izquierda a derecha? Solución explicada en el vídeo. #acertijos #logica #enigma #retomental #colores",
+ "facebook_title": "¿De qué color es cada lámpara?",
+ "facebook_description": "Sombras cian, magenta y amarilla: ¿dónde está la lámpara roja, la verde y la azul? Solución explicada en el vídeo. ENIGMA 60. Contenido creado con ayuda de IA. #acertijos #logica",
+ "tags": [
+  "acertijos",
+  "sombras",
+  "colores",
+  "lógica",
+  "shorts",
+  "enigma 60"
+ ]
+}
