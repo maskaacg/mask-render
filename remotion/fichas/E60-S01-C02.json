@@ -609,6 +609,26 @@
    "voz": "alma"
   },
   {
+   "id": "y01",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Avanzas por el pasillo inundado. Cada paso levanta un eco que tarda demasiado en volver, como si el casco fuera mucho más grande por dentro."
+  },
+  {
+   "id": "y02",
+   "bloque": "gancho",
+   "fase": "alma",
+   "texto": "Damián, mira la telemetría. La temperatura del agua es la misma que marcaba el registro de dos mil ocho. Exactamente la misma.",
+   "voz": "alma"
+  },
+  {
+   "id": "y03",
+   "bloque": "gancho",
+   "fase": "damian",
+   "texto": "Las cosas no se quedan quietas dieciocho años, Alma. Tiene que ser un error del sensor.",
+   "voz": "damian"
+  },
+  {
    "id": "c01",
    "bloque": "p1",
    "fase": "narra",
@@ -909,6 +929,40 @@
    "voz": "cero"
   },
   {
+   "id": "y04",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "En la foto, los dos hermanos sonríen en un muelle. Detrás, alguien escribió con lápiz: el último verano antes del Abisal."
+  },
+  {
+   "id": "y05",
+   "bloque": "p2",
+   "fase": "damian",
+   "texto": "Ese día le enseñé a hacer nudos. Se le daban fatal. Se reía tanto que la cuerda se le caía al agua.",
+   "voz": "damian"
+  },
+  {
+   "id": "y12",
+   "bloque": "p3",
+   "fase": "damian",
+   "texto": "Iker me escribió una carta la noche antes de la inmersión. Decía que el capitán estaba raro, que había cambiado los turnos de guardia. Nunca se la enseñé a nadie.",
+   "voz": "damian"
+  },
+  {
+   "id": "y13",
+   "bloque": "p3",
+   "fase": "alma",
+   "texto": "¿Por qué me lo cuentas ahora?",
+   "voz": "alma"
+  },
+  {
+   "id": "y14",
+   "bloque": "p3",
+   "fase": "damian",
+   "texto": "Porque acabo de ver su nombre rayado en una taquilla. Y porque ya no sé en quién confiar ahí abajo.",
+   "voz": "damian"
+  },
+  {
    "id": "e01",
    "bloque": "p3",
    "fase": "narra",
@@ -1085,6 +1139,20 @@
    "texto": "La luz roja se apaga. En el silencio, oyes algo nuevo al otro lado del casco: un golpeteo lento, metálico. Como alguien que llama sin prisa."
   },
   {
+   "id": "y06",
+   "bloque": "p4",
+   "fase": "alma",
+   "texto": "Damián, piénsalo. Si el mensaje se grabó en dos mil ocho, alguien a bordo ya conocía el nombre de Cero. Antes de que existiera el protocolo.",
+   "voz": "alma"
+  },
+  {
+   "id": "y07",
+   "bloque": "p4",
+   "fase": "damian",
+   "texto": "O alguien lo grabó después y lo dejó ahí para nosotros. Para que pensáramos exactamente eso.",
+   "voz": "damian"
+  },
+  {
    "id": "s01",
    "bloque": "p5",
    "fase": "narra",
@@ -1161,6 +1229,27 @@
    "voz": "damian"
   },
   {
+   "id": "y08",
+   "bloque": "p5",
+   "fase": "alma",
+   "texto": "Lo has conseguido. Damián… lo ha conseguido.",
+   "voz": "alma"
+  },
+  {
+   "id": "y09",
+   "bloque": "p5",
+   "fase": "damian",
+   "texto": "Alma. Antes, con la radio… tenías razón. Perdona. Si la hubiéramos apagado, ahora no sabríamos nada de esto.",
+   "voz": "damian"
+  },
+  {
+   "id": "y10",
+   "bloque": "p5",
+   "fase": "alma",
+   "texto": "Lo sé. Y tú tenías razón con el agua. Por eso vamos a sacarle de ahí. Los dos.",
+   "voz": "alma"
+  },
+  {
    "id": "z01",
    "bloque": "final",
    "fase": "narra",
@@ -1207,6 +1296,12 @@
    "texto": "Te quedas solo, con la mano sobre el picaporte del comedor. Al otro lado, alguien sigue poniendo la mesa. Plato a plato. Sin prisa."
   },
   {
+   "id": "y11",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "Piensas en la taquilla trece, en el nombre rayado, en un mensaje de hace dieciocho años que te estaba esperando. Nada de lo que hay aquí abajo es casual. Y alguien lleva mucho tiempo preparándolo."
+  },
+  {
    "id": "z07",
    "bloque": "final",
    "fase": "narra",
@@ -1228,6 +1323,11 @@
    "version": "v1",
    "fecha": "2026-11-22",
    "cambios": "Producción nueva (Claude): continúa exactamente desde el final del cap. 1 v2; título canónico «El mamparo»; 5 puzles verificados; pista del megapuzle 6; voces propias de Alma (Kokoro if_sara) y Damián (Kokoro im_nicola) como referencia de Chatterbox; Cero mantiene la del cap. 1. Guion = semana_20261123/CAP2_EL_MAMPARO.md."
+  },
+  {
+   "version": "v1",
+   "fecha": "2026-11-22",
+   "cambios": "2.º render antes de entregar: 14 líneas de historia más (exploración, recuerdo de Iker, reconciliación de Alma y Damián) para pasar de 14:11 a más de 15 minutos, el mínimo que fijó el Propietario. Voz de las 104 líneas anteriores reutilizada (voz_lista)."
   }
  ]
 }
