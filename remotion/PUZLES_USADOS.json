@@ -106,6 +106,76 @@
    "video_id": "E60ES-AC-20261122",
    "puzle": "La balanza del molinero (v2)",
    "familia": "palanca_momentos"
+  },
+  {
+   "video_id": "E60ES-AC-20261124",
+   "puzle": "La habitación de las tres sombras",
+   "familia": "mezcla_aditiva_sombras"
+  },
+  {
+   "video_id": "E60ES-AC-20261126",
+   "puzle": "La vitrina de los tres reflejos",
+   "familia": "espejo_doble_reflexion"
+  },
+  {
+   "video_id": "E60ES-AC-20261127",
+   "puzle": "La torre de dados",
+   "familia": "dados_caras_opuestas"
+  },
+  {
+   "video_id": "E60ES-AC-20261129",
+   "puzle": "El ascensor de las tres plantas",
+   "familia": "tiempos_recorrido"
+  },
+  {
+   "video_id": "E60ES-ER-004",
+   "puzle": "P1 El rosetón",
+   "familia": "suma_opuestos_circulo"
+  },
+  {
+   "video_id": "E60ES-ER-004",
+   "puzle": "P2 ¿Qué campana falta?",
+   "familia": "cuadrado_latino"
+  },
+  {
+   "video_id": "E60ES-ER-004",
+   "puzle": "P3 El escudo falso",
+   "familia": "regla_tinturas_heraldica"
+  },
+  {
+   "video_id": "E60ES-ER-004",
+   "puzle": "P4 El puente levadizo",
+   "familia": "poleas_ventaja_mecanica"
+  },
+  {
+   "video_id": "E60ES-ER-004",
+   "puzle": "P5 La puerta del amanecer",
+   "familia": "orientacion_cardinal"
+  },
+  {
+   "video_id": "E60ES-S001-E02",
+   "puzle": "P1 Las cuatro cámaras",
+   "familia": "igualacion_promedios"
+  },
+  {
+   "video_id": "E60ES-S001-E02",
+   "puzle": "P2 La taquilla de Iker",
+   "familia": "criba_restricciones_numericas"
+  },
+  {
+   "video_id": "E60ES-S001-E02",
+   "puzle": "P3 Energía limitada",
+   "familia": "presupuesto_exacto"
+  },
+  {
+   "video_id": "E60ES-S001-E02",
+   "puzle": "P4 El mensaje de 2008",
+   "familia": "codigo_morse"
+  },
+  {
+   "video_id": "E60ES-S001-E02",
+   "puzle": "P5 La esclusa de las dos mareas",
+   "familia": "secuencia_estados"
   }
  ],
  "pendientes_de_sustituir": [],
@@ -167,6 +237,38 @@
    "sala": "almacen-molino-01",
    "firma": "ladrillo|tablones|lampara",
    "nota": "v2 (la v1 revocada usaba camarote-cartografo-01)"
+  },
+  {
+   "video_id": "E60ES-AC-20261124",
+   "sala": "galeria-escultor-01",
+   "firma": "papel|losas|luna"
+  },
+  {
+   "video_id": "E60ES-AC-20261126",
+   "sala": "joyeria-cerrada-01",
+   "firma": "azulejo|damero|lampara"
+  },
+  {
+   "video_id": "E60ES-AC-20261127",
+   "sala": "casino-barco-01",
+   "firma": "tablas|damero|chimenea"
+  },
+  {
+   "video_id": "E60ES-AC-20261129",
+   "sala": "hotel-ascensor-01",
+   "firma": "chapa|losas|lampara"
+  },
+  {
+   "video_id": "E60ES-ER-004",
+   "sala": "castillo-sin-amanecer",
+   "firma": "castillo",
+   "nota": "5 salas (capilla, campanario, armas, foso, torre); y su avance"
+  },
+  {
+   "video_id": "E60ES-S001-E02",
+   "sala": "abisal-cap2",
+   "firma": "submarino",
+   "nota": "y su avance (abisal-esclusa)"
   }
  ]
 }
