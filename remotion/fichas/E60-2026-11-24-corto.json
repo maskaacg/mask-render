@@ -1,0 +1,203 @@
+{
+ "id": "E60-2026-11-24-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "La habitación de las tres sombras",
+ "numero": 7,
+ "escena": "sala_propia",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#c98a3a",
+ "gancho": true,
+ "gancho_texto": "3 sombras de colores. ¿Y las lámparas?",
+ "puzle": {
+  "tipo": "sombras",
+  "mecanica": "DEDUCCION",
+  "familia": "mezcla_aditiva_sombras",
+  "lamparas": "AVR",
+  "respuesta": "azul, verde, rojo (de izquierda a derecha)",
+  "cuentas": [
+   {
+    "linea": "l07",
+    "texto": "Cian = sin rojo → la roja, a la derecha"
+   },
+   {
+    "linea": "l08",
+    "texto": "Magenta = sin verde → la verde, en el centro"
+   },
+   {
+    "linea": "l09",
+    "texto": "Amarilla = sin azul → la azul, a la izquierda"
+   },
+   {
+    "linea": "l10",
+    "texto": "Azul · verde · rojo ✓",
+    "ok": true
+   }
+  ]
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "id": "l01",
+   "fase": "intro",
+   "texto": "Tres lámparas tapadas, una estatua blanca… y tres sombras de colores en la pared."
+  },
+  {
+   "id": "l02",
+   "fase": "intro",
+   "texto": "La puerta se abre si dices de qué color es cada lámpara, de izquierda a derecha."
+  },
+  {
+   "id": "l03",
+   "fase": "enunciado",
+   "texto": "Las lámparas son roja, verde y azul: una a la izquierda, otra en el centro y otra a la derecha."
+  },
+  {
+   "id": "l04",
+   "fase": "enunciado",
+   "texto": "Donde una luz no llega, la sombra se queda con las otras dos. Sin rojo queda cian; sin verde, magenta; sin azul, amarillo."
+  },
+  {
+   "id": "l05",
+   "fase": "enunciado",
+   "texto": "Y cada sombra cae al lado contrario de su lámpara. ¿De qué color es cada una?"
+  },
+  {
+   "id": "l06",
+   "fase": "solucion",
+   "texto": "Azul, verde y rojo."
+  },
+  {
+   "id": "l07",
+   "fase": "solucion",
+   "texto": "La sombra cian, la que no tiene rojo, cae a la izquierda: la lámpara roja está a la derecha."
+  },
+  {
+   "id": "l08",
+   "fase": "solucion",
+   "texto": "La magenta, sin verde, cae en el centro: la verde está en el centro."
+  },
+  {
+   "id": "l09",
+   "fase": "solucion",
+   "texto": "Y la amarilla, sin azul, cae a la derecha: la azul está a la izquierda."
+  },
+  {
+   "id": "l10",
+   "fase": "solucion",
+   "texto": "Compruébalo: apaga una a una. Cada vez que apagas una lámpara, su sombra desaparece."
+  },
+  {
+   "id": "l11",
+   "fase": "cta",
+   "texto": "¿Te lo esperabas? Cuéntalo en los comentarios."
+  },
+  {
+   "id": "l12",
+   "fase": "cta",
+   "texto": "Y suscríbete: mañana, otra habitación y otro acertijo resuelto."
+  }
+ ],
+ "pizarra": {
+  "desde": "l03",
+  "filas": [
+   {
+    "etiqueta": "LÁMPARAS",
+    "texto": "roja · verde · azul"
+   },
+   {
+    "etiqueta": "SIN ROJO",
+    "texto": "cian"
+   },
+   {
+    "etiqueta": "SIN VERDE",
+    "texto": "magenta"
+   },
+   {
+    "etiqueta": "SIN AZUL",
+    "texto": "amarillo"
+   },
+   {
+    "texto": "La sombra cae al lado contrario",
+    "color": "#3fd0c0"
+   }
+  ],
+  "pregunta": "¿Color de cada lámpara, izq. → der.?"
+ },
+ "camara": {
+  "alto": 1.35,
+  "dist": 3.5,
+  "mira": 0.6,
+  "fov": 50
+ },
+ "fin_solucion": "l10",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "",
+ "motor_voz": "chatterbox",
+ "version": "v1",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-22",
+   "cambios": "Producción nueva (Claude): sala y puzle propios; sombras de color con luces reales (three.js, sombras activas)."
+  }
+ ],
+ "duracion_objetivo_s": 95,
+ "sala": {
+  "id": "galeria-escultor-01",
+  "nombre": "La galería del escultor",
+  "ancho": 5.0,
+  "fondo": 5.6,
+  "alto": 2.8,
+  "pared": {
+   "patron": "papel",
+   "color": "#4a4a5a",
+   "color2": "#2a2a36"
+  },
+  "suelo": {
+   "patron": "losas",
+   "color": "#6a6460",
+   "color2": "#3a3634"
+  },
+  "techo": "#14121a",
+  "luz": {
+   "tipo": "luna",
+   "color": "#c8d4ff",
+   "intensidad": 0.35
+  },
+  "niebla": "#08080c",
+  "puzle_en": "suelo",
+  "atrezo": [
+   {
+    "tipo": "cuadro",
+    "pared": "O",
+    "x": -0.8,
+    "color": "#3a4a5a"
+   },
+   {
+    "tipo": "cuadro",
+    "pared": "E",
+    "x": 0.6,
+    "color": "#5a3a3a"
+   },
+   {
+    "tipo": "banco",
+    "pared": "S",
+    "x": 1.4,
+    "color": "#3a2a1a"
+   },
+   {
+    "tipo": "ventana",
+    "pared": "N",
+    "x": -1.8,
+    "color": "#1a2440"
+   }
+  ]
+ }
+}

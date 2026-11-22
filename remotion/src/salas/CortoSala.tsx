@@ -3,12 +3,13 @@ import {AbsoluteFill, Audio, Easing, Sequence, interpolate, staticFile, useCurre
 import {cargarFuentes, MONO, OSWALD, SERIF} from '../style/fonts';
 import {BordeMaqueta, E60} from '../e60/nucleo';
 import {V3} from '../escape/AvanceTorre';
-import {Sala, SalaCorto3D, EstadoSalaCorto, planosSala} from './SalaCorto3D';
+import {Sala, SalaCorto3D, EstadoSalaCorto, planosSala, centroPuzle} from './SalaCorto3D';
 import {PUZLES} from '../plano/puzles';
 import {Props, planificar} from '../shorts/timeline';
 import {AGUA, estadoTrasvases} from './Jarras3D';
 import {PlacaPista} from './CajaFuerte3D';
 import {ACENTO, EstadoBalanza, Pesa} from './Balanza3D';
+import {PUZLES_3D, Tiempos} from './PuzlesSemana3D';
 
 cargarFuentes();
 
@@ -18,7 +19,8 @@ const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const io = Easing.inOut(Easing.cubic);
 const AMBAR = '#F0B955';
 
-type FichaCT = Props['ficha'] & {numero?: number; sala: Sala; gancho?: boolean; gancho_texto?: string};
+type Pizarra = {desde: string; filas: {etiqueta?: string; texto: string; color?: string}[]; pregunta?: string};
+type FichaCT = Props['ficha'] & {numero?: number; sala: Sala; gancho?: boolean; gancho_texto?: string; pizarra?: Pizarra; camara?: {alto: number; dist: number; mira: number; fov: number}; fin_solucion?: string; cta_texto?: string};
 
 export const CortoSala: React.FC<Props> = (props) => {
 	const ficha = props.ficha as FichaCT;
@@ -41,15 +43,23 @@ export const CortoSala: React.FC<Props> = (props) => {
 		const y0 = PL.puzle.mira[1];
 		PL.puzle = {pos: [0, y0 + 0.68, PL.puzle.mira[2] + 3.15], mira: [0, y0 + 0.36, PL.puzle.mira[2] + 0.1], fov: 52};
 	}
+	// fichas nuevas (semana 23/11): cámara frontal declarada en la ficha, relativa al centro del puzle
+	if (ficha.camara) {
+		const y0 = PL.puzle.mira[1];
+		const z0 = PL.puzle.mira[2] + 0.1;
+		PL.puzle = {pos: [0, y0 + ficha.camara.alto, z0 + ficha.camara.dist], mira: [0, y0 + ficha.camara.mira, z0], fov: ficha.camara.fov};
+	}
 	const LN = Object.fromEntries(plan.lineas.map((l) => [l.id, l]));
 	const gancho = !!ficha.gancho;
-	const finSol = ficha.puzle.tipo === 'balanza' ? (LN.l10?.fin ?? sol) + 0.4 : plan.total - 3.0;
+	const finSol = ficha.puzle.tipo === 'balanza' ? (LN.l10?.fin ?? sol) + 0.4 : ficha.fin_solucion ? (LN[ficha.fin_solucion]?.fin ?? sol) + 0.4 : plan.total - 3.0;
 	const l2 = plan.lineas[1]?.inicio ?? enun;
 	const l3 = plan.lineas[2]?.inicio ?? enun;
 	// cámara: entrada → detalle de la sala → el puzle → la puerta que se abre al final
 	// con `gancho` el problema está en cuadro desde el fotograma 0 (auditoría 22/11: nada de 15-25 s de sala vacía)
 	const ev: [number, keyof typeof PL][] = gancho
-		? [[-10, 'puzle'], [0, 'puzle'], [finSol - 0.4, 'puerta']]
+		? ficha.camara
+			? [[-10, 'puzle'], [0, 'puzle']] // fichas nuevas: el puzle resuelto se queda en cuadro hasta el final
+			: [[-10, 'puzle'], [0, 'puzle'], [finSol - 0.4, 'puerta']]
 		: [[-10, 'entrada'], [0, 'entrada'], [Math.max(0.5, l2 - 0.6), 'detalle'], [Math.max(1, l3 - 0.8), 'puzle'], [plan.total - 3.4, 'puerta']];
 	let k = 0;
 	for (let i = 0; i < ev.length; i++) if (t >= ev[i][0]) k = i;
@@ -64,14 +74,15 @@ export const CortoSala: React.FC<Props> = (props) => {
 	const dir = [0, 1, 2].map((i) => mira[i] - pos[i]);
 	const largo = Math.hypot(dir[0], dir[1], dir[2]) || 1;
 	// caja fuerte: el avance se limita para que las cinco placas sigan en cuadro mientras se piensa
-	const avance = Math.min(ficha.puzle.tipo === 'caja_fuerte' && ev[k][1] === 'puzle' ? 0.12 : ficha.puzle.tipo === 'balanza' && ev[k][1] === 'puzle' ? 0.3 : 0.9, dentro * 0.008 + (ficha.puzle.tipo === 'balanza' ? 0 : dentro * 0.037));
+	const frontal = ficha.puzle.tipo === 'balanza' || !!ficha.camara;
+	const avance = Math.min(ficha.puzle.tipo === 'caja_fuerte' && ev[k][1] === 'puzle' ? 0.12 : frontal && ev[k][1] === 'puzle' ? 0.3 : 0.9, dentro * 0.008 + (frontal ? 0 : dentro * 0.037));
 	for (let i = 0; i < 3; i++) pos[i] += (dir[i] / largo) * avance;
 	// balanza: menos vaivén lateral para que los ganchos 5 nunca se salgan del encuadre vertical
-	const vaiven = ficha.puzle.tipo === 'balanza' ? 0.3 : 1;
+	const vaiven = frontal ? 0.3 : 1;
 	pos[0] += (Math.sin(t * 0.6) * 0.03 + Math.sin(t * 0.21) * 0.14) * vaiven;
 	pos[1] += Math.sin(t * 0.47 + 1) * 0.015 + Math.sin(t * 0.13) * 0.06;
 	const tipo = ficha.puzle.tipo;
-	if (!['cerillas', 'engranajes', 'jarras', 'caja_fuerte', 'balanza'].includes(tipo)) throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
+	if (!['cerillas', 'engranajes', 'jarras', 'caja_fuerte', 'balanza'].includes(tipo) && !PUZLES_3D[tipo]) throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
 	const vueltas = tipo === 'engranajes' ? interpolate(t, [sol + 0.6, sol + 9], [0, Number(ficha.puzle.vueltas)], {...clamp, easing: io}) : 0;
 	// el mecanismo sigue girando despacio después de la cuenta (no se queda congelado)
 	const inercia = tipo === 'engranajes' ? Math.max(0, t - (sol + 9)) * 0.12 : 0;
@@ -197,17 +208,23 @@ export const CortoSala: React.FC<Props> = (props) => {
 	const titO = gancho ? interpolate(t, [enun - 0.4, enun + 0.2], [1, 0], clamp) : interpolate(t, [0.2, 0.9, enun - 0.4, enun + 0.2], [0, 1, 1, 0.85], clamp);
 	const ticks = Array.from({length: Math.floor(ficha.pensar_s)}, (_, i) => F.pensar.inicio + i);
 	const fundido = Math.max(gancho ? 0 : interpolate(t, [0, 0.8], [1, 0], clamp), interpolate(t, [plan.total - 0.8, plan.total], [0, 1], clamp));
-	const esBal = tipo === 'balanza';
+	const esBal = tipo === 'balanza' || !!ficha.pizarra;
+	const Pz = PUZLES_3D[tipo];
+	const tiempos: Tiempos = {t, L: LN, F, finSol, total: plan.total, c: centroPuzle(S)};
 	const Pb = ficha.puzle as unknown as {fijas: Pesa[]; sueltas: Pesa[]};
-	const pizO = esBal ? interpolate(t, [(LN.l04?.inicio ?? 1e6) - 0.3, (LN.l04?.inicio ?? 1e6) + 0.3, F.pensar.fin + 0.2, F.pensar.fin + 0.7], [0, 1, 1, 0], clamp) : 0;
+	const pizDesde = ficha.pizarra ? LN[ficha.pizarra.desde]?.inicio ?? 1e6 : LN.l04?.inicio ?? 1e6;
+	const pizO = esBal ? interpolate(t, [pizDesde - 0.3, pizDesde + 0.3, F.pensar.fin + 0.2, F.pensar.fin + 0.7], [0, 1, 1, 0], clamp) : 0;
 	const cuentas = esBal ? (ficha.puzle as unknown as {cuentas: {linea: string; texto: string; ok?: boolean}[]}).cuentas : [];
-	const cuenO = esBal ? interpolate(t, [(LN.l07?.inicio ?? 1e6) - 0.3, (LN.l07?.inicio ?? 1e6) + 0.2, finSol - 0.2, finSol + 0.3], [0, 1, 1, 0], clamp) : 0;
+	const cuenDesde = LN[cuentas?.[0]?.linea ?? 'l07']?.inicio ?? 1e6;
+	const cuenO = esBal && cuentas?.length ? interpolate(t, [cuenDesde - 0.3, cuenDesde + 0.2, finSol - 0.2, finSol + 0.3], [0, 1, 1, 0], clamp) : 0;
 	const ctaO = interpolate(t, [(F.cta?.inicio ?? 1e6) - 0.2, (F.cta?.inicio ?? 1e6) + 0.4, plan.total - 1.0, plan.total - 0.6], [0, 1, 1, 0], clamp);
 	const tail = plan.total - 1.8;
 
 	return (
 		<AbsoluteFill style={{background: '#0a0807', overflow: 'hidden'}}>
-			<SalaCorto3D s={S} e={e} ancho={720} alto={1280} escala={1080 / 720} />
+			<SalaCorto3D s={S} e={e} ancho={720} alto={1280} escala={1080 / 720} sombras={!!Pz?.sombras}>
+				{Pz && <Pz.C p={ficha.puzle} tm={tiempos} />}
+			</SalaCorto3D>
 			<AbsoluteFill style={{background: '#e8eeff', opacity: rel * 0.12}} />
 			<AbsoluteFill style={{background: `radial-gradient(ellipse 70% 40% at 50% 62%, rgba(240,185,85,${0.10 * perg}) 0%, rgba(0,0,0,0) 70%)`}} />
 			<BordeMaqueta />
@@ -226,10 +243,14 @@ export const CortoSala: React.FC<Props> = (props) => {
 			{/* pizarra con los datos de la balanza (grande, una idea por fila) */}
 			{esBal && pizO > 0.01 && (
 				<div style={{position: 'absolute', left: 48, right: 220, top: 250, opacity: pizO, background: 'rgba(12,10,8,0.95)', borderLeft: `8px solid ${AMBAR}`, borderRadius: 10, padding: '16px 24px', fontFamily: OSWALD, fontWeight: 500, fontSize: 44, lineHeight: 1.25, color: E60.blanco}}>
+					{ficha.pizarra ? ficha.pizarra.filas.map((f, i) => (
+						<div key={i} style={{color: f.color ?? E60.blanco}}>{f.etiqueta && <b style={{color: AMBAR}}>{f.etiqueta} · </b>}{f.texto}</div>
+					)) : (<>
 					<div><b style={{color: AMBAR}}>IZQUIERDA</b> · {Pb.fijas.filter((p) => p.lado < 0).map((p) => `${p.kg} kg en el ${p.gancho}`).join(' · ')}</div>
 					<div><b style={{color: AMBAR}}>DERECHA</b> · {Pb.fijas.filter((p) => p.lado > 0).map((p) => `${p.kg} kg en el ${p.gancho}`).join(' · ')}</div>
 					<div style={{color: ACENTO}}>TUS PESAS · {Pb.sueltas.map((p) => `${p.kg} kg`).join(' y ')} → a la derecha</div>
-					{enPensar && <div style={{marginTop: 8, color: '#ffe2b0', fontWeight: 600}}>¿En qué gancho va cada una?</div>}
+					</>)}
+					{enPensar && <div style={{marginTop: 8, color: '#ffe2b0', fontWeight: 600}}>{ficha.pizarra?.pregunta ?? '¿En qué gancho va cada una?'}</div>}
 				</div>
 			)}
 
@@ -250,7 +271,7 @@ export const CortoSala: React.FC<Props> = (props) => {
 			{ctaO > 0.01 && (
 				<div style={{position: 'absolute', left: 0, right: 0, top: 300, display: 'flex', justifyContent: 'center', opacity: ctaO}}>
 					<div style={{fontFamily: OSWALD, fontWeight: 600, fontSize: 52, color: '#0b0806', background: AMBAR, padding: '12px 30px', borderRadius: 12, transform: `scale(${interpolate(t, [(F.cta?.inicio ?? 0), (F.cta?.inicio ?? 0) + 0.3], [0.92, 1], clamp)})`}}>
-						SUSCRÍBETE · un acertijo nuevo cada día
+						{ficha.cta_texto ?? 'SUSCRÍBETE · un acertijo nuevo cada día'}
 					</div>
 				</div>
 			)}

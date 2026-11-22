@@ -362,7 +362,7 @@ const PuertaSalida: React.FC<{s: Sala; abre: number}> = ({s, abre}) => (
 	</group>
 );
 
-export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number; alto?: number; escala?: number; sinTecho?: boolean; children?: React.ReactNode}> = ({s, e, ancho = 720, alto = 1280, escala = 1080 / 720, sinTecho = false, children}) => {
+export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number; alto?: number; escala?: number; sinTecho?: boolean; sombras?: boolean; children?: React.ReactNode}> = ({s, e, ancho = 720, alto = 1280, escala = 1080 / 720, sinTecho = false, sombras = false, children}) => {
 	const T = useMemo(
 		() => ({
 			pared: texPared(s.pared, [Math.max(1, Math.round(s.ancho / 2.5)), Math.max(1, Math.round(s.alto / 2.5))]),
@@ -379,7 +379,7 @@ export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number;
 	const parpadeo = 0.9 + 0.1 * Math.sin(t * 15) * Math.sin(t * 4.7);
 	const L = s.luz;
 	return (
-		<ThreeCanvas width={ancho} height={alto} style={{position: 'absolute', left: 0, top: 0, transform: `scale(${escala})`, transformOrigin: '0 0'}} camera={{fov: 60, position: [0, 1.6, 3]}} gl={{antialias: true}}>
+		<ThreeCanvas width={ancho} height={alto} style={{position: 'absolute', left: 0, top: 0, transform: `scale(${escala})`, transformOrigin: '0 0'}} camera={{fov: 60, position: [0, 1.6, 3]}} gl={{antialias: true}} shadows={sombras}>
 			<Camara c={e.cam} />
 			<color attach="background" args={[s.niebla]} />
 			<fogExp2 attach="fog" args={[s.niebla, 0.05]} />

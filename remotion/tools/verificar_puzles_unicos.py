@@ -26,6 +26,8 @@ def main():
     ap.add_argument("--ficha"); ap.add_argument("--video-id"); ap.add_argument("--registro", action="store_true")
     a = ap.parse_args()
     reg = registro(); fallos = []
+    # un avance comparte puzle y sala con su vídeo largo (E60ES-ER-004-AVANCE ≡ E60ES-ER-004)
+    base = lambda v: (v or "").removesuffix("-AVANCE")
     if a.registro:
         c = collections.defaultdict(list)
         for r in reg: c[r["familia"]].append(f'{r["video_id"]} {r["puzle"]}')
@@ -41,11 +43,11 @@ def main():
         if isinstance(sala, dict):
             firma = "|".join([sala["pared"]["patron"], sala["suelo"]["patron"], sala["luz"]["tipo"]])
             for r in json.load(open(os.path.join(RAIZ, "PUZLES_USADOS.json"), encoding="utf-8")).get("salas", []):
-                if r["video_id"] != a.video_id and (r["sala"] == sala["id"] or r["firma"] == firma):
+                if base(r["video_id"]) != base(a.video_id) and (r["sala"] == sala["id"] or r["firma"] == firma):
                     fallos.append(f'sala «{sala["id"]}» ({firma}) repite la de {r["video_id"]} ({r["sala"]})')
         for pid, fam in propias:
             for r in reg:
-                if r["familia"] == fam and r["video_id"] != a.video_id:
+                if r["familia"] == fam and base(r["video_id"]) != base(a.video_id):
                     fallos.append(f'{pid}: familia «{fam}» ya usada en {r["video_id"]} ({r["puzle"]})')
     if fallos:
         print("PUZLE_REPETIDO\n- " + "\n- ".join(fallos)); sys.exit(1)
