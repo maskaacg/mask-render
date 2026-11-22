@@ -561,6 +561,12 @@
    "texto": "En este castillo no amanece desde hace cien años. Cinco puertas. Una vela. Si se apaga antes de que abras la última, te quedas aquí hasta la noche siguiente."
   },
   {
+   "id": "g03",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Huele a cera y a piedra mojada. Alguien dejó aquí cinco cerraduras, y en cada una, una manera distinta de pensar."
+  },
+  {
    "id": "c01",
    "bloque": "p1",
    "fase": "narra",
@@ -571,6 +577,12 @@
    "bloque": "p1",
    "fase": "pista",
    "texto": "La puerta de la capilla tiene una rueda del uno al doce. El vidrio que falta la abre."
+  },
+  {
+   "id": "c02b",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "Sobre el altar, una nota del último señor del castillo: lo que se rompe en un círculo se repara mirando al otro lado."
   },
   {
    "id": "c03",
@@ -607,6 +619,12 @@
    "bloque": "p2",
    "fase": "narra",
    "texto": "El campanario. Cuatro campanas de cobre, bronce, plata y hierro: la uno, la dos, la tres y la cuatro. Uno de los ganchos está vacío."
+  },
+  {
+   "id": "k01b",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "Las cuerdas cuelgan quietas. Hace cien años que nadie toca estas campanas, pero el polvo de los badajos está fresco."
   },
   {
    "id": "k02",
@@ -663,6 +681,12 @@
    "texto": "Grabado en la piedra: en esta casa, metal sobre metal es mentira."
   },
   {
+   "id": "a02b",
+   "bloque": "p3",
+   "fase": "narra",
+   "texto": "Los escudos cuentan la historia de la casa. Pero uno de ellos se colgó después, para engañar a quien buscara la salida."
+  },
+  {
    "id": "a03",
    "bloque": "p3",
    "fase": "pista",
@@ -703,6 +727,12 @@
    "bloque": "p4",
    "fase": "narra",
    "texto": "La puerta del foso. Para salir hay que subir el puente levadizo, y está grabado en la viga: ciento veinte kilos."
+  },
+  {
+   "id": "f01b",
+   "bloque": "p4",
+   "fase": "narra",
+   "texto": "El viento sube desde el foso. Abajo, el agua negra no refleja nada: ni la luna, ni tu linterna."
   },
   {
    "id": "f02",
@@ -765,6 +795,12 @@
    "texto": "La torre del homenaje. La vela casi se ha apagado. En la mesa, el mapa del castillo con su rosa de los vientos: el norte, arriba."
   },
   {
+   "id": "t01b",
+   "bloque": "p5",
+   "fase": "narra",
+   "texto": "La llama de la vela es ya un punto. Por las rendijas de la torre entra un frío que anuncia el final de la noche."
+  },
+  {
    "id": "t02",
    "bloque": "p5",
    "fase": "pista",
@@ -807,6 +843,12 @@
    "texto": "Sales al adarve. El cielo pasa del violeta al naranja: por primera vez en cien años, amanece. Detrás de ti, la vela se apaga sola."
   },
   {
+   "id": "z01b",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "El aire huele a campo. A lo lejos cantan los gallos por primera vez en un siglo, y el castillo, detrás de ti, deja de ser una sombra."
+  },
+  {
    "id": "z02",
    "bloque": "final",
    "fase": "narra",
@@ -827,6 +869,11 @@
    "version": "v1",
    "fecha": "2026-11-22",
    "cambios": "Producción nueva (Claude) con el motor genérico E60LargoSalas: 5 salas 3D propias del castillo, 5 puzles de familias nuevas verificados por código (tools/verificar_semana_20261123.py). Guion = semana_20261123/ER004_CASTILLO_SIN_AMANECER.md."
+  },
+  {
+   "version": "v1",
+   "fecha": "2026-11-22",
+   "cambios": "2.º render antes de entregar: 7 líneas de ambiente más para superar los 8 minutos (el 1.º render quedaba en 7:51, por debajo del mínimo de YouTube para anuncios a mitad del vídeo)."
   }
  ],
  "video_id": "E60ES-ER-004"
