@@ -231,7 +231,7 @@ export const CortoSala: React.FC<Props> = (props) => {
 
 			{/* cabecera */}
 			<div style={{position: 'absolute', top: 90, left: 64, right: 64, opacity: titO}}>
-				<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 26, letterSpacing: 8, color: AMBAR}}>ENIGMA 60 · ACERTIJO {String(ficha.numero ?? 1).padStart(2, '0')}</div>
+				<div style={{fontFamily: MONO, fontWeight: 600, fontSize: 26, letterSpacing: 8, color: AMBAR}}>{ficha.numero === 0 ? 'ENIGMA 60 · AVANCE' : `ENIGMA 60 · ACERTIJO ${String(ficha.numero ?? 1).padStart(2, '0')}`}</div>
 				<div style={{fontFamily: SERIF, fontWeight: 800, fontSize: 70, lineHeight: 1.05, color: E60.blanco, marginTop: 8, textShadow: '0 4px 18px rgba(0,0,0,0.8)'}}>{ficha.titulo}</div>
 				{ficha.gancho_texto && (
 					<div style={{display: 'inline-block', marginTop: 18, fontFamily: OSWALD, fontWeight: 600, fontSize: 56, lineHeight: 1.1, color: '#0b0806', background: AMBAR, padding: '8px 22px', borderRadius: 10, transform: `scale(${interpolate(t, [0, 0.25, 0.45], [0.9, 1.06, 1], clamp)})`, transformOrigin: 'left center'}}>
