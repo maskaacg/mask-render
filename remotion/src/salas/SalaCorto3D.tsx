@@ -6,6 +6,7 @@ import {Cerillas3D, EstadoCerillas} from '../escape/Cerillas3D';
 import {Engranajes3D, EstadoEngranajes} from './Engranajes3D';
 import {Jarras3D, EstadoJarras} from './Jarras3D';
 import {CajaFuerte3D, EstadoCajaFuerte} from './CajaFuerte3D';
+import {Balanza3D, EstadoBalanza} from './Balanza3D';
 
 // ENIGMA 60 · Habitación propia para cada acertijo corto (orden del Propietario, 16/11/2026).
 // La sala se describe en la ficha (`sala`) y se construye aquí con geometría procedural de three.js
@@ -36,7 +37,7 @@ export type Sala = {
 	mesa?: {color: string};
 	atrezo: Atrezo[];
 };
-export type EstadoSalaCorto = {t: number; cam: {pos: V3; mira: V3; fov: number}; puerta: number; foco: number; cerillas?: EstadoCerillas; engranajes?: EstadoEngranajes; jarras?: EstadoJarras; cajaFuerte?: EstadoCajaFuerte; relampago?: number};
+export type EstadoSalaCorto = {t: number; cam: {pos: V3; mira: V3; fov: number}; puerta: number; foco: number; cerillas?: EstadoCerillas; engranajes?: EstadoEngranajes; jarras?: EstadoJarras; cajaFuerte?: EstadoCajaFuerte; balanza?: EstadoBalanza; relampago?: number};
 
 export const MESA_ALTO = 0.78;
 /** Centro del acertijo en la sala (sobre el suelo o sobre la mesa central). */
@@ -462,6 +463,7 @@ export const SalaCorto3D: React.FC<{s: Sala; e: EstadoSalaCorto; ancho?: number;
 			{e.engranajes && <Engranajes3D c={{...e.engranajes, centro: c}} />}
 			{e.jarras && <Jarras3D c={{...e.jarras, centro: c}} />}
 			{e.cajaFuerte && <CajaFuerte3D c={{...e.cajaFuerte, centro: c}} />}
+			{e.balanza && <Balanza3D b={{...e.balanza, centro: c}} t={t} />}
 			{children}
 		</ThreeCanvas>
 	);

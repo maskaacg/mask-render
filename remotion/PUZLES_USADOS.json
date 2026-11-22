@@ -59,7 +59,8 @@
   {
    "video_id": "E60ES-AC-20261122",
    "puzle": "La caja del cartógrafo",
-   "familia": "codigo_por_pistas"
+   "familia": "codigo_por_pistas",
+   "nota": "v1 con APROBACIÓN REVOCADA (21/11), nunca publicada; la familia se mantiene reservada"
   },
   {
    "video_id": "E60ES-S001-E01",
@@ -100,6 +101,11 @@
    "video_id": "E60ES-ER-003",
    "puzle": "P4 Los espejos de la cúpula",
    "familia": "trayectoria_reflejos"
+  },
+  {
+   "video_id": "E60ES-AC-20261122",
+   "puzle": "La balanza del molinero (v2)",
+   "familia": "palanca_momentos"
   }
  ],
  "pendientes_de_sustituir": [],
@@ -155,6 +161,12 @@
    "sala": "observatorio-apagado",
    "firma": "observatorio",
    "nota": "4 salas: ladrillo|losas|lampara, piedra|damero|luna, tablas|losas|chimenea, chapa|tablones|luna; y su avance"
+  },
+  {
+   "video_id": "E60ES-AC-20261122",
+   "sala": "almacen-molino-01",
+   "firma": "ladrillo|tablones|lampara",
+   "nota": "v2 (la v1 revocada usaba camarote-cartografo-01)"
   }
  ]
 }

@@ -1,0 +1,241 @@
+{
+ "id": "E60-2026-11-22b-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "La balanza del molinero",
+ "numero": 6,
+ "escena": "sala_propia",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#c98a3a",
+ "gancho": true,
+ "gancho_texto": "2 pesas. ¿Dónde las cuelgas?",
+ "puzle": {
+  "tipo": "balanza",
+  "mecanica": "DEDUCCION",
+  "familia": "palanca_momentos",
+  "ganchos_por_lado": 5,
+  "fijas": [
+   {
+    "kg": 3,
+    "lado": -1,
+    "gancho": 4
+   },
+   {
+    "kg": 2,
+    "lado": -1,
+    "gancho": 1
+   },
+   {
+    "kg": 2,
+    "lado": 1,
+    "gancho": 2
+   }
+  ],
+  "sueltas": [
+   {
+    "kg": 3,
+    "lado": 1,
+    "gancho": 3,
+    "reposo": [
+     0.22,
+     0.32
+    ]
+   },
+   {
+    "kg": 1,
+    "lado": 1,
+    "gancho": 1,
+    "reposo": [
+     -0.22,
+     0.32
+    ]
+   }
+  ],
+  "reglas": "Las dos pesas sueltas van al lado derecho, una por gancho y solo en ganchos libres; la barra queda recta cuando kg×gancho suma lo mismo en los dos lados.",
+  "trampa": {
+   "lado": 1,
+   "gancho": 2
+  },
+  "respuesta": "3 kg en el gancho 3 y 1 kg en el gancho 1",
+  "cuentas": [
+   {
+    "linea": "l07",
+    "texto": "Izquierda: 3×4 + 2×1 = 14"
+   },
+   {
+    "linea": "l08",
+    "texto": "Derecha: 2×2 = 4 → faltan 10"
+   },
+   {
+    "linea": "l09",
+    "texto": "3×2 + 1×4 = 10 ✗ el 2 está ocupado",
+    "ok": false
+   },
+   {
+    "linea": "l10",
+    "texto": "3×3 + 1×1 = 10 ✓",
+    "ok": true
+   }
+  ]
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "id": "l01",
+   "fase": "intro",
+   "texto": "La puerta del molino se cierra a tu espalda. Y la balanza que la abre acaba de caerse."
+  },
+  {
+   "id": "l02",
+   "fase": "intro",
+   "texto": "Tienes dos pesas: una de un kilo y otra de tres. Si la barra queda recta, sales."
+  },
+  {
+   "id": "l03",
+   "fase": "enunciado",
+   "texto": "Los ganchos van del uno al cinco, desde el centro. Cuanto más lejos, más fuerza hace cada kilo."
+  },
+  {
+   "id": "l04",
+   "fase": "enunciado",
+   "texto": "Izquierda: tres kilos en el cuatro y dos kilos en el uno. Derecha: dos kilos en el dos."
+  },
+  {
+   "id": "l05",
+   "fase": "enunciado",
+   "texto": "Tus pesas van a la derecha, cada una en un gancho libre. ¿Dónde cuelgas cada una?"
+  },
+  {
+   "id": "l06",
+   "fase": "solucion",
+   "texto": "Tres kilos en el gancho tres. Y un kilo en el gancho uno."
+  },
+  {
+   "id": "l07",
+   "fase": "solucion",
+   "texto": "Se cuenta kilos por gancho. Izquierda: tres por cuatro, doce, más dos por uno. Catorce."
+  },
+  {
+   "id": "l08",
+   "fase": "solucion",
+   "texto": "Derecha: dos por dos, cuatro. Faltan diez."
+  },
+  {
+   "id": "l09",
+   "fase": "solucion",
+   "texto": "La trampa: tres en el dos y uno en el cuatro también suman diez… pero el dos ya está ocupado."
+  },
+  {
+   "id": "l10",
+   "fase": "solucion",
+   "texto": "En el uno, la de tres se queda corta; en el cuatro o el cinco, se pasa. Solo vale el tres: nueve, más uno. Diez. La barra, recta."
+  },
+  {
+   "id": "l11",
+   "fase": "cta",
+   "texto": "¿La equilibraste antes de la cuenta atrás? Cuéntalo en los comentarios."
+  },
+  {
+   "id": "l12",
+   "fase": "cta",
+   "texto": "Y suscríbete: cada día, una habitación nueva y un acertijo resuelto."
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 22/11/2026: solución única «3 kg en el 3 y 1 kg en el 1» comprobada recorriendo todas las colocaciones; la trampa (3 kg en el 2 + 1 kg en el 4) solo la elimina la regla de ganchos libres; cuentas de pantalla verificadas (tools/verificar_balanza_20261122.py). Familia palanca_momentos y sala almacen-molino-01 (ladrillo|tablones|lampara) no usadas (verificar_puzles_unicos.py). QA visual previa con fotogramas locales (0,1 s · 1,5 s · 25 s · 40 s · 54 s · 66 s · 70 s · 80 s · 88 s · 94 s): problema en cuadro desde el fotograma 0, 10 ganchos y 5 pesas legibles, pizarra y cuentas sin solaparse con subtítulos, aguja turquesa al quedar recta, cruz roja en el gancho ocupado, puerta que se abre. Pendiente: QA del máster renderizado (audio, duración real y hoja de contactos).",
+ "motor_voz": "chatterbox",
+ "version": "v2",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-20",
+   "cambios": "«La caja del cartógrafo» (ficha fichas/E60-2026-11-22-corto.json). APROBACIÓN REVOCADA el 21/11; se conserva sin cambios y no se reutiliza."
+  },
+  {
+   "version": "v2",
+   "fecha": "2026-11-22",
+   "cambios": "Acertijo NUEVO para cubrir el hueco del dom 22/11 (Claude): «La balanza del molinero», familia palanca_momentos, sala propia 3D. Aplica la auditoría del 22/11: problema en cuadro desde el fotograma 0, sin entrada por la sala, pizarra grande con los datos, cuentas paso a paso en pantalla, respuesta dentro del corto, iluminación más clara y llamada a suscribirse."
+  }
+ ],
+ "duracion_objetivo_s": 100,
+ "sala": {
+  "id": "almacen-molino-01",
+  "nombre": "El almacén del molino",
+  "ancho": 5.2,
+  "fondo": 5.6,
+  "alto": 2.9,
+  "pared": {
+   "patron": "ladrillo",
+   "color": "#a4583a",
+   "color2": "#5e2e1c"
+  },
+  "suelo": {
+   "patron": "tablones",
+   "color": "#7a5636",
+   "color2": "#3a2616"
+  },
+  "techo": "#2a1c12",
+  "luz": {
+   "tipo": "lampara",
+   "color": "#ffe0b0",
+   "intensidad": 1.35
+  },
+  "niebla": "#120c08",
+  "puzle_en": "mesa",
+  "mesa": {
+   "color": "#6a4426"
+  },
+  "atrezo": [
+   {
+    "tipo": "ventana",
+    "pared": "N",
+    "x": -1.5,
+    "color": "#2a3d5c"
+   },
+   {
+    "tipo": "estanteria",
+    "pared": "O",
+    "x": -0.8,
+    "color": "#4a3020"
+   },
+   {
+    "tipo": "barril",
+    "pared": "E",
+    "x": -1.2,
+    "escala": 0.8,
+    "color": "#d9c9a0"
+   },
+   {
+    "tipo": "barril",
+    "pared": "E",
+    "x": -0.5,
+    "escala": 0.7,
+    "color": "#cdbb90"
+   },
+   {
+    "tipo": "caja",
+    "x": 1.9,
+    "z": 2.1,
+    "escala": 0.6,
+    "color": "#6a4a2a"
+   },
+   {
+    "tipo": "lampara_pie",
+    "pared": "O",
+    "x": 1.4
+   },
+   {
+    "tipo": "banco",
+    "pared": "S",
+    "x": -1.6,
+    "color": "#4a2e1a"
+   }
+  ]
+ }
+}

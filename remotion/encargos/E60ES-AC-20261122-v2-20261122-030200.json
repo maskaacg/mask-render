@@ -1,0 +1,7 @@
+{
+ "encargo_id": "E60ES-AC-20261122-v2-20261122-030200",
+ "composicion": "E60CortoSala",
+ "ficha": "fichas/E60-2026-11-22b-corto.json",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "v2: acertijo NUEVO «La balanza del molinero» para cubrir el hueco del dom 22/11 (v1 «La caja del cartógrafo» revocada y conservada). Sala propia 3D, palanca_momentos, gancho 0-3 s, 70-120 s"
+}

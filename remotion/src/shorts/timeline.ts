@@ -24,7 +24,8 @@ export type Plan = {
 };
 
 export const planificar = ({ficha, duraciones}: Props): Plan => {
-	let t = 1.0; // título y golpe de aire
+	// `gancho`: el problema se ve desde el fotograma 0 y la voz entra a los 0,35 s (auditoría 22/11)
+	let t = (ficha as Ficha & {gancho?: boolean}).gancho ? 0.35 : 1.0; // título y golpe de aire
 	const lineas: Tramo[] = [];
 	const fases = {} as Plan['fases'];
 	const bloque = (fase: Linea['fase'], gap: number) => {
