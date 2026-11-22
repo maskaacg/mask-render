@@ -1,0 +1,7 @@
+{
+ "encargo_id": "E60ES-ER-004-AVANCE-v1-20261122-045121",
+ "composicion": "E60CortoSala",
+ "ficha": "fichas/E60-ER-004-T.json",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "v1: «¿Qué campana falta? (avance ER #4)», semana 23-29/11, sala propia 3D, gancho 0-3 s, solución dentro del corto (Claude, autorizado por el Propietario 22/11 04:34: «haz todo hasta el próximo domingo»)"
+}
