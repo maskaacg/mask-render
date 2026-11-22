@@ -1,5 +1,5 @@
 // Línea de tiempo de un capítulo de serie ENIGMA 60 a partir de la duración real de cada voz.
-export type FaseC = 'narra' | 'pista' | 'repaso' | 'pregunta' | 'solucion' | 'comprobacion' | 'accion' | 'custodio' | 'archivera' | 'conservador';
+export type FaseC = 'narra' | 'pista' | 'repaso' | 'pregunta' | 'solucion' | 'comprobacion' | 'accion' | 'custodio' | 'archivera' | 'conservador' | 'alma' | 'damian' | 'cero';
 export type LineaC = {id: string; bloque: string; fase: FaseC; texto: string; voz?: string};
 export type FichaC = {
 	id: string;
@@ -18,6 +18,9 @@ export type FichaC = {
 	apertura_s?: number;
 	/** Segundos finales reservados para la pantalla final de YouTube (por defecto 0). */
 	pantalla_final_s?: number;
+	/** Segundos de transición entre salas (por defecto 13) y de rótulo tras el gancho (por defecto 10,8). */
+	transicion_s?: number;
+	titulo_s?: number;
 };
 export type PropsC = {ficha: FichaC; duraciones: Record<string, number>; desde?: number};
 export type Tramo = {inicio: number; fin: number};
@@ -33,7 +36,7 @@ export type PlanC = {
 };
 
 /** Fases que dice un personaje (no el narrador): pausa antes de su intervención. */
-const PERSONAJE = new Set<string>(['custodio', 'archivera', 'conservador']);
+const PERSONAJE = new Set<string>(['custodio', 'archivera', 'conservador', 'alma', 'damian', 'cero']);
 
 export const planificarC = ({ficha, duraciones}: PropsC): PlanC => {
 	let t = ficha.apertura_s ?? 8.0; // apertura en frío (por defecto: oscuridad, goteo y golpe metálico)
@@ -50,11 +53,13 @@ export const planificarC = ({ficha, duraciones}: PropsC): PlanC => {
 			if (prev.bloque !== l.bloque) {
 				bloques[prev.bloque].fin = t;
 				if (prev.bloque === 'gancho') {
-					titulo = {inicio: t + 0.6, fin: t + 10.0};
-					t += 10.8;
+					const ts = ficha.titulo_s ?? 10.8;
+					titulo = {inicio: t + 0.6, fin: t + ts - 0.8};
+					t += ts;
 				} else {
-					transiciones.push({inicio: t, fin: t + 13, a: l.bloque});
-					t += 13;
+					const tr = ficha.transicion_s ?? 13;
+					transiciones.push({inicio: t, fin: t + tr, a: l.bloque});
+					t += tr;
 				}
 			} else if (prev.fase === 'pregunta') {
 				pensar[l.bloque] = {inicio: t + 0.4, fin: t + 0.4 + ficha.pensar_s};

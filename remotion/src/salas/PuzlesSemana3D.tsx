@@ -385,7 +385,7 @@ const Campanas: React.FC<P> = ({p, tm}) => {
 	};
 	const sube = rampa(t, ini(tm, 'l06') + 0.3, ini(tm, 'l06') + 2.0);
 	return (
-		<group position={[c[0], c[1], c[2] - 0.2]}>
+		<group position={[c[0], c[1], c[2] - 0.2]} scale={Number(p.escala ?? 1)}>
 			<Caja p={[0, 1.05, 0]} s={[1.3, 0.06, 0.08]} c="#4a2e1a" />
 			{xs.map((x, i) => {
 				const n = i + 1;

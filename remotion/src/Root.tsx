@@ -32,6 +32,8 @@ import fichaER03 from '../fichas/E60-ER-003.json';
 import {AvanceMuseo, AvanceMuseoAudio} from './escape/AvanceMuseo';
 import fichaER02T from '../fichas/E60-ER-002-T.json';
 import {AvanceObservatorio, AvanceObservatorioAudio} from './escape/AvanceObservatorio';
+import {LargoSalas, LargoSalasAudio} from './salas/LargoSalas';
+import fichaER04 from '../fichas/E60-ER-004.json';
 import fichaER03T from '../fichas/E60-ER-003-T.json';
 import {AvanceProfundidad, AvanceProfundidadAudio} from './capitulo/AvanceProfundidad';
 import fichaS01C01T from '../fichas/E60-S01-C01-T.json';
@@ -383,6 +385,24 @@ export const RemotionRoot: React.FC = () => (
 				height: props.ficha.alto,
 			})}
 		/>
+		{(['E60LargoSalas', 'E60LargoSalasAudio'] as const).map((id) => (
+			<Composition
+				key={id}
+				id={id}
+				component={(id === 'E60LargoSalas' ? LargoSalas : LargoSalasAudio) as unknown as React.FC<PropsC>}
+				defaultProps={{ficha: fichaER04 as unknown as PropsC['ficha'], duraciones: {}} as PropsC}
+				fps={24}
+				width={1920}
+				height={1080}
+				durationInFrames={24 * 600}
+				calculateMetadata={({props}) => ({
+					durationInFrames: Math.ceil(planificarC(props).total * props.ficha.fps),
+					fps: props.ficha.fps,
+					width: props.ficha.ancho,
+					height: props.ficha.alto,
+				})}
+			/>
+		))}
 		<Composition id="E60MiniaturaObservatorio" component={MiniaturaObservatorio} fps={24} width={1280} height={720} durationInFrames={1} defaultProps={{vertical: false}} />
 		<Composition id="E60PortadaObservatorio" component={MiniaturaObservatorio} fps={24} width={1080} height={1920} durationInFrames={1} defaultProps={{vertical: true}} />
 		<Composition id="E60MiniaturaMuseo" component={MiniaturaMuseo} fps={24} width={1280} height={720} durationInFrames={1} defaultProps={{vertical: false}} />

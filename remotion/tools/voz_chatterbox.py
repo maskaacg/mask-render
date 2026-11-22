@@ -35,6 +35,10 @@ PAPELES = {
     "archivera": {"ref": "voces/ref_archivera.wav", "exaggeration": 0.6, "cfg_weight": 0.4, "efecto": "sala"},
     # Escape room 2 «El museo que miente»: el conservador (ref. Kokoro em_santa, sin efecto metálico)
     "conservador": {"ref": "voces/ref_conservador.wav", "exaggeration": 0.55, "cfg_weight": 0.45, "efecto": "sala"},
+    # Profundidad 600 desde el cap. 2: voces propias (la biblia pedía no reutilizar las de los escape rooms)
+    "alma": {"ref": "voces/ref_alma.wav", "exaggeration": 0.6, "cfg_weight": 0.4},
+    "damian": {"ref": "voces/ref_damian.wav", "exaggeration": 0.45, "cfg_weight": 0.5},
+    "cero": {"ref": "voces/ref_custodio.wav", "exaggeration": 0.35, "cfg_weight": 0.5, "efecto": "metal"},
 }
 
 

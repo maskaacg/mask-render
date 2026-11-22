@@ -1,0 +1,1233 @@
+{
+ "id": "E60-S01-C02",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "capitulo_16x9",
+ "ancho": 1920,
+ "alto": 1080,
+ "fps": 24,
+ "tipo_largo": "capitulo",
+ "etiqueta": "PROFUNDIDAD 600 · 2",
+ "temporada": "Profundidad 600",
+ "capitulo": 2,
+ "titulo": "El mamparo",
+ "siguiente": "Próximo capítulo: El comedor",
+ "pensar_s": 20,
+ "motor_voz": "chatterbox",
+ "apertura_s": 1.6,
+ "titulo_s": 4.0,
+ "transicion_s": 2.5,
+ "pantalla_final_s": 20,
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "suscribir_en": "t04",
+ "voces_rotulo": {
+  "alma": {
+   "nombre": "ALMA",
+   "color": "#3fd0c0"
+  },
+  "damian": {
+   "nombre": "DAMIÁN",
+   "color": "#F0B955"
+  },
+  "cero": {
+   "nombre": "OPERADOR CERO",
+   "color": "#a35cff"
+  },
+  "conservador": {
+   "nombre": "OPERADOR CERO (otra voz)",
+   "color": "#a35cff"
+  }
+ },
+ "megapuzle": {
+  "pista": 2,
+  "cifra": "6",
+  "donde": "visera del casco junto a la taquilla 13 (fuera del puzle principal)"
+ },
+ "puzles": [
+  {
+   "id": "P1",
+   "titulo": "Las cuatro cámaras",
+   "respuesta": "A-B, B-C, C-D",
+   "familia": "igualacion_promedios"
+  },
+  {
+   "id": "P2",
+   "titulo": "La taquilla de Iker",
+   "respuesta": "13",
+   "familia": "criba_restricciones_numericas"
+  },
+  {
+   "id": "P3",
+   "titulo": "Energía limitada",
+   "respuesta": "compuerta + radio + focos",
+   "familia": "presupuesto_exacto"
+  },
+  {
+   "id": "P4",
+   "titulo": "El mensaje de 2008",
+   "respuesta": "CERO",
+   "familia": "codigo_morse"
+  },
+  {
+   "id": "P5",
+   "titulo": "La esclusa de las dos mareas",
+   "respuesta": "C-I-A-P",
+   "familia": "secuencia_estados"
+  }
+ ],
+ "escenas": {
+  "gancho": "p1",
+  "final": "p5"
+ },
+ "salas": {
+  "p1": {
+   "titulo": "Las cuatro cámaras",
+   "tipo": "camaras",
+   "puzle": {
+    "presiones": [
+     4,
+     0,
+     10,
+     0
+    ],
+    "secuencia": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      3
+     ]
+    ]
+   },
+   "alias": {
+    "v1": "c13",
+    "v2": "c14",
+    "v3": "c15"
+   },
+   "camara": {
+    "alto": 1.05,
+    "dist": 2.4,
+    "mira": 0.75,
+    "fov": 50,
+    "x": -0.45
+   },
+   "pizarra": {
+    "desde": "c06",
+    "filas": [
+     {
+      "etiqueta": "A B C D",
+      "texto": "4 · 0 · 10 · 0 bar"
+     },
+     {
+      "etiqueta": "VÁLVULAS",
+      "texto": "A-B · B-C · C-D (1 vez cada una)"
+     },
+     {
+      "etiqueta": "AL ABRIR",
+      "texto": "las dos quedan en la media"
+     },
+     {
+      "texto": "Objetivo: D = 3 bar",
+      "color": "#3fd0c0"
+     }
+    ],
+    "pregunta": "¿Qué válvulas y en qué orden?"
+   },
+   "sala": {
+    "id": "abisal-compensacion",
+    "nombre": "Cámara de compensación",
+    "ancho": 5.4,
+    "fondo": 5.8,
+    "alto": 2.8,
+    "pared": {
+     "patron": "chapa",
+     "color": "#4a5560",
+     "color2": "#22282e"
+    },
+    "suelo": {
+     "patron": "rejilla",
+     "color": "#3a4048",
+     "color2": "#1a1e22"
+    },
+    "techo": "#101418",
+    "luz": {
+     "tipo": "lampara",
+     "color": "#ffe0b8",
+     "intensidad": 1.4
+    },
+    "niebla": "#07090b",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "tuberia",
+      "pared": "O",
+      "x": 0
+     },
+     {
+      "tipo": "tuberia",
+      "pared": "E",
+      "x": -0.8
+     },
+     {
+      "tipo": "reloj",
+      "pared": "N",
+      "x": 1.8
+     }
+    ]
+   }
+  },
+  "p2": {
+   "titulo": "La taquilla de Iker",
+   "tipo": "taquillas",
+   "puzle": {},
+   "alias": {
+    "sol": "t16",
+    "c1": "t14",
+    "c2": "t15"
+   },
+   "camara": {
+    "alto": 0.75,
+    "dist": 2.15,
+    "mira": 0.68,
+    "fov": 52,
+    "x": -0.3
+   },
+   "pizarra": {
+    "desde": "t11",
+    "filas": [
+     {
+      "etiqueta": "1",
+      "texto": "número primo"
+     },
+     {
+      "etiqueta": "2",
+      "texto": "sus cifras suman 4"
+     },
+     {
+      "etiqueta": "3",
+      "texto": "no es la última (la 31)"
+     }
+    ],
+    "pregunta": "¿Qué taquilla es la de Iker?"
+   },
+   "sala": {
+    "id": "abisal-vestuario",
+    "nombre": "El vestuario",
+    "ancho": 5.4,
+    "fondo": 5.8,
+    "alto": 2.8,
+    "pared": {
+     "patron": "chapa",
+     "color": "#5a6058",
+     "color2": "#2a2e28"
+    },
+    "suelo": {
+     "patron": "rejilla",
+     "color": "#3a3a36",
+     "color2": "#1a1a18"
+    },
+    "techo": "#101418",
+    "luz": {
+     "tipo": "lampara",
+     "color": "#ffe0b8",
+     "intensidad": 1.45
+    },
+    "niebla": "#07090b",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "lampara_pie",
+      "pared": "O",
+      "x": 1.2
+     },
+     {
+      "tipo": "tuberia",
+      "pared": "E",
+      "x": 0.4
+     }
+    ]
+   }
+  },
+  "p3": {
+   "titulo": "Energía limitada",
+   "tipo": "cuadro",
+   "puzle": {},
+   "alias": {
+    "sol": "e10",
+    "damian": "e03"
+   },
+   "camara": {
+    "alto": 0.95,
+    "dist": 2.2,
+    "mira": 0.95,
+    "fov": 50,
+    "x": -0.4
+   },
+   "pizarra": {
+    "desde": "e02",
+    "filas": [
+     {
+      "etiqueta": "BATERÍA",
+      "texto": "10 · gastar exactamente 10"
+     },
+     {
+      "etiqueta": "CONSUMOS",
+      "texto": "compuerta 5 · bomba 4 · radio 3 · focos 2 · calefacción 1"
+     },
+     {
+      "texto": "Compuerta sí · radio sí",
+      "color": "#3fd0c0"
+     }
+    ],
+    "pregunta": "¿Qué enciendes?"
+   },
+   "sala": {
+    "id": "abisal-cuadro",
+    "nombre": "El cuadro de emergencia",
+    "ancho": 5.4,
+    "fondo": 5.8,
+    "alto": 2.8,
+    "pared": {
+     "patron": "chapa",
+     "color": "#4a5560",
+     "color2": "#22282e"
+    },
+    "suelo": {
+     "patron": "rejilla",
+     "color": "#3a4048",
+     "color2": "#1a1e22"
+    },
+    "techo": "#101418",
+    "luz": {
+     "tipo": "lampara",
+     "color": "#ffe0b8",
+     "intensidad": 1.35
+    },
+    "niebla": "#07090b",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "tuberia",
+      "pared": "O",
+      "x": 0.6
+     },
+     {
+      "tipo": "reloj",
+      "pared": "E",
+      "x": 0.8
+     }
+    ]
+   }
+  },
+  "p4": {
+   "titulo": "El mensaje de 2008",
+   "tipo": "morse",
+   "puzle": {},
+   "alias": {
+    "sol": "m07"
+   },
+   "camara": {
+    "alto": 0.95,
+    "dist": 2.3,
+    "mira": 0.7,
+    "fov": 50,
+    "x": -0.3
+   },
+   "pizarra": {
+    "desde": "m03",
+    "filas": [
+     {
+      "etiqueta": "MENSAJE",
+      "texto": "‒·‒·  ·  ·‒·  ‒‒‒"
+     },
+     {
+      "texto": "4 letras · tabla en la pared",
+      "color": "#3fd0c0"
+     }
+    ],
+    "pregunta": "¿Qué dice?"
+   },
+   "sala": {
+    "id": "abisal-radio",
+    "nombre": "La radio del vestuario",
+    "ancho": 5.4,
+    "fondo": 5.8,
+    "alto": 2.8,
+    "pared": {
+     "patron": "chapa",
+     "color": "#5a6058",
+     "color2": "#2a2e28"
+    },
+    "suelo": {
+     "patron": "rejilla",
+     "color": "#3a3a36",
+     "color2": "#1a1a18"
+    },
+    "techo": "#101418",
+    "luz": {
+     "tipo": "lampara",
+     "color": "#ffe0b8",
+     "intensidad": 1.3
+    },
+    "niebla": "#07090b",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "tuberia",
+      "pared": "O",
+      "x": -0.6
+     },
+     {
+      "tipo": "lampara_pie",
+      "pared": "E",
+      "x": -1.0
+     }
+    ]
+   }
+  },
+  "p5": {
+   "titulo": "La esclusa de las dos mareas",
+   "tipo": "esclusa",
+   "puzle": {},
+   "alias": {
+    "l07": "s07",
+    "l08": "s08",
+    "l09": "s09"
+   },
+   "camara": {
+    "alto": 0.95,
+    "dist": 2.9,
+    "mira": 0.45,
+    "fov": 52,
+    "x": -0.4
+   },
+   "pizarra": {
+    "desde": "s02",
+    "filas": [
+     {
+      "etiqueta": "C",
+      "texto": "cerrar exterior"
+     },
+     {
+      "etiqueta": "I",
+      "texto": "igualar presión"
+     },
+     {
+      "etiqueta": "A",
+      "texto": "abrir interior"
+     },
+     {
+      "etiqueta": "P",
+      "texto": "purgar (al final)"
+     },
+     {
+      "texto": "Nunca 2 compuertas abiertas",
+      "color": "#3fd0c0"
+     }
+    ],
+    "pregunta": "¿En qué orden?"
+   },
+   "sala": {
+    "id": "abisal-esclusa",
+    "nombre": "La esclusa del Abisal",
+    "ancho": 5.4,
+    "fondo": 5.8,
+    "alto": 2.8,
+    "pared": {
+     "patron": "chapa",
+     "color": "#4a5560",
+     "color2": "#22282e"
+    },
+    "suelo": {
+     "patron": "rejilla",
+     "color": "#3a4048",
+     "color2": "#1a1e22"
+    },
+    "techo": "#101418",
+    "luz": {
+     "tipo": "lampara",
+     "color": "#ffe0b8",
+     "intensidad": 1.25
+    },
+    "niebla": "#07090b",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "tuberia",
+      "pared": "O",
+      "x": 0
+     },
+     {
+      "tipo": "tuberia",
+      "pared": "E",
+      "x": 0.6
+     },
+     {
+      "tipo": "reloj",
+      "pared": "N",
+      "x": 1.6
+     }
+    ]
+   }
+  }
+ },
+ "cuentas": {
+  "p1": [
+   {
+    "linea": "c13",
+    "texto": "A-B: (4 + 0) / 2 = 2"
+   },
+   {
+    "linea": "c14",
+    "texto": "B-C: (2 + 10) / 2 = 6"
+   },
+   {
+    "linea": "c15",
+    "texto": "C-D: (6 + 0) / 2 = 3 bar ✓",
+    "ok": true
+   }
+  ],
+  "p2": [
+   {
+    "linea": "t14",
+    "texto": "Cifras que suman 4: 4 · 13 · 22 · 31"
+   },
+   {
+    "linea": "t14",
+    "texto": "4 y 22: pares → no son primos ✗",
+    "ok": false
+   },
+   {
+    "linea": "t15",
+    "texto": "31: la última ✗ → la 13 ✓",
+    "ok": true
+   }
+  ],
+  "p3": [
+   {
+    "linea": "e08",
+    "texto": "5 + 3 + 2 = 10 ✓",
+    "ok": true
+   },
+   {
+    "linea": "e09",
+    "texto": "5 + 3 = 8 → quedan 2: bomba (4) no cabe; calefacción (1) deja 1"
+   }
+  ],
+  "p4": [
+   {
+    "linea": "m07",
+    "texto": "‒·‒· C · · E · ·‒· R · ‒‒‒ O → CERO ✓",
+    "ok": true
+   }
+  ],
+  "p5": [
+   {
+    "linea": "s07",
+    "texto": "C primero: si no, al igualar entra el mar"
+   },
+   {
+    "linea": "s08",
+    "texto": "I antes que A: presiones iguales"
+   },
+   {
+    "linea": "s09",
+    "texto": "P al final → C · I · A · P ✓",
+    "ok": true
+   }
+  ]
+ },
+ "lineas": [
+  {
+   "id": "h01",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Tres golpes. Desde el otro lado del mamparo."
+  },
+  {
+   "id": "h02",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "El volante gira un cuarto de vuelta solo… y se para. Alguien está al otro lado de esta puerta. Y no quiere que la abras."
+  },
+  {
+   "id": "r01",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "La última vez despertaste aquí, a seiscientos metros, con el agua por los tobillos. Abriste cuatro cerraduras y descubriste que la alarma del Abisal sonó veinte minutos tarde."
+  },
+  {
+   "id": "r02",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Y cuando por fin se abrió la escotilla, una voz te dio la bienvenida. De nuevo. Después, la señal se cortó."
+  },
+  {
+   "id": "r03",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Ahora la linterna parpadea. El agua te llega a las rodillas. Y la radio del pasillo vuelve a la vida."
+  },
+  {
+   "id": "h03",
+   "bloque": "gancho",
+   "fase": "damian",
+   "texto": "Abisal, aquí Vigía. Si me oyes, golpea dos veces la tubería.",
+   "voz": "damian"
+  },
+  {
+   "id": "h04",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Golpeas dos veces."
+  },
+  {
+   "id": "h05",
+   "bloque": "gancho",
+   "fase": "alma",
+   "texto": "¡Está ahí! Damián, está ahí otra vez.",
+   "voz": "alma"
+  },
+  {
+   "id": "h06",
+   "bloque": "gancho",
+   "fase": "damian",
+   "texto": "Escúchame. La señal se abrió hace un minuto. Tenemos sesenta minutos, como la última vez. Ni uno más.",
+   "voz": "damian"
+  },
+  {
+   "id": "h07",
+   "bloque": "gancho",
+   "fase": "alma",
+   "texto": "Y esta vez no te vamos a perder. ¿Ves el mamparo? El que estaba bloqueado.",
+   "voz": "alma"
+  },
+  {
+   "id": "c01",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "Lo ves. Y ves algo nuevo: a la izquierda, una cámara de compensación. Cuatro depósitos en fila, cada uno con su manómetro."
+  },
+  {
+   "id": "c02",
+   "bloque": "p1",
+   "fase": "damian",
+   "texto": "Los mamparos de la clase Abisal no se abren a mano. Se igualan. Si la presión del último depósito no es exacta, el cierre no cede.",
+   "voz": "damian"
+  },
+  {
+   "id": "c03",
+   "bloque": "p1",
+   "fase": "cero",
+   "texto": "Tres bar. Ni uno más, ni uno menos. Te lo digo porque ya lo has intentado antes.",
+   "voz": "cero"
+  },
+  {
+   "id": "c04",
+   "bloque": "p1",
+   "fase": "damian",
+   "texto": "No le contestes.",
+   "voz": "damian"
+  },
+  {
+   "id": "c05",
+   "bloque": "p1",
+   "fase": "alma",
+   "texto": "Pero tiene razón en el número. Lo pone en la placa: tres bar en D.",
+   "voz": "alma"
+  },
+  {
+   "id": "x01",
+   "bloque": "p1",
+   "fase": "damian",
+   "texto": "Alma, escúchame. Ese número no lo sabe nadie fuera del protocolo. Ni siquiera estaba en el informe.",
+   "voz": "damian"
+  },
+  {
+   "id": "x02",
+   "bloque": "p1",
+   "fase": "alma",
+   "texto": "Lo sé. Por eso me da miedo. Cero sabe cosas que solo sabía la tripulación de dos mil ocho.",
+   "voz": "alma"
+  },
+  {
+   "id": "x03",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "Te acercas al panel. Los manómetros vibran. Huele a óxido y a algo más: a café recién hecho, como si alguien acabara de pasar por aquí."
+  },
+  {
+   "id": "c06",
+   "bloque": "p1",
+   "fase": "pista",
+   "texto": "Los depósitos marcan cuatro, cero, diez y cero. Entre cada pareja vecina hay una válvula, y cada válvula se abre una sola vez. Al abrirla, los dos depósitos se quedan con la media."
+  },
+  {
+   "id": "c07",
+   "bloque": "p1",
+   "fase": "alma",
+   "texto": "O sea: si uno tiene diez y el otro cero, los dos se quedan en cinco.",
+   "voz": "alma"
+  },
+  {
+   "id": "c08",
+   "bloque": "p1",
+   "fase": "damian",
+   "texto": "Abre la C-D y acabamos.",
+   "voz": "damian"
+  },
+  {
+   "id": "c09",
+   "bloque": "p1",
+   "fase": "pista",
+   "texto": "Si abres la C-D ahora, D se queda en cinco. Demasiado. Y esa válvula ya no se podría volver a usar."
+  },
+  {
+   "id": "c10",
+   "bloque": "p1",
+   "fase": "alma",
+   "texto": "Entonces el agua tiene que llegar a D más diluida. Por el camino largo.",
+   "voz": "alma"
+  },
+  {
+   "id": "c11",
+   "bloque": "p1",
+   "fase": "pregunta",
+   "texto": "¿Qué válvulas abres, y en qué orden, para que D marque exactamente tres? Veinte segundos."
+  },
+  {
+   "id": "c12",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "A-B, después B-C y, al final, C-D."
+  },
+  {
+   "id": "c13",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "A-B: cuatro y cero se igualan en dos."
+  },
+  {
+   "id": "c14",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "B-C: dos y diez, en seis."
+  },
+  {
+   "id": "c15",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "C-D: seis y cero, en tres. Tres bar."
+  },
+  {
+   "id": "c16",
+   "bloque": "p1",
+   "fase": "accion",
+   "texto": "El volante del mamparo gira con un siseo largo."
+  },
+  {
+   "id": "c17",
+   "bloque": "p1",
+   "fase": "cero",
+   "texto": "Bien. La otra vez tardaste mucho más en esta.",
+   "voz": "cero"
+  },
+  {
+   "id": "c18",
+   "bloque": "p1",
+   "fase": "damian",
+   "texto": "La otra vez. Alma, apúntalo. Cada cosa que diga.",
+   "voz": "damian"
+  },
+  {
+   "id": "t01",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "El mamparo se abre hacia dentro. Vapor. La linterna recorre un vestuario: dos filas de taquillas, numeradas del uno al treinta y uno."
+  },
+  {
+   "id": "t02",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "Treinta y una taquillas. Treinta y una personas a bordo."
+  },
+  {
+   "id": "t03",
+   "bloque": "p2",
+   "fase": "alma",
+   "texto": "Están todas cerradas. Como si fueran a volver.",
+   "voz": "alma"
+  },
+  {
+   "id": "t04",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "Si quieres saber quién bloqueó esta puerta desde dentro, quédate. Y si te está gustando la serie, suscríbete: así me ayudas a bajar al capítulo tres."
+  },
+  {
+   "id": "t05",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "En el tablero, una lista de tripulantes medio deshecha por el agua. Los números de taquilla están borrados."
+  },
+  {
+   "id": "t06",
+   "bloque": "p2",
+   "fase": "alma",
+   "texto": "Damián… aquí pone Iker. Iker Salvat.",
+   "voz": "alma"
+  },
+  {
+   "id": "t07",
+   "bloque": "p2",
+   "fase": "damian",
+   "texto": "Era mi hermano. Mi hermano pequeño.",
+   "voz": "damian"
+  },
+  {
+   "id": "t08",
+   "bloque": "p2",
+   "fase": "alma",
+   "texto": "Nunca me lo dijiste.",
+   "voz": "alma"
+  },
+  {
+   "id": "t09",
+   "bloque": "p2",
+   "fase": "damian",
+   "texto": "Porque llevo dieciocho años escuchando este canal, y no quería que nadie más lo escuchara conmigo.",
+   "voz": "damian"
+  },
+  {
+   "id": "t10",
+   "bloque": "p2",
+   "fase": "pista",
+   "texto": "El número de su taquilla se ha borrado. Pero Damián recuerda tres cosas."
+  },
+  {
+   "id": "t11",
+   "bloque": "p2",
+   "fase": "damian",
+   "texto": "En la Armada le daban siempre un número que no se pudiera dividir: primo. Sumaba las cifras de todo, y su número de la suerte era el cuatro. Y nunca cogía la última de la fila: decía que era la de los que no vuelven.",
+   "voz": "damian"
+  },
+  {
+   "id": "t12",
+   "bloque": "p2",
+   "fase": "pregunta",
+   "texto": "Primo. Cifras que suman cuatro. Y no la treinta y uno. ¿Cuál es la taquilla de Iker? Veinte segundos."
+  },
+  {
+   "id": "t13",
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "La trece."
+  },
+  {
+   "id": "t14",
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "Las cifras que suman cuatro son el cuatro, el trece, el veintidós y el treinta y uno. El cuatro y el veintidós son pares: no son primos."
+  },
+  {
+   "id": "t15",
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "Quedan el trece y el treinta y uno. Y la treinta y uno es la última de la fila."
+  },
+  {
+   "id": "t16",
+   "bloque": "p2",
+   "fase": "accion",
+   "texto": "La taquilla trece se abre con un chasquido. Dentro, un cuaderno, una foto de dos hermanos… y un nombre rayado con algo afilado: Iker."
+  },
+  {
+   "id": "t17",
+   "bloque": "p2",
+   "fase": "damian",
+   "texto": "Alguien rayó su nombre. Después.",
+   "voz": "damian"
+  },
+  {
+   "id": "t18",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "La primera página del cuaderno, con letra apretada: inmersión noventa y uno. Si la alarma no suena, no es un fallo."
+  },
+  {
+   "id": "t19",
+   "bloque": "p2",
+   "fase": "alma",
+   "texto": "Él lo sabía. Sabía lo de la alarma antes de que pasara.",
+   "voz": "alma"
+  },
+  {
+   "id": "t20",
+   "bloque": "p2",
+   "fase": "damian",
+   "texto": "No. No hagas eso. No conviertas a mi hermano en una pista.",
+   "voz": "damian"
+  },
+  {
+   "id": "x04",
+   "bloque": "p2",
+   "fase": "alma",
+   "texto": "Damián, no lo convierto en nada. Pero si tu hermano sabía lo de la alarma, alguien más también lo sabía.",
+   "voz": "alma"
+  },
+  {
+   "id": "x05",
+   "bloque": "p2",
+   "fase": "damian",
+   "texto": "Mi hermano tenía veintitrés años. Lo único que sabía era cómo hacer reír a la tripulación los domingos.",
+   "voz": "damian"
+  },
+  {
+   "id": "x06",
+   "bloque": "p2",
+   "fase": "alma",
+   "texto": "Entonces vamos a averiguar quién escribió esto. Juntos.",
+   "voz": "alma"
+  },
+  {
+   "id": "t21",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "Junto a la taquilla cuelga un casco de buzo. En la visera, pintado a mano, un número violeta."
+  },
+  {
+   "id": "t22",
+   "bloque": "p2",
+   "fase": "cero",
+   "texto": "Te has fijado. Siempre te fijas en eso.",
+   "voz": "cero"
+  },
+  {
+   "id": "e01",
+   "bloque": "p3",
+   "fase": "narra",
+   "texto": "Las luces parpadean. El agua sube dos dedos. Cuadro eléctrico de emergencia: una batería de diez unidades y cinco interruptores."
+  },
+  {
+   "id": "e02",
+   "bloque": "p3",
+   "fase": "pista",
+   "texto": "Compuerta, cinco. Bomba, cuatro. Radio, tres. Focos, dos. Calefacción, uno. Y una advertencia: el regulador se bloquea si sobra carga. Hay que gastar exactamente diez."
+  },
+  {
+   "id": "e03",
+   "bloque": "p3",
+   "fase": "damian",
+   "texto": "Compuerta, bomba y calefacción. Diez. La bomba saca el agua y sales de ahí.",
+   "voz": "damian"
+  },
+  {
+   "id": "e04",
+   "bloque": "p3",
+   "fase": "alma",
+   "texto": "¡Sin radio! Si cortas la radio, lo perdemos. Otra vez.",
+   "voz": "alma"
+  },
+  {
+   "id": "e05",
+   "bloque": "p3",
+   "fase": "damian",
+   "texto": "Prefiero perder la señal que perderle a él.",
+   "voz": "damian"
+  },
+  {
+   "id": "e06",
+   "bloque": "p3",
+   "fase": "alma",
+   "texto": "Dieciocho años escuchando un canal, ¿y ahora lo quieres apagar?",
+   "voz": "alma"
+  },
+  {
+   "id": "e07",
+   "bloque": "p3",
+   "fase": "pregunta",
+   "texto": "Hay una sola forma de mover la compuerta sin apagar la radio. ¿Cuál? Veinte segundos."
+  },
+  {
+   "id": "e08",
+   "bloque": "p3",
+   "fase": "solucion",
+   "texto": "Compuerta, radio y focos. Cinco, más tres, más dos: diez."
+  },
+  {
+   "id": "e09",
+   "bloque": "p3",
+   "fase": "solucion",
+   "texto": "Con la compuerta y la radio ya van ocho: solo quedan dos. La bomba no cabe, y la calefacción sola deja una sin gastar. Solo valen los focos."
+  },
+  {
+   "id": "e10",
+   "bloque": "p3",
+   "fase": "accion",
+   "texto": "Los interruptores bajan uno a uno. Los focos iluminan el vestuario entero por primera vez."
+  },
+  {
+   "id": "e11",
+   "bloque": "p3",
+   "fase": "damian",
+   "texto": "Bien. Pero el agua sigue subiendo, y eso es culpa nuestra.",
+   "voz": "damian"
+  },
+  {
+   "id": "x07",
+   "bloque": "p3",
+   "fase": "cero",
+   "texto": "Has elegido la radio. La otra vez elegiste la bomba. Y no salió bien.",
+   "voz": "cero"
+  },
+  {
+   "id": "x08",
+   "bloque": "p3",
+   "fase": "damian",
+   "texto": "¿Qué pasó la otra vez? ¡Contesta!",
+   "voz": "damian"
+  },
+  {
+   "id": "x09",
+   "bloque": "p3",
+   "fase": "alma",
+   "texto": "No le va a contestar, Damián. Quiere que sigas preguntando.",
+   "voz": "alma"
+  },
+  {
+   "id": "m01",
+   "bloque": "p4",
+   "fase": "narra",
+   "texto": "Al volver la corriente, la radio de pared del vestuario se enciende sola. Una luz roja parpadea, en bucle."
+  },
+  {
+   "id": "m02",
+   "bloque": "p4",
+   "fase": "alma",
+   "texto": "Esa radio no está conectada a nada. Mira el cable, Damián. Está cortado.",
+   "voz": "alma"
+  },
+  {
+   "id": "m03",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "Es un mensaje grabado en dos mil ocho, el día de la inmersión noventa y uno. Cuatro letras. En la pared, la tabla Morse de la tripulación."
+  },
+  {
+   "id": "m04",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "Raya, punto, raya, punto. Punto. Punto, raya, punto. Raya, raya, raya."
+  },
+  {
+   "id": "m05",
+   "bloque": "p4",
+   "fase": "pregunta",
+   "texto": "¿Qué dice el mensaje? Veinte segundos."
+  },
+  {
+   "id": "m06",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "C, E, R, O. Cero."
+  },
+  {
+   "id": "m07",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "Raya, punto, raya, punto es la C. Un punto, la E. Punto, raya, punto, la R. Y tres rayas, la O."
+  },
+  {
+   "id": "m08",
+   "bloque": "p4",
+   "fase": "cero",
+   "texto": "Me alegra que por fin lo leas.",
+   "voz": "cero"
+  },
+  {
+   "id": "m09",
+   "bloque": "p4",
+   "fase": "damian",
+   "texto": "¿Cómo puede salir tu nombre en un mensaje de hace dieciocho años?",
+   "voz": "damian"
+  },
+  {
+   "id": "m10",
+   "bloque": "p4",
+   "fase": "cero",
+   "texto": "Porque entonces también estaba aquí, Damián. Y tu hermano también.",
+   "voz": "cero"
+  },
+  {
+   "id": "x10",
+   "bloque": "p4",
+   "fase": "damian",
+   "texto": "No. Mi hermano no está ahí. Mi hermano lleva dieciocho años en el fondo del mar.",
+   "voz": "damian"
+  },
+  {
+   "id": "x11",
+   "bloque": "p4",
+   "fase": "alma",
+   "texto": "Damián, mírame. Concéntrate. La compuerta de proa. Solo tenemos media hora.",
+   "voz": "alma"
+  },
+  {
+   "id": "x12",
+   "bloque": "p4",
+   "fase": "narra",
+   "texto": "La luz roja se apaga. En el silencio, oyes algo nuevo al otro lado del casco: un golpeteo lento, metálico. Como alguien que llama sin prisa."
+  },
+  {
+   "id": "s01",
+   "bloque": "p5",
+   "fase": "narra",
+   "texto": "La salida hacia proa es una esclusa: una cámara pequeña con una compuerta exterior, hacia el pasillo inundado, y otra interior, hacia proa."
+  },
+  {
+   "id": "s02",
+   "bloque": "p5",
+   "fase": "pista",
+   "texto": "Cuatro palancas: C, cerrar la exterior. I, igualar la presión. A, abrir la interior. P, purgar el agua."
+  },
+  {
+   "id": "s03",
+   "bloque": "p5",
+   "fase": "pista",
+   "texto": "La placa tiene cuatro reglas. Nunca dos compuertas abiertas. No se abre con presiones distintas. Igualar con la exterior abierta inunda la esclusa. Y la purga va al final."
+  },
+  {
+   "id": "s04",
+   "bloque": "p5",
+   "fase": "alma",
+   "texto": "Dos mareas: la del pasillo y la de proa. La esclusa las separa. Primero hay que aislarte del pasillo.",
+   "voz": "alma"
+  },
+  {
+   "id": "x13",
+   "bloque": "p5",
+   "fase": "damian",
+   "texto": "Hazle caso a Alma. Y no toques nada que no entiendas. Ese submarino ya se tragó a treinta y una personas.",
+   "voz": "damian"
+  },
+  {
+   "id": "x14",
+   "bloque": "p5",
+   "fase": "cero",
+   "texto": "Treinta y dos, Damián. Siempre te olvidas de contar al último.",
+   "voz": "cero"
+  },
+  {
+   "id": "s05",
+   "bloque": "p5",
+   "fase": "pregunta",
+   "texto": "El agua ya toca el cuadro eléctrico. ¿En qué orden bajas las palancas? Veinte segundos."
+  },
+  {
+   "id": "s06",
+   "bloque": "p5",
+   "fase": "solucion",
+   "texto": "C, I, A, P."
+  },
+  {
+   "id": "s07",
+   "bloque": "p5",
+   "fase": "solucion",
+   "texto": "Primero cierras la exterior: si no, al igualar entraría el mar."
+  },
+  {
+   "id": "s08",
+   "bloque": "p5",
+   "fase": "solucion",
+   "texto": "Igualas la presión, y la compuerta interior ya se puede abrir."
+  },
+  {
+   "id": "s09",
+   "bloque": "p5",
+   "fase": "solucion",
+   "texto": "Y la purga, al final, saca el agua que entra al abrir."
+  },
+  {
+   "id": "s10",
+   "bloque": "p5",
+   "fase": "damian",
+   "texto": "¡Estás fuera! Estás fuera del vestuario.",
+   "voz": "damian"
+  },
+  {
+   "id": "z01",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "Pasillo de proa, seco. Una puerta con un letrero: comedor. Detrás, ruido de platos."
+  },
+  {
+   "id": "z02",
+   "bloque": "final",
+   "fase": "alma",
+   "texto": "Damián… hay alguien poniendo la mesa.",
+   "voz": "alma"
+  },
+  {
+   "id": "z03",
+   "bloque": "final",
+   "fase": "cero",
+   "texto": "Treinta y un cubiertos. Como siempre.",
+   "voz": "cero"
+  },
+  {
+   "id": "z04",
+   "bloque": "final",
+   "fase": "cero",
+   "texto": "Hola, Dami.",
+   "voz": "conservador"
+  },
+  {
+   "id": "z05",
+   "bloque": "final",
+   "fase": "alma",
+   "texto": "Damián, la ventana. Se nos va la…",
+   "voz": "alma"
+  },
+  {
+   "id": "z06",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "Estática. Silencio. Ocho compartimentos. Y alguien acaba de llamar a Damián como solo lo llamaba su hermano."
+  },
+  {
+   "id": "x15",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "Te quedas solo, con la mano sobre el picaporte del comedor. Al otro lado, alguien sigue poniendo la mesa. Plato a plato. Sin prisa."
+  },
+  {
+   "id": "z07",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "El trece. A-B, B-C, C-D. Compuerta, radio y focos. Cero. Y C, I, A, P. ¿Cuántas resolviste sin mirar? Y si viste algo violeta, apúntalo junto al de la semana pasada."
+  },
+  {
+   "id": "z08",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "Próximo capítulo: El comedor. Suscríbete y activa la campanita para bajar el primero."
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "version": "v1",
+ "auditoria": "",
+ "video_id": "E60ES-S001-E02",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-22",
+   "cambios": "Producción nueva (Claude): continúa exactamente desde el final del cap. 1 v2; título canónico «El mamparo»; 5 puzles verificados; pista del megapuzle 6; voces propias de Alma (Kokoro if_sara) y Damián (Kokoro im_nicola) como referencia de Chatterbox; Cero mantiene la del cap. 1. Guion = semana_20261123/CAP2_EL_MAMPARO.md."
+  }
+ ]
+}
