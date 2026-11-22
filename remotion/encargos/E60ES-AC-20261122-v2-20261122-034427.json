@@ -1,0 +1,7 @@
+{
+ "encargo_id": "E60ES-AC-20261122-v2-20261122-034427",
+ "composicion": "E60CortoSala",
+ "ficha": "fichas/E60-2026-11-22b-corto.json",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "v2 (2.º render, antes de entregar): la QA visual de Claude del render 44974188610 detectó que el temporizador tapaba los ganchos 4-5 de la derecha durante la cuenta y que la etiqueta del gancho no salía en el fotograma 0. Se corrigen ambos, se reduce el vaivén lateral y se agrandan las etiquetas de las pesas. El primer render se conserva como artefacto del run."
+}

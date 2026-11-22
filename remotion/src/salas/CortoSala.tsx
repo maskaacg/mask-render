@@ -39,7 +39,7 @@ export const CortoSala: React.FC<Props> = (props) => {
 	// balanza: plano frontal a la altura de la barra, con los 10 ganchos y las pesas en cuadro
 	if (ficha.puzle.tipo === 'balanza') {
 		const y0 = PL.puzle.mira[1];
-		PL.puzle = {pos: [0, y0 + 0.66, PL.puzle.mira[2] + 2.95], mira: [0, y0 + 0.36, PL.puzle.mira[2] + 0.1], fov: 52};
+		PL.puzle = {pos: [0, y0 + 0.68, PL.puzle.mira[2] + 3.15], mira: [0, y0 + 0.36, PL.puzle.mira[2] + 0.1], fov: 52};
 	}
 	const LN = Object.fromEntries(plan.lineas.map((l) => [l.id, l]));
 	const gancho = !!ficha.gancho;
@@ -66,7 +66,9 @@ export const CortoSala: React.FC<Props> = (props) => {
 	// caja fuerte: el avance se limita para que las cinco placas sigan en cuadro mientras se piensa
 	const avance = Math.min(ficha.puzle.tipo === 'caja_fuerte' && ev[k][1] === 'puzle' ? 0.12 : ficha.puzle.tipo === 'balanza' && ev[k][1] === 'puzle' ? 0.3 : 0.9, dentro * 0.008 + (ficha.puzle.tipo === 'balanza' ? 0 : dentro * 0.037));
 	for (let i = 0; i < 3; i++) pos[i] += (dir[i] / largo) * avance;
-	pos[0] += Math.sin(t * 0.6) * 0.03 + Math.sin(t * 0.21) * 0.14;
+	// balanza: menos vaivén lateral para que los ganchos 5 nunca se salgan del encuadre vertical
+	const vaiven = ficha.puzle.tipo === 'balanza' ? 0.3 : 1;
+	pos[0] += (Math.sin(t * 0.6) * 0.03 + Math.sin(t * 0.21) * 0.14) * vaiven;
 	pos[1] += Math.sin(t * 0.47 + 1) * 0.015 + Math.sin(t * 0.13) * 0.06;
 	const tipo = ficha.puzle.tipo;
 	if (!['cerillas', 'engranajes', 'jarras', 'caja_fuerte', 'balanza'].includes(tipo)) throw new Error('PUZLE_SIN_VERSION_3D:' + tipo);
@@ -192,7 +194,7 @@ export const CortoSala: React.FC<Props> = (props) => {
 	const enPensar = t >= F.pensar.inicio - 0.1 && t < F.pensar.fin + 0.3;
 	const linea = plan.lineas.find((l) => t >= l.inicio && t < l.fin + 0.3);
 	const subO = linea ? Math.max(0, Math.min(1, (t - linea.inicio) / 0.15, (linea.fin + 0.3 - t) / 0.2)) : 0;
-	const titO = gancho ? interpolate(t, [0, 0.15, enun - 0.4, enun + 0.2], [0, 1, 1, 0], clamp) : interpolate(t, [0.2, 0.9, enun - 0.4, enun + 0.2], [0, 1, 1, 0.85], clamp);
+	const titO = gancho ? interpolate(t, [enun - 0.4, enun + 0.2], [1, 0], clamp) : interpolate(t, [0.2, 0.9, enun - 0.4, enun + 0.2], [0, 1, 1, 0.85], clamp);
 	const ticks = Array.from({length: Math.floor(ficha.pensar_s)}, (_, i) => F.pensar.inicio + i);
 	const fundido = Math.max(gancho ? 0 : interpolate(t, [0, 0.8], [1, 0], clamp), interpolate(t, [plan.total - 0.8, plan.total], [0, 1], clamp));
 	const esBal = tipo === 'balanza';
@@ -262,7 +264,7 @@ export const CortoSala: React.FC<Props> = (props) => {
 			</div>
 
 			{/* temporizador de vela */}
-			<div style={{position: 'absolute', right: 56, top: 470, width: 150, height: 150, opacity: tO}}>
+			<div style={{position: 'absolute', right: esBal ? 40 : 56, top: esBal ? 262 : 470, width: 150, height: 150, opacity: tO}}>
 				<svg width={150} height={150} viewBox="-75 -75 150 150">
 					<circle r={70} fill="rgba(12,10,8,0.85)" stroke={E60.plata} strokeOpacity={0.4} strokeWidth={2} />
 					<circle r={60} fill="none" stroke={AMBAR} strokeWidth={8} pathLength={1} strokeDasharray={1} strokeDashoffset={pz} transform="rotate(-90)" strokeLinecap="round" />

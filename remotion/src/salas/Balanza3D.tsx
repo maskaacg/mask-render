@@ -95,7 +95,7 @@ const Peso: React.FC<{kg: number; suelta: boolean}> = ({kg, suelta}) => {
 			</mesh>
 			{/* etiqueta legible de frente */}
 			<mesh position={[0, -h / 2, r + 0.002]}>
-				<planeGeometry args={[r * 2.2, r * 1.375]} />
+				<planeGeometry args={[r * 2.6, r * 1.625]} />
 				<meshBasicMaterial map={T} toneMapped={false} />
 			</mesh>
 		</group>
