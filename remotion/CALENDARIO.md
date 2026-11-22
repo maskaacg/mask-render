@@ -30,13 +30,13 @@ Horas de publicación (Madrid): vídeo largo 17:00 · cortos y avances 18:00.
 
 | Publicación | Tipo | video_id | Estado |
 |---|---|---|---|
-| Lun 23 | Escape Room #3 «El observatorio apagado» (16:9, E60EscapeObservatorio, solo YouTube 17:00) + avance 9:16 (E60AvanceObservatorio, 18:00) | E60ES-ER-003 / E60ES-ER-003-AVANCE | Escape room: Entregado v1 (sáb 21, Telegram, pendiente de APROBAR). Avance: Entregado v1 (sáb 21 11:04, Telegram, 88,4 s, pendiente de APROBAR) |
-| Mar 24 | Acertijo 9:16 (sala 3D propia) | E60ES-AC-20261124 | Pendiente |
-| Mié 25 | Escape Room #4 (16:9) + avance 9:16 | E60ES-ER-004 / E60ES-ER-004-AVANCE | Pendiente |
-| Jue 26 | Acertijo 9:16 | E60ES-AC-20261126 | Pendiente |
-| Vie 27 | Acertijo 9:16 | E60ES-AC-20261127 | Pendiente |
-| Sáb 28 | Serie, capítulo 2 (16:9) + avance 9:16 | E60ES-S001-E02 / E60ES-S001-E02-AVANCE | Pendiente |
-| Dom 29 | Acertijo 9:16 | E60ES-AC-20261129 | Pendiente |
+| Lun 23 | Escape Room #3 «El observatorio apagado» + avance 9:16 | E60ES-ER-003 / E60ES-ER-003-AVANCE | APROBADO y programado (17:00 / 18:00). El avance v1 no resuelve su puzle: v2 pendiente de decisión del Propietario |
+| Mar 24 | Acertijo «La habitación de las tres sombras» | E60ES-AC-20261124 | Entregado v1 (dom 22, n.º 31), pendiente de APROBAR |
+| Mié 25 | Escape Room #4 «El castillo sin amanecer» (E60LargoSalas, 8:45) + avance «¿Qué campana falta?» | E60ES-ER-004 / E60ES-ER-004-AVANCE | Entregados v1 (dom 22, n.º 35 y 32), pendientes de APROBAR |
+| Jue 26 | Acertijo «La vitrina de los tres reflejos» | E60ES-AC-20261126 | Entregado v1 (n.º 28), pendiente de APROBAR |
+| Vie 27 | Acertijo «La torre de dados» | E60ES-AC-20261127 | Entregado v1 (n.º 29), pendiente de APROBAR |
+| Sáb 28 | Profundidad 600 #2 «El mamparo» (E60LargoSalas, 16:09) + avance «La esclusa que nadie debía abrir» | E60ES-S001-E02 / E60ES-S001-E02-AVANCE | Entregados v1 (n.º 34 y 33), pendientes de APROBAR |
+| Dom 29 | Acertijo «El ascensor de las tres plantas» | E60ES-AC-20261129 | Entregado v1 (n.º 30), pendiente de APROBAR |
 
 Cada vídeo del calendario debe estar también en Neon (`mg.calendario`: video_id, publica_en, tipo,
 notas): el bucle autónomo lo usa para detectar retrasos. Al añadir una semana, insertar sus filas.
