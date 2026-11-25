@@ -1,0 +1,78 @@
+{
+ "id": "E60-ER-003-T",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "avance_vertical_escape_room",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 24,
+ "sala": 3,
+ "titulo": "El observatorio apagado",
+ "pensar_s": 15,
+ "motor_voz": "chatterbox",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "nota": "Avance del lunes 23/11: plantea el primer puzle (el montón de cajas) SIN solución y remite al vídeo largo de YouTube. Misma sala 3D que el largo.",
+ "version": "v1",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-21",
+   "cambios": "Producción nueva (productor automático Claude)."
+  }
+ ],
+ "duracion_objetivo_s": [
+  70,
+  120
+ ],
+ "auditoria": "Render v1 run 44890133015: QA técnica PASS (88,4 s, -14,4 LUFS, voz Chatterbox con control Whisper); hoja de contactos revisada (cuenta atrás sin tapar las cajas, fichas opacas, CTA final legible). Portada = fotograma 62 s del máster (pregunta y cuenta atrás en pantalla).",
+ "lineas": [
+  {
+   "id": "t01",
+   "fase": "narra",
+   "texto": "Medianoche en lo alto de una montaña. La puerta del observatorio se cierra a tu espalda, y la luna solo iluminará la cúpula durante treinta minutos."
+  },
+  {
+   "id": "t02",
+   "fase": "narra",
+   "texto": "El astrónomo que vivía aquí desapareció hace años. Solo quedan sus notas, clavadas en las paredes, y cuatro cerraduras entre tú y la salida."
+  },
+  {
+   "id": "t03",
+   "fase": "narra",
+   "texto": "Primera sala: el almacén de lentes. Cajas de madera, todas iguales, apiladas en escalera. El candado de la puerta pide un número de dos cifras."
+  },
+  {
+   "id": "t04",
+   "fase": "pista",
+   "texto": "La nota dice: el código es el número de cajas que hay en este montón. Y ninguna caja flota: debajo de cada una hay otra, o el suelo."
+  },
+  {
+   "id": "t05",
+   "fase": "pista",
+   "texto": "Desde arriba, el montón ocupa un cuadrado de tres por tres, y en la esquina de delante, a la derecha, no hay ninguna caja. Desde donde estás, solo ves las tapas."
+  },
+  {
+   "id": "t05b",
+   "fase": "narra",
+   "texto": "Repasemos. Ninguna caja flota y solo ves las tapas de arriba. Las demás quedan escondidas debajo."
+  },
+  {
+   "id": "t06",
+   "fase": "pregunta",
+   "texto": "¿Cuántas cajas hay en total? Tienes quince segundos."
+  },
+  {
+   "id": "t07",
+   "fase": "cierre",
+   "texto": "Déjalo en los comentarios. La solución, y tres salas más con sus trampas, te esperan en el vídeo completo de YouTube: El observatorio apagado."
+  }
+ ],
+ "puzle_del_largo": {
+  "titulo": "El montón de cajas",
+  "familia": "conteo_cubos_ocultos",
+  "respuesta": "13",
+  "verificacion": "Mismo puzle P1 del largo E60-ER-003 (tools/verificar_er003.py); aquí no se da la solución.",
+  "video_id": "E60ES-ER-003"
+ }
+}

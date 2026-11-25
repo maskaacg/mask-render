@@ -1,0 +1,136 @@
+{
+ "id": "E60-S01-C01-T",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "avance_vertical_serie",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 24,
+ "sala": 1,
+ "temporada": "Profundidad 600",
+ "capitulo": 1,
+ "titulo": "La sala de lastre",
+ "pensar_s": 20,
+ "motor_voz": "chatterbox",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "nota": "Avance del sáb 21/11 del capítulo 1 de «Profundidad 600» (v2): apertura por radio (Damián y Alma) y puzle 1 «El cuaderno boca abajo» SIN solución; remite al capítulo completo de YouTube. Misma sala 3D y mismas voces v2 que el capítulo (reutilizadas de voz_lista/E60-S01-C01); solo la línea de cierre es nueva.",
+ "version": "v1",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-21",
+   "cambios": "Producción nueva (Claude): faltaba el avance del capítulo 1 en la app."
+  }
+ ],
+ "duracion_objetivo_s": [
+  70,
+  120
+ ],
+ "voces": {
+  "narrador": {
+   "papel": "narrador (voz interior del espectador)",
+   "ref": "voces/ref_narrador.wav"
+  },
+  "archivera": {
+   "papel": "ALMA (radio del Vigía)",
+   "ref": "voces/ref_archivera.wav",
+   "nota": "provisional: reaprovecha la referencia de la archivera"
+  },
+  "conservador": {
+   "papel": "DAMIÁN (radio del Vigía)",
+   "ref": "voces/ref_conservador.wav",
+   "nota": "provisional: reaprovecha la referencia del conservador"
+  },
+  "custodio": {
+   "papel": "OPERADOR CERO (altavoces del Abisal)",
+   "ref": "voces/ref_custodio.wav",
+   "efecto": "metal"
+  }
+ },
+ "lineas": [
+  {
+   "id": "g01",
+   "fase": "conservador",
+   "texto": "Vigía a Abisal. Vigía a Abisal… Sé que nadie va a contestar. Llevo dieciocho años llamando a este canal.",
+   "voz": "conservador"
+  },
+  {
+   "id": "g02",
+   "fase": "archivera",
+   "texto": "Damián, para. Mira el sonar. La baliza del Abisal se acaba de encender. Sola.",
+   "voz": "archivera"
+  },
+  {
+   "id": "g03",
+   "fase": "conservador",
+   "texto": "Eso es imposible. Ese submarino está muerto desde dos mil ocho.",
+   "voz": "conservador"
+  },
+  {
+   "id": "n01",
+   "fase": "narra",
+   "texto": "Frío. Eso es lo primero que notas. Agua helada, por los tobillos."
+  },
+  {
+   "id": "n03",
+   "fase": "narra",
+   "texto": "Estás en un submarino. A seiscientos metros de profundidad. No recuerdas cómo has llegado aquí. Y no ves a nadie más."
+  },
+  {
+   "id": "g04",
+   "fase": "archivera",
+   "texto": "¿Hola? Si alguien puede oírme… la radio de tu sala acaba de abrir el canal. Te oímos respirar.",
+   "voz": "archivera"
+  },
+  {
+   "id": "n06",
+   "fase": "narra",
+   "texto": "Está demasiado oscuro para ver nada. Pero junto a tus pies flota una caja de herramientas."
+  },
+  {
+   "id": "n07",
+   "fase": "narra",
+   "texto": "Tiene un candado de dos dígitos. Y atado a la caja, flotando, un cuaderno empapado: el registro de inmersión."
+  },
+  {
+   "id": "n08",
+   "fase": "narra",
+   "texto": "En la tapa, alguien apuntó el código a toda prisa, con rotulador grueso."
+  },
+  {
+   "id": "n09",
+   "fase": "pista",
+   "texto": "Desde donde estás, se lee con claridad: dieciséis."
+  },
+  {
+   "id": "n10",
+   "fase": "pista",
+   "texto": "Pero fíjate en el título del cuaderno: las letras están cabeza abajo. El cuaderno flota boca abajo."
+  },
+  {
+   "id": "r01",
+   "fase": "repaso",
+   "texto": "Espera… si el título está del revés, el número también. ¿Cómo lo vería quien lo escribió?",
+   "voz": "archivera"
+  },
+  {
+   "id": "n11",
+   "fase": "pregunta",
+   "texto": "El candado pide ese número. Escribe tu respuesta en los comentarios. Tienes veinte segundos."
+  },
+  {
+   "id": "t99",
+   "fase": "cierre",
+   "texto": "Déjalo en los comentarios. La solución, y lo que esconde el registro del Abisal, en el capítulo uno de Profundidad seiscientos. Ya en YouTube."
+  }
+ ],
+ "puzle_del_largo": {
+  "titulo": "El cuaderno boca abajo",
+  "familia": "rotacion_180_digitos",
+  "respuesta": "91",
+  "verificacion": "Mismo P1 del capítulo E60-S01-C01 (tools/verificar_s001_e01.py); aquí no se da la solución.",
+  "video_id": "E60ES-S001-E01"
+ },
+ "auditoria": "Render v1 run 44904314349: QA técnica PASS (113,9 s, -14,6 LUFS); cierre locutado con Chatterbox; hoja de contactos revisada. Portada = fotograma 84 s (cuenta atrás y cuaderno)."
+}

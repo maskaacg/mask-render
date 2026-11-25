@@ -1,0 +1,7 @@
+{
+ "encargo_id": "E60ES-AC-20261117-v3-20261116-154803",
+ "composicion": "E60CortoSala",
+ "ficha": "fichas/E60-2026-11-17-corto.json",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "v3 relanzado: el primer render falló la QA por segundos congelados en la entrada; ahora la cámara avanza y hay polvo en el aire"
+}

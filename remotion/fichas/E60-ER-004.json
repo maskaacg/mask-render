@@ -1,0 +1,880 @@
+{
+ "id": "E60-ER-004",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "escape_room_16x9",
+ "ancho": 1920,
+ "alto": 1080,
+ "fps": 24,
+ "tipo_largo": "escape",
+ "etiqueta": "ESCAPE ROOM #4",
+ "temporada": "escape",
+ "capitulo": 4,
+ "titulo": "El castillo sin amanecer",
+ "siguiente": "¿Te atreves con la siguiente sala?",
+ "anterior": "El observatorio apagado",
+ "pensar_s": 20,
+ "motor_voz": "chatterbox",
+ "apertura_s": 1.6,
+ "titulo_s": 4.0,
+ "transicion_s": 3.5,
+ "pantalla_final_s": 20,
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "suscribir_en": "k08",
+ "puzles": [
+  {
+   "id": "P1",
+   "titulo": "El rosetón",
+   "respuesta": "4",
+   "familia": "suma_opuestos_circulo"
+  },
+  {
+   "id": "P2",
+   "titulo": "¿Qué campana falta?",
+   "respuesta": "1 (cobre)",
+   "familia": "cuadrado_latino"
+  },
+  {
+   "id": "P3",
+   "titulo": "El escudo falso",
+   "respuesta": "Águila",
+   "familia": "regla_tinturas_heraldica"
+  },
+  {
+   "id": "P4",
+   "titulo": "El puente levadizo",
+   "respuesta": "B",
+   "familia": "poleas_ventaja_mecanica"
+  },
+  {
+   "id": "P5",
+   "titulo": "La puerta del amanecer",
+   "respuesta": "Halcón-Ciervo-Lobo",
+   "familia": "orientacion_cardinal"
+  }
+ ],
+ "escenas": {
+  "gancho": "p1",
+  "final": "p5"
+ },
+ "salas": {
+  "p1": {
+   "titulo": "La capilla",
+   "tipo": "roseton",
+   "puzle": {
+    "numeros": [
+     2,
+     9,
+     5,
+     7,
+     11,
+     null,
+     8,
+     6
+    ],
+    "respuesta": 4
+   },
+   "alias": {
+    "sol": "c07",
+    "ayuda": "c03"
+   },
+   "camara": {
+    "alto": 1.2,
+    "dist": 2.3,
+    "mira": 1.2,
+    "fov": 50,
+    "x": -0.4
+   },
+   "pizarra": {
+    "desde": "c03",
+    "filas": [
+     {
+      "etiqueta": "VIDRIOS",
+      "texto": "2 · 9 · 5 · 7 · 11 · ? · 8 · 6"
+     },
+     {
+      "texto": "Mira los vidrios enfrentados",
+      "color": "#3fd0c0"
+     }
+    ],
+    "pregunta": "¿Qué número falta?"
+   },
+   "sala": {
+    "id": "castillo-capilla",
+    "nombre": "La capilla",
+    "ancho": 5.2,
+    "fondo": 5.6,
+    "alto": 3.2,
+    "pared": {
+     "patron": "piedra",
+     "color": "#7a7064",
+     "color2": "#3a342e"
+    },
+    "suelo": {
+     "patron": "losas",
+     "color": "#5a4028",
+     "color2": "#2a1c10"
+    },
+    "techo": "#141010",
+    "luz": {
+     "tipo": "velas",
+     "color": "#ffd2a0",
+     "intensidad": 1.3
+    },
+    "niebla": "#0a0a0e",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "banco",
+      "pared": "S",
+      "x": -1.2,
+      "color": "#3a2414"
+     },
+     {
+      "tipo": "banco",
+      "pared": "S",
+      "x": 1.2,
+      "color": "#3a2414"
+     },
+     {
+      "tipo": "cuadro",
+      "pared": "O",
+      "x": 0,
+      "color": "#5a3a2a"
+     }
+    ]
+   }
+  },
+  "p2": {
+   "titulo": "El campanario",
+   "tipo": "campanas",
+   "puzle": {
+    "falta": 1,
+    "escala": 1.45
+   },
+   "alias": {
+    "l04": "k03",
+    "l06": "k07",
+    "l09": "k07"
+   },
+   "camara": {
+    "alto": 1.35,
+    "dist": 2.2,
+    "mira": 1.25,
+    "fov": 50,
+    "x": -0.5
+   },
+   "pizarra": {
+    "desde": "k02",
+    "filas": [
+     {
+      "etiqueta": "COMPÁS 1",
+      "texto": "1 · 2 · 3 · 4"
+     },
+     {
+      "etiqueta": "COMPÁS 2",
+      "texto": "3 · 4 · 1 · 2"
+     },
+     {
+      "etiqueta": "COMPÁS 3",
+      "texto": "4 · 3 · 2 · 1"
+     },
+     {
+      "etiqueta": "COMPÁS 4",
+      "texto": "2 · ? · 4 · 3",
+      "color": "#ffe2b0"
+     }
+    ],
+    "pregunta": "¿Qué campana falta?"
+   },
+   "sala": {
+    "id": "castillo-campanario",
+    "nombre": "El campanario",
+    "ancho": 5.2,
+    "fondo": 5.6,
+    "alto": 3.2,
+    "pared": {
+     "patron": "piedra",
+     "color": "#7a7064",
+     "color2": "#3a342e"
+    },
+    "suelo": {
+     "patron": "tablones",
+     "color": "#5a4028",
+     "color2": "#2a1c10"
+    },
+    "techo": "#141010",
+    "luz": {
+     "tipo": "luna",
+     "color": "#d8dcff",
+     "intensidad": 1.7
+    },
+    "niebla": "#0a0a0e",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "ventana",
+      "pared": "N",
+      "x": -1.4,
+      "color": "#2a2f5a"
+     },
+     {
+      "tipo": "ventana",
+      "pared": "N",
+      "x": 1.4,
+      "color": "#2a2f5a"
+     },
+     {
+      "tipo": "lampara_pie",
+      "pared": "E",
+      "x": 0.8
+     }
+    ]
+   }
+  },
+  "p3": {
+   "titulo": "La sala de armas",
+   "tipo": "escudos",
+   "puzle": {
+    "falso": "Águila",
+    "escudos": [
+     {
+      "nombre": "León",
+      "campo": "gules",
+      "figura": "oro"
+     },
+     {
+      "nombre": "Torre",
+      "campo": "azur",
+      "figura": "plata"
+     },
+     {
+      "nombre": "Águila",
+      "campo": "oro",
+      "figura": "plata"
+     },
+     {
+      "nombre": "Lirio",
+      "campo": "sinople",
+      "figura": "oro"
+     }
+    ]
+   },
+   "alias": {
+    "sol": "a08"
+   },
+   "camara": {
+    "alto": 0.95,
+    "dist": 2.3,
+    "mira": 0.9,
+    "fov": 50,
+    "x": -0.3
+   },
+   "pizarra": {
+    "desde": "a03",
+    "filas": [
+     {
+      "etiqueta": "METALES",
+      "texto": "oro · plata"
+     },
+     {
+      "etiqueta": "COLORES",
+      "texto": "rojo · azul · verde"
+     },
+     {
+      "texto": "Nunca metal/metal ni color/color",
+      "color": "#3fd0c0"
+     }
+    ],
+    "pregunta": "¿Qué escudo es falso?"
+   },
+   "sala": {
+    "id": "castillo-armas",
+    "nombre": "La sala de armas",
+    "ancho": 5.2,
+    "fondo": 5.6,
+    "alto": 3.2,
+    "pared": {
+     "patron": "piedra",
+     "color": "#7a7064",
+     "color2": "#3a342e"
+    },
+    "suelo": {
+     "patron": "damero",
+     "color": "#8a8074",
+     "color2": "#2a2622"
+    },
+    "techo": "#141010",
+    "luz": {
+     "tipo": "chimenea",
+     "color": "#ffc890",
+     "intensidad": 1.35
+    },
+    "niebla": "#0a0a0e",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "chimenea",
+      "pared": "O",
+      "x": 0.4
+     },
+     {
+      "tipo": "estanteria",
+      "pared": "E",
+      "x": -0.6,
+      "color": "#3a2414"
+     }
+    ]
+   }
+  },
+  "p4": {
+   "titulo": "La puerta del foso",
+   "tipo": "poleas",
+   "puzle": {},
+   "alias": {
+    "sol": "f09",
+    "c1": "f07",
+    "c2": "f08"
+   },
+   "camara": {
+    "alto": 1.15,
+    "dist": 2.5,
+    "mira": 0.95,
+    "fov": 52,
+    "x": -0.5
+   },
+   "pizarra": {
+    "desde": "f02",
+    "filas": [
+     {
+      "etiqueta": "PUENTE",
+      "texto": "120 kg · subir 1 m"
+     },
+     {
+      "etiqueta": "TÚ",
+      "texto": "45 kg de fuerza · 3,5 m de cuerda"
+     },
+     {
+      "etiqueta": "APAREJOS",
+      "texto": "A 2 tramos · B 3 · C 4"
+     }
+    ],
+    "pregunta": "¿Con qué aparejo?"
+   },
+   "sala": {
+    "id": "castillo-foso",
+    "nombre": "La puerta del foso",
+    "ancho": 5.2,
+    "fondo": 5.6,
+    "alto": 3.2,
+    "pared": {
+     "patron": "ladrillo",
+     "color": "#7a4a34",
+     "color2": "#3e2418"
+    },
+    "suelo": {
+     "patron": "rejilla",
+     "color": "#4a4038",
+     "color2": "#1e1a16"
+    },
+    "techo": "#141010",
+    "luz": {
+     "tipo": "velas",
+     "color": "#ffcf96",
+     "intensidad": 1.35
+    },
+    "niebla": "#0a0a0e",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "barril",
+      "pared": "O",
+      "x": -1.2,
+      "escala": 0.7,
+      "color": "#4a3020"
+     },
+     {
+      "tipo": "caja",
+      "x": 1.9,
+      "z": 2.0,
+      "escala": 0.6,
+      "color": "#5a4028"
+     }
+    ]
+   }
+  },
+  "p5": {
+   "titulo": "La torre del homenaje",
+   "tipo": "amanecer",
+   "puzle": {},
+   "alias": {
+    "sol": "t05"
+   },
+   "camara": {
+    "alto": 1.0,
+    "dist": 2.1,
+    "mira": 0.85,
+    "fov": 50,
+    "x": -0.45
+   },
+   "pizarra": {
+    "desde": "t02",
+    "filas": [
+     {
+      "etiqueta": "ESTE",
+      "texto": "Halcón"
+     },
+     {
+      "etiqueta": "SUR",
+      "texto": "Ciervo"
+     },
+     {
+      "etiqueta": "OESTE",
+      "texto": "Lobo"
+     },
+     {
+      "etiqueta": "NORTE",
+      "texto": "Oso"
+     },
+     {
+      "texto": "Abre como el sol recorre el cielo",
+      "color": "#3fd0c0"
+     }
+    ],
+    "pregunta": "¿Orden de las 3 palancas?"
+   },
+   "sala": {
+    "id": "castillo-torre",
+    "nombre": "La torre del homenaje",
+    "ancho": 5.2,
+    "fondo": 5.6,
+    "alto": 3.2,
+    "pared": {
+     "patron": "piedra",
+     "color": "#7a7064",
+     "color2": "#3a342e"
+    },
+    "suelo": {
+     "patron": "tablones",
+     "color": "#5a4028",
+     "color2": "#2a1c10"
+    },
+    "techo": "#141010",
+    "luz": {
+     "tipo": "lampara",
+     "color": "#ffe0b0",
+     "intensidad": 1.4
+    },
+    "niebla": "#0a0a0e",
+    "puzle_en": "suelo",
+    "atrezo": [
+     {
+      "tipo": "ventana",
+      "pared": "E",
+      "x": -0.6,
+      "color": "#3a2a5a"
+     },
+     {
+      "tipo": "estanteria",
+      "pared": "O",
+      "x": 0.6,
+      "color": "#3a2414"
+     }
+    ]
+   }
+  }
+ },
+ "cuentas": {
+  "p1": [
+   {
+    "linea": "c06",
+    "texto": "2 + 11 = 5 + 8 = 7 + 6 = 13"
+   },
+   {
+    "linea": "c06",
+    "texto": "Enfrente del roto: 9 → 13 − 9 = 4 ✓",
+    "ok": true
+   }
+  ],
+  "p2": [
+   {
+    "linea": "k06",
+    "texto": "Compás 4: 2 · _ · 4 · 3 → falta la 1"
+   },
+   {
+    "linea": "k06",
+    "texto": "2.ª posición: 2, 4, 3 ya sonaron → la 1 ✓",
+    "ok": true
+   }
+  ],
+  "p3": [
+   {
+    "linea": "a07",
+    "texto": "León: oro/rojo · Torre: plata/azul · Lirio: oro/verde"
+   },
+   {
+    "linea": "a07",
+    "texto": "Águila: plata sobre oro ✗ (metal/metal)",
+    "ok": false
+   }
+  ],
+  "p4": [
+   {
+    "linea": "f07",
+    "texto": "A: 120 / 2 = 60 kg > 45 ✗",
+    "ok": false
+   },
+   {
+    "linea": "f08",
+    "texto": "C: 4 tramos × 1 m = 4 m > 3,5 m ✗",
+    "ok": false
+   },
+   {
+    "linea": "f09",
+    "texto": "B: 40 kg y 3 m ✓",
+    "ok": true
+   }
+  ],
+  "p5": [
+   {
+    "linea": "t06",
+    "texto": "Este → Sur → Oeste: Halcón · Ciervo · Lobo ✓",
+    "ok": true
+   },
+   {
+    "linea": "t06",
+    "texto": "Oso (norte): nunca recibe el sol"
+   }
+  ]
+ },
+ "lineas": [
+  {
+   "id": "g01",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Medianoche. La poterna se cierra de golpe a tu espalda, y una vela se enciende sola sobre el atril."
+  },
+  {
+   "id": "g02",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "En este castillo no amanece desde hace cien años. Cinco puertas. Una vela. Si se apaga antes de que abras la última, te quedas aquí hasta la noche siguiente."
+  },
+  {
+   "id": "g03",
+   "bloque": "gancho",
+   "fase": "narra",
+   "texto": "Huele a cera y a piedra mojada. Alguien dejó aquí cinco cerraduras, y en cada una, una manera distinta de pensar."
+  },
+  {
+   "id": "c01",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "La capilla. Arriba, un rosetón de ocho vidrios con un número grabado en cada uno. Uno está roto, negro."
+  },
+  {
+   "id": "c02",
+   "bloque": "p1",
+   "fase": "pista",
+   "texto": "La puerta de la capilla tiene una rueda del uno al doce. El vidrio que falta la abre."
+  },
+  {
+   "id": "c02b",
+   "bloque": "p1",
+   "fase": "narra",
+   "texto": "Sobre el altar, una nota del último señor del castillo: lo que se rompe en un círculo se repara mirando al otro lado."
+  },
+  {
+   "id": "c03",
+   "bloque": "p1",
+   "fase": "pista",
+   "texto": "En círculo se leen: dos, nueve, cinco, siete, once, el roto, ocho y seis. Fíjate en los vidrios que están enfrente el uno del otro."
+  },
+  {
+   "id": "c04",
+   "bloque": "p1",
+   "fase": "pregunta",
+   "texto": "¿Qué número había en el vidrio roto? Veinte segundos."
+  },
+  {
+   "id": "c05",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "Cuatro."
+  },
+  {
+   "id": "c06",
+   "bloque": "p1",
+   "fase": "solucion",
+   "texto": "Cada vidrio y el de enfrente suman trece: dos y once, cinco y ocho, siete y seis. Enfrente del roto está el nueve. Trece menos nueve: cuatro."
+  },
+  {
+   "id": "c07",
+   "bloque": "p1",
+   "fase": "accion",
+   "texto": "La rueda gira hasta el cuatro. Un rayo de luna atraviesa el rosetón, el vidrio vuelve a brillar… y la puerta de la capilla se abre."
+  },
+  {
+   "id": "k01",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "El campanario. Cuatro campanas de cobre, bronce, plata y hierro: la uno, la dos, la tres y la cuatro. Uno de los ganchos está vacío."
+  },
+  {
+   "id": "k01b",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "Las cuerdas cuelgan quietas. Hace cien años que nadie toca estas campanas, pero el polvo de los badajos está fresco."
+  },
+  {
+   "id": "k02",
+   "bloque": "p2",
+   "fase": "pista",
+   "texto": "En la pared, la partitura del campanero. En cada compás suenan las cuatro campanas, una vez cada una, y ninguna repite posición en dos compases."
+  },
+  {
+   "id": "k03",
+   "bloque": "p2",
+   "fase": "pista",
+   "texto": "Compases: uno, dos, tres, cuatro. Tres, cuatro, uno, dos. Cuatro, tres, dos, uno. Y el último: dos, hueco, cuatro, tres."
+  },
+  {
+   "id": "k04",
+   "bloque": "p2",
+   "fase": "pregunta",
+   "texto": "¿Qué campana falta en el último compás? Veinte segundos."
+  },
+  {
+   "id": "k05",
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "La uno: la de cobre."
+  },
+  {
+   "id": "k06",
+   "bloque": "p2",
+   "fase": "solucion",
+   "texto": "En el último compás ya suenan la dos, la cuatro y la tres. Y en la segunda posición ya sonaron esas mismas tres. Las dos reglas dicen lo mismo."
+  },
+  {
+   "id": "k07",
+   "bloque": "p2",
+   "fase": "accion",
+   "texto": "La campana de cobre sube a su gancho, la melodía suena completa y una trampilla se abre bajo tus pies."
+  },
+  {
+   "id": "k08",
+   "bloque": "p2",
+   "fase": "narra",
+   "texto": "Si has llegado hasta aquí sin mirar ninguna solución, suscríbete: cada semana, una sala nueva."
+  },
+  {
+   "id": "a01",
+   "bloque": "p3",
+   "fase": "narra",
+   "texto": "La sala de armas. Junto a la chimenea cuelgan cuatro escudos: el león, la torre, el águila y el lirio."
+  },
+  {
+   "id": "a02",
+   "bloque": "p3",
+   "fase": "pista",
+   "texto": "Grabado en la piedra: en esta casa, metal sobre metal es mentira."
+  },
+  {
+   "id": "a02b",
+   "bloque": "p3",
+   "fase": "narra",
+   "texto": "Los escudos cuentan la historia de la casa. Pero uno de ellos se colgó después, para engañar a quien buscara la salida."
+  },
+  {
+   "id": "a03",
+   "bloque": "p3",
+   "fase": "pista",
+   "texto": "La regla de los heraldos: el oro y la plata son metales; el rojo, el azul y el verde son colores. Nunca un metal sobre otro metal, ni un color sobre otro color."
+  },
+  {
+   "id": "a04",
+   "bloque": "p3",
+   "fase": "pista",
+   "texto": "León de oro en campo rojo. Torre de plata en campo azul. Águila de plata en campo de oro. Lirio de oro en campo verde."
+  },
+  {
+   "id": "a05",
+   "bloque": "p3",
+   "fase": "pregunta",
+   "texto": "Uno de los escudos es falso. ¿Cuál? Veinte segundos."
+  },
+  {
+   "id": "a06",
+   "bloque": "p3",
+   "fase": "solucion",
+   "texto": "El águila."
+  },
+  {
+   "id": "a07",
+   "bloque": "p3",
+   "fase": "solucion",
+   "texto": "El león, la torre y el lirio ponen un metal sobre un color. El águila pone plata sobre oro: metal sobre metal."
+  },
+  {
+   "id": "a08",
+   "bloque": "p3",
+   "fase": "accion",
+   "texto": "Descuelgas el águila. Detrás, una manivela oxidada."
+  },
+  {
+   "id": "f01",
+   "bloque": "p4",
+   "fase": "narra",
+   "texto": "La puerta del foso. Para salir hay que subir el puente levadizo, y está grabado en la viga: ciento veinte kilos."
+  },
+  {
+   "id": "f01b",
+   "bloque": "p4",
+   "fase": "narra",
+   "texto": "El viento sube desde el foso. Abajo, el agua negra no refleja nada: ni la luna, ni tu linterna."
+  },
+  {
+   "id": "f02",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "Hay tres aparejos de poleas. El A sostiene el puente con dos tramos de cuerda, el B con tres y el C con cuatro."
+  },
+  {
+   "id": "f03",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "Cuantos más tramos, menos fuerza necesitas: el peso se reparte entre ellos. Pero por cada metro que sube el puente, recoges un metro de cuerda por cada tramo."
+  },
+  {
+   "id": "f04",
+   "bloque": "p4",
+   "fase": "pista",
+   "texto": "Tu fuerza máxima: cuarenta y cinco kilos. Tu cuerda: tres metros y medio. Y el puente tiene que subir un metro."
+  },
+  {
+   "id": "f05",
+   "bloque": "p4",
+   "fase": "pregunta",
+   "texto": "¿Con qué aparejo lo subes? Veinte segundos."
+  },
+  {
+   "id": "f06",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "Con el B."
+  },
+  {
+   "id": "f07",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "El A necesita sesenta kilos de fuerza: no puedes."
+  },
+  {
+   "id": "f08",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "El C solo pide treinta, pero cuatro tramos por un metro son cuatro metros de cuerda, y tienes tres y medio."
+  },
+  {
+   "id": "f09",
+   "bloque": "p4",
+   "fase": "solucion",
+   "texto": "El B: cuarenta kilos y tres metros. Justo."
+  },
+  {
+   "id": "f10",
+   "bloque": "p4",
+   "fase": "accion",
+   "texto": "Tiras. Los tres tramos se tensan y el puente sube, despacio, hasta dejar a la vista la escalera de la torre."
+  },
+  {
+   "id": "t01",
+   "bloque": "p5",
+   "fase": "narra",
+   "texto": "La torre del homenaje. La vela casi se ha apagado. En la mesa, el mapa del castillo con su rosa de los vientos: el norte, arriba."
+  },
+  {
+   "id": "t01b",
+   "bloque": "p5",
+   "fase": "narra",
+   "texto": "La llama de la vela es ya un punto. Por las rendijas de la torre entra un frío que anuncia el final de la noche."
+  },
+  {
+   "id": "t02",
+   "bloque": "p5",
+   "fase": "pista",
+   "texto": "Cuatro torres: el Halcón al este, el Ciervo al sur, el Lobo al oeste y el Oso al norte."
+  },
+  {
+   "id": "t03",
+   "bloque": "p5",
+   "fase": "pista",
+   "texto": "La puerta tiene tres palancas y una inscripción: abre como el sol recorre el cielo."
+  },
+  {
+   "id": "t04",
+   "bloque": "p5",
+   "fase": "pregunta",
+   "texto": "¿En qué orden bajas las palancas? Veinte segundos."
+  },
+  {
+   "id": "t05",
+   "bloque": "p5",
+   "fase": "solucion",
+   "texto": "Halcón, Ciervo y Lobo."
+  },
+  {
+   "id": "t06",
+   "bloque": "p5",
+   "fase": "solucion",
+   "texto": "El sol sale por el este, a mediodía está al sur y se pone por el oeste. La torre del Oso mira al norte: en este castillo, el sol nunca la toca."
+  },
+  {
+   "id": "t07",
+   "bloque": "p5",
+   "fase": "accion",
+   "texto": "Tres palancas. La puerta se abre hacia el este."
+  },
+  {
+   "id": "z01",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "Sales al adarve. El cielo pasa del violeta al naranja: por primera vez en cien años, amanece. Detrás de ti, la vela se apaga sola."
+  },
+  {
+   "id": "z01b",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "El aire huele a campo. A lo lejos cantan los gallos por primera vez en un siglo, y el castillo, detrás de ti, deja de ser una sombra."
+  },
+  {
+   "id": "z02",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "Cuatro. La campana de cobre. El águila. El aparejo B. Y Halcón, Ciervo y Lobo. ¿Cuántas puertas abriste sin mirar? Cuéntalo en los comentarios."
+  },
+  {
+   "id": "z03",
+   "bloque": "final",
+   "fase": "narra",
+   "texto": "La próxima sala se abre la semana que viene. Suscríbete y activa la campanita para entrar el primero."
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "version": "v1",
+ "auditoria": "",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-22",
+   "cambios": "Producción nueva (Claude) con el motor genérico E60LargoSalas: 5 salas 3D propias del castillo, 5 puzles de familias nuevas verificados por código (tools/verificar_semana_20261123.py). Guion = semana_20261123/ER004_CASTILLO_SIN_AMANECER.md."
+  },
+  {
+   "version": "v1",
+   "fecha": "2026-11-22",
+   "cambios": "2.º render antes de entregar: 7 líneas de ambiente más para superar los 8 minutos (el 1.º render quedaba en 7:51, por debajo del mínimo de YouTube para anuncios a mitad del vídeo)."
+  }
+ ],
+ "video_id": "E60ES-ER-004"
+}

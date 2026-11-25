@@ -1,0 +1,52 @@
+# Vuelve a guardar SIN comprimir el máster de un render ya hecho (para másteres anteriores al cambio
+# de render-capitulo.yml). No renderiza, no publica, no sube a Drive: solo copia el artefacto.
+# Se lanza al subir remotion/encargos/reempaquetar/<id>.json con {"run_id": ..., "encargo_master": "..."}.
+name: reempaquetar-master
+on:
+  push:
+    paths:
+      - 'remotion/encargos/reempaquetar/*.json'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  reempaquetar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Leer encargo
+        id: enc
+        run: |
+          F=$(git diff --name-only HEAD~1 HEAD -- 'remotion/encargos/reempaquetar/*.json' | head -1)
+          echo "run_id=$(jq -r .run_id "$F")" >> "$GITHUB_OUTPUT"
+          echo "id=$(jq -r .encargo_master "$F")" >> "$GITHUB_OUTPUT"
+      - name: Descargar máster comprimido del render original
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ steps.enc.outputs.id }}
+          run-id: ${{ steps.enc.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: final
+      - name: Comprobar hash contra el QA
+        run: |
+          ESPERADO=$(jq -r .sha256 "final/${{ steps.enc.outputs.id }}.qa.json")
+          REAL=$(sha256sum "final/${{ steps.enc.outputs.id }}.mp4" | cut -d' ' -f1)
+          echo "QA=$ESPERADO REAL=$REAL"
+          test "$ESPERADO" = "$REAL"
+      - name: Máster directo (sin zip)
+        uses: actions/upload-artifact@v7
+        with:
+          path: final/${{ steps.enc.outputs.id }}.mp4
+          archive: false
+          if-no-files-found: error
+          retention-days: 7
+      - name: QA directo (sin zip)
+        uses: actions/upload-artifact@v7
+        with:
+          path: final/${{ steps.enc.outputs.id }}.qa.json
+          archive: false
+          if-no-files-found: error
+          retention-days: 7

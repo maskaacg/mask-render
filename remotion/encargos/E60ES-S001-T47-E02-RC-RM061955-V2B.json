@@ -1,0 +1,13 @@
+{
+ "encargo_id": "E60ES-S001-T47-E02-RC-RM061955-V2B",
+ "video_id": "E60ES-S001-T47-E02-RC-RM061955",
+ "version": "v2",
+ "composicion": "E60CortoPlano",
+ "ficha": "fichas/E60-2026-11-17-corto.json",
+ "fecha": "2026-11-17",
+ "titulo": "Las tres cajas fuertes",
+ "modo": "puzle",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "motivo": "Cambios del Propietario 14/11: mensaje único, escenario propio, estilo Plano + Linterna",
+ "solicitado_por": "n8n WF-RENDER-REMOTION-CORTOS"
+}

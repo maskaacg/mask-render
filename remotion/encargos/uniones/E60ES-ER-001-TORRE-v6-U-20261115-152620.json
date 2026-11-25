@@ -1,0 +1,10 @@
+{
+ "encargo_id": "E60ES-ER-001-TORRE-v6-U-20261115-152620",
+ "origen_id": "E60ES-ER-001-TORRE-v6-20261115-144524",
+ "origen_run_id": 43720656114,
+ "ficha_id": "E60-ER-001",
+ "composicion": "E60EscapeRoom",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "solicitado_por": "Claude (corrector): el job «unir» del run 43720656114 no llegó a arrancar; se reutilizan sus 8 tramos",
+ "fecha": "2026-11-15T15:26:20+01:00"
+}

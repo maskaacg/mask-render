@@ -1,0 +1,188 @@
+{
+ "id": "E60-ER-004-T",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "¿Qué campana falta?",
+ "numero": 0,
+ "escena": "sala_propia",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#c98a3a",
+ "gancho": true,
+ "gancho_texto": "Falta una campana. ¿Cuál?",
+ "puzle": {
+  "tipo": "campanas",
+  "mecanica": "DEDUCCION",
+  "familia": "cuadrado_latino",
+  "falta": 1,
+  "respuesta": "la 1 (cobre)",
+  "cuentas": [
+   {
+    "linea": "l07",
+    "texto": "Último compás: 2 · _ · 4 · 3 → falta la 1"
+   },
+   {
+    "linea": "l08",
+    "texto": "2.ª posición: ya sonaron 2, 4, 3 → la 1 ✓",
+    "ok": true
+   }
+  ]
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "id": "l01",
+   "fase": "intro",
+   "texto": "El campanario de un castillo donde no amanece. La partitura está en la pared… y falta una nota."
+  },
+  {
+   "id": "l02",
+   "fase": "intro",
+   "texto": "Cuatro campanas: cobre, bronce, plata y hierro. Uno, dos, tres y cuatro."
+  },
+  {
+   "id": "l03",
+   "fase": "enunciado",
+   "texto": "En cada compás suenan las cuatro, una vez cada una. Y ninguna campana repite posición en dos compases."
+  },
+  {
+   "id": "l04",
+   "fase": "enunciado",
+   "texto": "Compases: uno, dos, tres, cuatro. Tres, cuatro, uno, dos. Cuatro, tres, dos, uno. Y el último: dos, hueco, cuatro, tres."
+  },
+  {
+   "id": "l05",
+   "fase": "enunciado",
+   "texto": "¿Qué campana falta?"
+  },
+  {
+   "id": "l06",
+   "fase": "solucion",
+   "texto": "La uno: la de cobre."
+  },
+  {
+   "id": "l07",
+   "fase": "solucion",
+   "texto": "En el último compás ya suenan la dos, la cuatro y la tres. Solo falta la uno."
+  },
+  {
+   "id": "l08",
+   "fase": "solucion",
+   "texto": "Y en la segunda posición ya sonaron la dos, la cuatro y la tres. Las dos reglas lo confirman."
+  },
+  {
+   "id": "l09",
+   "fase": "solucion",
+   "texto": "La campana de cobre sube a su gancho, y la melodía se completa."
+  },
+  {
+   "id": "l10",
+   "fase": "cta",
+   "texto": "Es la segunda de las cinco puertas de El castillo sin amanecer. Las otras cuatro te esperan en el escape room completo, en YouTube."
+  },
+  {
+   "id": "l11",
+   "fase": "cta",
+   "texto": "Suscríbete para entrar el primero."
+  }
+ ],
+ "pizarra": {
+  "desde": "l03",
+  "filas": [
+   {
+    "etiqueta": "COMPÁS 1",
+    "texto": "1 · 2 · 3 · 4"
+   },
+   {
+    "etiqueta": "COMPÁS 2",
+    "texto": "3 · 4 · 1 · 2"
+   },
+   {
+    "etiqueta": "COMPÁS 3",
+    "texto": "4 · 3 · 2 · 1"
+   },
+   {
+    "etiqueta": "COMPÁS 4",
+    "texto": "2 · ? · 4 · 3",
+    "color": "#ffe2b0"
+   }
+  ],
+  "pregunta": "¿Qué campana falta?"
+ },
+ "camara": {
+  "alto": 1.05,
+  "dist": 2.3,
+  "mira": 0.82,
+  "fov": 52
+ },
+ "fin_solucion": "l09",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "",
+ "motor_voz": "chatterbox",
+ "version": "v1",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-22",
+   "cambios": "Avance de «El castillo sin amanecer» (ER #4): un puzle completo con su respuesta, y después la invitación al largo."
+  }
+ ],
+ "duracion_objetivo_s": 95,
+ "sala": {
+  "id": "castillo-campanario",
+  "nombre": "El campanario del castillo sin amanecer",
+  "ancho": 5.0,
+  "fondo": 5.6,
+  "alto": 3.0,
+  "pared": {
+   "patron": "piedra",
+   "color": "#7a7064",
+   "color2": "#3a342e"
+  },
+  "suelo": {
+   "patron": "tablones",
+   "color": "#5a4028",
+   "color2": "#2a1c10"
+  },
+  "techo": "#141010",
+  "luz": {
+   "tipo": "luna",
+   "color": "#d8dcff",
+   "intensidad": 1.45
+  },
+  "niebla": "#0a0a0e",
+  "puzle_en": "suelo",
+  "atrezo": [
+   {
+    "tipo": "ventana",
+    "pared": "N",
+    "x": -1.4,
+    "color": "#2a2f5a"
+   },
+   {
+    "tipo": "ventana",
+    "pared": "N",
+    "x": 1.4,
+    "color": "#2a2f5a"
+   },
+   {
+    "tipo": "barril",
+    "pared": "O",
+    "x": -1.0,
+    "escala": 0.6,
+    "color": "#4a3020"
+   },
+   {
+    "tipo": "lampara_pie",
+    "pared": "E",
+    "x": 0.8
+   }
+  ]
+ },
+ "cta_texto": "SUSCRÍBETE · escape room completo en YouTube"
+}

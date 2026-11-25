@@ -1,0 +1,9 @@
+{
+ "encargo_id": "E60ES-ER-001-T-20261114-212331",
+ "composicion": "E60AvanceTorre",
+ "ficha": "fichas/E60-ER-001-T.json",
+ "tramos": 2,
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "solicitado_por": "n8n WF-TEST-REMOTION-06",
+ "fecha": "2026-11-14T21:23:31.620+01:00"
+}

@@ -1,0 +1,61 @@
+{
+ "video_id": "E60ES-AC-20261126",
+ "version": "v1",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-AC-20261126-v1-20261122-045126",
+ "run_id": 44982496307,
+ "zona": "Europe/Madrid",
+ "sha256": "d5d1eda4e6cc10c51cf692cd4e477dc5ff6cea36383226301a243f18cf0ec5bb",
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva de la semana 23-29/11 (Claude)",
+   "corrector": "Claude"
+  }
+ ],
+ "estado_aprobacion": "v1 entregada (22/11), pendiente de APROBAR",
+ "ficha": "fichas/E60-2026-11-26-corto.json",
+ "composicion": "E60CortoSala",
+ "formato": "TikTok / Reels / Shorts 9:16",
+ "plataformas": [
+  "tiktok",
+  "youtube",
+  "facebook"
+ ],
+ "pendiente_conectar": [
+  "instagram"
+ ],
+ "portada": "remotion/publicacion/E60ES-AC-20261126_portada.jpg",
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ },
+ "tiktok": {
+  "privacy_level": "PUBLIC_TO_EVERYONE",
+  "is_aigc": true,
+  "cover_timestamp_ms": 1000
+ },
+ "facebook": {
+  "facebook_media_type": "REELS",
+  "facebook_is_ai_generated": true
+ },
+ "programado": "2026-11-26T18:00:00",
+ "titulo": "2 reflejos dicen 825, 1 dice 258: ¿cuál es el código? 🪞",
+ "youtube_title": "2 reflejos dicen 825 y 1 dice 258: ¿cuál es el código? 🪞 #shorts #acertijos",
+ "youtube_description": "La placa del código está de espaldas y solo puedes leerla en dos espejos en ángulo recto. Dos reflejos dicen 825 y el del rincón dice 258. ¿Cuál es el código real? 15 segundos y solución explicada. Contenido creado con ayuda de IA. #shorts #acertijos #logica",
+ "tiktok_title": "Una placa de espaldas y dos espejos en ángulo recto: dos reflejos dicen 825 y el del rincón dice 258. ¿Cuál es el código de verdad? Solución explicada en el vídeo. #acertijos #logica #enigma #espejos #retomental",
+ "facebook_title": "¿Cuál es el código de verdad?",
+ "facebook_description": "Dos reflejos dicen 825 y uno dice 258. ¿Cuál es el código real? Solución en el vídeo. ENIGMA 60. Contenido creado con ayuda de IA. #acertijos #logica",
+ "tags": [
+  "acertijos",
+  "espejos",
+  "reflejos",
+  "lógica",
+  "shorts",
+  "enigma 60"
+ ]
+}

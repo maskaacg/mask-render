@@ -1,0 +1,197 @@
+{
+ "id": "E60-2026-11-19-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "Las cerillas del relojero",
+ "numero": 4,
+ "escena": "sala_propia",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#b8963a",
+ "puzle": {
+  "tipo": "cerillas",
+  "mecanica": "LATERAL",
+  "familia": "cerillas_mover_una",
+  "inicial": [
+   5,
+   "+",
+   7,
+   2
+  ],
+  "mueve": {
+   "de": [
+    1,
+    "v"
+   ],
+   "a": [
+    0,
+    "b"
+   ]
+  },
+  "respuesta": "9 − 7 = 2"
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "fase": "intro",
+   "texto": "Medianoche. La puerta del taller del relojero se cierra a tu espalda, y todos los relojes de la pared marcan la misma hora.",
+   "id": "l01"
+  },
+  {
+   "fase": "intro",
+   "texto": "Tic, tac. Los péndulos no se detienen, y en el banco de trabajo hay herramientas a medio usar, como si el relojero acabara de marcharse.",
+   "id": "l02"
+  },
+  {
+   "fase": "intro",
+   "texto": "En el centro, sobre la mesa grande, alguien ha dejado una caja de cerillas abierta… y una cuenta hecha con ellas.",
+   "id": "l03"
+  },
+  {
+   "fase": "intro",
+   "texto": "Cinco más siete, igual a dos. Una cuenta imposible, colocada con mucho cuidado.",
+   "id": "l04"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Junto a la caja, una nota: «La puerta se abre cuando la cuenta dice la verdad». Solo puedes mover una cerilla, sin quitar ni añadir ninguna.",
+   "id": "l05"
+  },
+  {
+   "fase": "enunciado",
+   "texto": "Cinco más siete igual a dos. ¿Qué cerilla mueves para que la cuenta sea cierta?",
+   "id": "l06"
+  },
+  {
+   "fase": "solucion",
+   "texto": "La cerilla de pie del signo más.",
+   "id": "l07"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Al quitarla, el más se convierte en menos. Y si la pones arriba a la derecha del cinco, el cinco se convierte en un nueve. Nueve menos siete: dos.",
+   "id": "l08"
+  },
+  {
+   "fase": "solucion",
+   "texto": "Los relojes se detienen a la vez. Suena un clic en la puerta del fondo… y se abre.",
+   "id": "l09"
+  },
+  {
+   "fase": "cta",
+   "texto": "¿La encontraste antes de que acabara el tiempo? Escríbelo en los comentarios.",
+   "id": "l10"
+  },
+  {
+   "fase": "cta",
+   "texto": "Mañana, otra habitación y otro enigma.",
+   "id": "l11"
+  }
+ ],
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "Claude 16/11/2026: acertijo cambiado para que no repita mecánica (la balanza y las ecuaciones lineales ya salen en el museo y en la serie). Comprobado por código (tools/verificar_cerillas_20261119.py): moviendo una sola cerilla entre todas las posiciones posibles de 5+7=2, la única igualdad válida es 9−7=2. Fotogramas de prueba en local revisados (sala propia, cerillas 3D sobre la mesa). Pendiente de render completo con voz y QA. Render v2 run 43878934206: QA técnica PASS (88,6 s, -14,4 LUFS); hoja de contactos revisada: sala propia, cerillas 3D, cuenta atrás y solución 9−7=2 coherentes con la voz.",
+ "motor_voz": "chatterbox",
+ "version": "v2",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-16",
+   "cambios": "Productor automático: estética de la torre (E60CortoTorre) por preferencia del Propietario del 15/11; título e intro pasan del «sótano» a la torre para que lo que se dice coincida con lo que se ve; voz Chatterbox (narrador, referencia sintética Kokoro). Sin comentarios de la audiencia todavía (mg.comentarios_para_claude vacío)."
+  },
+  {
+   "version": "v2",
+   "fecha": "2026-11-16",
+   "cambios": "Correcciones del Propietario del 16/11: (1) mínimo 70 s (la v1 duraba 41,7 s): historia de 11 líneas, ~90 s estimados; (2) puzle único: la balanza se sustituye por cerillas (5+7=2 → 9−7=2, única por código); (3) puzle en 3D, no dibujo en pergamino; (4) habitación propia: «El taller del relojero» (composición E60CortoSala, sala relojeria-01)."
+  }
+ ],
+ "duracion_objetivo_s": [
+  70,
+  120
+ ],
+ "sala": {
+  "id": "relojeria-01",
+  "nombre": "El taller del relojero",
+  "ancho": 5.6,
+  "fondo": 6.4,
+  "alto": 3.2,
+  "pared": {
+   "patron": "papel",
+   "color": "#3c5a4a",
+   "color2": "#22352c"
+  },
+  "suelo": {
+   "patron": "damero",
+   "color": "#d8cfb8",
+   "color2": "#2a2420"
+  },
+  "techo": "#1a1512",
+  "luz": {
+   "tipo": "lampara",
+   "color": "#ffd8a0",
+   "intensidad": 1.0
+  },
+  "niebla": "#0b0d0c",
+  "puzle_en": "mesa",
+  "mesa": {
+   "color": "#3a2414"
+  },
+  "atrezo": [
+   {
+    "tipo": "reloj",
+    "pared": "N",
+    "x": -1.7,
+    "color": "#8a6a2c"
+   },
+   {
+    "tipo": "reloj",
+    "pared": "N",
+    "x": 1.7,
+    "escala": 0.8,
+    "color": "#5a3a22"
+   },
+   {
+    "tipo": "reloj",
+    "pared": "E",
+    "x": -1.2,
+    "escala": 1.1,
+    "color": "#b8963a"
+   },
+   {
+    "tipo": "estanteria",
+    "pared": "O",
+    "x": -1.3,
+    "color": "#3a2414"
+   },
+   {
+    "tipo": "banco",
+    "pared": "O",
+    "x": 1.5,
+    "color": "#4a2e1a"
+   },
+   {
+    "tipo": "ventana",
+    "pared": "E",
+    "x": 1.4,
+    "color": "#18223e"
+   },
+   {
+    "tipo": "cuadro",
+    "pared": "S",
+    "x": 1.4,
+    "color": "#4a3a2a"
+   },
+   {
+    "tipo": "caja",
+    "x": -2.1,
+    "z": 2.4,
+    "escala": 0.8,
+    "color": "#4a3020"
+   }
+  ]
+ }
+}

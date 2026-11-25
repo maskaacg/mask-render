@@ -1,0 +1,185 @@
+{
+ "id": "E60-S01-C02-T",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "La esclusa que nadie debía abrir",
+ "numero": 0,
+ "escena": "sala_propia",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#c98a3a",
+ "gancho": true,
+ "gancho_texto": "4 palancas. Un solo orden.",
+ "puzle": {
+  "tipo": "esclusa",
+  "mecanica": "DEDUCCION",
+  "familia": "secuencia_estados",
+  "respuesta": "C, I, A, P",
+  "cuentas": [
+   {
+    "linea": "l07",
+    "texto": "C primero: si no, al igualar entra el mar"
+   },
+   {
+    "linea": "l08",
+    "texto": "I antes que A: no se abre con presiones distintas"
+   },
+   {
+    "linea": "l09",
+    "texto": "P al final → C · I · A · P ✓",
+    "ok": true
+   }
+  ]
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "id": "l01",
+   "fase": "intro",
+   "texto": "Seiscientos metros bajo el mar. Una esclusa entre dos compartimentos, y el agua subiendo."
+  },
+  {
+   "id": "l02",
+   "fase": "intro",
+   "texto": "Cuatro palancas: cerrar la compuerta exterior, igualar la presión, abrir la interior y purgar el agua."
+  },
+  {
+   "id": "l03",
+   "fase": "enunciado",
+   "texto": "La placa tiene cuatro reglas. Nunca dos compuertas abiertas a la vez. No se abre con presiones distintas."
+  },
+  {
+   "id": "l04",
+   "fase": "enunciado",
+   "texto": "Igualar con la exterior abierta inunda la esclusa. Y la purga va al final."
+  },
+  {
+   "id": "l05",
+   "fase": "enunciado",
+   "texto": "¿En qué orden bajas las palancas?"
+  },
+  {
+   "id": "l06",
+   "fase": "solucion",
+   "texto": "Cerrar, igualar, abrir y purgar."
+  },
+  {
+   "id": "l07",
+   "fase": "solucion",
+   "texto": "Primero cierras la exterior: si no, al igualar entraría el mar."
+  },
+  {
+   "id": "l08",
+   "fase": "solucion",
+   "texto": "Igualas la presión… y la compuerta interior ya se puede abrir."
+  },
+  {
+   "id": "l09",
+   "fase": "solucion",
+   "texto": "La purga, al final, saca el agua que entra al abrir. Cualquier otro orden rompe una regla."
+  },
+  {
+   "id": "l10",
+   "fase": "cta",
+   "texto": "Esta esclusa es uno de los cinco puzles del capítulo dos de Profundidad 600. Lo que hay al otro lado está en YouTube."
+  },
+  {
+   "id": "l11",
+   "fase": "cta",
+   "texto": "Suscríbete para no perderte el siguiente capítulo."
+  }
+ ],
+ "pizarra": {
+  "desde": "l02",
+  "filas": [
+   {
+    "etiqueta": "C",
+    "texto": "cerrar exterior"
+   },
+   {
+    "etiqueta": "I",
+    "texto": "igualar presión"
+   },
+   {
+    "etiqueta": "A",
+    "texto": "abrir interior"
+   },
+   {
+    "etiqueta": "P",
+    "texto": "purgar (al final)"
+   },
+   {
+    "texto": "Nunca 2 compuertas abiertas",
+    "color": "#3fd0c0"
+   }
+  ],
+  "pregunta": "¿En qué orden?"
+ },
+ "camara": {
+  "alto": 0.95,
+  "dist": 2.9,
+  "mira": 0.45,
+  "fov": 52
+ },
+ "fin_solucion": "l09",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "",
+ "motor_voz": "chatterbox",
+ "version": "v1",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-22",
+   "cambios": "Avance de «El mamparo» (Profundidad 600 #2): un puzle secundario completo con su respuesta, sin spoilers del misterio."
+  }
+ ],
+ "duracion_objetivo_s": 95,
+ "sala": {
+  "id": "abisal-esclusa",
+  "nombre": "La esclusa del Abisal",
+  "ancho": 5.0,
+  "fondo": 5.6,
+  "alto": 2.7,
+  "pared": {
+   "patron": "chapa",
+   "color": "#4a5560",
+   "color2": "#22282e"
+  },
+  "suelo": {
+   "patron": "rejilla",
+   "color": "#3a4048",
+   "color2": "#1a1e22"
+  },
+  "techo": "#101418",
+  "luz": {
+   "tipo": "lampara",
+   "color": "#ffe0b8",
+   "intensidad": 1.25
+  },
+  "niebla": "#080a0c",
+  "puzle_en": "suelo",
+  "atrezo": [
+   {
+    "tipo": "tuberia",
+    "pared": "O",
+    "x": 0
+   },
+   {
+    "tipo": "tuberia",
+    "pared": "E",
+    "x": 0.6
+   },
+   {
+    "tipo": "reloj",
+    "pared": "N",
+    "x": 1.6
+   }
+  ]
+ },
+ "cta_texto": "SUSCRÍBETE · Profundidad 600 en YouTube"
+}

@@ -1,0 +1,34 @@
+name: MASK GROUP - Copias de revisión de renders anteriores (app)
+# Publica como release la copia de REVISIÓN (no el máster) de renders ya hechos, para verlos en MASK GROUP CONTROL.
+# Se lanza al cambiar revision/anteriores.txt (un ID de encargo por línea). No renderiza, no publica en redes.
+on:
+  push:
+    branches: [feat/e60-diorama-20261114]
+    paths: ['revision/anteriores.txt']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: revision
+      - name: Publicar copias de revisión
+        run: |
+          while read -r ID; do
+            ID=$(echo "$ID" | tr -d '\r' | xargs); [ -z "$ID" ] && continue
+            echo "$ID" | grep -Eq '^[A-Za-z0-9._-]{4,80}$' || { echo "ID no válido: $ID"; continue; }
+            if gh release view "revision-$ID" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then echo "Ya existe: $ID"; continue; fi
+            AID=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?name=$ID-revision" --jq '[.artifacts[] | select(.expired == false)][0].id // empty')
+            [ -z "$AID" ] && { echo "Sin artefacto vigente: $ID"; continue; }
+            rm -rf tmp && mkdir tmp && gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$AID/zip" > tmp/a.zip && unzip -q tmp/a.zip -d tmp
+            F="tmp/$ID-revision.mp4"; [ -s "$F" ] || { echo "Sin MP4: $ID"; continue; }
+            gh release create "revision-$ID" "$F" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease \
+              --title "Revisión $ID" --notes "Copia de revisión para MASK GROUP CONTROL. No es el máster ni una publicación. SHA-256 copia: $(sha256sum "$F" | cut -d' ' -f1)"
+            echo "Publicada: $ID"
+          done < revision/anteriores.txt

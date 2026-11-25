@@ -1,0 +1,50 @@
+{
+ "video_id": "E60ES-ER-003",
+ "version": "v1",
+ "ficha": "fichas/E60-ER-003.json",
+ "composicion": "E60EscapeObservatorio",
+ "tramos": 8,
+ "formato": "YouTube 16:9",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-ER-003-v1-20261121-124606",
+ "run_id": 44900668312,
+ "plataformas": [
+  "youtube"
+ ],
+ "programado": "2026-11-23T17:00:00",
+ "zona": "Europe/Madrid",
+ "miniatura": "remotion/publicacion/E60ES-ER-003_miniatura.jpg",
+ "titulo": "El observatorio apagado || Escape Room #3",
+ "youtube_title": "El observatorio apagado || Escape Room #3",
+ "youtube_description": "La puerta del observatorio se cierra a tu espalda: estás en lo alto de una montaña, a medianoche, y la luna solo cruza la ranura de la cúpula durante treinta minutos. Cuatro salas, cuatro cerraduras y las notas de un astrónomo desaparecido.\n\nLos 4 acertijos:\n📦 El montón de cajas: ninguna caja flota y solo ves las tapas. ¿Cuántas cajas hay en total?\n🏮 Las cuatro farolas: cada palanca cambia su farola y las de al lado. ¿Qué palancas encienden las cuatro?\n🔭 Los anillos del telescopio: cuatro anillos, tres varillas, nunca uno grande sobre uno pequeño. ¿Cuál es el mínimo de movimientos?\n🌙 Los espejos de la cúpula: un rayo de luna y cinco espejos. ¿A qué cerradura llega la luz: A, B o C?\n\nTienes 20 segundos en cada puzle antes de la solución. Deja tus respuestas en los comentarios: ¿cuántas cerraduras abres sin mirar?\n\n0:00 El observatorio\n1:00 Puzle 1 · El montón de cajas\n2:55 Puzle 2 · Las cuatro farolas\n5:18 Puzle 3 · Los anillos del telescopio\n7:22 Puzle 4 · Los espejos de la cúpula\n9:30 La cúpula se abre\n\n¿Te perdiste la sala anterior? Escape Room #2: El museo que miente, en el canal. El miércoles se abre el Escape Room #4: activa la campanita para entrar el primero.\n\nContenido creado con ayuda de IA (voz sintética y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #logica #enigmas #enigma60",
+ "tags": [
+  "escape room",
+  "acertijos",
+  "acertijos de lógica",
+  "enigmas",
+  "puzles",
+  "juegos mentales",
+  "escape room virtual",
+  "acertijos con respuesta",
+  "enigma 60",
+  "retos de lógica"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es",
+  "defaultAudioLanguage": "es"
+ },
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva: «El observatorio apagado» (4 salas 3D propias, 4 puzles de familias nuevas verificados por código)",
+   "corrector": "Claude (productor automático)"
+  }
+ ],
+ "estado_aprobacion": "v1 entregada a Telegram (21/11), pendiente de APROBAR",
+ "sha256": "f576d142d67ecf536e63cbffbc07d54a4f4ffdf0c0f990bd4a61633eba1a3471"
+}

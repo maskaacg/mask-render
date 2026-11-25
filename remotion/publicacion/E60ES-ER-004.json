@@ -1,0 +1,49 @@
+{
+ "video_id": "E60ES-ER-004",
+ "version": "v1",
+ "canal": "ENIGMA_60",
+ "perfil_upload_post": "enigama60",
+ "encargo_master": "E60ES-ER-004-v1-20261122-062834",
+ "run_id": 44989565544,
+ "zona": "Europe/Madrid",
+ "sha256": "bc98b603a413add760cfccc6ba03f7fe0fd54f68e7b73bc1c1444b585bf14a35",
+ "historial": [
+  {
+   "version": "v1",
+   "motivo_cambio": "Producción nueva de la semana 23-29/11 (Claude)",
+   "corrector": "Claude"
+  }
+ ],
+ "estado_aprobacion": "v1 entregada (22/11), pendiente de APROBAR",
+ "ficha": "fichas/E60-ER-004.json",
+ "composicion": "E60LargoSalas",
+ "tramos": 10,
+ "formato": "YouTube 16:9",
+ "plataformas": [
+  "youtube"
+ ],
+ "programado": "2026-11-25T17:00:00",
+ "miniatura": "remotion/publicacion/E60ES-ER-004_miniatura.jpg",
+ "titulo": "El castillo sin amanecer || Escape Room #4",
+ "youtube_title": "El castillo sin amanecer || Escape Room #4",
+ "youtube_description": "Medianoche: la poterna se cierra a tu espalda y una vela se enciende sola. En este castillo no amanece desde hace cien años. Cinco puertas, una vela… y si se apaga antes de abrir la última, te quedas dentro hasta mañana.\n\nLos 5 acertijos:\n🪟 El rosetón: ocho vidrios en círculo y uno roto. ¿Qué número tenía?\n🔔 ¿Qué campana falta? Cuatro campanas, cuatro compases y un hueco en la partitura.\n🛡️ El escudo falso: cuatro escudos y la regla de los heraldos. ¿Cuál miente?\n⛓️ El puente levadizo: 120 kg, tu fuerza de 45 kg y 3,5 m de cuerda. ¿Qué aparejo de poleas usas?\n🌅 La puerta del amanecer: cuatro torres y tres palancas. ¿En qué orden?\n\nTienes 20 segundos en cada puzle antes de la solución. Cuéntame en los comentarios cuántos resolviste sin mirar.\n\n0:00 La poterna\n0:29 La capilla\n1:53 El campanario\n3:28 La sala de armas\n4:55 La puerta del foso\n6:29 La torre del homenaje\n7:45 El amanecer\n\n¿Te perdiste la sala anterior? Escape Room #3: El observatorio apagado, en el canal. Suscríbete y activa la campanita para entrar el primero en la siguiente.\n\nContenido creado con ayuda de IA (voces sintéticas y escenas 3D generadas por ordenador).\n\n#escaperoom #acertijos #logica #enigmas #enigma60",
+ "tags": [
+  "escape room",
+  "acertijos",
+  "acertijos de lógica",
+  "enigmas",
+  "puzles",
+  "castillo",
+  "escape room virtual",
+  "acertijos con respuesta",
+  "enigma 60",
+  "retos de lógica"
+ ],
+ "youtube": {
+  "categoryId": "24",
+  "privacyStatus": "public",
+  "selfDeclaredMadeForKids": false,
+  "containsSyntheticMedia": true,
+  "defaultLanguage": "es"
+ }
+}

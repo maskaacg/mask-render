@@ -1,0 +1,188 @@
+{
+ "id": "E60-2026-11-27-corto",
+ "marca": "ENIGMA_60",
+ "idioma": "es",
+ "formato": "corto",
+ "ancho": 1080,
+ "alto": 1920,
+ "fps": 30,
+ "titulo": "La torre de dados",
+ "numero": 9,
+ "escena": "sala_propia",
+ "modo": "puzle",
+ "pensar_s": 15,
+ "tinte": "#c98a3a",
+ "gancho": true,
+ "gancho_texto": "¿Cuánto suman las caras que no ves?",
+ "puzle": {
+  "tipo": "dados",
+  "mecanica": "DEDUCCION",
+  "familia": "dados_caras_opuestas",
+  "arriba": 5,
+  "respuesta": "16",
+  "cuentas": [
+   {
+    "linea": "l07",
+    "texto": "Bajo el 5: 7 − 5 = 2"
+   },
+   {
+    "linea": "l08",
+    "texto": "Dado del medio: arriba + abajo = 7"
+   },
+   {
+    "linea": "l09",
+    "texto": "Dado de abajo: 7 → 2 + 7 + 7 = 16 ✓",
+    "ok": true
+   }
+  ]
+ },
+ "solucion_reserva": null,
+ "lineas": [
+  {
+   "id": "l01",
+   "fase": "intro",
+   "texto": "El casino de un barco antiguo. La ruleta está rota, y la salida depende de una torre de dados."
+  },
+  {
+   "id": "l02",
+   "fase": "intro",
+   "texto": "Tres dados normales, uno encima del otro. En lo alto se ve un cinco."
+  },
+  {
+   "id": "l03",
+   "fase": "enunciado",
+   "texto": "El código es la suma de las caras ocultas: las que se tocan entre dados, y la de abajo del todo, contra la mesa."
+  },
+  {
+   "id": "l04",
+   "fase": "enunciado",
+   "texto": "Una pista de jugador: en un dado normal, las caras opuestas siempre suman siete."
+  },
+  {
+   "id": "l05",
+   "fase": "enunciado",
+   "texto": "¿Cuánto suman las cinco caras ocultas?"
+  },
+  {
+   "id": "l06",
+   "fase": "solucion",
+   "texto": "Dieciséis."
+  },
+  {
+   "id": "l07",
+   "fase": "solucion",
+   "texto": "Debajo del cinco del dado de arriba hay un dos: es su cara opuesta."
+  },
+  {
+   "id": "l08",
+   "fase": "solucion",
+   "texto": "El dado del medio esconde arriba y abajo dos caras opuestas: siete."
+  },
+  {
+   "id": "l09",
+   "fase": "solucion",
+   "texto": "Y el de abajo, igual: otros siete. Dos, más siete, más siete: dieciséis. Sin levantar ningún dado."
+  },
+  {
+   "id": "l10",
+   "fase": "cta",
+   "texto": "¿Lo sacaste sin mirar las caras? Cuéntalo en los comentarios."
+  },
+  {
+   "id": "l11",
+   "fase": "cta",
+   "texto": "Y suscríbete: mañana, la última habitación de la semana."
+  }
+ ],
+ "pizarra": {
+  "desde": "l03",
+  "filas": [
+   {
+    "etiqueta": "VISIBLE",
+    "texto": "un 5 arriba del todo"
+   },
+   {
+    "etiqueta": "OCULTAS",
+    "texto": "5 caras (entre dados + la mesa)"
+   },
+   {
+    "texto": "Caras opuestas suman 7",
+    "color": "#3fd0c0"
+   }
+  ],
+  "pregunta": "¿Cuánto suman las ocultas?"
+ },
+ "camara": {
+  "alto": 0.75,
+  "dist": 2.15,
+  "mira": 0.38,
+  "fov": 50
+ },
+ "fin_solucion": "l09",
+ "estado": "BORRADOR_PENDIENTE_APROBACION",
+ "aviso_ia": "Contenido creado con ayuda de IA",
+ "auditoria": "",
+ "motor_voz": "chatterbox",
+ "version": "v1",
+ "historial": [
+  {
+   "version": "v1",
+   "fecha": "2026-11-22",
+   "cambios": "Producción nueva (Claude): sustituye a «La llave de dos caras» (no se pudo hacer verificable sin símbolos diminutos). Dados 3D con puntos, que se separan y giran para enseñar las caras ocultas."
+  }
+ ],
+ "duracion_objetivo_s": 95,
+ "sala": {
+  "id": "casino-barco-01",
+  "nombre": "El casino del barco",
+  "ancho": 5.0,
+  "fondo": 5.6,
+  "alto": 2.7,
+  "pared": {
+   "patron": "tablas",
+   "color": "#6a2a2a",
+   "color2": "#3a1414"
+  },
+  "suelo": {
+   "patron": "damero",
+   "color": "#c9b48a",
+   "color2": "#2a1a10"
+  },
+  "techo": "#1a0e0a",
+  "luz": {
+   "tipo": "chimenea",
+   "color": "#ffc890",
+   "intensidad": 1.3
+  },
+  "niebla": "#0c0806",
+  "puzle_en": "mesa",
+  "mesa": {
+   "color": "#4a2a1a"
+  },
+  "atrezo": [
+   {
+    "tipo": "chimenea",
+    "pared": "O",
+    "x": 0.4
+   },
+   {
+    "tipo": "cuadro",
+    "pared": "N",
+    "x": -1.4,
+    "color": "#3a5a3a"
+   },
+   {
+    "tipo": "barril",
+    "pared": "E",
+    "x": -1.2,
+    "escala": 0.7,
+    "color": "#5a3a20"
+   },
+   {
+    "tipo": "lampara_pie",
+    "pared": "E",
+    "x": 1.2
+   }
+  ]
+ }
+}
